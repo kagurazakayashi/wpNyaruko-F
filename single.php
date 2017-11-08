@@ -1,81 +1,27 @@
-<?php get_header(); $wpNyarukoOption = get_option('wpNyaruko_options'); ?>
-	<div id="scrollpic" class="singleleftbox">
-		<!-- Column 1 /Content -->
-		<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
-		<div id="singlebdiv">
-			<div id="singlerightdiv">
-				<span id="srdtop">
-					<div id="srdtitle"><?php the_title(); ?></div>
-					<div id="srddate"><?php the_time('Y年n月j日') ?> &bull; <?php
-					 $category = get_the_category();
-					 if (count($category) == 0) {
-						echo "页面";
-					 } else {
-						$category = $category[0];
-						echo '<a href="'.get_category_link($category->term_id ).'">'.$category->cat_name.'</a>';
-					 }
-					 edit_post_link('编辑', ' &bull; ', '');
-					 ?></div>
-				</span>
-				<div id="srdcontentbox"><div id="srdcontent">
-					<?php if (@$wpNyarukoOption['wpNyarukoAuthorSingle']!='' && get_the_author_description() != "" && !isset($_GET['attachment_id'])) { ?>
-					<hr><table id="authorinfo" width="100%" border="0" cellspacing="0" cellpadding="10px">
-						<tbody>
-							<tr>
-							<td width="128px" align="center" valign="middle">
-								<div id="authorimg"><a title="<?php the_author(); ?>" href="<?php the_author_url(); ?>" ><img class="comsimg" style="background:url(<?php bloginfo("template_url"); ?>/images/gravatar.png) no-repeat 100% 100%;" src=<?php
-									if (usepxy($wpNyarukoOption)) {
-										echo ('"'.$wpNyarukoOption['wpNyarukoGravatarProxyPage'].'&mail='.get_the_author_email().'&size=128"');
-									} else {
-										echo '"https://cn.gravatar.com/avatar/'.md5(get_the_author_email()).'?s=128"';
-									}
-								?> alt="<?php the_author(); ?>" /></a></div>
-							</td>
-							<td><span>
-								<p><a title="<?php the_author_url(); ?>" href="<?php the_author_url(); ?>" ><?php the_author(); ?></a></p>
-								<p><?php the_author_description(); ?></p>
-							</span></td>
-							</tr>
-						</tbody>
-					</table><hr>
-					<?php } 
-					if (isset($_GET['attachment_id'])) {
-						echo "图片浏览<hr>";
-					}
-					else if (@$wpNyarukoOption['wpNyarukoOR']!='') {
-						$reproducedinfo = get_post_meta(get_the_ID(),"_reproduced_value",true);
-						$wpNyarukoOriginal = @$wpNyarukoOption['wpNyarukoOriginal'];
-						$wpNyarukoReproduced = @$wpNyarukoOption['wpNyarukoReproduced'];
-						if ($reproducedinfo == "" && $wpNyarukoOriginal != "") {
-							$rinfoarr = explode(",",$reproducedinfo);
-							echo "<center>".str_replace('[URL]','<a href="'.home_url(add_query_arg(array())).'">'.get_bloginfo('name').'</a>' ,$wpNyarukoOriginal)."</center><hr>";
-						}
-						if ($reproducedinfo != "" && $wpNyarukoReproduced != "") {
-							$rinfoarr = explode(",",$reproducedinfo);
-							echo "<center>".str_replace('[URL]','<a href="'.$rinfoarr[1].'">'.$rinfoarr[0].'</a>' ,$wpNyarukoReproduced)."</center><hr>";
-						}
-					}
-					echo "<span><p>&nbsp;</p></span>";
-					the_content(); ?>
-				</div></div>
-			</div>
+<?php get_header(); ?>
+	<!-- Column 1 /Content -->
+	<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
+	<div class="grid_8">
+		<!-- Blog Post -->
+		<div class="post">
+			<!-- Post Title -->
+			<h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+			<!-- Post Title -->
+			<p class="sub"><?php the_tags('标签：', ', ', ''); ?> &bull; <?php the_time('Y年n月j日') ?> &bull; <?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?><?php edit_post_link('编辑', ' &bull; ', ''); ?></p>
+			<div class="hr dotted clearfix">&nbsp;</div>
+			<!-- Post Title -->
+			<!-- Post Content -->
+			<?php the_content(); ?>
+			<!-- Post Links -->
+			<p class="clearfix"> <a href="<?php echo get_option('home'); ?>" class="button float" >&lt;&lt; 返回首页</a> <a href="#commentform" class="button float right" >发表评论</a> </p>
 		</div>
-		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/single.js"></script>
-		<div id="commentsbox"><p><?php echo @$wpNyarukoOption['wpNyarukoCommentTitle'] ?></p><?php comments_template(); ?></div>
-	    <?php else : ?>
-	    <div class="errorbox">
-	        没有文章！
-	    </div>
-	    <?php endif; ?>
+		<div class="hr clearfix">&nbsp;</div>
+		<?php comments_template(); ?>
 	</div>
-    <div id="scrolltextsingle"><?php get_sidebar('page'); ?></div>
-	<?php get_footer(); ?>
-	<?php 
-	function usepxy($wpNyarukoOption)
-	{
-		if ($wpNyarukoOption['wpNyarukoGravatarProxy'] && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] && $wpNyarukoOption['wpNyarukoGravatarProxy'] != "" && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] != "") {
-			return true;
-		}
-		return false;
-	}
-	?>
+<?php else : ?>
+<div class="errorbox">
+	没有文章！
+</div>
+<?php endif; ?>
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

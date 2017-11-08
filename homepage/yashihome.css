@@ -1,0 +1,146 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-repeat: no-repeat;
+    background-size:100px 100px;
+    color: #000;
+    font-family: "思源黑体","Source Han Sans","微软雅黑","Microsoft YaHei","Hiragino Sans GB","STHeiti Light","SimHei";
+}
+a:link {
+	color: #FE99CC;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #FE99CC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FE99CC;
+}
+a:active {
+	text-decoration: none;
+	color: #FE99CC;
+}
+.linkbtn {
+    color: #FE99CC;
+	text-decoration: none;
+}
+#topimgbox {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+}
+#titlebox {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    padding: 15px;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: transparent;
+}
+#titlelogo {
+    position: relative;
+}
+#bignews {
+    height: 50px;
+    right: 0px;
+    line-height: 50px;
+    background: gold;
+    padding-left: 50px;
+}
+.menu {
+    position: relative;
+    right: 0px;
+    text-align: right;
+}
+.menu a {
+	color: #FFF;
+	text-decoration: none;
+}
+@media screen and (max-width: 550px) {
+    /* #mainmenu {
+        top: 10px;
+        left: 10px;
+    }
+    #submenu {
+        top: 60px;
+        left: 10px;
+    } */
+}
+@media screen and (min-width: 551px) {
+    /* #mainmenu {
+        top: 10px;
+        left: 10px;
+    }
+    #submenu {
+        top: 10px;
+        left: 250px;
+    } */
+}
+.menu span {
+    /* font-family: 'webfont'; */
+    text-align: center;
+    width: 100px;
+    height: 100%;
+    text-shadow:0px 0px 5px #000000;
+    float: right;
+}
+/* .menu span:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+} */
+.menu h1 {
+    font-size: 12pt;
+    line-height: 0px;
+}
+.menu h2 {
+    font-size: 12pt;
+    line-height: 0px;
+}
+#footbox {
+    position: absolute;
+    bottom: 80px;
+    left: 50px;
+    right: 50px;
+}
+#foot {
+    position: absolute;
+    left: 0px;
+    font-size: 9pt;
+}
+#sociallist {
+    position: absolute;
+    right: 0px;
+}
+/* #foot:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+} */
+#weibobox {
+    position: fixed;
+    z-index: 5;
+    background-color: #FFF;
+    color: #000;
+    top: 100px;
+    top: calc(50% - 281px);
+    right: 0px;
+    width: 208px;
+    height: 563px;
+}
+#weiboiframe {
+    width: 208px;
+    height: 563px;
+    top: 0;
+    left: 0;
+}
+#sociallist span, #sociallist img {
+    width: 32px;
+    height: 32px;
+}

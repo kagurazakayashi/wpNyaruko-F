@@ -1,76 +1,30 @@
-<?php $wpNyarukoOption = get_option('wpNyaruko_options');
-echo "<script>var max_num_pages=".$wp_query->max_num_pages.";var now_num_pages=1;</script>";
-if (!isset($_GET["data"])) { get_header(); ?>
-	<?php if(@$wpNyarukoOption['wpNyarukoScrollpic'] && $wpNyarukoOption['wpNyarukoScrollpic']!="") { ?>
-	<div id="indexinfoshow">
-		<div id="scrollpic"><?php
-		$wpNyarukoScrollpic = @$wpNyarukoOption['wpNyarukoScrollpic'];
-		if(@$wpNyarukoOption['wpNyarukoScrollpicSC']!='') {
-			echo do_shortcode($wpNyarukoScrollpic);
-		} else {
-			echo $wpNyarukoScrollpic;
-		}
-		?></div>
-		<div id="scrolltext"><?php get_sidebar('index'); ?></div>
-	</div>
-	<?php } ?>
+<?php get_header(); ?>
 	<!-- Column 1 /Content -->
-	<div class="postlist">
+	<div class="grid_8">
 		<!-- Blog Post -->
-		<div id="postsbox">
-<?php } $datacount = isset($_GET["data"])?$_GET["data"]+1:0; echo "<script>var paged=".(isset($_GET["paged"])?$_GET["paged"]:1).";datacount=".$datacount.";</script>" ?>
-			<?php
-				$indexint=$datacount;
-				if (have_posts()) : while (have_posts()) : the_post();
-			?>
-			<div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
-			<div id="blockhiddendiv<?php echo $indexint ?>" class="blockhiddendiv"></div>
-				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
-					<img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php 
-					$itemimage = catch_that_image();
-					if ($itemimage == "") {
-						bloginfo("template_url");
-						echo "/images/default.jpg";
-					} else {
-						echo $itemimage;
-					}
-					?>" alt="<?php the_title(); ?>" />
-					<div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
-					<div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link(end($category)->term_id ).'">'.end($category)->cat_name.'</a>'; ?></div>
-				</div>
-				<div class="blockbottomdiv">
-					<div class="bottomtitle"><?php the_title(); ?></div>
-					<div class="bottomcontent"><?php
-							the_excerpt();
-							// $content = get_the_content();
-							// $content = preg_replace('/<img.*? \/>/','',$content);
-							// $content = str_replace(array("\r\n", "\r", "\n"), "<br/>", $content);
-							// $content = str_replace("<br/><br/>", "<br/>", $content);
-							// $content = str_replace("<br/><br/>", "<br/>", $content);
-							// $contentStart = substr($content,0,5);
-							// if ($contentStart == "<br/>") {
-							// 	$content = substr($content,5,(strlen($content)-5));
-							// }
-							// echo $content;
-							?></div>
-				</div>
-			</div>
-			<script>blockbdivin($("#blockhiddendiv<?php echo $indexint ?>"));</script>
-			<?php echo "<script>datacount=".$indexint.";</script>"; $indexint++; ?>
-			<div class="postlisthr">&nbsp;</div>
-			<?php endwhile; else : ?>
-				<p id="nopost">没啦</p>
-<?php endif; if (!isset($_GET["data"])) { get_header(); ?>
+		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+		<div class="post">
+			<!-- Post Title -->
+			<h3 class="title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+			<!-- Post Data -->
+			<p class="sub"><?php the_tags('标签：', ', ', ''); ?> &bull; <?php the_time('Y年n月j日') ?> &bull; <?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?><?php edit_post_link('编辑', ' &bull; ', ''); ?></p>
+			<div class="hr dotted clearfix">&nbsp;</div>
+			<!-- Post Image -->
+			<img class="thumb" alt="" src="<?php bloginfo('template_url'); ?>/images/610x150.gif" />
+			<!-- Post Content -->
+			<?php the_excerpt(); ?>
+			<!-- Read More Button -->
+			<p class="clearfix"><a href="<?php the_permalink(); ?>" class="button right">阅读全文</a></p>
 		</div>
-		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/ceramictiles.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/lan.js"></script>
-		<script>resize();</script>
+		<div class="hr clearfix">&nbsp;</div>
+		<?php endwhile; ?>
+
 		<!-- Blog Navigation -->
-		<p><?php if ($wp_query->max_num_pages == 1) {
-			echo '<div id="loadstatus" value="2">没有更多内容了</div>';
-		} else {
-			echo '<div id="loadstatus" value="0">滚动到页面最下方加载更多内容</div>';
-		} ?></p>
-    </div>
-	<?php get_footer(); ?>
-<?php } //$wp_query->max_num_pages ?>
+		<p class="clearfix"><?php previous_posts_link('&lt;&lt; 查看新文章', 0); ?> <span class="float right"><?php next_posts_link(' 查看旧文章 &gt;&gt;', 0); ?></span></p>
+		<?php else : ?>
+		<h3 class="title"><a href="#" rel="bookmark">未找到</a></h3>
+		<p>没有找到任何文章！</p>
+		<?php endif; ?>
+	</div>
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

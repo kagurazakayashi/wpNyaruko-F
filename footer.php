@@ -1,27 +1,7 @@
-	<!-- Footer -->
-<!--</div>-->
-<?php $wpNyarukoOption = get_option('wpNyaruko_options'); ?>
-	<div id="foot" class="bannerimgs">
-      <div id="bannertw"></div>
-      <div id="footbox">
-				<p><?php echo @$wpNyarukoOption['wpNyarukoFooter']; ?></p>
-      </div>
-  </div>
+<!-- Footer -->
+	<p class="grid_12 footer clearfix"> <span class="float">版权所有 &copy; 2010 <?php bloginfo('name'); ?>&nbsp;&nbsp;|&nbsp;&nbsp;Powered By <a rel="external" title="WordPress主页" class="link" href="http://wordpress.org/">WordPress</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="float right" href="#">top</a></span></p>
 </div>
 <!--end wrapper-->
-<?php wp_footer(); 
-$consolelog = "";
-if (isset($wpNyarukoOption['wpNyarukoConsoleLog']) && $wpNyarukoOption['wpNyarukoConsoleLog'] != "") {
-  $consolelog = $wpNyarukoOption['wpNyarukoConsoleLog'];
-}
-if(@$wpNyarukoOption['wpNyarukoConsoleLogT']!='') {
-  $pageetime=microtime(true);
-  $pagetotal=($pageetime-$GLOBALS['pagestime'])*1000;
-  $consolelog=$consolelog.' '.sprintf("%.4f", $pagetotal).' ms';
-}
-if ($consolelog != "") {
-  echo "<script language='javascript' type='text/javascript'>console.log('".$consolelog."');</script>";
-}
-?>
+<?php wp_footer(); ?>
 </body>
 </html>
