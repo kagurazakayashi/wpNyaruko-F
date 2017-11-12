@@ -27,16 +27,6 @@
 
 <body>
 <div id="wrapper">
-	<!-- Text Logo -->
-	<!-- <h1 id="logo"  class="grid_4"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1> -->
-	<!-- Navigation Menu -->
-	<!-- <ul id="navigation" class="grid_8">
-		<?php wp_list_pages('depth=1&title_li=0&sort_column=menu_order'); ?>
-		<li <?php if (is_home()) { echo 'class="current"';} ?>><a title="<?php bloginfo('name'); ?>"  href="<?php echo get_option('home'); ?>/">主页</a></li>
-	</ul> -->
-	<!-- Caption Line -->
-	<!-- <h2 class="grid_12 caption clearfix"><?php bloginfo('description'); ?></h2> -->
-	<!-- <div class="hr grid_12 clearfix">&nbsp;</div> -->
 	<script type="text/javascript" src="resources/jquery.min.js"></script>
 	<script type="text/javascript" src="resources/jquery.cookie.js"></script>
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
@@ -47,48 +37,35 @@
 			Loading...
 		</div>
 	</div>
-	<!-- <div id="bignews">正在直播：点击前往 >></div> -->
+	<!-- <div id="homepage_bignews">正在直播：点击前往 >></div> -->
 	<div id="nyarukoplayer"></div>
-	<!-- <div id="nyarukoplayer_def"></div> -->
 	<div id="homepage_topimgbox">
-		<div id="homepage_footbox">
-			<span id="homepage_foot">
-				© 北京未来赛车文化有限公司
-			</span>
-			<span id="homepage_sociallist">
-				<img src="homepage/weibo.png" alt="访问我们的新浪微博">
-				<span>　</span>
-				<img src="homepage/wechat.png" alt="关注我们的微信公众号">
-			</span>
-		</div>
+	
+	<?php echo '<script>var ishome=';
+		if(is_home()) {
+			echo 'true;</script>';
+			?>
+			<div id="homepage_footbox">
+				<span id="homepage_foot">
+					© 北京未来赛车文化有限公司
+				</span>
+				<span id="homepage_sociallist">
+					<img src="homepage/weibo.png" alt="访问我们的新浪微博">
+					<span>　</span>
+					<img src="homepage/wechat.png" alt="关注我们的微信公众号">
+				</span>
+			</div>
+		<?php
+		} else {
+			echo 'false;</script>';
+		}
+	?>
 		<div id="homepage_titlebox">
-			<span id="homepage_titlelogo">LOGO预留位置</span>
+			<span id="homepage_titlelogo"><a href="<?php bloginfo('url'); ?>" title="返回<?php bloginfo('name'); ?>主页"><?php bloginfo('name'); ?></a></span>
 			<span class="homepage_menu" id="homepage_mainmenu">
-				<a href="#" target="_blank">
-					<span>
-						<h1>联系我们</h1>
-					</span>
-				</a>
-				<a href="#" target="_blank">
-					<span>
-						<h1>成功案例</h1>
-					</span>
-				</a>
-				<a href="#" target="_blank">
-					<span>
-						<h1>合作伙伴</h1>
-					</span>
-				</a>
-				<a href="#" target="_blank">
-					<span>
-						<h1>业务介绍</h1>
-					</span>
-				</a>
-				<a href="#" target="_blank">
-					<span>
-						<h1>公司简介</h1>
-					</span>
-				</a>
+				<?php wp_nav_menu(array(
+					"menu"=>"mainmenu"
+				)) ?>
 			</span>
 		</div>
 	</div>

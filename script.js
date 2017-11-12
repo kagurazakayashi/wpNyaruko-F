@@ -1,10 +1,16 @@
 $(document).ready(function(){
     var nyarukoplayerdivheight = $(window).height();
+    var players = [$("#homepage_topimgbox"),$("#nyarukoplayer")];
+    if (ishome == false) {
+        nyarukoplayerdivheight /= 2;
+    }
     if ($("#homepage_bignews").length > 0) {
-        $("#nyarukoplayer").height(nyarukoplayerdivheight-50);
+        players[0].height(nyarukoplayerdivheight-50);
+        players[1].height(nyarukoplayerdivheight-50);
         reftitlebar();
     } else {
-        $("#nyarukoplayer").height(nyarukoplayerdivheight);
+        players[0].height(nyarukoplayerdivheight);
+        players[1].height(nyarukoplayerdivheight);
     }
     loadnyarukoplayer();
     $(window).scroll(function() {

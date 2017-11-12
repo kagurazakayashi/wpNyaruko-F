@@ -61,6 +61,9 @@ a:active {
 #homepage_titlelogo {
     position: relative;
 }
+#homepage_titlelogo a {
+    color: #FFF;
+}
 #homepage_bignews {
     height: 50px;
     right: 0px;
@@ -68,10 +71,30 @@ a:active {
     background: gold;
     padding-left: 50px;
 }
-.homepage_menu {
+#homepage_mainmenu {
+	float: right;
+}
+#menu-main-menu li{
+    width: 100px;
+    /* height: 40px; */
+    /* line-height: 40px; */
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    float: left;
+}
+#menu-main-menu li a {
+	text-decoration: none;
+}
+.menu-main-menu-container {
+	display:inline-block;
     position: relative;
     right: 0px;
-    text-align: right;
+	text-align: center;
+}
+.menu-main-menu-container ul {
+	padding: 0px;
+    margin: 0px;
 }
 .homepage_menu a {
 	color: #FFF;
