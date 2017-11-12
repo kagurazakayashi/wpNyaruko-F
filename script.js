@@ -16,6 +16,11 @@ $(document).ready(function(){
     $(window).scroll(function() {
         reftitlebar();
     });
+    picsetting('.racing_list_left_img',352,198);
+    picsetting('.racing_sidebar_top_img',256,144);
+    proportion16_9('.racing_phone_list',true);
+    proportion16_9('.racing_phone_list_top',false);
+    picsetting('.racing_phone_list_top_img',$('.racing_phone_list_top').width(),$('.racing_phone_list_top').height());
 });
 function reftitlebar() {
     var scr = $(window).scrollTop();
@@ -53,5 +58,34 @@ function disablemedia() {
         nyarukoplayer_disable(false);
     } else {
         nyarukoplayer_disable(true);
+    }
+}
+
+function picsetting(imgclass,imgDivW,imgDivH){
+    for (var i = 0; i < $(imgclass).length; i++) {
+        var img = $(imgclass)[i];
+        var imgw = img.naturalWidth;
+        var imgh = img.naturalHeight;
+        var comparison = (imgw / imgDivW) * imgDivH;
+        if (comparison > imgh) {
+            img.style.height = imgDivH + 'px';
+            var imgleft = (img.width - imgDivW) / 2;
+            img.style.left = '-' + imgleft + 'px';
+        } else {
+            img.style.width = imgDivW + 'px';
+            var imgtop = (img.height - imgDivH) / 2;
+            img.style.top = '-' + imgtop + 'px';
+        }
+    }
+}
+function proportion16_9(objDiv,isframe) {
+    for (var i = 0; i < $(objDiv).length; i++) {
+        var obj = $(objDiv)[i];
+        var objWidth = obj.offsetWidth;
+        if (isframe) {
+            obj.style.height = objWidth/16*9*1.5 + "px";
+        } else {
+            obj.style.height = objWidth/16*9 + "px";
+        }
     }
 }

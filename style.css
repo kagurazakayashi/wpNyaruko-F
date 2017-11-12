@@ -46,6 +46,7 @@ a:active {
     width: 100%;
     height: 100%;
     color: #FFF;
+    z-index: 10;
 }
 #homepage_titlebox {
     position: absolute;
@@ -279,3 +280,335 @@ a:active {
 #nyarukoplayer_musicdiglog a:hover {
     background-color: #000;
 }
+/* 列表 */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+         local('MaterialIcons-Regular'),
+         url(fonts/MaterialIcons-Regular.woff2) format('woff2'),
+         url(fonts/MaterialIcons-Regular.woff) format('woff'),
+         url(fonts/MaterialIcons-Regular.ttf) format('truetype');
+  }
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 50px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+
+/* list */
+.racing_list{
+    width: 100%;
+    height: 198px;
+    background: #ffffff;
+    border: 1px solid #C0C0C0;
+}
+.racing_list a {
+    color: #FFF;
+}
+.racing_list_left{
+    width: 352px;
+    height: 198px;
+    background: lightgray;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+.racing_list_left_class{
+    width: 60px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 10px;
+    text-align: center;
+    background: #222222;
+    opacity:0.8;
+    color: #fff;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+.racing_list_left_img{
+    object-fit:cover;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.racing_list_right{
+    width: calc(100% - 352px);
+    height: 198px;
+    float: right;
+    cursor: pointer;
+    background-color: #FFF;
+}
+.racing_list_right:hover {
+    background-color: lightgray;
+}
+.racing_list_right_title{
+    width: calc(100% - 60px);
+    height: 35px;
+    line-height: 35px;
+    font-size: 25px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+.racing_list_right_content{
+    width: calc(100% - 60px);
+    height: calc(100% - 60px - 20px);
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+    position:relative;
+    line-height:1.8em;
+    /* 3 times the line-height to show 3 lines */
+    height:5.4em;
+    overflow:hidden;
+}
+.racing_list_right_content::after {
+    content:"...";
+    font-weight:bold;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding:0 20px 1px 45px;
+    background:url(../image/ellipsis_bg.png) repeat-y;
+}
+.racing_list_right_bottom{
+    width: calc(100% - 60px);
+    height: 35px;
+    /* background: gray; */
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 5px;
+    position:relative;
+}
+.racing_list_right_bottom_time{
+    font-size: 10px;
+    color: #C0C0C0;
+    /* background: yellow; */
+    position: absolute;
+    bottom: 8px;
+    left: 0px;
+}
+.racing_list_right_bottom_img{
+    font-size: 30px;
+    color: rgb(138, 138, 138);
+    /* background: yellow; */
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+/* list */
+
+/* sidebar */
+.racing_sidebar{
+    width: 256px;
+    height: 300px;
+    border: 1px solid #c0c0c0;
+    background: #fff;
+}
+
+.racing_sidebar_top{
+    width: 100%;
+    height: 144px;
+    background: red;
+    position: relative;
+    overflow: hidden;
+}
+.racing_sidebar_top_class{
+    width: 60px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 10px;
+    text-align: center;
+    background: #222222;
+    opacity:0.8;
+    color: #fff;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+}
+.racing_sidebar_top_img{
+    object-fit:cover;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.racing_sidebar_bottom{
+    width: 100%;
+    height: calc(100% - 144px - 5px);
+    padding-top: 5px;
+    /* background: yellowgreen; */
+}
+.racing_sidebar_bottom_title{
+    height: 35px;
+    line-height: 35px;
+    /* background: green; */
+    font-size: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+.racing_sidebar_bottom_content{
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: calc(100% - 35px - 10px - 20px);
+    position:relative;
+    line-height:1.8em;
+    /* 3 times the line-height to show 3 lines */
+    height:5.4em;
+    overflow:hidden;
+}
+.racing_sidebar_bottom_content::after{
+    content:"...";
+    font-weight:bold;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding:0 20px 1px 45px;
+    background:url(../image/ellipsis_bg.png) repeat-y;
+}
+.racing_sidebar_bottom_bottom{
+    width: calc(100% - 10px);
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    position: relative;
+}
+.racing_sidebar_bottom_bottom_time{
+    font-size: 10px;
+    color: #C0C0C0;
+    /* background: yellow; */
+    position: absolute;
+    bottom: 2px;
+    left: 0px;
+}
+.racing_sidebar_bottom_bottom_img{
+    font-size: 25px;
+    color: rgb(138, 138, 138);
+    /* background: yellow; */
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+/* sidebar */
+
+
+
+/* phone_list */
+.racing_phone_list{
+    width: calc(100% - 20px);
+    height: 300px;
+    border: 1px solid #c0c0c0;
+    background: #fff;
+    margin: 0 auto;
+}
+
+.racing_phone_list_top{
+    width: 100%;
+    height: 144px;
+    background: lightgray;
+    position: relative;
+    overflow: hidden;
+}
+.racing_phone_list_top_class{
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    text-align: center;
+    background: #222222;
+    opacity:0.8;
+    color: #fff;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+}
+.racing_phone_list_top_img{
+    object-fit:cover;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.racing_phone_list_bottom{
+    width: 100%;
+    height: 30%;
+    padding-top: 5px;
+    /* background: yellowgreen; */
+}
+.racing_phone_list_bottom_title{
+    height: 80%;
+    line-height: 90px;
+    /* background: green; */
+    font-size: 60px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.racing_phone_list_bottom_content{
+    width: calc(100% - 40px);
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 25px;
+}
+
+.racing_phone_list_bottom_bottom{
+    width: calc(100% - 10px);
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    position: relative;
+}
+.racing_phone_list_bottom_bottom_time{
+    font-size: 20px;
+    color: #C0C0C0;
+    /* background: yellow; */
+    position: absolute;
+    bottom: 2px;
+    left: 0px;
+}
+.racing_phone_list_bottom_bottom_img{
+    font-size: 45px;
+    color: rgb(138, 138, 138);
+    /* background: yellow; */
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+/* phone_list */

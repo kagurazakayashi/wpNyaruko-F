@@ -31,6 +31,22 @@ if( function_exists('register_sidebar') ) {
 	));
 }
 
+/*获取图片开始*/
+function catch_that_image() {
+	global $post, $posts;
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	//获取文章中第一张图片的路径并输出
+	$first_img = @$matches[1][0];
+	if(empty($first_img)){
+	$first_img = bloginfo("template_url")."/images/default.jpg";
+	//default.jpg
+	}
+	return $first_img;
+}
+/*获取图片完*/
 
 function curPageURL() {
 	$pageURL = 'http://';
