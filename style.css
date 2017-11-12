@@ -317,12 +317,17 @@ a:active {
     font-feature-settings: 'liga';
   }
 
+.racing_listbox {
+    width: 100%;
+    display: table;
+}
+
 /* list */
 .racing_list{
-    width: 100%;
-    height: 198px;
     background: #ffffff;
     border: 1px solid #C0C0C0;
+    display: table-cell;
+    width: auto;
 }
 .racing_list a {
     color: #FFF;
@@ -426,6 +431,10 @@ a:active {
 /* list */
 
 /* sidebar */
+.racing_sidebarbox {
+    display:table-cell;
+    width: 300px;
+}
 .racing_sidebar{
     width: 256px;
     height: 300px;
@@ -522,8 +531,6 @@ a:active {
     right: 0px;
 }
 /* sidebar */
-
-
 
 /* phone_list */
 .racing_phone_list{
