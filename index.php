@@ -1,4 +1,18 @@
+<!-- 1顶端大图 -->
 <?php get_header(); ?>
+<!-- 2焦点新闻 -->
+<?php typetitle("今日焦点"); ?>
+大图
+<!-- 3三个次焦点新闻 -->
+<?php typetitle("关注内容"); ?>
+资讯1<br>
+资讯2<br>
+资讯3<br>
+<!-- 4横排视频 -->
+<?php typetitle("精彩视频"); ?>
+《 视频块1，视频块2，视频块3 ... 》
+<!-- 5流新闻列表 -->
+<?php typetitle("新闻中心"); ?>
 <div class="racing_listbox">
 	<div class="racing_list">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -32,6 +46,10 @@
 		<h3 class="title"><a href="#" rel="bookmark">未找到</a></h3>
 		<p>没有找到任何文章！</p>
 	<?php endif; ?>
-<div class="racing_sidebarbox"><?php get_sidebar("indexsidebar"); ?></div>
+	<div class="racing_sidebarbox"><?php get_sidebar("indexsidebar"); ?></div>
 </div>
+<!-- 6横排图片 -->
+<?php typetitle("炫酷图片"); ?>
+《 图片块1，图片块2，图片块3 ... 》
+<!-- 7页脚 -->
 <?php get_footer(); ?>
