@@ -13,10 +13,13 @@ if( function_exists('register_sidebar') ) {
 /*获取图片开始*/
 function catch_that_image() {
 	global $post, $posts;
+	catch_image($post);
+}
+function catch_image($npost) {
 	$first_img = '';
 	ob_start();
 	ob_end_clean();
-	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $npost->post_content, $matches);
 	//获取文章中第一张图片的路径并输出
 	$first_img = @$matches[1][0];
 	if(empty($first_img)){
