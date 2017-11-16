@@ -58,9 +58,9 @@ if(empty($nposts)){
 		</div>
 		<div class="racing_list_right" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
 			<div class="racing_list_right_title"><?php echo $npost->post_title; ?></div>
-			<div class="racing_list_right_content"><?php echo $npost->post_content; ?></div>
+			<div class="racing_list_right_content"><?php clearcontent($npost); ?></div>
 			<div class="racing_list_right_bottom">
-				<div class="racing_list_right_bottom_time"><?php echo mysql2date('Y-m-d　h:i',$npost->post_date); ?></div>
+				<div class="racing_list_right_bottom_time"><?php cleardate($npost); ?></div>
 				<div class="racing_list_right_bottom_img material-icons">person</div>
 			</div>
 		</div>

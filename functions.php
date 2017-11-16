@@ -9,7 +9,21 @@ if( function_exists('register_sidebar') ) {
 		'after_title' => '</h4>'
 	));
 }
-
+// 获取预览
+function clearcontent($post) {
+	$content = $post->post_content;
+	$replacef = ['/<img.*? \/>/','/<p.*?>/','/<\/p.*?>/','/<br.*? \/>/','/\[video.*?\]/','/\[\/video.*?\]/'];
+	foreach ($replacef as $replacen){ 
+		$content = preg_replace($replacen,'　',$content);
+	}
+	if (strlen($content) > 302) {
+		$content = substr($content,0,302)." ... [阅读全文]";
+	}
+	echo $content;
+}
+function cleardate($post) {
+	echo mysql2date('Y-m-d　h:i',$post->post_date);
+}
 /*获取图片开始*/
 function catch_that_image() {
 	global $post, $posts;
