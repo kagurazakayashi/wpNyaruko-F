@@ -428,15 +428,6 @@ a:active {
     height:5.4em;
     overflow:hidden;
 }
-.racing_list_right_content::after {
-    content:"...";
-    font-weight:bold;
-    position:absolute;
-    bottom:0;
-    right:0;
-    padding:0 20px 1px 45px;
-    background:url(../image/ellipsis_bg.png) repeat-y;
-}
 .racing_list_right_bottom{
     width: calc(100% - 60px);
     height: 35px;
@@ -653,3 +644,68 @@ a:active {
     right: 0px;
 }
 /* phone_list */
+/* scrollpics */
+.carousel.flexible .items {
+	display: none;
+}
+
+/* Carousel */
+.carousel-example {
+	padding: 20px 0 50px 0;
+}
+
+#complicated-content-carousel .carousel-control {
+	position: absolute;
+	top: -20px;
+	right: 0;
+	left: auto;
+	bottom: auto;
+	width: 14px;
+	font-size: 25px;
+	color: #3c3c3c !important;
+	opacity: 1;
+}
+
+#complicated-content-carousel .carousel-control.left,
+#complicated-content-carousel .carousel-control.right {
+	background-image: none;
+}
+
+#complicated-content-carousel .carousel-control.left {
+	right: 35px;
+}
+
+.carousel-control {
+	width: 50px;
+	height: 50px;
+	top: 50%;
+	transform: translateY(-50%);
+	bottom: auto;
+	font-size: 30px;
+	text-align: center;
+	opacity: 1;
+}
+
+a.carousel-control.left,
+a.carousel-control.right {
+	background-image: none;
+	opacity: 1;
+    text-align: center;
+    color: #FFF;
+}
+
+/* MEDIA QUERIES */
+/* styles for phones' displays */
+@media only screen and (max-width: 350px) {
+	#complicated-content-carousel .flex-item {
+		width: 300px;
+	}
+}
+
+/* styles for medium size displays */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	#complicated-content-carousel .flex-item {
+		width: 300px;
+	}
+}
+/* scrollpics */

@@ -3,5 +3,7 @@
 </div>
 <!--end wrapper-->
 <?php wp_footer(); ?>
+<script src="resources/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/flexible-bootstrap-carousel.js"></script>
 </body>
 </html>
