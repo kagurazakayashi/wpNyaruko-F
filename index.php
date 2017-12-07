@@ -12,9 +12,7 @@ if(empty($nposts)){
 } else {
 	foreach($nposts as $npost){
 		?>
-		大图
-		<a title="<?php echo $npost->post_title; ?>" href="<?php echo get_permalink($npost->ID); ?>" ><?php echo $npost->post_title; ?></a>
-		<img class="temp" src="<?php 
+		<div class="racing_bigpicnews" style="background-image: url(<?php 
 			$itemimage = catch_image($npost);
 			if ($itemimage == "") {
 				bloginfo("template_url");
@@ -22,10 +20,12 @@ if(empty($nposts)){
 			} else {
 				echo $itemimage;
 			}
-			?>" alt="<?php echo $npost->post_title; ?>" />
+			?>)" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
+			<div class="pictitle"><?php echo $npost->post_title; ?></div>
+		</div>
 		<?php
 	}
-	echo '<a href="'.get_category_link($categoryid).'" >更多 >>></a>';
+	// echo '<a href="'.get_category_link($categoryid).'" >更多 >>></a>';
 }
 ?>
 <!-- 3三个次焦点新闻 -->
@@ -65,7 +65,7 @@ if(empty($nposts)){
 		</div>
 		<?php
 			}
-			echo '</div></div><a href="'.get_category_link($categoryid).'" >更多 >>></a>';
+			//echo '</div></div><a href="'.get_category_link($categoryid).'" >更多 >>></a>';
 		}
 		?>
 <!-- 4横排视频 -->

@@ -353,7 +353,7 @@ a:active {
     display: table;
 }
 
-/* list */
+/* [list */
 .racing_list{
     background: #ffffff;
     border: 1px solid #C0C0C0;
@@ -453,9 +453,9 @@ a:active {
     bottom: 0px;
     right: 0px;
 }
-/* list */
+/* list] */
 
-/* sidebar */
+/* [sidebar */
 .racing_sidebarbox {
     display:table-cell;
     width: 300px;
@@ -555,9 +555,9 @@ a:active {
     bottom: 0px;
     right: 0px;
 }
-/* sidebar */
+/* sidebar] */
 
-/* phone_list */
+/* [phone_list */
 .racing_phone_list{
     width: calc(100% - 20px);
     height: 300px;
@@ -643,8 +643,8 @@ a:active {
     bottom: 0px;
     right: 0px;
 }
-/* phone_list */
-/* scrollpics */
+/* phone_list] */
+/* [scrollpics */
 .carousel.flexible .items {
 	display: none;
 }
@@ -708,4 +708,24 @@ a.carousel-control.right {
 		width: 300px;
 	}
 }
-/* scrollpics */
+/* scrollpics] */
+/* [bigpicnews */
+.racing_bigpicnews {
+    height: 600px;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    text-align: center;
+    line-height: 600px;
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 10px;
+}
+.pictitle {
+    font-size: 24pt;
+    color: #FFF;
+    text-shadow: 0px 0px 5px #000;
+    cursor: pointer;
+}
+/* bigpicnews] */
