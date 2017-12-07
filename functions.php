@@ -48,6 +48,16 @@ function typetitle($name) {
 	echo '<div class="racing_typetitle"><div class="racing_typetitlehr cell"><div class="racing_celldotted"></div></div><div class="racing_typetitletxt cell">'.$name.'</div><div class="racing_typetitlehr cell"><div class="racing_celldotted"></div></div></div>';
 }
 
+function isvideo($text) {
+	$videoscode = "[V]";
+	$isvideo = false;
+	$newtext = str_replace($videoscode,"",$text);
+	if ($text != $newtext) {
+		$isvideo = true;
+	}
+	return [$isvideo,$newtext];
+}
+
 function curPageURL() {
 	$pageURL = 'http://';
 
