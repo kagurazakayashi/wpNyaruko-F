@@ -2,7 +2,8 @@
 <?php get_header(); ?>
 <!-- 2焦点新闻 -->
 <?php $categoryid = 4; $numberposts = 1;
-typetitle(get_category($categoryid)->name);
+$typename = get_category($categoryid)->name;
+typetitle($typename);
 $nposts = get_posts(array(
 	'category' => $categoryid,
 	'numberposts' => $numberposts,
@@ -31,7 +32,7 @@ if(empty($nposts)){
 		</div>
 		<?php
 	}
-	// echo '<a href="'.get_category_link($categoryid).'" >更多 >>></a>';
+	// echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>';
 }
 ?>
 <!-- 3三个次焦点新闻 -->
@@ -51,40 +52,45 @@ $nposts = get_posts(array(
 			foreach($nposts as $npost){
 				$isvideo = isvideo($npost->post_title);
 		?>
-		<div class="racing_list_left">
-			<div class="racing_list_left_class"><?php
-				$ntypename = wp_get_post_tags($npost->ID)[0]->name;
-				if ($ntypename == "") {
-					$ntypename = $typename;
+		<div class="racing_item" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
+			<div class="racing_list_left">
+				<div class="racing_list_left_class"><?php
+					$ntypename = wp_get_post_tags($npost->ID)[0]->name;
+					if ($ntypename == "") {
+						$ntypename = $typename;
+					}
+					echo $ntypename;
+				?></div>
+				<img class="racing_list_left_img" src="<?php 
+				$itemimage = catch_image($npost);
+				if ($itemimage == "") {
+					bloginfo("template_url");
+					echo "images/default.jpg";
+				} else {
+					echo $itemimage;
 				}
-				echo $ntypename;
-			?></div>
-			<img class="racing_list_left_img" src="<?php 
-			$itemimage = catch_image($npost);
-			if ($itemimage == "") {
-				bloginfo("template_url");
-				echo "images/default.jpg";
-			} else {
-				echo $itemimage;
-			}
-			?>" alt="<?php echo $isvideo[1]; ?>" />
-			<?php if ($isvideo[0] == true) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
-		</div>
-		<div class="racing_list_right" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
-			<div class="racing_list_right_title"><?php echo $isvideo[1]; ?></div>
-			<div class="racing_list_right_content"><?php clearcontent($npost); ?></div>
-			<div class="racing_list_right_bottom">
-				<div class="racing_list_right_bottom_time"><?php cleardate($npost); ?></div>
+				?>" alt="<?php echo $isvideo[1]; ?>" />
+				<?php if ($isvideo[0] == true) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
+			</div>
+			<div class="racing_list_right" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
+				<div class="racing_list_right_title"><?php echo $isvideo[1]; ?></div>
+				<div class="racing_list_right_content"><?php clearcontent($npost); ?></div>
+				<div class="racing_list_right_bottom">
+					<div class="racing_list_right_bottom_time"><?php cleardate($npost); ?></div>
+				</div>
 			</div>
 		</div>
 		<?php
 			}
-			echo '</div></div><a href="'.get_category_link($categoryid).'" >更多 >>></a>';
 		}
 		?>
+	</div>
+	<?php echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>'; ?>
+</div>
 <!-- 4横排视频 -->
 <?php $categoryid = 6; $numberposts = 3;
-typetitle(get_category($categoryid)->name);
+$typename = get_category($categoryid)->name;
+typetitle($typename);
 $nposts = get_posts(array(
 	'category' => $categoryid,
 	'numberposts' => $numberposts,
@@ -116,7 +122,6 @@ $nposts = get_posts(array(
 			</div>
 			<?php
 				}
-				echo '<a href="'.get_category_link($categoryid).'" >更多 >>></a>';
 			}
 			?>
 		</div>
@@ -124,13 +129,12 @@ $nposts = get_posts(array(
 		</div>
 		<a class="left carousel-control" href="#simple-content-carousel" role="button" data-slide="prev" style="width:50px;top:50%;">
 			<span class="material-icons" aria-hidden="true">keyboard_arrow_left</span>
-			<!-- <span class="material-icons">keyboard_arrow_left</span> -->
 		</a>
 		<a class="right carousel-control" href="#simple-content-carousel" role="button" data-slide="next" style="width:50px;top:50%;">
 			<span class="material-icons" aria-hidden="true">keyboard_arrow_right</span>
-			<!-- <span class="material-icons">keyboard_arrow_right</span> -->
 		</a>
 	</div>
+	<?php echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>'; ?>
 </div>
 <!-- 5流新闻列表 -->
 <?php typetitle("新闻中心"); ?>

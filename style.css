@@ -18,25 +18,21 @@ body {
     background-size:100px 100px;
     color: #000;
     font-family: "思源黑体","Source Han Sans","微软雅黑","Microsoft YaHei","Hiragino Sans GB","STHeiti Light","SimHei";
+    background-color: #F1F1F1;
 }
 a:link {
-	color: #FE99CC;
 	text-decoration: none;
 }
 a:visited {
 	text-decoration: none;
-	color: #FE99CC;
 }
 a:hover {
 	text-decoration: none;
-	color: #FE99CC;
 }
 a:active {
 	text-decoration: none;
-	color: #FE99CC;
 }
 .linkbtn {
-    color: #FE99CC;
 	text-decoration: none;
 }
 #homepage_topimgbox {
@@ -347,24 +343,40 @@ a:active {
     /* Support for IE. */
     font-feature-settings: 'liga';
   }
-
-.racing_listbox {
+.morebtnbox {
     width: 100%;
-    display: table;
+    height: 32px;
+    text-align: center;
+    margin-top: 20px;
 }
-
-/* [list */
-.racing_list{
-    background: #ffffff;
-    border: 1px solid #C0C0C0;
-    display: table-cell;
-    width: auto;
+.morebtnbox a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    height: 32px;
+    line-height: 32px;
+    background-color: lightgray;
+    border-radius: 5px;
+    margin: auto;
+    left: 0;
+    right: 0;
 }
-.racing_list a {
+.morebtnbox a:hover {
+    background-color: gray;
+    text-decoration: none;
     color: #FFF;
 }
-.racing_list a:hover {
-    color: yellow;
+/* [list */
+.racing_listbox {
+    width: 100%;
+    /* display: table; */
+}
+.racing_list{
+    /* display: table-cell; */
+    width: auto;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .racing_list_left{
     width: 352px;
@@ -408,15 +420,22 @@ a:active {
     pointer-events: none;
     text-shadow: 0px 0px 5px #000;
 }
-
 .racing_list_right{
     width: calc(100% - 352px);
-    height: 198px;
+    height: 100%;
     float: right;
+    background-color: transparent;
+}
+.racing_item {
     cursor: pointer;
     background-color: #FFF;
+    height: 198px;
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 5px lightgray;
+    border-radius: 5px;
+    overflow: hidden;
 }
-.racing_list_right:hover {
+.racing_item:hover {
     background-color: lightgray;
 }
 .racing_list_right_title{
@@ -662,7 +681,7 @@ a:active {
 .carousel.flexible .items {
 	display: none;
 }
-.flex-item{
+.flex-item {
     position: relative;
 }
 
@@ -746,6 +765,11 @@ a.carousel-control.right {
     cursor: pointer;
 }
 .pictitle i {
-font-size: 20pt;    
+    font-size: 20pt;    
 }
 /* bigpicnews] */
+.foot {
+    width: 100%;
+    background-color: lightgray;
+    text-align: center;
+}
