@@ -12,12 +12,13 @@ if( function_exists('register_sidebar') ) {
 // 获取预览
 function clearcontent($post) {
 	$content = $post->post_content;
-	$replacef = ['/<img.*? \/>/','/<p.*?>/','/<\/p.*?>/','/<br.*? \/>/','/\[video.*?\]/','/\[\/video.*?\]/'];
+	$replacef = ['/\[video.*?\]/','/\[\/video.*?\]/'];
 	foreach ($replacef as $replacen){ 
 		$content = preg_replace($replacen,'　',$content);
 	}
-	if (strlen($content) > 302) {
-		$content = substr($content,0,302)." ... [阅读全文]";
+	$content = strip_tags($content);
+	if (strlen($content) >= 300) {
+		$content = substr($content,0,300)." ... [阅读全文]";
 	}
 	echo $content;
 }
