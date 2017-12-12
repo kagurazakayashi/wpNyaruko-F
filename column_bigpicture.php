@@ -20,11 +20,10 @@ if(empty($nposts)){
 			}
 			?>)" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
 			<div class="pictitle"><?php
-				$ivideo = isvideo($npost->post_title);
-				if ($ivideo[0] == true) {
+				if (isvideo($npost->post_content)) {
 					echo '<i class="material-icons">play_circle_outline</i> ';
 				}
-				echo $ivideo[1];
+				echo $npost->post_title;
 			?></div>
 		</div>
 		<?php

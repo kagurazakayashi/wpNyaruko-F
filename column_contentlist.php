@@ -12,7 +12,6 @@ $nposts = get_posts(array(
 			echo "<center><p>暂无内容</p></center>";
 		} else {
 			foreach($nposts as $npost){
-				$isvideo = isvideo($npost->post_title);
 		?>
 		<div class="racing_item" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
 			<div class="racing_list_left">
@@ -31,12 +30,12 @@ $nposts = get_posts(array(
 				} else {
 					echo $itemimage;
 				}
-				?>" alt="<?php echo $isvideo[1]; ?>" />
-				<?php if ($isvideo[0] == true) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
+				?>" alt="<?php echo $npost->post_title; ?>" />
+				<?php if (isvideo($npost->post_content)) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
 			</div>
 			<div class="racing_list_right" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
-				<div class="racing_list_right_title"><?php echo $isvideo[1]; ?></div>
-				<div class="racing_list_right_content"><?php clearcontent($npost); ?></div>
+				<div class="racing_list_right_title"><?php echo $npost->post_title; ?></div>
+				<div class="racing_list_right_content"><?php clearcontent($npost->post_content); ?></div>
 				<div class="racing_list_right_bottom">
 					<div class="racing_list_right_bottom_time"><?php cleardate($npost); ?></div>
 				</div>

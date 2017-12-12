@@ -13,7 +13,6 @@ $nposts = get_posts(array(
 				echo "<center><p>暂无内容</p></center>";
 			} else {
 				foreach($nposts as $npost){
-					$isvideo = isvideo($npost->post_title);
 			?>
 			<div class="flex-item">
 				<a href="<?php echo get_permalink($npost->ID); ?>" title="<?php echo $npost->post_title; ?>">
@@ -27,7 +26,7 @@ $nposts = get_posts(array(
 					}
 				?>" alt="<?php echo $npost->post_title; ?>" />
 				</a>
-				<?php if ($isvideo[0] == true) {
+				<?php if (isvideo($npost->post_content)) {
 				echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; }?>
 			</div>
 			<?php

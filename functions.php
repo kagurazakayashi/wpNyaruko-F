@@ -10,8 +10,7 @@ if( function_exists('register_sidebar') ) {
 	));
 }
 // 获取预览
-function clearcontent($post) {
-	$content = $post->post_content;
+function clearcontent($content) {
 	$replacef = ['/\[video.*?\]/','/\[\/video.*?\]/'];
 	foreach ($replacef as $replacen){ 
 		$content = preg_replace($replacen,'　',$content);
@@ -49,14 +48,27 @@ function typetitle($name) {
 	echo '<div class="racing_typetitle"><div class="racing_typetitlehr cell"><div class="racing_celldotted"></div></div><div class="racing_typetitletxt cell">'.$name.'</div><div class="racing_typetitlehr cell"><div class="racing_celldotted"></div></div></div>';
 }
 
-function isvideo($text) {
-	$videoscode = "[V]";
-	$isvideo = false;
-	$newtext = str_replace($videoscode,"",$text);
-	if ($text != $newtext) {
-		$isvideo = true;
+function isvideo($content) {
+	$replacef = ['/\[video.*?\]/','/\[\/video.*?\]/'];
+	foreach ($replacef as $replacen){
+		$newcontent = preg_replace($replacen,'',$content);
 	}
-	return [$isvideo,$newtext];
+	if ($content != $newcontent) {
+		return true;
+	}
+	return false;
+}
+function isvideotitle($title) {
+	$deletekeyword = false;
+	$videoscode = "视频";
+	if (strstr($text,$videoscode)) {
+		$newtext = $text;
+		if ($deletekeyword) {
+			$newtext = str_replace($videoscode,"",$text);
+		}
+		return [true,$newtext];
+	}
+	return [false,$text];
 }
 
 function curPageURL() {
