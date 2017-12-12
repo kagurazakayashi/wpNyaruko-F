@@ -1,47 +1,53 @@
 <?php get_header(); ?>
-	<!-- Column 1 /Content -->
-	<div class="grid_8">
-		<div class="sorting">
-			<div class="sort_by">
-				<h4>排序</h4>
-				<ul>
-					<li><a <?php if ( isset($_GET['order']) && ($_GET['order']=='rand') ) echo 'class="current"'; ?> href="<?php echo curPageURL() . '?' . http_build_query(array_merge($_GET, array('order' => 'rand'))); ?>">随机阅读</a></li>
-					<li><a <?php if ( isset($_GET['order']) && ($_GET['order']=='commented') ) echo 'class="current"'; ?> href="<?php echo curPageURL() . '?' . http_build_query(array_merge($_GET, array('order' => 'commented'))); ?>">评论最多</a></li>
-					<li><a <?php if ( isset($_GET['order']) && ($_GET['order']=='alpha') ) echo 'class="current"'; ?> href="<?php echo curPageURL() . '?' . http_build_query(array_merge($_GET, array('order' => 'alpha'))); ?>">标题排序</a></li>
-				</ul>
-			</div>
-			<h4>浏览<?php
-			// If this is a category archive
+<div class="listoption">
+	<div class="clistbox">
+		<span class="sortby">
+			<select onchange="if(this.value==''){this.selectedIndex=this.defOpt;}else{window.location=this.value;}">
+				<option value="" selected>更改排序方式</option>
+				<option value="">=======</option>
+				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'date'))); ?>">最新内容</option>
+				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'rand'))); ?>">随机阅读</option>
+				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'commented'))); ?>">评论最多</option>
+				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'title'))); ?>">标题排序</option>
+				<?php if ($debug) { ?>
+					<option value="">=======</option>
+					<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'ID'))); ?>">文章ID</option>
+					<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'modified'))); ?>">修改时间</option>
+				<?php } ?>
+			</select>
+		</span>
+		<span class="sorting">
+		主页　>　<?php
+			$typename = "";
 			if (is_category()) {
-				printf('分类</h4>
-			<h2>'.single_cat_title('', false).'</h2>' );
-				if (category_description()) echo '<p>'.category_description().'</p>';
-			// If this is a tag archive
+				$typename = single_cat_title('', false);
+				echo "分类　>　".$typename;
+				if (category_description()) echo ' > '.category_description();
 			} elseif (is_tag()) {
-				printf('标签</h4>
-			<h2>'.single_tag_title('', false).'</h2>' );
-				if (tag_description()) echo '<p>'.tag_description().'</p>';
-			// If this is a daily archive
+				$typename = single_tag_title('', false);
+				echo "标签　>　".$typename;
+				if (tag_description()) echo ' > '.tag_description();
 			} elseif (is_day()) {
-				printf('日期存档</h4>
-			<h2>'.get_the_time('Y年n月j日').'</h2>' );
-			// If this is a monthly archive
+				$typename = get_the_time('j日');
+				echo "日期存档　>　".get_the_time('Y年n月j日');
 			} elseif (is_month()) {
-				printf('月份存档</h4>
-				<h2>'.get_the_time('Y年n月').'</h2>' );
-			// If this is a yearly archive
+				$typename = get_the_time('n月');
+				echo "月份存档　>　".get_the_time('Y年n月');
 			} elseif (is_year()) {
-				printf('年份存档</h4>
-				<h2>'.get_the_time('Y年').'</h2>' );
-				// If this is an author archive
+				$typename = get_the_time('Y年');
+				echo "年份存档　>　".get_the_time('Y年');
 			} elseif (is_author()) {
-					echo '作者存档';
-			// If this is a paged archive
+				$typename = "";
+				echo '作者存档';
 			} elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
 				echo '博客存档';
 			}
 			?>
+		</span>
 	</div>
+</div>
+<div class="racing_listbox">
+	<div class="racing_list">
 <?php
 global $wp_query;
 
@@ -85,30 +91,50 @@ else if ( isset($_GET['order']) && ($_GET['order']=='alpha') )
 		$wp_query->query
 	);
     query_posts($arms);
-} if (have_posts()) : while (have_posts()) : the_post(); ?>
-		<!-- Blog Post -->
-		<div class="post">
-			<!-- Post Title -->
-			<h1 class="title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-			<!-- Post Data -->
-			<p class="sub"><?php the_tags('标签：', ', ', ''); ?> &bull; <?php the_time('Y年n月j日') ?> &bull; <?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?><?php edit_post_link('编辑', ' &bull; ', ''); ?>
-</p>
-			<div class="hr dotted clearfix">&nbsp;</div>
-			<!-- Post Content -->
-			<?php the_excerpt(); ?>
-			<?php //the_content('阅读全文...'); ?>
-			<!-- Read More Button -->
-			<p class="clearfix"><a href="<?php the_permalink(); ?>" class="button right">阅读全文</a></p>
+}
+if (have_posts()) : while (have_posts()) : the_post(); ?>
+	<div class="racing_item" onclick="javascript:window.location.href='<?php the_permalink(); ?>'">
+		<div class="racing_list_left">
+			<div class="racing_list_left_class"><?php
+				$ntypename = get_the_tags()[0]->name;
+				if ($ntypename == "") {
+					$ntypename = $typename;
+				}
+				echo $ntypename;
+			?></div>
+			<img class="racing_list_left_img" src="<?php 
+			$itemimage = catch_image($post);
+			if ($itemimage == "") {
+				bloginfo("template_url");
+				echo "images/default.jpg";
+			} else {
+				echo $itemimage;
+			}
+			?>" alt="<?php echo $npost->post_title; ?>" />
+			<?php if (isvideo($npost->post_content)) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
 		</div>
-		<div class="hr clearfix">&nbsp;</div>
+		<div class="racing_list_right" onclick="javascript:window.location.href='<?php the_permalink(); ?>'">
+			<div class="racing_list_right_title"><?php the_title(); ?></div>
+			<div class="racing_list_right_content"><?php clearcontent(get_the_content()); ?></div>
+			<div class="racing_list_right_bottom">
+				<div class="racing_list_right_bottom_time"><?php
+				cleardate($post);
+				echo "　";
+				comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭');
+				echo "　";
+				edit_post_link('编辑', '', '');
+				?></div>
+			</div>
+		</div>
+	</div>
 		<?php endwhile; ?>
-		
-		<!-- Blog Navigation -->
-		<p class="clearfix"><?php previous_posts_link('&lt;&lt; 查看新文章', 0); ?> <span class="float right"><?php next_posts_link('查看旧文章 &gt;&gt;', 0); ?></span></p>
-		
+</div>
+		<div class="morebtnbox">
+			<?php previous_posts_link('&lt;&lt; 查看新文章', 0); ?>
+			<?php next_posts_link('查看旧文章 &gt;&gt;', 0); ?>
+		</div>
 		<?php else : ?>
-		<h1 class="title"><a href="#" rel="bookmark">未找到</a></h1>
-		<p>没有找到任何文章！</p>
+		<center><p>暂无内容</p></center>
 		<?php endif; ?>
 	</div>
 	<?php get_sidebar(); ?>

@@ -434,9 +434,17 @@ a:active {
     box-shadow: 0px 3px 5px lightgray;
     border-radius: 5px;
     overflow: hidden;
+    color: gray;
+}
+.racing_item a {
+    color: gray;
 }
 .racing_item:hover {
     background-color: lightgray;
+    color: black;
+}
+.racing_item:hover a {
+    color: black;
 }
 .racing_list_right_title{
     width: calc(100% - 60px);
@@ -448,6 +456,7 @@ a:active {
     margin-top: 20px;
     margin-bottom: 5px;
     overflow: hidden;
+    color: black;
 }
 .racing_list_right_content{
     width: calc(100% - 60px);
@@ -457,14 +466,13 @@ a:active {
     margin-top: 10px;
     position:relative;
     line-height:1.8em;
-    /* 3 times the line-height to show 3 lines */
     height:5.4em;
     overflow:hidden;
+    color: black;
 }
 .racing_list_right_bottom{
     width: calc(100% - 60px);
     height: 35px;
-    /* background: gray; */
     margin-left: 30px;
     margin-right: 30px;
     margin-top: 5px;
@@ -472,19 +480,40 @@ a:active {
 }
 .racing_list_right_bottom_time{
     font-size: 10px;
-    color: #C0C0C0;
-    /* background: yellow; */
     position: absolute;
     bottom: 8px;
     left: 0px;
 }
 .racing_list_right_bottom_img{
     font-size: 30px;
-    color: rgb(138, 138, 138);
-    /* background: yellow; */
     position: absolute;
     bottom: 0px;
     right: 0px;
+}
+.listoption {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 50px;
+    line-height: 50px;
+}
+.sortby {
+    float: right;
+    text-align: right;
+}
+select {
+    background: transparent;
+    width: 110px;
+    padding: 5px;
+    border: 0px solid #ccc;
+    height: 30px;
+}
+.sortby select:hover {
+    border-bottom: 2px solid skyblue;
+}
+.sorting {
+    float: left;
+    text-align: left;
 }
 /* list] */
 
