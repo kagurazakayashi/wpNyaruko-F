@@ -89,3 +89,14 @@ function proportion16_9(objDiv,isframe) {
         }
     }
 }
+function settitle(t1,t2) {
+    var code = "";
+    if (t1 && t1 != "") code += ('<h1 id="homepage_title1">' + t1 + '</h1>');
+    if (t2 && t2 != "") code += ('<h2 id="homepage_title2">' + t2 + '</h2>');
+    var homepage_title = $("#homepage_title");
+    if (code != "") {
+        homepage_title.html('<div id="homepage_titleb">' + code + '</div>');
+    } else {
+        homepage_title.html("");
+    }
+}

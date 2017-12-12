@@ -46,6 +46,7 @@
 		</span>
 	</div>
 </div>
+<script type="text/javascript">settitle("<?php echo $typename; ?>");</script>
 <div class="racing_listbox">
 	<div class="racing_list">
 <?php

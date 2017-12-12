@@ -43,6 +43,7 @@ a:active {
     height: 100%;
     color: #FFF;
     z-index: 10;
+    text-shadow: 0px 0px 10px #000;
 }
 #homepage_titlebox {
     position: absolute;
@@ -63,6 +64,25 @@ a:active {
 }
 #homepage_titlebox a:hover {
     color: yellow;
+}
+#homepage_title {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display:table;
+}
+#homepage_title h1 {
+    font-size: 32pt;
+    color: white;
+}
+#homepage_title h2 {
+    font-size: 16pt;
+    color: lightgray;
+}
+#homepage_titleb {
+    display:table-cell;
+    vertical-align:middle;
 }
 #homepage_bignews {
     height: 50px;

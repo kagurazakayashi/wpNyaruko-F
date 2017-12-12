@@ -42,7 +42,7 @@
 	<!-- <div id="homepage_bignews">正在直播：点击前往 >></div> -->
 	<div id="nyarukoplayer"></div>
 	<div id="homepage_topimgbox">
-	
+	<div id="homepage_title"></div>
 	<?php echo '<script>var ishome=';
 		if(is_home()) {
 			echo 'true;</script>';
