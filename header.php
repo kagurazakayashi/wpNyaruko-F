@@ -22,16 +22,16 @@
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="<?php bloginfo('comments_rss2_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <?php wp_head(); ?>
+<script type="text/javascript" src="resources/jquery.min.js"></script>
+<script type="text/javascript" src="resources/jquery.cookie.js"></script>
 </head>
 
 <?php flush(); ?>
 
 <body>
 <div id="wrapper">
-	<script type="text/javascript" src="resources/jquery.min.js"></script>
-	<script type="text/javascript" src="resources/jquery.cookie.js"></script>
-	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.js"></script>
+	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
 	<!-- 1顶端大图 -->
 	<div id="nyarukoplayer_loading">
 		<noscript>错误：页面没有成功运行，请允许 javascript 以获得最佳浏览体验。</noscript>

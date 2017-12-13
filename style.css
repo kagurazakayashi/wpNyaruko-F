@@ -520,6 +520,7 @@ a:active {
 .sortby {
     float: right;
     text-align: right;
+    color: gray;
 }
 select {
     background: transparent;
@@ -530,10 +531,12 @@ select {
 }
 .sortby select:hover {
     border-bottom: 2px solid skyblue;
+    color: #000;
 }
 .sorting {
     float: left;
     text-align: left;
+    color: gray;
 }
 /* list] */
 
@@ -822,3 +825,36 @@ a.carousel-control.right {
     background-color: lightgray;
     text-align: center;
 }
+/* [page */
+.racing_single{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: white;
+    text-align: center;
+}
+.racing_single_single{
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: left;
+    /* text-indent: 24pt; */
+    line-height: 40px;
+    font-size: 12pt;
+}
+.racing_single_single img {
+    width: 100% !important;
+    height: auto !important;
+    padding: 5px;
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 10px;
+}
+.racing_single_info {
+    width: 100%;
+    font-size: 9pt;
+    color: gray;
+}
+.racing_single_info i, .sorting i{
+    font-size: 10pt;
+}
+/* page] */

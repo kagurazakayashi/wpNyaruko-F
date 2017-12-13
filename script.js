@@ -100,3 +100,6 @@ function settitle(t1,t2) {
         homepage_title.html("");
     }
 }
+function contentformat() {
+    // $(".racing_single_single img").css({"width":"90%","height":"auto"});
+}

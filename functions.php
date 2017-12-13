@@ -42,6 +42,17 @@ function catch_image($npost) {
 	}
 	return $first_img;
 }
+function removevideoimage($content) {
+	$mode = 1; //0不过滤图片 1过滤第一张图片 2过滤所有图片
+	if ($mode > 0 && isvideo($content)) {
+		$replacef = ['/<img.+src=[\'"]([^\'"]+)[\'"].*>/i'];
+		foreach ($replacef as $replacen){
+			$content = preg_replace($replacen,'',$content);
+			if ($mode == 1) break;
+		}
+	}
+	return $content;
+}
 /*获取图片完*/
 
 function typetitle($name) {
@@ -81,6 +92,12 @@ function curPageURL() {
 	$pageURL .= $_SERVER["SERVER_NAME"]  . $this_page;
 
 	return $pageURL;
+}
+
+function cpath($i) {
+	$n = '&emsp;<i class="material-icons">play_arrow</i>&emsp;';
+	if ($i) return $n;
+	echo $n;
 }
 
 function aurelius_comment($comment, $args, $depth) 

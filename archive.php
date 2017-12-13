@@ -17,25 +17,26 @@
 			</select>
 		</span>
 		<span class="sorting">
-		主页　>　<?php
+		<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>主页">主页</a><?php
+		cpath(false);
 			$typename = "";
 			if (is_category()) {
 				$typename = single_cat_title('', false);
-				echo "分类　>　".$typename;
+				echo "分类".cpath(true).$typename;
 				if (category_description()) echo ' > '.category_description();
 			} elseif (is_tag()) {
 				$typename = single_tag_title('', false);
-				echo "标签　>　".$typename;
+				echo "标签".cpath(true).$typename;
 				if (tag_description()) echo ' > '.tag_description();
 			} elseif (is_day()) {
 				$typename = get_the_time('j日');
-				echo "日期存档　>　".get_the_time('Y年n月j日');
+				echo "日期存档".cpath(true).get_the_time('Y年n月j日');
 			} elseif (is_month()) {
 				$typename = get_the_time('n月');
-				echo "月份存档　>　".get_the_time('Y年n月');
+				echo "月份存档".cpath(true).get_the_time('Y年n月');
 			} elseif (is_year()) {
 				$typename = get_the_time('Y年');
-				echo "年份存档　>　".get_the_time('Y年');
+				echo "年份存档".cpath(true).get_the_time('Y年');
 			} elseif (is_author()) {
 				$typename = "";
 				echo '作者存档';

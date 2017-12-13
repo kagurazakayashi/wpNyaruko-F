@@ -1,27 +1,22 @@
 <?php get_header(); ?>
-	<!-- Column 1 /Content -->
 	<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
-	<div class="grid_8">
-		<!-- Blog Post -->
-		<div class="post">
-			<!-- Post Title -->
-			<h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-			<!-- Post Title -->
-			<p class="sub"><?php the_tags('标签：', ', ', ''); ?> &bull; <?php the_time('Y年n月j日') ?> &bull; <?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?><?php edit_post_link('编辑', ' &bull; ', ''); ?></p>
-			<div class="hr dotted clearfix">&nbsp;</div>
-			<!-- Post Title -->
-			<!-- Post Content -->
-			<?php the_content(); ?>
-			<!-- Post Links -->
-			<p class="clearfix"> <a href="<?php echo get_option('home'); ?>" class="button float" >&lt;&lt; 返回首页</a> <a href="#commentform" class="button float right" >发表评论</a> </p>
+	<script type="text/javascript">settitle("<?php echo get_the_title(); ?>",'<?php cleardate($post); ?>');</script>
+
+	<!-- <?php the_permalink(); comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?> -->
+	<div class="racing_single">
+		<div class="racing_single_single">
+			<div class="racing_single_info">
+				<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>主页">主页</a><?php cpath(false); the_category('　'); cpath(false); ?>内容阅读
+				<?php edit_post_link('编辑', '　(已使用有', '权限的账户登录)'); ?>
+			</div>
+			<?php echo do_shortcode(removevideoimage(get_the_content())); ?>
 		</div>
-		<div class="hr clearfix">&nbsp;</div>
-		<?php comments_template(); ?>
 	</div>
+	<script type="text/javascript">contentformat();</script>
+	<a href="#commentform" class="button float right" >发表评论</a>
+	<?php comments_template(); ?>
 <?php else : ?>
-<div class="errorbox">
-	没有文章！
-</div>
+没有文章！
 <?php endif; ?>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
