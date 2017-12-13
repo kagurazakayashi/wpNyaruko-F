@@ -858,3 +858,76 @@ a.carousel-control.right {
     font-size: 10pt;
 }
 /* page] */
+/* [comment */
+.commentsbox {
+    text-align: left;
+    margin: 10%;
+}
+.commentsbox h1 {
+    font-size: 12pt;
+}
+.commentsbox i {
+    font-size: 22pt;
+}
+.commentsbox li {
+    list-style: none;
+}
+.commentsbox .gravatar {
+    float: left;
+    padding: 5px;
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 5px;
+}
+.comment {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.clearfix {
+    margin-left: 80px;
+    line-height: 30px;
+    height: 68px;
+}
+.comment_text {
+    margin-left: 80px;
+}
+.comment-meta {
+    color: gray;
+}
+.comment-edit-link {
+    float: right;
+    line-height: 1px;
+}
+.commentsbox .cinfo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#commentform .cinfo2 {
+    padding-top: 20px;
+}
+#commentform textarea {
+    height: 50px;
+    width: calc(100% - 50px);
+    border: none;
+    border-bottom:1px solid rgb(2, 168, 243);
+}
+#commentform #subbtn {
+    float: right;
+    width: 50px;
+    height: 50px;
+    color: rgb(2, 168, 243);
+    background-color: white;
+    border: none;
+    border-bottom:1px solid rgb(2, 168, 243);
+}
+#commentform input {
+    border: none;
+    border-bottom:1px solid rgb(2, 168, 243);
+    margin-bottom: 20px;
+}
+#commentform .cuserinfo {
+    display: inline-block;
+}
+#commentform .cuserinfo i {
+    font-size: 10pt;
+}
+/* comment] */

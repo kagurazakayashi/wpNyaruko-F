@@ -11,10 +11,9 @@
 			</div>
 			<?php echo do_shortcode(removevideoimage(get_the_content())); ?>
 		</div>
-	</div>
 	<script type="text/javascript">contentformat();</script>
-	<a href="#commentform" class="button float right" >发表评论</a>
 	<?php comments_template(); ?>
+</div>
 <?php else : ?>
 没有文章！
 <?php endif; ?>

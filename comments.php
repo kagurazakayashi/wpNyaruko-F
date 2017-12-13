@@ -2,75 +2,52 @@
 	if (isset($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
 		die ('Please do not load this page directly. Thanks!');
 ?>
-
-		<!-- Comment's List -->
-		<h3>Comments</h3>
-		<div class="hr dotted clearfix">&nbsp;</div>
-		<ol class="commentlist">
+<div class="commentsbox">
+		<h1><i class="material-icons">mode_edit</i> 评论</h1>
 		<?php
     		if (!empty($post->post_password) && $_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password) {
-        // if there's a password
-        // and it doesn't match the cookie
-		?>
-    <li class="decmt-box">
-        <p><a href="#addcomment">请输入密码再查看评论内容.</a></p>
-    </li>
+        ?>
+<div class="cinfo"><ul><li style="list-style: inside;">请输入密码再查看评论内容。</div>
     <?php
         } else if ( !comments_open() ) {
     ?>
-    <li class="decmt-box">
-        <p><a href="#addcomment">评论功能已经关闭!</a></p>
-    </li>
+<div class="cinfo"><ul><li style="list-style: inside;">评论功能已经关闭。</div>
     <?php
         } else if ( !have_comments() ) {
     ?>
-    <li class="decmt-box">
-        <p><a href="#addcomment">还没有任何评论，你来说两句吧</a></p>
-    </li>
+<div class="cinfo"><ul><li style="list-style: inside;">还没有任何评论，来说两句吧~</div>
     <?php
         } else {
             wp_list_comments('type=comment&callback=aurelius_comment');
         }
     ?>
-		</ol>
-		<div class="hr clearfix">&nbsp;</div>
+</li></ul>
 <?php
 if ( !comments_open() ) :
 // If registration required and not logged in.
 elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 ?>
-<p>你必须 <a href="<?php echo wp_login_url( get_permalink() ); ?>">登录</a> 才能发表评论.</p>
+<h1><i class="material-icons">speaker_notes_off</i> 发表评论</h1>
+<div class="cinfo">你必须 <a href="<?php echo wp_login_url( get_permalink() ); ?>">登录</a> 才能发表评论。</div>
 <?php else  : ?>
 <!-- Comment Form -->
 <form id="commentform" name="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post">
-    <h3>发表评论</h3>
-    <div class="hr dotted clearfix">&nbsp;</div>
+<h1><i class="material-icons">textsms</i> 发表评论</h1>
     <ul>
         <?php if ( !is_user_logged_in() ) : ?>
-        <li class="clearfix">
-            <label for="name">昵称</label>
-            <input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="23" tabindex="1" />
-        </li>
-        <li class="clearfix">
-            <label for="email">电子邮件</label>
-            <input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="23" tabindex="2" />
-        </li>
-        <li class="clearfix">
-            <label for="email">网址(选填)</label>
-            <input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="23" tabindex="3" />
-        </li>
+        <div class="cinfo2">
+        <span class="cuserinfo"><i class="material-icons">assignment_ind</i>&nbsp;昵称*：<input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="15" tabindex="1" /></span>&emsp;
+        <span class="cuserinfo"><i class="material-icons">email</i>&nbsp;邮件*：<input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="15" tabindex="2" /></span>&emsp;
+        <span class="cuserinfo"><i class="material-icons">computer</i>&nbsp;网址：<input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="15" tabindex="3" /></span>
+        </div>
         <?php else : ?>
-        <li class="clearfix">您已登录:<a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出登录">退出 &raquo;</a></li>
+        <div class="cinfo">您已登录：<a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>，<a href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出登录">退出 &raquo;</a></div>
         <?php endif; ?>
-        <li class="clearfix">
-            <label for="message">评论内容</label>
-            <textarea id="message comment" name="comment" tabindex="4" rows="3" cols="40"></textarea>
-        </li>
-        <li class="clearfix">
-            <!-- Add Comment Button -->
-            <a href="javascript:void(0);" onClick="Javascript:document.forms['commentform'].submit()" class="button medium black right">发表评论</a> </li>
+            <p><span class="cuserinfo"><i class="material-icons">mode_edit</i>&nbsp;评论内容：</span><br/><textarea id="message comment" name="comment" tabindex="4" rows="3" cols="40"></textarea>
+            <button type="button" onClick="Javascript:document.forms['commentform'].submit()" id="subbtn"><i class="material-icons">done</i></button></p>
     </ul>
     <?php comment_id_fields(); ?>
     <?php do_action('comment_form', $post->ID); ?>
 </form>
+</div>
 <?php endif; ?>

@@ -30,7 +30,7 @@
 
 <body>
 <div id="wrapper">
-	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.js"></script>
+	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.min.js"></script>
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
 	<!-- 1顶端大图 -->
 	<div id="nyarukoplayer_loading">
