@@ -38,10 +38,15 @@ function reftitlebar() {
     } else if (scr >= windowh) {
         bgcolor = "#3C3C3C";
     }
+    var homepage_mobilemenubtn = $("#homepage_mobilemenubtn");
     if (scr > 50) {
         $("#homepage_titlebox").css({"position":"fixed","padding-top":"15px","background":bgcolor});
+        if (homepage_mobilemenubtn.css("display") != "none")
+        homepage_mobilemenubtn.css("top","12px");
     } else {
         $("#homepage_titlebox").css({"position":"absolute","padding-top":(titleboxtop+"px"),"background":bgcolor});
+        if (homepage_mobilemenubtn.css("display") != "none")
+        homepage_mobilemenubtn.css("top","45px");
     }
 }
 function loadnyarukoplayer() {

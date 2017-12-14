@@ -6,6 +6,7 @@ $nposts = get_posts(array(
 	'numberposts' => $numberposts,
 )); ?>
 <div class="racing_listbox">
+	<div class="racing_list_tl racing_list_tlr"></div>
 	<div class="racing_list">
 		<?php  
 		if(empty($nposts)){
@@ -46,5 +47,6 @@ $nposts = get_posts(array(
 		}
 		?>
 	</div>
-	<?php echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>'; ?>
+		<div class="racing_list_tr racing_list_tlr"></div>
 </div>
+	<?php echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>'; ?>

@@ -1,0 +1,85 @@
+@media screen and (max-width: 760px) {
+    #homepage_titlebox {
+        text-align: center;
+    }
+    .homepage_menu {
+        display: none;
+    }
+    #homepage_foot {
+        display: none;
+    }
+    #homepage_sociallist {
+        width: 100%;
+        text-align: center;
+    }
+    #homepage_mobilemenubtn {
+        display: block;
+        
+    }
+    .racing_bigpicnews {
+        height: 300px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .pictitle {
+        height: 300px;
+        line-height: 300px;
+        font-size: 16pt;
+    }
+    .racing_list_right{
+        width: 352px;
+        height: 198px;
+        float: left;
+        background-color: transparent;
+    }
+    .racing_item {
+        height: 396px;
+    }
+    .racing_list{
+        width: 352px;
+        display: table-cell;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .listoption {
+        width: 90%;
+        width: calc(100% - 10px);
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .racing_list_tlr {
+        display: table-cell;
+        width: auto;
+    }
+    .racing_single{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .racing_single_single{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .racing_single_single img {
+        padding: 2px;
+    }
+    .commentsbox {
+        text-align: left;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    #homepage_title h1 {
+        font-size: 18pt;
+    }
+    #homepage_title h2 {
+        font-size: 12pt;
+    }
+    .racing_list_right_title{
+        font-size: 12pt;
+    }
+    .racing_list_right_content{
+        font-size: 9pt;
+    }
+}
+@media screen and (min-width: 761px) {
+    
+}

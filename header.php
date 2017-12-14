@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <title><?php if ( is_home() ) {
 		bloginfo('name'); echo " - "; bloginfo('description');
 	} elseif ( is_category() ) {
@@ -17,6 +18,7 @@
 	} ?></title>
 <!-- Stylesheets -->
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php bloginfo("template_url"); ?>/style-mobile.css" type="text/css" media="screen" />
 <link href="resources/bootstrap.min.css" rel="stylesheet">
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="<?php echo $feed; ?>" />
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="<?php bloginfo('comments_rss2_url'); ?>" />
@@ -63,6 +65,7 @@
 		}
 	?>
 		<div id="homepage_titlebox">
+			<span id="homepage_mobilemenubtn"><i class="material-icons">&#xE5D2;</i></span>
 			<span id="homepage_titlelogo"><a href="<?php bloginfo('url'); ?>" title="返回<?php bloginfo('name'); ?>主页"><?php bloginfo('name'); ?></a></span>
 			<span class="homepage_menu" id="homepage_mainmenu">
 				<?php wp_nav_menu(array(

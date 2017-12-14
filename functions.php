@@ -95,7 +95,7 @@ function curPageURL() {
 }
 
 function cpath($i) {
-	$n = '&emsp;<i class="material-icons">play_arrow</i>&emsp;';
+	$n = '&emsp;<i class="material-icons">&#xE037;</i>&emsp;';
 	if ($i) return $n;
 	echo $n;
 }
