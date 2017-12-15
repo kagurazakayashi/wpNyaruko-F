@@ -108,3 +108,25 @@ function settitle(t1,t2) {
 function contentformat() {
     // $(".racing_single_single img").css({"width":"90%","height":"auto"});
 }
+var openmenu = false;
+function mobilemenu() {
+    if(openmenu){
+        $(".racing_phone_menu").addClass('frameAnimImg0');
+        setTimeout(function(){
+            $(".racing_phone_menu").removeClass('frameAnimImg0');
+            $(".racing_phone_menu").css('left','-90%');
+            $(".racing_phone_menuback").css('display','none');
+            $("#mobilemenubox").css("display","none");
+        }, 180);
+        openmenu = false;
+    } else {
+        $("#mobilemenubox").css("display","inline");
+        $(".racing_phone_menu").addClass('frameAnimImg');
+        setTimeout(function(){
+            $(".racing_phone_menu").removeClass('frameAnimImg');
+            $(".racing_phone_menu").css('left','0');
+            $(".racing_phone_menuback").css('display','inline');
+        }, 180);
+        openmenu = true;
+    }
+}

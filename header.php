@@ -31,6 +31,18 @@
 <?php flush(); ?>
 
 <body>
+<div id="mobilemenubox">
+	<div class="racing_phone_menuback" onclick="mobilemenu();"></div>
+	<div class="racing_phone_menu">
+		<div id="mobilemenu_userinfo" style="background-image: url(<?php bloginfo("template_url"); ?>/images/defaultuserbg.jpg)">
+			<div id="mobilemenu_userinfoc"><b>栏目导航</b><br/>北京未来赛车文化有限公司</div>
+		</div>
+		<div class="mainmenu_mob"><?php wp_nav_menu(array(
+			"menu"=>"mainmenu",
+			'menu_class' => 'mobilemenu'
+		)) ?></div>
+	</div>
+</div>
 <div id="wrapper">
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.min.js"></script>
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
@@ -65,12 +77,12 @@
 		}
 	?>
 		<div id="homepage_titlebox">
-			<span id="homepage_mobilemenubtn"><i class="material-icons">&#xE5D2;</i></span>
+			<span id="homepage_mobilemenubtn" onclick="mobilemenu();"><i class="material-icons">&#xE5D2;</i></span>
 			<span id="homepage_titlelogo"><a href="<?php bloginfo('url'); ?>" title="返回<?php bloginfo('name'); ?>主页"><?php bloginfo('name'); ?></a></span>
 			<span class="homepage_menu" id="homepage_mainmenu">
-				<?php wp_nav_menu(array(
+				<div class="mainmenu_com"><?php wp_nav_menu(array(
 					"menu"=>"mainmenu"
-				)) ?>
+				)) ?></div>
 			</span>
 		</div>
 	</div>

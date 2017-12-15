@@ -6,7 +6,8 @@ $nposts = get_posts(array(
 	'numberposts' => $numberposts,
 )); ?>
 <div class="carousel-example">
-	<div id="simple-content-carousel" class="carousel flexible slide" data-ride="carousel" data-interval="5000" data-wrap="true">
+    <?php $simplecontentid = "simple-content-carousel-".$colid; ?>
+	<div id="<?php echo $simplecontentid; ?>" class="carousel flexible slide" data-ride="carousel" data-interval="5000" data-wrap="true">
 		<div class="items">
 		<?php
 			if(empty($nposts)){
@@ -36,10 +37,10 @@ $nposts = get_posts(array(
 		</div>
 		<div class="carousel-inner" role="listbox">
 		</div>
-		<a class="left carousel-control" href="#simple-content-carousel" role="button" data-slide="prev" style="width:50px;top:50%;">
+		<a class="left carousel-control" href="#<?php echo $simplecontentid; ?>" role="button" data-slide="prev" style="width:50px;top:50%;">
 			<span class="material-icons" aria-hidden="true">keyboard_arrow_left</span>
 		</a>
-		<a class="right carousel-control" href="#simple-content-carousel" role="button" data-slide="next" style="width:50px;top:50%;">
+		<a class="right carousel-control" href="#<?php echo $simplecontentid; ?>" role="button" data-slide="next" style="width:50px;top:50%;">
 			<span class="material-icons" aria-hidden="true">keyboard_arrow_right</span>
 		</a>
 	</div>

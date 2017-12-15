@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<div class="tshadow">
 <div class="listoption">
 	<div class="clistbox">
 		<span class="sortby">
@@ -49,6 +50,7 @@
 </div>
 <script type="text/javascript">settitle("<?php echo $typename; ?>");</script>
 <div class="racing_listbox">
+	<div class="racing_list_tlr"></div>
 	<div class="racing_list">
 <?php
 global $wp_query;
@@ -131,6 +133,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 	</div>
 		<?php endwhile; ?>
 </div>
+<div class="racing_list_tlr"></div>
 		<div class="morebtnbox">
 			<?php previous_posts_link('&lt;&lt; 查看新文章', 0); ?>
 			<?php next_posts_link('查看旧文章 &gt;&gt;', 0); ?>
@@ -140,4 +143,5 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 		<?php endif; ?>
 	</div>
 	<?php get_sidebar(); ?>
+	</div>
 <?php get_footer(); ?>
