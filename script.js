@@ -1,3 +1,6 @@
+var image_16_9_div = '.image_169_div';
+var image_16_9 = '.image_169';
+var iwh = 0;
 $(document).ready(function(){
     var nyarukoplayerdivheight = $(window).height();
     var players = [$("#homepage_topimgbox"),$("#nyarukoplayer")];
@@ -21,6 +24,14 @@ $(document).ready(function(){
     proportion16_9('.racing_phone_list',true);
     proportion16_9('.racing_phone_list_top',false);
     picsetting('.racing_phone_list_top_img',$('.racing_phone_list_top').width(),$('.racing_phone_list_top').height());
+    var iw = $(image_16_9).width();
+    var ih = $(image_16_9).height();
+    iwh = iw/ih;
+    if(iwh > 1){
+        image169_W();
+    }else{
+        image169_H();
+    }
 });
 function reftitlebar() {
     var scr = $(window).scrollTop();
@@ -129,4 +140,30 @@ function mobilemenu() {
         }, 180);
         openmenu = true;
     }
+}
+//image169
+$(window).resize(function(){
+    if(iwh > 1){
+        image169_W();
+    }else{
+        image169_H();
+    }
+});
+function image169_W() {
+    var i169width = $(image_16_9_div).width();
+    var i169height = i169width/16*9;
+    var imageh = $(image_16_9).height();
+    var imagetop = (i169height - imageh) / 2;
+    $(image_16_9_div).height(i169height);
+    $(image_16_9).css('top',imagetop);
+}
+function image169_H() {
+    $(image_16_9).width('auto');
+    $(image_16_9).height('100%');
+    var i169width = $(image_16_9_div).width();
+    var i169height = i169width/16*9;
+    var imagew = $(image_16_9).width();
+    var imageleft = (i169width - imagew) / 2;
+    $(image_16_9_div).height(i169height);
+    $(image_16_9).css('left',imageleft);
 }
