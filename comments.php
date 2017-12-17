@@ -1,9 +1,10 @@
 <?php
 	if (isset($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-		die ('Please do not load this page directly. Thanks!');
+        die ('Please do not load this page directly. Thanks!');
+    if ( comments_open() ) {
 ?>
 <div class="commentsbox">
-		<h1><i class="material-icons">&#xE254;</i> 评论</h1>
+		<h1><i class="material-icons">&#xE254;</i>&nbsp;评论</h1>
 		<?php
     		if (!empty($post->post_password) && $_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password) {
         ?>
@@ -27,12 +28,12 @@ if ( !comments_open() ) :
 // If registration required and not logged in.
 elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 ?>
-<h1><i class="material-icons">&#xE92A;</i> 发表评论</h1>
+<h1><i class="material-icons">&#xE92A;</i>&nbsp;发表评论</h1>
 <div class="cinfo">你必须 <a href="<?php echo wp_login_url( get_permalink() ); ?>">登录</a> 才能发表评论。</div>
 <?php else  : ?>
 <!-- Comment Form -->
 <form id="commentform" name="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post">
-<h1><i class="material-icons">&#xE0D8;</i> 发表评论</h1>
+<h1><i class="material-icons">&#xE0D8;</i>&nbsp;发表评论</h1>
     <ul>
         <?php if ( !is_user_logged_in() ) : ?>
         <div class="cinfo2">
@@ -50,4 +51,7 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
     <?php do_action('comment_form', $post->ID); ?>
 </form>
 </div>
-<?php endif; ?>
+<?php endif; 
+} else {
+    echo '<div id="commentsclose"><i class="material-icons">&#xE92A;</i>&nbsp;此处的评论功能已被禁用。</div>';
+}?>

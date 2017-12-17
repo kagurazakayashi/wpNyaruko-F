@@ -953,8 +953,11 @@ a.carousel-control.right {
 #commentform .cuserinfo {
     display: inline-block;
 }
-#commentform .cuserinfo i {
+#commentform i, #commentsclose i {
     font-size: 10pt;
+}
+#commentsclose {
+    color: #FFF;
 }
 /* comment] */
 /* [mobilemenu */
