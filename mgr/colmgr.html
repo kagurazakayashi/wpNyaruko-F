@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>栏目管理</title>
+    <link rel="stylesheet" href="colmgr.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/resources/jquery.min.js"></script>
+    <script type="text/javascript" src="colmgr.js"></script>
+</head>
+<body>
+    <div id="colmgr_title"><span>
+        wpNyaruko-N 主页模块设定<hr>
+        <input type="text" id="colmgr_indexcol" name="indexcol" onfocus="this.select();" />
+        <button type="button" onclick="colmgr_blnset_click(1);">&nbsp;导入/导出/编辑&nbsp;主页模块配置代码&nbsp;</button>
+    </span></div>
+    <div id="colmgr_tb">
+        <div class="colmgr_tb_lr cell"></div>
+        <div class="colmgr_tb_sel cell">
+            <div class="colmgr_tbc">
+                <h2>添加模块<hr></h2>
+                <div class="colmgr_blo" id="colmgr_blo_1" onclick="colmgr_blo_click($(this));">大图展示</div>
+                <div class="colmgr_blo" id="colmgr_blo_2"  onclick="colmgr_blo_click($(this));">纵向列表</div>
+                <div class="colmgr_blo" id="colmgr_blo_3"  onclick="colmgr_blo_click($(this));">横向图片</div>
+                <div class="colmgr_blo" id="colmgr_blo_4"  onclick="colmgr_blo_click($(this));">空白模块</div>
+                <hr><h2>设置<hr></h2>
+                <p>栏目分类<br/>
+                    <select id="colmgr_blo_stype" onchange="colmgr_blo_snum==this.value;">
+                    <option value=0 selected>分类列表</option>
+                    </select>
+                </p>
+                <p><a class="colmgr_abtn" href="#" target="_blank">编辑分类</a></p>
+                <p>显示文章数量<br/>
+                    <select id="colmgr_blo_snum" onchange="colmgr_blo_snum==this.value;">
+                    <option value=-1 selected>WP默认值</option>
+                    </select>
+                </p>
+                <p><button type="button" onclick="colmgr_blo_add();">添加&nbsp;>></button></p>
+                <hr>
+            </div>
+        </div>
+        <div class="colmgr_tb_set cell">
+            <div class="colmgr_tbc">
+                <h2>管理模块<hr></h2>
+                <div id="colmgr_nowtb">
+                    <p>当前没有模块</p>
+                </div>
+                <hr><p><button type="button" onclick="colmgr_blnmgr_click(1);">&nbsp;↑&nbsp;上移&nbsp;</button>&emsp;<button type="button" onclick="colmgr_blnmgr_click(2);">&nbsp;×&nbsp;删除&nbsp;</button>&emsp;<button type="button" onclick="colmgr_blnmgr_click(3);">&nbsp;↓&nbsp;下移&nbsp;</button></p><hr>
+            </div>
+        </div>
+        <div class="colmgr_tb_lr cell"></div>
+    </div>
+    <div id="colmgr_title"><hr></div>
+</body>
+</html>

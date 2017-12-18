@@ -1,0 +1,79 @@
+#colmgr_title {
+    width: 100%;
+    text-align: center;
+}
+#colmgr_title hr {
+    width: 500px;
+}
+#colmgr_tb {
+    display: table;
+    width: 100%;
+    text-align: center;
+    font-size: 10pt;
+}
+#colmgr_tb h2 {
+    font-size: 12pt;
+    line-height: 30px;
+}
+#colmgr_indexcol {
+    width: 500px;
+    text-align: center;
+    display: none;
+}
+#colmgr_tb button, #colmgr_tb select, #colmgr_indexcol, .colmgr_abtn, #colmgr_title button {
+    height: 30px;
+    background-color: #FFF;
+    border:1px solid skyblue;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+    color: #000;
+}
+#colmgr_tb button:hover, #colmgr_tb select:hover, #colmgr_indexcol:hover, .colmgr_abtn:hover {
+    color: blue;
+}
+.colmgr_blo_selected {
+    border:1px dashed blue !important;
+    color: blue !important;
+}
+.colmgr_tb_sel button, #colmgr_tb select, .colmgr_abtn{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 9pt;
+    text-decoration: none;
+}
+.colmgr_abtn {
+    color: #000;
+    display: block;
+    line-height: 30px;
+}
+.cell {
+    display: table-cell;
+    vertical-align: top;
+}
+.colmgr_tb_sel {
+    width: 200px;
+}
+.colmgr_tb_set {
+    width: 300px;
+}
+.colmgr_tbc {
+    background-color: lightgray;
+    margin: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.colmgr_blo, .colmgr_bln {
+    background-color: azure;
+    border:1px solid skyblue;
+    margin: 5px;
+    line-height: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+.colmgr_bln {
+    line-height: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
