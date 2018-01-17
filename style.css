@@ -86,9 +86,9 @@ a:active {
     vertical-align:middle;
 }
 #homepage_bignews {
-    height: 50px;
+    height: 64px;
     right: 0px;
-    line-height: 50px;
+    line-height: 64px;
     background: gold;
     padding-left: 50px;
 }

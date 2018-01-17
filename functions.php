@@ -1,4 +1,5 @@
 <?php
+$pagestime=microtime(true);
 $wpNyarukoOption = get_option('wpNyaruko_options');
 if($wpNyarukoOption['wpNyarukoPHPDebug']!='') {
   error_reporting(E_ALL);
@@ -28,7 +29,7 @@ function clearcontent($content) {
 	$wpNyarukoOption = get_option('wpNyaruko_options');
 	$replacef = ['/\[video.*?\]/','/\[\/video.*?\]/'];
 	foreach ($replacef as $replacen){ 
-		$content = preg_replace($replacen,'　',$content);
+		$content = preg_replace($replacen,'&emsp;',$content);
 	}
 	$content = strip_tags($content);
 	$wpNyarukoWordlimit = intval($wpNyarukoOption['wpNyarukoWordlimit']);

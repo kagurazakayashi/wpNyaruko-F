@@ -1,7 +1,14 @@
 <?php
-	if (isset($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
+    $wpNyarukoOption = get_option('wpNyaruko_options');
+    if (isset($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) {
         die ('Please do not load this page directly. Thanks!');
+    }
+    $wpNyarukoCommentMode = false;
+    if(@$wpNyarukoOption['wpNyarukoCommentMode']!='') {
+        $wpNyarukoCommentMode = true;
+    }
     if ( comments_open() ) {
+        if (!$wpNyarukoCommentMode) {
 ?>
 <div class="commentsbox">
 		<h1><i class="material-icons">&#xE254;</i>&nbsp;评论</h1>
@@ -51,7 +58,10 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
     <?php do_action('comment_form', $post->ID); ?>
 </form>
 </div>
-<?php endif; 
+<?php endif;
+    } else {
+        echo "<p>&nbsp;</p><p>".@$wpNyarukoOption['wpNyarukoCommentBox']."</p>";
+    }
 } else {
     echo '<div id="commentsclose"><i class="material-icons">&#xE92A;</i>&nbsp;此处的评论功能已被禁用。</div>';
 }?>

@@ -8,8 +8,11 @@ $(document).ready(function(){
         nyarukoplayerdivheight /= 2;
     }
     if ($("#homepage_bignews").length > 0) {
-        players[0].height(nyarukoplayerdivheight-50);
-        players[1].height(nyarukoplayerdivheight-50);
+        players[0].height(nyarukoplayerdivheight-64);
+        players[1].height(nyarukoplayerdivheight-64);
+        let homepage_topimgbox = $("#homepage_topimgbox");
+        let homepage_topimgboxh = parseInt(homepage_topimgbox.css("height"))+64;
+        homepage_topimgbox.css("height",homepage_topimgboxh+"px");
         reftitlebar();
     } else {
         players[0].height(nyarukoplayerdivheight);

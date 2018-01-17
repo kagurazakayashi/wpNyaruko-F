@@ -10,6 +10,27 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoWordlimit'] = '300';
         $wpNyarukoOption['wpNyarukoWLInfo'] = ' ... [阅读全文]';
         $wpNyarukoOption['wpNyarukoIndexModule'] = '';
+        $wpNyarukoOption['wpNyarukoQRtype'] = 10;
+        $wpNyarukoOption['wpNyarukoQRecorrection'] = 'L';
+        $wpNyarukoOption['wpNyarukoQRmode'] = 'Byte';
+        $wpNyarukoOption['wpNyarukoQRecode'] = 'UTF-8';
+        $wpNyarukoOption['wpNyarukoQRimgtype'] = 'img';
+        $wpNyarukoOption['wpNyarukoTitleFootInfo'] = '©';
+        $wpNyarukoOption['wpNyarukoSNSWeibo'] = '';
+        $wpNyarukoOption['wpNyarukoSNSWeChat'] = '';
+        $wpNyarukoOption['wpNyarukoConsoleLog'] = '';
+        $wpNyarukoOption['wpNyarukoConsoleLogT'] = '';
+        $wpNyarukoOption['wpNyarukoCommentMode'] = '';
+        $wpNyarukoOption['wpNyarukoCommentBox'] = '';
+        $wpNyarukoOption['wpNyarukoHeader'] = '';
+        $wpNyarukoOption['wpNyarukoFooter'] = '<b>版权所有 © </b><br/><a rel="external" title="WordPress主页" class="link" href="http://wordpress.org/" target="_blank">WordPress</a> <a title="访问主题主页" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-N" target="_blank">Theme: wpNyaruko-N</a>｜<a class="float right" href="#">页首</a><br/><a href="#" target="_blank" title="如果您对我们的内容有疑问，请点击这里联系我们。">联系我们</a>｜<a href="http://www.miitbeian.gov.cn/" target="_blank" title="如果您对我们的内容有疑问，请先进入「联系我们」栏目解决。">京ICP备XXXXXXXX号</a>';
+        $wpNyarukoOption['wpNyarukoIndexKeywords'] = '';
+        $wpNyarukoOption['wpNyarukoRSSArticle'] = 'on';
+        $wpNyarukoOption['wpNyarukoRSSComment'] = '';
+        $wpNyarukoOption['wpNyarukoJQ'] = 'resources/jquery.min.js';
+        $wpNyarukoOption['wpNyarukoJQcookie'] = 'resources/jquery.cookie.js';
+        $wpNyarukoOption['wpNyarukoBScss'] = 'resources/bootstrap.min.css';
+
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -29,6 +50,26 @@ function init() {
         @$wpNyarukoOption['wpNyarukoWordlimit'] = stripslashes($_POST['wpNyarukoWordlimit']);
         @$wpNyarukoOption['wpNyarukoWLInfo'] = stripslashes($_POST['wpNyarukoWLInfo']);
         @$wpNyarukoOption['wpNyarukoIndexModule'] = stripslashes($_POST['wpNyarukoIndexModule']);
+        @$wpNyarukoOption['wpNyarukoTitleFootInfo'] = stripslashes($_POST['wpNyarukoTitleFootInfo']);
+        @$wpNyarukoOption['wpNyarukoSNSWeibo'] = stripslashes($_POST['wpNyarukoSNSWeibo']);
+        @$wpNyarukoOption['wpNyarukoSNSWeChat'] = stripslashes($_POST['wpNyarukoSNSWeChat']);
+        @$wpNyarukoOption['wpNyarukoQRtype'] = stripslashes($_POST['wpNyarukoQRtype']);
+        @$wpNyarukoOption['wpNyarukoQRecorrection'] = stripslashes($_POST['wpNyarukoQRecorrection']);
+        @$wpNyarukoOption['wpNyarukoQRmode'] = stripslashes($_POST['wpNyarukoQRmode']);
+        @$wpNyarukoOption['wpNyarukoQRecode'] = stripslashes($_POST['wpNyarukoQRecode']);
+        @$wpNyarukoOption['wpNyarukoQRimgtype'] = stripslashes($_POST['wpNyarukoQRimgtype']);
+        @$wpNyarukoOption['wpNyarukoConsoleLog'] = stripslashes($_POST['wpNyarukoConsoleLog']);
+        @$wpNyarukoOption['wpNyarukoConsoleLogT'] = stripslashes($_POST['wpNyarukoConsoleLogT']);
+        @$wpNyarukoOption['wpNyarukoCommentMode'] = stripslashes($_POST['wpNyarukoCommentMode']);
+        @$wpNyarukoOption['wpNyarukoCommentBox'] = stripslashes($_POST['wpNyarukoCommentBox']);
+        @$wpNyarukoOption['wpNyarukoHeader'] = stripslashes($_POST['wpNyarukoHeader']);
+        @$wpNyarukoOption['wpNyarukoFooter'] = stripslashes($_POST['wpNyarukoFooter']);
+        @$wpNyarukoOption['wpNyarukoIndexKeywords'] = stripslashes($_POST['wpNyarukoIndexKeywords']);
+        @$wpNyarukoOption['wpNyarukoRSSArticle'] = stripslashes($_POST['wpNyarukoRSSArticle']);
+        @$wpNyarukoOption['wpNyarukoRSSComment'] = stripslashes($_POST['wpNyarukoRSSComment']);
+        @$wpNyarukoOption['wpNyarukoJQ'] = stripslashes($_POST['wpNyarukoJQ']);
+        @$wpNyarukoOption['wpNyarukoJQcookie'] = stripslashes($_POST['wpNyarukoJQcookie']);
+        @$wpNyarukoOption['wpNyarukoBScss'] = stripslashes($_POST['wpNyarukoBScss']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -131,12 +172,136 @@ if(!is_admin()) {
         </div>
         <div class="colmgr_tb_lr cell"></div>
     </div>
-    <!-- <div id="colmgr_title"><hr></div> -->    
+    <!-- <div id="colmgr_title"><hr></div> -->
       </td>
     </tr>
     <tr>
       <td>文章概览</td>
       <td>文章列表中只预览前<input name="wpNyarukoWordlimit" type="text" id="wpNyarukoWordlimit" value="<?php echo(@$wpNyarukoOption['wpNyarukoWordlimit']); ?>" size="3" maxlength="3" />个字，并在后面添加<input name="wpNyarukoWLInfo" type="text" id="wpNyarukoWLInfo" value="<?php echo(@$wpNyarukoOption['wpNyarukoWLInfo']); ?>" size="20" maxlength="20" /></td>
+    </tr>
+    <tr>
+      <td>大图左下角信息</td>
+      <td><input name="wpNyarukoTitleFootInfo" type="text" id="wpNyarukoTitleFootInfo" value="<?php echo(@$wpNyarukoOption['wpNyarukoTitleFootInfo']); ?>" size="64" maxlength="512" /></td>
+    </tr>
+    <tr>
+      <td>社交网络用户名</td>
+      <td>新浪微博：http://weibo.com/<input name="wpNyarukoSNSWeibo" type="text" id="wpNyarukoSNSWeibo" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeibo']); ?>" size="16" maxlength="16" /><br/>微信公众号链接地址(显示为二维码)：http://weixin.qq.com/q/<input name="wpNyarukoSNSWeChat" type="text" id="wpNyarukoSNSWeChat" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeChat']); ?>" size="16" maxlength="32" /><br/>填写链接后段的用户名。如果填写完整网址，则转换为二维码。</td>
+    </tr>
+    <tr>
+      <td>主页关键字</td>
+      <td><input name="wpNyarukoIndexKeywords" type="text" id="wpNyarukoIndexKeywords" value="<?php echo(@$wpNyarukoOption['wpNyarukoIndexKeywords']); ?>" size="40" maxlength="100" /></td>
+    </tr>
+    <tr>
+      <td>RSS 订阅</td>
+      <td><input name="wpNyarukoRSSArticle" type="checkbox" id="wpNyarukoRSSArticle" <?php if(@$wpNyarukoOption['wpNyarukoRSSArticle']!='')echo('checked'); ?> />文章　<input name="wpNyarukoRSSComment" type="checkbox" id="wpNyarukoRSSComment" <?php if(@$wpNyarukoOption['wpNyarukoRSSComment']!='')echo('checked'); ?> />评论</td>
+    </tr>
+    <tr>
+      <td>自定义 jQuery 路径</td>
+      <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo(@$wpNyarukoOption['wpNyarukoJQ']); ?>" size="40" maxlength="100" /></td>
+    </tr>
+    <tr>
+      <td>自定义 jQuery<br/>cookie 路径</td>
+      <td><input name="wpNyarukoJQcookie" type="text" id="wpNyarukoJQcookie" value="<?php echo(@$wpNyarukoOption['wpNyarukoJQcookie']); ?>" size="40" maxlength="100" /></td>
+    </tr>
+    <tr>
+      <td>自定义 Bootstrap<br/>css 路径</td>
+      <td><input name="wpNyarukoBScss" type="text" id="wpNyarukoBScss" value="<?php echo(@$wpNyarukoOption['wpNyarukoBScss']); ?>" size="40" maxlength="100" /></td>
+    </tr>
+    <tr>
+      <td>评论方式</td>
+      <td><input name="wpNyarukoCommentMode" type="checkbox" id="wpNyarukoCommentMode" <?php if(@$wpNyarukoOption['wpNyarukoCommentMode']!='')echo('checked'); ?> />使用第三方评论系统</td>
+    </tr>
+    <tr>
+      <td>第三方评论<br/>平台加载HTML</td>
+      <td><textarea name="wpNyarukoCommentBox" cols="64" rows="5" maxlength="2000" id="wpNyarukoCommentBox"><?php echo(@$wpNyarukoOption['wpNyarukoCommentBox']); ?></textarea></td>
+    </tr>
+    <tr>
+      <td>获得当前网<br/>页的二维码</td>
+      <td>直接插入以下代码到需要的地方即可（二维码选项见README.md）：<br/><code>&lt;div id="qrview" class="qrview"&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;qr();&lt;/script&gt;</code><br/>也可以直接使用本主题提供的「当前页面二维码」小工具。</td>
+    </tr>
+    <tr>
+      <td>页头信息HTML<br/>额外加载文件HTML</td>
+      <td><textarea name="wpNyarukoHeader" cols="64" rows="10" maxlength="2000" id="wpNyarukoHeader"><?php echo(@$wpNyarukoOption['wpNyarukoHeader']); ?></textarea></td>
+    </tr>
+    <tr>
+      <td>页脚内容HTML<br/>备案号HTML<br/>统计HTML</td>
+      <td><textarea name="wpNyarukoFooter" cols="64" rows="10" maxlength="2000" id="wpNyarukoFooter"><?php echo(@$wpNyarukoOption['wpNyarukoFooter']); ?></textarea></td>
+    </tr>
+    <tr>
+      <td>二维码<br/>默认样式</td>
+      <td>
+      尺寸：
+      <select name="wpNyarukoQRtype">
+      <?php 
+      $selected = ' selected="selected"';
+      $wpNyarukoQRtype = 10;
+      if(@$wpNyarukoOption['wpNyarukoQRtype']!='') {
+        $wpNyarukoQRtype = (int)($wpNyarukoOption['wpNyarukoQRtype']);
+      }
+      for ($i=1; $i <= 40; $i++) {
+        if ($i != $wpNyarukoQRtype) {
+          echo '<option value="'.$i.'">'.$i.'</option>';
+        } else {
+          echo '<option value="'.$wpNyarukoQRtype.'" selected="selected">'.$wpNyarukoQRtype.'</option>';
+        }
+      }
+      ?>
+      </select>
+      容错：
+      <?php 
+      $wpNyarukoQRecorrection = "L";
+      if(@$wpNyarukoOption['wpNyarukoQRecorrection']!='') {
+        $wpNyarukoQRecorrection = $wpNyarukoOption['wpNyarukoQRecorrection'];
+      }
+      ?>
+      <select name="wpNyarukoQRecorrection">
+        <option value="L"<?php if($wpNyarukoQRecorrection=="L") echo $selected; ?>>弱(7%)</option>
+        <option value="M"<?php if($wpNyarukoQRecorrection=="M") echo $selected; ?>>标(15%)</option>
+        <option value="Q"<?php if($wpNyarukoQRecorrection=="Q") echo $selected; ?>>中(25%)</option>
+        <option value="H"<?php if($wpNyarukoQRecorrection=="H") echo $selected; ?>>强(30%)</option>
+      </select>
+      模式：
+      <?php 
+      $wpNyarukoQRmode = "Byte";
+      if(@$wpNyarukoOption['wpNyarukoQRmode']!='') {
+        $wpNyarukoQRmode = $wpNyarukoOption['wpNyarukoQRmode'];
+      }
+      ?>
+      <select name="wpNyarukoQRmode">
+        <option value="Numeric"<?php if($wpNyarukoQRmode=="Numeric") echo $selected; ?>>数字</option>
+        <option value="Alphanumeric"<?php if($wpNyarukoQRmode=="Alphanumeric") echo $selected; ?>>字母数字</option>
+        <option value="Byte"<?php if($wpNyarukoQRmode=="Byte") echo $selected; ?>>字节</option>
+        <option value="Kanji"<?php if($wpNyarukoQRmode=="Kanji") echo $selected; ?>>汉字</option>
+      </select>
+      编码：
+      <?php 
+      $wpNyarukoQRecode = "UTF-8";
+      if(@$wpNyarukoOption['wpNyarukoQRecode']!='') {
+        $wpNyarukoQRecode = $wpNyarukoOption['wpNyarukoQRecode'];
+      }
+      ?>
+      <select name="wpNyarukoQRecode">
+        <!--<option value="default"<?php if($wpNyarukoQRecode=="default") echo $selected; ?>>默认编码</option>
+        <option value="SJIS"<?php if($wpNyarukoQRecode=="SJIS") echo $selected; ?>>日文SJIS</option>-->
+        <option value="UTF-8"<?php if($wpNyarukoQRecode=="UTF-8") echo $selected; ?>>通用UTF-8</option>
+      </select>
+      <br>输出：
+      <?php 
+      $wpNyarukoQRimgtype = "UTF-8";
+      if(@$wpNyarukoOption['wpNyarukoQRimgtype']!='') {
+        $wpNyarukoQRimgtype = $wpNyarukoOption['wpNyarukoQRimgtype'];
+      }
+      ?>
+      <select name="wpNyarukoQRimgtype">
+        <option value="tab"<?php if($wpNyarukoQRimgtype=="tab") echo $selected; ?>>创建一个填充表格(矢量并且清晰,但不能像图片一样处理)</option>
+        <option value="svg"<?php if($wpNyarukoQRimgtype=="svg") echo $selected; ?>>SVG图形(矢量并且清晰,可像图片一样处理,但不是所有浏览器都支持)</option>
+        <option value="img"<?php if($wpNyarukoQRimgtype=="img") echo $selected; ?>>标准图片(生成一张标准的图片,兼容性最佳,可以图片另存为等操作)</option>
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td>在控制台输<br/>出一段内容</td>
+      <td><input name="wpNyarukoConsoleLog" type="text" id="wpNyarukoConsoleLog" value="<?php echo(@$wpNyarukoOption['wpNyarukoConsoleLog']); ?>" size="64" maxlength="512" /><br/><input name="wpNyarukoConsoleLogT" type="checkbox" id="wpNyarukoConsoleLogT" <?php if(@$wpNyarukoOption['wpNyarukoConsoleLogT']!='')echo('checked'); ?> />在输出的信息后面加入页面执行时间</td>
     </tr>
     <tr>
       <td>阻止不兼<br/>容浏览器</td>
