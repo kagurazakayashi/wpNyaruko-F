@@ -17,9 +17,14 @@ $nposts = get_posts(array(
 		<div class="racing_item" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
 			<div class="racing_list_left">
 				<div class="racing_list_left_class"><?php
-					$ntypename = wp_get_post_tags($npost->ID)[0]->name;
-					if ($ntypename == "") {
+					$tags = wp_get_post_tags($npost->ID);
+					if (count($tags) == 0) {
 						$ntypename = $typename;
+					} else {
+						$ntypename = $tags[0]->name;
+						if ($ntypename == "") {
+							$ntypename = $typename;
+						}
 					}
 					echo $ntypename;
 				?></div>

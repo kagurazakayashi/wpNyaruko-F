@@ -1,4 +1,4 @@
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 840px) {
     #homepage_titlebox {
         text-align: center;
     }
@@ -14,7 +14,9 @@
     }
     #homepage_mobilemenubtn {
         display: block;
-        
+    }
+    #homepage_topimgbox {
+        font-size: 10px;
     }
     .racing_bigpicnews {
         height: 300px;
@@ -78,6 +80,6 @@
         font-size: 9pt;
     }
 }
-@media screen and (min-width: 761px) {
+@media screen and (min-width: 841px) {
     
 }

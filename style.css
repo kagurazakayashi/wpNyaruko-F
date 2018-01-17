@@ -44,6 +44,7 @@ a:active {
     color: #FFF;
     z-index: 10;
     text-shadow: 0px 0px 10px #000;
+    font-size: 12pt;
 }
 #homepage_titlebox {
     position: absolute;
@@ -400,7 +401,7 @@ a:active {
 }
 .racing_list_tlr {
     display: table-cell;
-    width: 5%;
+    width: 10%;
 }
 .racing_list_left{
     width: 352px;
@@ -416,9 +417,9 @@ a:active {
     line-height: 22px;
     font-size: 10px;
     text-align: center;
-    background: #222222;
+    background: #FFF;
     opacity:0.8;
-    color: #fff;
+    color: #000;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -746,7 +747,10 @@ select {
 .carousel-example {
     padding: 20px 0 50px 0;
 }
-
+.carousel-example img {
+    /* box-shadow: 0px 3px 3px #999; */
+    border-radius: 5px;
+}
 #complicated-content-carousel .carousel-control {
 	position: absolute;
 	top: -20px;
@@ -816,8 +820,8 @@ a.carousel-control.right {
     background-position: center;
     text-align: center;
     /* line-height: 600px; */
-    box-shadow: 0px 0px 5px #000;
-    border-radius: 10px;
+    box-shadow: 0px 3px 3px #999;
+    border-radius: 5px;
     /* overflow: hidden; */
 }
 .image_169_div{
@@ -871,9 +875,8 @@ a.carousel-control.right {
 .racing_single_single img {
     width: 100% !important;
     height: auto !important;
-    padding: 5px;
-    box-shadow: 0px 0px 5px #000;
-    border-radius: 10px;
+    box-shadow: 0px 3px 3px #999;
+    border-radius: 5px;
 }
 .racing_single_info {
     width: 100%;

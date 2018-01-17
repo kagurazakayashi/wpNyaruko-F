@@ -15,12 +15,12 @@
     font-size: 12pt;
     line-height: 30px;
 }
-#colmgr_indexcol {
+#wpNyarukoIndexModule {
     width: 500px;
     text-align: center;
     display: none;
 }
-#colmgr_tb button, #colmgr_tb select, #colmgr_indexcol, .colmgr_abtn, #colmgr_title button {
+#colmgr_tb button, #colmgr_tb select, #wpNyarukoIndexModule, .colmgr_abtn {
     height: 30px;
     background-color: #FFF;
     border:1px solid skyblue;
@@ -29,7 +29,7 @@
     cursor: pointer;
     color: #000;
 }
-#colmgr_tb button:hover, #colmgr_tb select:hover, #colmgr_indexcol:hover, .colmgr_abtn:hover {
+#colmgr_tb button:hover, #colmgr_tb select:hover, #wpNyarukoIndexModule:hover, .colmgr_abtn:hover {
     color: blue;
 }
 .colmgr_blo_selected {

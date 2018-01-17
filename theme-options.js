@@ -1,7 +1,9 @@
 var colmgr_blo_val = -1;
 var colmgr_bln_val = -1;
 var colmgr_blo_stype = 0;
-var colmgr_blo_snum = -1;
+var colmgr_blo_snum = 10;
+var colmgr_blo_names = [];
+var colmgr_blo_stypes = [];
 var colmgr_cmd = "";
 function colmgr_blo_click(thisdiv) {
     var classname0 = thisdiv.attr("class").split(" ")[0];
@@ -14,6 +16,12 @@ function colmgr_blo_click(thisdiv) {
         thisdiv.attr("class","colmgr_bln colmgr_blo_selected");
         colmgr_bln_val = parseInt(thisdiv.attr("id").split("_")[2]);
     }
+}
+function colmgr_blo_stypeonchange(value) {
+    colmgr_blo_stype = value.split(" ");
+}
+function colmgr_blo_snumonchange(value) {
+    colmgr_blo_snum = value.split(" ");
 }
 function colmgr_blnmgr_click(mode) {
     if (colmgr_bln_val >= 0) {
@@ -71,10 +79,11 @@ function colmgr_blo_cmd2gui() {
             var ncolmgr_blo_val = iteminfo[0];
             var ncolmgr_blo_stype = iteminfo[1];
             var ncolmgr_blo_snum = iteminfo[2];
-            if (ncolmgr_blo_snum < 0) {
-                ncolmgr_blo_snum = "默认";
+            var show_ncolmgr_blo_snum = "";
+            if (ncolmgr_blo_snum >= 0) {
+                show_ncolmgr_blo_snum = '，显示 '+ncolmgr_blo_snum+' 篇</div>';
             }
-            html += '<div class="colmgr_bln" id="colmgr_bln_'+i+'" onclick="colmgr_blo_click($(this));"><b>栏目名称</b><hr>样式代码：'+ncolmgr_blo_val+'<br/>分类代码：'+ncolmgr_blo_stype+'，显示数量：'+ncolmgr_blo_snum+'</div>';
+            html += '<div class="colmgr_bln" id="colmgr_bln_'+i+'" onclick="colmgr_blo_click($(this));"><b>'+colmgr_blo_names["id"+ncolmgr_blo_stype.toString()]+'</b><br/>'+colmgr_blo_stypes[ncolmgr_blo_val]+show_ncolmgr_blo_snum+'</div>';
         }
     }
     var colmgr_nowtb = $("#colmgr_nowtb");

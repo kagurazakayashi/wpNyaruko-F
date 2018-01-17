@@ -1,4 +1,14 @@
 <?php
+$wpNyarukoOption = get_option('wpNyaruko_options');
+if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
+  error_reporting(E_ALL);
+  ini_set('display_errors', '1');
+} else {
+  ini_set('display_errors', '0');
+}
+if(is_admin()) {
+  require ('theme-options.php');
+}
 /** widgets */
 if( function_exists('register_sidebar') ) {
 	register_sidebar(array(
