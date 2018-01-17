@@ -2,8 +2,14 @@
 function getOptions() {
     $wpNyarukoOption = get_option('wpNyaruko_options'); //SELECT * FROM `cxc_options` WHERE `option_name` = 'wpNyaruko_options'
     echo '<script type="text/javascript" src="/resources/jquery.min.js"></script><script type="text/javascript" src="'.get_bloginfo("template_url").'/theme-options.js"></script>';
+    //读取设置
     if (!is_array($wpNyarukoOption)) {
         $wpNyarukoOption['wpNyarukoTest'] = '此处可以任意填写一些笔记';
+        $wpNyarukoOption['wpNyarukoPHPDebug'] = '';
+        $wpNyarukoOption['wpNyarukoBanBrowser'] = '';
+        $wpNyarukoOption['wpNyarukoWordlimit'] = '300';
+        $wpNyarukoOption['wpNyarukoWLInfo'] = ' ... [阅读全文]';
+        $wpNyarukoOption['wpNyarukoIndexModule'] = '';
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -14,15 +20,21 @@ function init() {
     if(isset($_GET['reset'])) {
       delete_option('wpNyaruko_options');
     }
+    //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
         @$wpNyarukoOption['wpNyarukoTest'] = stripslashes($_POST['wpNyarukoTest']);
+        @$wpNyarukoOption['wpNyarukoBanBrowser'] = stripslashes($_POST['wpNyarukoBanBrowser']);
+        @$wpNyarukoOption['wpNyarukoPHPDebug'] = stripslashes($_POST['wpNyarukoPHPDebug']);
+        @$wpNyarukoOption['wpNyarukoWordlimit'] = stripslashes($_POST['wpNyarukoWordlimit']);
+        @$wpNyarukoOption['wpNyarukoWLInfo'] = stripslashes($_POST['wpNyarukoWLInfo']);
+        @$wpNyarukoOption['wpNyarukoIndexModule'] = stripslashes($_POST['wpNyarukoIndexModule']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
     }
   }
-    add_theme_page('wpNyaruko Theme Options','wpNyaruko 主题选项', 'edit_themes', basename(__FILE__),  'display');
+  add_theme_page('wpNyaruko Theme Options','wpNyaruko 主题选项', 'edit_themes', basename(__FILE__),  'display');
 }
 function display() {
 ?>
@@ -41,6 +53,7 @@ if(!is_admin()) {
   echo '<p>欢迎使用 wpNyaruko 主题，<br/>请使用管理员权限登录来继续设置。</p><hr><p>';
 } else {
   $wpNyarukoOption = getOptions();
+  //修改设置
 ?>
 <form action="#" method="post" enctype="multipart/form-data" name="op_form" id="op_form">
     <table border="0" cellspacing="0" cellpadding="10">
@@ -54,7 +67,7 @@ if(!is_admin()) {
       <td>
       <div id="colmgr_title"><span>
         <!-- wpNyaruko-N 主页模块设定<hr> -->
-        <input type="text" id="wpNyarukoIndexModule" name="indexcol" onfocus="this.select();" />
+        <input type="text" id="wpNyarukoIndexModule" name="wpNyarukoIndexModule" onfocus="this.select();" value="<?php echo(@$wpNyarukoOption['wpNyarukoIndexModule']); ?>"/>
     </span></div>
     <div id="colmgr_tb">
         <div class="colmgr_tb_lr cell"></div>
@@ -72,7 +85,10 @@ if(!is_admin()) {
                 <p>栏目分类<br/>
                     <select id="colmgr_blo_stype" onchange="colmgr_blo_stypeonchange(this.value);">
                     <?php $categories = get_categories(); 
-                    for ($i=0; $i <= count($categories); $i++) { 
+                    for ($i=0; $i <= count($categories); $i++) {
+                        if (!array_key_exists($i,$categories)) {
+                            continue;
+                        }
                         $nowcategories = $categories[$i];
                         $selected = "";
                         if ($i == 0) {
@@ -117,6 +133,18 @@ if(!is_admin()) {
     </div>
     <!-- <div id="colmgr_title"><hr></div> -->    
       </td>
+    </tr>
+    <tr>
+      <td>文章概览</td>
+      <td>文章列表中只预览前<input name="wpNyarukoWordlimit" type="text" id="wpNyarukoWordlimit" value="<?php echo(@$wpNyarukoOption['wpNyarukoWordlimit']); ?>" size="3" maxlength="3" />个字，并在后面添加<input name="wpNyarukoWLInfo" type="text" id="wpNyarukoWLInfo" value="<?php echo(@$wpNyarukoOption['wpNyarukoWLInfo']); ?>" size="20" maxlength="20" /></td>
+    </tr>
+    <tr>
+      <td>阻止不兼<br/>容浏览器</td>
+      <td>如果主题认为当前浏览器是不兼容的,则转到以下网页：（留空则不阻止）<br/><input name="wpNyarukoBanBrowser" type="text" id="wpNyarukoBanBrowser" value="<?php echo(@$wpNyarukoOption['wpNyarukoBanBrowser']); ?>" size="64" maxlength="512" /></td>
+    </tr>
+    <tr>
+      <td>PHP调试</td>
+      <td><input name="wpNyarukoPHPDebug" type="checkbox" id="wpNyarukoPHPDebug" <?php if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='')echo('checked'); ?> />显示所有PHP警告和错误(display_errors,E_ALL),不建议在生产环境使用</td>
     </tr>
     </tbody>
     </table>

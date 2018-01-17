@@ -1,10 +1,14 @@
 <?php
 $wpNyarukoOption = get_option('wpNyaruko_options');
-if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
+if($wpNyarukoOption['wpNyarukoPHPDebug']!='') {
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
 } else {
   ini_set('display_errors', '0');
+}
+if($wpNyarukoOption['wpNyarukoBanBrowser']!='') {
+	include_once("broswerchk.php");
+	broswerchkto($wpNyarukoOption['wpNyarukoBanBrowser']);
 }
 if(is_admin()) {
   require ('theme-options.php');
@@ -21,13 +25,15 @@ if( function_exists('register_sidebar') ) {
 }
 // 获取预览
 function clearcontent($content) {
+	$wpNyarukoOption = get_option('wpNyaruko_options');
 	$replacef = ['/\[video.*?\]/','/\[\/video.*?\]/'];
 	foreach ($replacef as $replacen){ 
 		$content = preg_replace($replacen,'　',$content);
 	}
 	$content = strip_tags($content);
-	if (strlen($content) >= 300) {
-		$content = substr($content,0,300)." ... [阅读全文]";
+	$wpNyarukoWordlimit = intval($wpNyarukoOption['wpNyarukoWordlimit']);
+	if (strlen($content) >= $wpNyarukoWordlimit) {
+		$content = substr($content,0,$wpNyarukoWordlimit).$wpNyarukoOption['wpNyarukoWLInfo'];
 	}
 	echo $content;
 }

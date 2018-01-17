@@ -5,6 +5,10 @@ var colmgr_blo_snum = 10;
 var colmgr_blo_names = [];
 var colmgr_blo_stypes = [];
 var colmgr_cmd = "";
+$(document).ready(function(){
+    colmgr_cmd = $("#wpNyarukoIndexModule").attr("value");
+    colmgr_blo_cmd2gui();
+});
 function colmgr_blo_click(thisdiv) {
     var classname0 = thisdiv.attr("class").split(" ")[0];
     if (classname0 == "colmgr_blo") {
@@ -63,7 +67,7 @@ function colmgr_blnset_click(mode) {
     }
 }
 function colmgr_blo_add() {
-    if (colmgr_blo_val > 0) {
+    if (colmgr_blo_val >= 0) {
         var blocmd = colmgr_blo_val + "_" + colmgr_blo_stype + "_" + colmgr_blo_snum + "|";
         colmgr_cmd += blocmd;
         $("#wpNyarukoIndexModule").attr("value",colmgr_cmd);

@@ -2,7 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<?php
+$wpNyarukoOption = get_option('wpNyaruko_options');
+if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
+    echo "<!-- wpNyaruko DEBUG MODE -->";
+}
+?>
+<?php include_once("KagurazakaYashi.php"); ?>
 <title><?php if ( is_home() ) {
 		bloginfo('name'); echo " - "; bloginfo('description');
 	} elseif ( is_category() ) {
@@ -16,7 +22,7 @@
 	} else {
 		wp_title('',true);
 	} ?></title>
-<!-- Stylesheets -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php bloginfo("template_url"); ?>/style-mobile.css" type="text/css" media="screen" />
 <link href="resources/bootstrap.min.css" rel="stylesheet">
