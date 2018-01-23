@@ -79,7 +79,6 @@ function disablemedia() {
         nyarukoplayer_disable(true);
     }
 }
-
 function picsetting(imgclass,imgDivW,imgDivH){
     for (var i = 0; i < $(imgclass).length; i++) {
         var img = $(imgclass)[i];
@@ -169,4 +168,49 @@ function image169_H() {
     var imageleft = (i169width - imagew) / 2;
     $(image_16_9_div).height(i169height);
     $(image_16_9).css('left',imageleft);
+}
+function snsiconover(iid) {
+    let ta = $("#homepage_snsa_"+iid);
+    qr(ta.attr("href"),"homepage_snsqrshow","img","10","","");
+    $("#homepage_snsqrshowbox").css("display","block");
+}
+function snsiconout(iid) {
+    let ta = $("#homepage_snsa_"+iid);
+    qr(ta.attr("href"),"homepage_snsqrshow","img","10","","");
+    $("#homepage_snsqrshowbox").css("display","none");
+}
+function qr(text="",innerid="qrview",imgtype="",type="",errorcorrection="",mode="") {
+	if (text == "") {
+		text = window.location.href;
+	}
+	if (qrdef.length > 0) {
+		if (imgtype == "") {
+			imgtype = qrdef[4];
+		}
+		if (type == "") {
+			type = qrdef[0];
+		}
+		if (errorcorrection == "") {
+			errorcorrection = qrdef[1];
+		}
+		if (mode == "") {
+			mode = qrdef[2];
+		}
+	}
+	if (imgtype == "" || type == "" || errorcorrection == "" || mode == "") {
+		return;
+	}
+	var qrgen = qrcode(type, errorcorrection);
+	qrgen.addData(text, mode);
+	qrgen.make();
+	var innerdiv = document.getElementById(innerid);
+	if (imgtype == "tab") {
+		innerdiv.innerHTML = qrgen.createTableTag();
+	}
+	if (imgtype == "svg") {
+		innerdiv.innerHTML = qrgen.createSvgTag();
+	}
+	if (imgtype == "img") {
+		innerdiv.innerHTML = qrgen.createImgTag();
+	}
 }

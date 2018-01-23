@@ -185,7 +185,7 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>社交网络用户名</td>
-      <td>新浪微博：http://weibo.com/<input name="wpNyarukoSNSWeibo" type="text" id="wpNyarukoSNSWeibo" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeibo']); ?>" size="16" maxlength="16" /><br/>微信公众号链接地址(显示为二维码)：http://weixin.qq.com/q/<input name="wpNyarukoSNSWeChat" type="text" id="wpNyarukoSNSWeChat" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeChat']); ?>" size="16" maxlength="32" /><br/>填写链接后段的用户名。如果填写完整网址，则转换为二维码。</td>
+      <td>新浪微博：http://weibo.com/<input name="wpNyarukoSNSWeibo" type="text" id="wpNyarukoSNSWeibo" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeibo']); ?>" size="16" maxlength="16" /><br/>微信公众号链接地址(显示为二维码)：http://weixin.qq.com/q/<input name="wpNyarukoSNSWeChat" type="text" id="wpNyarukoSNSWeChat" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeChat']); ?>" size="16" maxlength="32" /></td>
     </tr>
     <tr>
       <td>主页关键字</td>

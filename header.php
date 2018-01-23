@@ -96,6 +96,25 @@ $keywords = trim(strip_tags($keywords));
 <div id="wrapper">
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.min.js"></script>
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
+	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/qrcode.js"></script>
+	<?php
+	//QRdef
+	if ($wpNyarukoOption['wpNyarukoQRtype'] && $wpNyarukoOption['wpNyarukoQRtype'] != "" &&
+	$wpNyarukoOption['wpNyarukoQRecorrection'] && $wpNyarukoOption['wpNyarukoQRecorrection'] != "" &&
+	$wpNyarukoOption['wpNyarukoQRmode'] && $wpNyarukoOption['wpNyarukoQRmode'] != "" &&
+	$wpNyarukoOption['wpNyarukoQRecode'] && $wpNyarukoOption['wpNyarukoQRecode'] != "" &&
+	$wpNyarukoOption['wpNyarukoQRimgtype'] && $wpNyarukoOption['wpNyarukoQRimgtype'] != ""
+	) {
+		echo '<script type="text/javascript">var qrdef = [';
+		echo $wpNyarukoOption['wpNyarukoQRtype'].',';
+		echo '"'.$wpNyarukoOption['wpNyarukoQRecorrection'].'",';
+		echo '"'.$wpNyarukoOption['wpNyarukoQRmode'].'",';
+		echo '"'.$wpNyarukoOption['wpNyarukoQRecode'].'",';
+		echo '"'.$wpNyarukoOption['wpNyarukoQRimgtype'].'"];</script>';
+	} else {
+		echo '<script type="text/javascript">var qrdef = [];</script>';
+	}
+	?>
 	<!-- 1顶端大图 -->
 	<div id="nyarukoplayer_loading">
 		<noscript>错误：页面没有成功运行，请允许 javascript 以获得最佳浏览体验。</noscript>
@@ -115,10 +134,11 @@ $keywords = trim(strip_tags($keywords));
 				<span id="homepage_foot">
 					© 北京未来赛车文化有限公司
 				</span>
+					<span id="homepage_snsqrshowbox"><div id="homepage_snsqrshow"></div>点击图标可直接打开</span>
 				<span id="homepage_sociallist">
-					<img src="homepage/weibo.png" alt="访问我们的新浪微博">
-					<span>　</span>
-					<img src="homepage/wechat.png" alt="关注我们的微信公众号">
+					<a href="http://weibo.com/<?php echo $wpNyarukoOption['wpNyarukoSNSWeibo']; ?>" id="homepage_snsa_weibo" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_weibo" src="homepage/weibo.png" alt="访问我们的新浪微博" onMouseOver="snsiconover('weibo');" onMouseOut="snsiconout('weibo');"></a>
+					<span>&emsp;</span>
+					<a href="http://weixin.qq.com/q/<?php echo $wpNyarukoOption['wpNyarukoSNSWeChat']; ?>" id="homepage_snsa_wechat" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_wechat" src="homepage/wechat.png" alt="关注我们的微信公众号" onMouseOver="snsiconover('wechat');" onMouseOut="snsiconout('wechat');"></a>
 				</span>
 			</div>
 		<?php
