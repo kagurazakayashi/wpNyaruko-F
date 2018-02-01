@@ -1,7 +1,12 @@
 <?php 
 function getOptions() {
     $wpNyarukoOption = get_option('wpNyaruko_options'); //SELECT * FROM `cxc_options` WHERE `option_name` = 'wpNyaruko_options'
-    echo '<script type="text/javascript" src="/resources/jquery.min.js"></script><script type="text/javascript" src="'.get_bloginfo("template_url").'/theme-options.js"></script>';
+?>
+<script type="text/javascript" src="/resources/jquery.min.js"></script>
+<link rel="Stylesheet" type="text/css" href="<?php bloginfo("template_url"); ?>/lib/colorpickerthemes.css" />
+<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/lib/colorpicker.min.js"></script>
+<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/theme-options.js"></script>
+<?php
     //读取设置
     if (!is_array($wpNyarukoOption)) {
         $wpNyarukoOption['wpNyarukoTest'] = '此处可以任意填写一些笔记';
@@ -81,6 +86,39 @@ function display() {
 ?>
 <link rel="stylesheet" href="<?php bloginfo("template_url") ?>/style-admin.css" type="text/css" media="screen" />
 <!-- <img id="optionbg" class="optionfull" src="<?php bloginfo("template_url") ?>/nya.jpg" /> -->
+
+<div class="colorpickerbox">
+  <div class="colorpickertitle0">
+    <div class="colorpickertitle1">wpNyaruko 颜色选择器</div>
+    <div class="colorpickertitle2">
+      <a href="javascript:colorpickerclose(true);" title="确定">√</a>&nbsp;<a href="javascript:colorpickerclose(false);" title="取消">×</a>
+    </div>
+  </div>
+  <div id="fcp_yashi" class="flexicolorpicker"></div>
+  <div class="fcp2_cinfo0">
+    <div class="fcp2_cinfo1">&emsp;</div>
+    <div class="fcp2_cinfo1">
+    红色<br/>绿色<br/>蓝色<br/>色度<br/>饱和<br/>明亮<br/>哈希
+    </div>
+    <div class="fcp2_cinfo1">&emsp;</div>
+    <div class="fcp2_cinfo1">
+      <input id="fcp_rgb_r" type="number" value="" /><br/>
+      <input id="fcp_rgb_g" type="number" value="" /><br/>
+      <input id="fcp_rgb_b" type="number" value="" /><br/>
+      <input id="fcp_hsv_h" type="number" value="" /><br/>
+      <input id="fcp_hsv_s" type="number" value="" /><br/>
+      <input id="fcp_hsv_v" type="number" value="" /><br/>
+      <input id="fcp_hex" type="text" value="" size=7 maxlength=7 />
+    </div>
+  </div>
+  <div class="fcp2_sy3">
+    <div class="fcp2_sy0">
+      <div class="fcp2_sy1">原始颜色</div>
+      <div class="fcp2_sy1" id="fcp_color">新的颜色</div>
+    </div>
+  </div>
+</div>
+
 </div><div id="optionbg2" class="optionfull"></div>
 <div id="optionbox">
 <?php 
@@ -101,7 +139,15 @@ if(!is_admin()) {
     <tbody>
     <tr>
       <td>笔记(不呈现)</td>
-      <td><input name="wpNyarukoTest" type="text" id="wpNyarukoTest" value="<?php echo(@$wpNyarukoOption['wpNyarukoTest']); ?>" size="64" maxlength="128" /></td>
+      <td><input name="wpNyarukoTest" type="text" id="wpNyarukoTest" value="<?php echo(@$wpNyarukoOption['wpNyarukoTest']); ?>" size=64 maxlength=128 /></td>
+    </tr>
+    <tr>
+      <td>正在进行<br/>活动提示</td>
+      <td>
+      活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="" size=55 maxlength=128 /><br/>
+      图片网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" type="text" value="" size=55 maxlength=128 /><br/>
+      延伸颜色：#<input name="wpNyarukoFNewsColor" id="wpNyarukoFNewsColor" class="chcolor" type="text" value="ffcc00" size=6 maxlength=6 /><br/>
+      </td>
     </tr>
     <tr>
       <td>主页模块<br/>设定</td>
@@ -216,16 +262,16 @@ if(!is_admin()) {
       <td><textarea name="wpNyarukoCommentBox" cols="64" rows="5" maxlength="2000" id="wpNyarukoCommentBox"><?php echo(@$wpNyarukoOption['wpNyarukoCommentBox']); ?></textarea></td>
     </tr>
     <tr>
-      <td>获得当前网<br/>页的二维码</td>
-      <td>直接插入以下代码到需要的地方即可（二维码选项见README.md）：<br/><code>&lt;div id="qrview" class="qrview"&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;qr();&lt;/script&gt;</code><br/>也可以直接使用本主题提供的「当前页面二维码」小工具。</td>
-    </tr>
-    <tr>
       <td>页头信息HTML<br/>额外加载文件HTML</td>
       <td><textarea name="wpNyarukoHeader" cols="64" rows="10" maxlength="2000" id="wpNyarukoHeader"><?php echo(@$wpNyarukoOption['wpNyarukoHeader']); ?></textarea></td>
     </tr>
     <tr>
       <td>页脚内容HTML<br/>备案号HTML<br/>统计HTML</td>
       <td><textarea name="wpNyarukoFooter" cols="64" rows="10" maxlength="2000" id="wpNyarukoFooter"><?php echo(@$wpNyarukoOption['wpNyarukoFooter']); ?></textarea></td>
+    </tr>
+    <tr>
+      <td>获得当前网<br/>页的二维码</td>
+      <td>直接插入以下代码到需要的地方即可（二维码选项见README.md）：<br/><code>&lt;div id="qrview" class="qrview"&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;qr();&lt;/script&gt;</code><br/>也可以直接使用本主题提供的「当前页面二维码」小工具。</td>
     </tr>
     <tr>
       <td>二维码<br/>默认样式</td>

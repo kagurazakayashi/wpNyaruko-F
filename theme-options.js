@@ -8,6 +8,7 @@ var colmgr_cmd = "";
 $(document).ready(function(){
     colmgr_cmd = $("#wpNyarukoIndexModule").attr("value");
     colmgr_blo_cmd2gui();
+    flexicolorpickerinit();
 });
 function colmgr_blo_click(thisdiv) {
     var classname0 = thisdiv.attr("class").split(" ")[0];
@@ -96,4 +97,41 @@ function colmgr_blo_cmd2gui() {
     } else {
         colmgr_nowtb.html(html);
     }
+}
+var fcpDefault,fcpiHex,fcpiR,fcpiG,fcpiB,fcpiH,fcpiS,fcpiV,fcpcolor = null;
+var fcpinitialHex = '#f4329c';
+function flexicolorpickerinit() {
+    fcpDefault = ColorPicker(document.getElementById('fcp_yashi'), updateInputs);
+    fcpiHex = document.getElementById('fcp_hex');
+    fcpiR = document.getElementById('fcp_rgb_r');
+    fcpiG = document.getElementById('fcp_rgb_g');
+    fcpiB = document.getElementById('fcp_rgb_b');
+    fcpiH = document.getElementById('fcp_hsv_h');
+    fcpiS = document.getElementById('fcp_hsv_s');
+    fcpiV = document.getElementById('fcp_hsv_v');
+    fcpcolor = document.getElementById('fcp_color');
+    fcpinitialHex = '#f4329c';
+    fcpDefault.setHex(fcpinitialHex);
+    fcpiHex.onchange = function() { fcpDefault.setHex(fcpiHex.value); };
+    fcpiR.onchange = function() { fcpDefault.setHex(ColorPicker.rgb2hex({ r: fcpiR.value, g: fcpiG.value, b: fcpiB.value })); }
+    fcpiG.onchange = function() { fcpDefault.setHex(ColorPicker.rgb2hex({ r: fcpiR.value, g: fcpiG.value, b: fcpiB.value })); }
+    fcpiB.onchange = function() { fcpDefault.setHex(ColorPicker.rgb2hex({ r: fcpiR.value, g: fcpiG.value, b: fcpiB.value })); }
+    fcpiH.onchange = function() { fcpDefault.setHex(ColorPicker.hsv2hex({ h: fcpiH.value, s: fcpiS.value, v: fcpiV.value })); }
+    fcpiS.onchange = function() { fcpDefault.setHex(ColorPicker.hsv2hex({ h: fcpiH.value, s: fcpiS.value, v: fcpiV.value })); }
+    fcpiV.onchange = function() { fcpDefault.setHex(ColorPicker.hsv2hex({ h: fcpiH.value, s: fcpiS.value, v: fcpiV.value })); }
+}
+function colorpickerclose(save) {
+    $(".colorpickerbox").css("display","none");
+}
+function updateInputs(hex) {
+    var rgb = ColorPicker.hex2rgb(hex);
+    var hsv = ColorPicker.hex2hsv(hex);
+    fcpiHex.value = hex;
+    fcpiR.value = rgb.r;
+    fcpiG.value = rgb.g;
+    fcpiB.value = rgb.b;
+    fcpiH.value = hsv.h.toFixed(2);
+    fcpiS.value = hsv.s.toFixed(2);
+    fcpiV.value = hsv.v.toFixed(2);
+    fcpcolor.style.backgroundColor = hex;
 }

@@ -96,7 +96,7 @@ $keywords = trim(strip_tags($keywords));
 <div id="wrapper">
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.min.js"></script>
 	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
-	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/qrcode.js"></script>
+	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/lib/qrcode.js"></script>
 	<?php
 	//QRdef
 	if ($wpNyarukoOption['wpNyarukoQRtype'] && $wpNyarukoOption['wpNyarukoQRtype'] != "" &&
