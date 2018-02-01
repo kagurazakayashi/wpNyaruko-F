@@ -5,10 +5,14 @@ var colmgr_blo_snum = 10;
 var colmgr_blo_names = [];
 var colmgr_blo_stypes = [];
 var colmgr_cmd = "";
+var colorpickerbindid = null;
 $(document).ready(function(){
     colmgr_cmd = $("#wpNyarukoIndexModule").attr("value");
     colmgr_blo_cmd2gui();
     flexicolorpickerinit();
+    $(".chcolor").focus(function(){
+        chcolorclick($(this));
+    });
 });
 function colmgr_blo_click(thisdiv) {
     var classname0 = thisdiv.attr("class").split(" ")[0];
@@ -119,9 +123,33 @@ function flexicolorpickerinit() {
     fcpiH.onchange = function() { fcpDefault.setHex(ColorPicker.hsv2hex({ h: fcpiH.value, s: fcpiS.value, v: fcpiV.value })); }
     fcpiS.onchange = function() { fcpDefault.setHex(ColorPicker.hsv2hex({ h: fcpiH.value, s: fcpiS.value, v: fcpiV.value })); }
     fcpiV.onchange = function() { fcpDefault.setHex(ColorPicker.hsv2hex({ h: fcpiH.value, s: fcpiS.value, v: fcpiV.value })); }
+    var wdiv = $(".colorpickerbox");
+      $(".colorpickertitle1").bind("mousedown",function(event){
+        var offset_x = wdiv[0].offsetLeft;
+        var offset_y = wdiv[0].offsetTop;
+        var mouse_x = event.pageX;
+        var mouse_y = event.pageY;
+        $(document).bind("mousemove",function(ev){
+          var _x = ev.pageX - mouse_x;
+          var _y = ev.pageY - mouse_y;
+          var now_x = (offset_x + _x ) + "px";
+          var now_y = (offset_y + _y ) + "px";
+          wdiv.css({
+            top:now_y,
+            left:now_x
+          });
+        });
+      });
+      $(document).bind("mouseup",function(){
+        $(this).unbind("mousemove");
+      });
 }
 function colorpickerclose(save) {
+    if (save && colorpickerbindid != null) {
+        $("#"+colorpickerbindid).attr("value",fcp_hex.value.substring(1));
+    }
     $(".colorpickerbox").css("display","none");
+    colorpickerbindid = null;
 }
 function updateInputs(hex) {
     var rgb = ColorPicker.hex2rgb(hex);
@@ -134,4 +162,12 @@ function updateInputs(hex) {
     fcpiS.value = hsv.s.toFixed(2);
     fcpiV.value = hsv.v.toFixed(2);
     fcpcolor.style.backgroundColor = hex;
+}
+function chcolorclick(div) {
+    colorpickerbindid = div.attr("id");
+    var thash = "#"+div.attr("value");
+    $("#colorpickertitleto").text(div.attr("alt"));
+    fcpDefault.setHex(thash);
+    $(".fcp2_sy1").css("background-color",thash);
+    $(".colorpickerbox").css("display","block");
 }

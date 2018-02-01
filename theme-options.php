@@ -3,7 +3,6 @@ function getOptions() {
     $wpNyarukoOption = get_option('wpNyaruko_options'); //SELECT * FROM `cxc_options` WHERE `option_name` = 'wpNyaruko_options'
 ?>
 <script type="text/javascript" src="/resources/jquery.min.js"></script>
-<link rel="Stylesheet" type="text/css" href="<?php bloginfo("template_url"); ?>/lib/colorpickerthemes.css" />
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/lib/colorpicker.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/theme-options.js"></script>
 <?php
@@ -89,7 +88,7 @@ function display() {
 
 <div class="colorpickerbox">
   <div class="colorpickertitle0">
-    <div class="colorpickertitle1">wpNyaruko 颜色选择器</div>
+    <div class="colorpickertitle1">wpNyaruko&nbsp;颜色选择器&nbsp;:&nbsp;<span id="colorpickertitleto"></span></div>
     <div class="colorpickertitle2">
       <a href="javascript:colorpickerclose(true);" title="确定">√</a>&nbsp;<a href="javascript:colorpickerclose(false);" title="取消">×</a>
     </div>
@@ -146,7 +145,8 @@ if(!is_admin()) {
       <td>
       活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="" size=55 maxlength=128 /><br/>
       图片网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" type="text" value="" size=55 maxlength=128 /><br/>
-      延伸颜色：#<input name="wpNyarukoFNewsColor" id="wpNyarukoFNewsColor" class="chcolor" type="text" value="ffcc00" size=6 maxlength=6 /><br/>
+      背景颜色：#<input name="wpNyarukoFNewsColorB" id="wpNyarukoFNewsColorB" class="chcolor" type="text" value="ffcc00" size=6 maxlength=6 alt="背景颜色"  readonly="readonly" />&emsp;
+      标题颜色：#<input name="wpNyarukoFNewsColorF" id="wpNyarukoFNewsColorF" class="chcolor" type="text" value="000000" size=6 maxlength=6 alt="标题颜色"  readonly="readonly" />
       </td>
     </tr>
     <tr>
