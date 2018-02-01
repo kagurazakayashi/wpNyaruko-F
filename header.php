@@ -122,7 +122,13 @@ $keywords = trim(strip_tags($keywords));
 			Loading...
 		</div>
 	</div>
-	<div id="homepage_bignews">正在直播：点击前往 >></div>
+	<div class="homepage_bignewsbox" id="homepage_bignews">
+		<span id="homepage_bignewsimg">
+			<span id="homepage_bignewsit"></span>
+		</span>
+		<span id="homepage_bignewstxt">直播正在进行中 >>></span>
+	</div>
+	<div class="homepage_bignewsbox" id="homepage_bignewslink"><a href=""></a></div>
 	<div id="nyarukoplayer"></div>
 	<div id="homepage_topimgbox">
 	<div id="homepage_title"></div>

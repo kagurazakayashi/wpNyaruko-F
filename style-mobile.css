@@ -79,6 +79,17 @@
     .racing_list_right_content{
         font-size: 9pt;
     }
+    #homepage_bignewstxt {
+        position: absolute;
+        display: block;
+        right: 20px;
+        height: 64px;
+        line-height: 64px;
+        text-align: left;
+        font-size: 12pt;
+        font-style: italic;
+        z-index: 12;
+    }
 }
 @media screen and (min-width: 841px) {
     
