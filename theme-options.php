@@ -87,45 +87,65 @@ function display() {
 <!-- <img id="optionbg" class="optionfull" src="<?php bloginfo("template_url") ?>/nya.jpg" /> -->
 
 <div class="colorpickerbox">
-  <div class="colorpickertitle0">
-    <div class="colorpickertitle1">wpNyaruko&nbsp;颜色选择器&nbsp;:&nbsp;<span id="colorpickertitleto"></span></div>
-    <div class="colorpickertitle2">
-      <a href="javascript:colorpickerclose(true);" title="确定">√</a>&nbsp;<a href="javascript:colorpickerclose(false);" title="取消">×</a>
-    </div>
-  </div>
-  <div id="fcp_yashi" class="flexicolorpicker"></div>
-  <div class="fcp2_cinfo0">
-    <div class="fcp2_cinfo1">&emsp;</div>
-    <div class="fcp2_cinfo1">
-    红色<br/>绿色<br/>蓝色<br/>色度<br/>饱和<br/>明亮<br/>哈希
-    </div>
-    <div class="fcp2_cinfo1">&emsp;</div>
-    <div class="fcp2_cinfo1">
-      <input id="fcp_rgb_r" type="number" value="" /><br/>
-      <input id="fcp_rgb_g" type="number" value="" /><br/>
-      <input id="fcp_rgb_b" type="number" value="" /><br/>
-      <input id="fcp_hsv_h" type="number" value="" /><br/>
-      <input id="fcp_hsv_s" type="number" value="" /><br/>
-      <input id="fcp_hsv_v" type="number" value="" /><br/>
-      <input id="fcp_hex" type="text" value="" size=7 maxlength=7 />
-    </div>
-  </div>
-  <div class="fcp2_sy3">
-    <div class="fcp2_sy0">
-      <div class="fcp2_sy1">原始颜色</div>
-      <div class="fcp2_sy1" id="fcp_color">新的颜色</div>
-    </div>
-  </div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td colspan="2" align="left"><div class="colorpickertitle1"><div class="wp-menu-image dashicons dashicons-admin-appearance colorpickericon"><br></div>&nbsp;wpNyaruko&nbsp;颜色选择器&nbsp;:&nbsp;<span id="colorpickertitleto"></span></div></td>
+      <td align="right" class="colorpickerwincol"><a href="javascript:colorpickerclose(true);" title="确定" id="colorpickerwinyes">○</a>&nbsp;<a href="javascript:colorpickerclose(false);" title="取消" id="colorpickerwinno">×</a></td>
+    </tr>
+    <tr>
+      <td colspan="3" align="left"><hr class="colorpickertitlehr"></td>
+    </tr>
+    <tr>
+      <td width="240" height="200" rowspan="8" align="left" valign="middle">
+        <div id="fcp_yashi" class="flexicolorpicker"></div>
+      </td>
+      <td width="50" align="center">红色</td>
+      <td><input id="fcp_rgb_r" type="number" value="" /><br/></td>
+    </tr>
+    <tr>
+      <td align="center">绿色</td>
+      <td><input id="fcp_rgb_g" type="number" value="" /><br/></td>
+    </tr>
+    <tr>
+      <td align="center">蓝色</td>
+      <td><input id="fcp_rgb_b" type="number" value="" /><br/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr></td>
+    </tr>
+    <tr>
+      <td align="center">色度</td>
+      <td><input id="fcp_hsv_h" type="number" value="" /><br/></td>
+    </tr>
+    <tr>
+      <td align="center">饱和</td>
+      <td><input id="fcp_hsv_s" type="number" value="" /><br/></td>
+    </tr>
+    <tr>
+      <td align="center">明亮</td>
+      <td><input id="fcp_hsv_v" type="number" value="" /><br/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr></td>
+    </tr>
+    <tr>
+      <td valign="middle"><div class="fcp2_sy1">原始颜色</div><div class="fcp2_sy1" id="fcp_color">新的颜色</div></td>
+      <td align="center">哈希</td>
+      <td><input id="fcp_hex" type="text" value="" size=7 maxlength=7 /></td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
-</div><div id="optionbg2" class="optionfull"></div>
+<div id="optionbg2" class="optionfull"></div>
 <div id="optionbox">
 <?php 
   if(isset($_POST['input_save'])) {
     echo '<div id="wpNyarukoInfo">已受理您的变更。</div>';
   }
 ?>
-<h1>wpNyaruko 主题首选项</h1><hr>
+<div id="wpNyarukoOptionTitle"><span class="wp-menu-image dashicons-before dashicons-admin-settings" id="wpNyarukoOptionTitleIcon">&emsp;</span><span>wpNyaruko 主题首选项</span></div><hr>
 <?php
 if(!is_admin()) {
   echo '<p>欢迎使用 wpNyaruko 主题，<br/>请使用管理员权限登录来继续设置。</p><hr><p>';
