@@ -1,4 +1,9 @@
+<?php
+$hideopensrcinfo = true;
+if (!$hideopensrcinfo) {
+?>
 <!--                 wpNyaruko Theme
+     https://github.com/kagurazakayashi/wpNyaruko-N
                    ,;;77;
                  ...     7
             .;;;,       7D
@@ -50,3 +55,6 @@
                               ,;:7:
                               RS7
 -->
+<?php
+}
+?>

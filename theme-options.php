@@ -1,4 +1,5 @@
 <?php 
+include("KagurazakaYashi.php");
 function getOptions() {
     $wpNyarukoOption = get_option('wpNyaruko_options'); //SELECT * FROM `cxc_options` WHERE `option_name` = 'wpNyaruko_options'
 ?>
@@ -86,11 +87,11 @@ function display() {
 <link rel="stylesheet" href="<?php bloginfo("template_url") ?>/style-admin.css" type="text/css" media="screen" />
 <!-- <img id="optionbg" class="optionfull" src="<?php bloginfo("template_url") ?>/nya.jpg" /> -->
 
-<div class="colorpickerbox">
+<div class="colorpickerbox wpnyarukodiglog">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody>
     <tr>
-      <td colspan="2" align="left"><div class="colorpickertitle1"><div class="wp-menu-image dashicons dashicons-admin-appearance colorpickericon"><br></div>&nbsp;wpNyaruko&nbsp;颜色选择器&nbsp;:&nbsp;<span id="colorpickertitleto"></span></div></td>
+      <td colspan="2" align="left"><div class="colorpickertitle1" tid=0 ><div class="wp-menu-image dashicons dashicons-admin-appearance colorpickericon"></div>&nbsp;wpNyaruko&nbsp;颜色选择器&nbsp;:&nbsp;<span id="colorpickertitleto"></span></div></td>
       <td align="right" class="colorpickerwincol"><a href="javascript:colorpickerclose(true);" title="确定" id="colorpickerwinyes">○</a>&nbsp;<a href="javascript:colorpickerclose(false);" title="取消" id="colorpickerwinno">×</a></td>
     </tr>
     <tr>
@@ -138,6 +139,32 @@ function display() {
 </table>
 </div>
 
+<div class="picturepickerbox wpnyarukodiglog">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+    <td colspan="3" align="left"><div class="colorpickertitle1" tid=1 ><div class="wp-menu-image dashicons dashicons-admin-media colorpickericon"></div>&nbsp;wpNyaruko&nbsp;图片选择器&nbsp;:&nbsp;<span id="picturepickertitleto"></span></div></td>
+      <td align="right" class="colorpickerwincol"><a href="javascript:picturepickerclose(true);" title="确定" id="colorpickerwinyes">○</a>&nbsp;<a href="javascript:picturepickerclose(false);" title="取消" id="colorpickerwinno">×</a></td>
+    </tr>
+    <tr>
+      <td colspan="4"><hr class="colorpickertitlehr"></td>
+    </tr>
+    <tr>
+      <td width="25%" align="center" valign="middle" class="picturepickerbtn" onclick="picturepickerbtnclick(0);"><div class="wp-menu-image dashicons dashicons-admin-page colorpickericon"></div>&nbsp;上传</td>
+      <td width="25%" align="center" valign="middle" class="picturepickerbtn" onclick="picturepickerbtnclick(1);"><div class="wp-menu-image dashicons dashicons-admin-plugins colorpickericon"></div>&nbsp;外链</td>
+      <td width="25%" align="center" valign="middle" class="picturepickerbtn" onclick="picturepickerbtnclick(2);"><div class="wp-menu-image dashicons dashicons-admin-media colorpickericon"></div>&nbsp;图库</td>
+      <td width="25%" align="center" valign="middle" class="picturepickerbtn" onclick="picturepickerbtnclick(3);"><div class="wp-menu-image dashicons dashicons-admin-tools colorpickericon"></div>&nbsp;清除</td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center" valign="middle"><img class="picturepickerpic" src="" /></td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center" valign="middle"><iframe class="picturepickeriframe" src="">不支持的浏览器</iframe></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 <div id="optionbg2" class="optionfull"></div>
 <div id="optionbox">
 <?php 
@@ -145,7 +172,7 @@ function display() {
     echo '<div id="wpNyarukoInfo">已受理您的变更。</div>';
   }
 ?>
-<div id="wpNyarukoOptionTitle"><span class="wp-menu-image dashicons-before dashicons-admin-settings" id="wpNyarukoOptionTitleIcon">&emsp;</span><span>wpNyaruko 主题首选项</span></div><hr>
+<div id="wpNyarukoOptionTitle"><span class="wp-menu-image dashicons dashicons-admin-settings" id="wpNyarukoOptionTitleIcon"></span><span>&emsp;wpNyaruko 主题首选项</span></div><hr>
 <?php
 if(!is_admin()) {
   echo '<p>欢迎使用 wpNyaruko 主题，<br/>请使用管理员权限登录来继续设置。</p><hr><p>';
@@ -163,8 +190,8 @@ if(!is_admin()) {
     <tr>
       <td>正在进行<br/>活动提示</td>
       <td>
-      活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="" size=55 maxlength=128 /><br/>
-      图片网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" type="text" value="" size=55 maxlength=128 /><br/>
+      活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="" size=55 maxlength=128 alt="活动标题" /><br/>
+      图片网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" class="chpicture" type="text" value="" size=55 maxlength=128 alt="图片网址" /><br/>
       背景颜色：#<input name="wpNyarukoFNewsColorB" id="wpNyarukoFNewsColorB" class="chcolor" type="text" value="ffcc00" size=6 maxlength=6 alt="背景颜色"  readonly="readonly" />&emsp;
       标题颜色：#<input name="wpNyarukoFNewsColorF" id="wpNyarukoFNewsColorF" class="chcolor" type="text" value="000000" size=6 maxlength=6 alt="标题颜色"  readonly="readonly" />
       </td>
@@ -259,7 +286,7 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>RSS 订阅</td>
-      <td><input name="wpNyarukoRSSArticle" type="checkbox" id="wpNyarukoRSSArticle" <?php if(@$wpNyarukoOption['wpNyarukoRSSArticle']!='')echo('checked'); ?> />文章　<input name="wpNyarukoRSSComment" type="checkbox" id="wpNyarukoRSSComment" <?php if(@$wpNyarukoOption['wpNyarukoRSSComment']!='')echo('checked'); ?> />评论</td>
+      <td><input name="wpNyarukoRSSArticle" type="checkbox" id="wpNyarukoRSSArticle" <?php if(@$wpNyarukoOption['wpNyarukoRSSArticle']!='')echo('checked'); ?> />文章&emsp;<input name="wpNyarukoRSSComment" type="checkbox" id="wpNyarukoRSSComment" <?php if(@$wpNyarukoOption['wpNyarukoRSSComment']!='')echo('checked'); ?> />评论</td>
     </tr>
     <tr>
       <td>自定义 jQuery 路径</td>
@@ -379,7 +406,11 @@ if(!is_admin()) {
     </tr>
     </tbody>
     </table>
-    <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　<a href="themes.php?page=theme-options.php&reset">恢复初始设定</a>　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-N" target="_blank">Github</a></p></form><p><br/></p>
+    <hr>
+    <p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />&emsp;<a href="themes.php?page=theme-options.php?reset">恢复初始设定</a>&emsp;<?php } 
+    if ($hideopensrcinfo == false) echo '<a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-N" target="_blank">Github</a>';
+    ?>
+    </p></form><p><br/></p>
 </div>
 <?php
 }
