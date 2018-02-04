@@ -8,6 +8,7 @@ var colmgr_cmd = "";
 var colorpickerbindid = null;
 var picturepickerbindid = null;
 $(document).ready(function(){
+    if ($("#footer-thankyou").length > 0) $("#footer-thankyou").append('感谢使用<a href="https://github.com/kagurazakayashi/wpNyaruko-N">wpNyaruko</a>系列主题。');
     if ($("#wpNyarukoOptionTitle").length == 0) {
         console.log("未加载主题设定");
         return false;

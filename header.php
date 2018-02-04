@@ -122,13 +122,16 @@ $keywords = trim(strip_tags($keywords));
 			Loading...
 		</div>
 	</div>
-	<div class="homepage_bignewsbox" id="homepage_bignews">
-		<span id="homepage_bignewsimg">
-			<span id="homepage_bignewsit"></span>
-		</span>
-		<span id="homepage_bignewstxt">直播正在进行中 >>></span>
-	</div>
-	<div class="homepage_bignewsbox" id="homepage_bignewslink"><a href=""></a></div>
+	<?php if (strlen($wpNyarukoOption['wpNyarukoQRtype']) > 0) { ?>
+		<div class="homepage_bignewsbox" id="homepage_bignews" style="background-color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;">
+			<span id="homepage_bignewsimg">
+				<img src="<?php echo @$wpNyarukoOption['wpNyarukoFNewsImage']; ?>" />
+				<span id="homepage_bignewsit" style="background: linear-gradient(to right, transparent 50%, #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 100%);"></span>
+			</span>
+			<span id="homepage_bignewstxt" style="color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorF']; ?>; text-shadow:#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 1px 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> -1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 -1px 0;"><?php echo @$wpNyarukoOption['wpNyarukoFNewsTitle']; ?></span>
+		</div>
+		<div class="homepage_bignewsbox" id="homepage_bignewslink"><a href="<?php echo @$wpNyarukoOption['wpNyarukoFNewsLink']; ?>"<?php if (@$wpNyarukoOption['wpNyarukoFNewsLinkN'] == "on") echo 'target="_blank"'; ?>></a></div>
+	<?php } ?>
 	<div id="nyarukoplayer"></div>
 	<div id="homepage_topimgbox">
 	<div id="homepage_title"></div>

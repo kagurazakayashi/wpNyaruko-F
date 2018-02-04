@@ -35,6 +35,12 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoJQ'] = 'resources/jquery.min.js';
         $wpNyarukoOption['wpNyarukoJQcookie'] = 'resources/jquery.cookie.js';
         $wpNyarukoOption['wpNyarukoBScss'] = 'resources/bootstrap.min.css';
+        $wpNyarukoOption['wpNyarukoFNewsTitle'] = '我们正在举办活动 >>>';
+        $wpNyarukoOption['wpNyarukoFNewsImage'] = '';
+        $wpNyarukoOption['wpNyarukoFNewsColorB'] = 'ffcc00';
+        $wpNyarukoOption['wpNyarukoFNewsColorF'] = '000000';
+        $wpNyarukoOption['wpNyarukoFNewsLink'] = '';
+        $wpNyarukoOption['wpNyarukoFNewsLinkN'] = 'on';
 
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
@@ -75,6 +81,12 @@ function init() {
         @$wpNyarukoOption['wpNyarukoJQ'] = stripslashes($_POST['wpNyarukoJQ']);
         @$wpNyarukoOption['wpNyarukoJQcookie'] = stripslashes($_POST['wpNyarukoJQcookie']);
         @$wpNyarukoOption['wpNyarukoBScss'] = stripslashes($_POST['wpNyarukoBScss']);
+        @$wpNyarukoOption['wpNyarukoFNewsTitle'] = stripslashes($_POST['wpNyarukoFNewsTitle']);
+        @$wpNyarukoOption['wpNyarukoFNewsImage'] = stripslashes($_POST['wpNyarukoFNewsImage']);
+        @$wpNyarukoOption['wpNyarukoFNewsColorB'] = stripslashes($_POST['wpNyarukoFNewsColorB']);
+        @$wpNyarukoOption['wpNyarukoFNewsColorF'] = stripslashes($_POST['wpNyarukoFNewsColorF']);
+        @$wpNyarukoOption['wpNyarukoFNewsLink'] = stripslashes($_POST['wpNyarukoFNewsLink']);
+        @$wpNyarukoOption['wpNyarukoFNewsLinkN'] = stripslashes($_POST['wpNyarukoFNewsLinkN']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -190,10 +202,13 @@ if(!is_admin()) {
     <tr>
       <td>正在进行<br/>活动提示</td>
       <td>
-      活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="" size=55 maxlength=128 alt="活动标题" /><br/>
-      图片网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" class="chpicture" type="text" value="" size=55 maxlength=128 alt="图片网址" /><br/>
-      背景颜色：#<input name="wpNyarukoFNewsColorB" id="wpNyarukoFNewsColorB" class="chcolor" type="text" value="ffcc00" size=6 maxlength=6 alt="背景颜色"  readonly="readonly" />&emsp;
-      标题颜色：#<input name="wpNyarukoFNewsColorF" id="wpNyarukoFNewsColorF" class="chcolor" type="text" value="000000" size=6 maxlength=6 alt="标题颜色"  readonly="readonly" />
+      活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsTitle']); ?>" size=55 maxlength=128 alt="活动标题" /><br/>
+      若要关闭主页上的此提示信息,请清空活动标题。<br/>
+      图片网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsImage']); ?>" size=55 maxlength=128 alt="图片网址" /><br/>
+      链接网址：<input name="wpNyarukoFNewsLink" id="wpNyarukoFNewsLink" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsLink']); ?>" size=55 maxlength=128 /><br/>
+      背景颜色：#<input name="wpNyarukoFNewsColorB" id="wpNyarukoFNewsColorB" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsColorB']); ?>" size=6 maxlength=6 alt="背景颜色"  readonly="readonly" />&emsp;
+      标题颜色：#<input name="wpNyarukoFNewsColorF" id="wpNyarukoFNewsColorF" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsColorF']); ?>" size=6 maxlength=6 alt="标题颜色"  readonly="readonly" />&emsp;
+      点击时：<input name="wpNyarukoFNewsLinkN" type="checkbox" id="wpNyarukoFNewsLinkN" <?php if(@$wpNyarukoOption['wpNyarukoFNewsLinkN']!='')echo('checked'); ?> />在新标签页中打开
       </td>
     </tr>
     <tr>
@@ -408,7 +423,7 @@ if(!is_admin()) {
     </table>
     <hr>
     <p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />&emsp;<a href="themes.php?page=theme-options.php?reset">恢复初始设定</a>&emsp;<?php } 
-    if ($hideopensrcinfo == false) echo '<a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-N" target="_blank">Github</a>';
+    //echo '<a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-N" target="_blank">Github</a>';
     ?>
     </p></form><p><br/></p>
 </div>
