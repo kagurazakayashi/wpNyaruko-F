@@ -37,6 +37,7 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoBScss'] = 'resources/bootstrap.min.css';
         $wpNyarukoOption['wpNyarukoFNewsTitle'] = '我们正在举办活动 >>>';
         $wpNyarukoOption['wpNyarukoFNewsImage'] = '';
+        $wpNyarukoOption['wpNyarukoFNewsImageB'] = '';
         $wpNyarukoOption['wpNyarukoFNewsColorB'] = 'ffcc00';
         $wpNyarukoOption['wpNyarukoFNewsColorF'] = '000000';
         $wpNyarukoOption['wpNyarukoFNewsLink'] = '';
@@ -83,6 +84,7 @@ function init() {
         @$wpNyarukoOption['wpNyarukoBScss'] = stripslashes($_POST['wpNyarukoBScss']);
         @$wpNyarukoOption['wpNyarukoFNewsTitle'] = stripslashes($_POST['wpNyarukoFNewsTitle']);
         @$wpNyarukoOption['wpNyarukoFNewsImage'] = stripslashes($_POST['wpNyarukoFNewsImage']);
+        @$wpNyarukoOption['wpNyarukoFNewsImageB'] = stripslashes($_POST['wpNyarukoFNewsImageB']);
         @$wpNyarukoOption['wpNyarukoFNewsColorB'] = stripslashes($_POST['wpNyarukoFNewsColorB']);
         @$wpNyarukoOption['wpNyarukoFNewsColorF'] = stripslashes($_POST['wpNyarukoFNewsColorF']);
         @$wpNyarukoOption['wpNyarukoFNewsLink'] = stripslashes($_POST['wpNyarukoFNewsLink']);
@@ -204,7 +206,8 @@ if(!is_admin()) {
       <td>
       活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsTitle']); ?>" size=55 maxlength=128 alt="活动标题" /><br/>
       若要关闭主页上的此提示信息,请清空活动标题。<br/>
-      图片网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsImage']); ?>" size=55 maxlength=128 alt="图片网址" /><br/>
+      小图网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsImage']); ?>" size=55 maxlength=128 alt="小图网址" /><br/>
+      大图网址：<input name="wpNyarukoFNewsImageB" id="wpNyarukoFNewsImageB" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsImageB']); ?>" size=55 maxlength=128 alt="大图网址" /><br/>
       链接网址：<input name="wpNyarukoFNewsLink" id="wpNyarukoFNewsLink" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsLink']); ?>" size=55 maxlength=128 /><br/>
       背景颜色：#<input name="wpNyarukoFNewsColorB" id="wpNyarukoFNewsColorB" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsColorB']); ?>" size=6 maxlength=6 alt="背景颜色"  readonly="readonly" />&emsp;
       标题颜色：#<input name="wpNyarukoFNewsColorF" id="wpNyarukoFNewsColorF" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsColorF']); ?>" size=6 maxlength=6 alt="标题颜色"  readonly="readonly" />&emsp;

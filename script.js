@@ -183,6 +183,11 @@ function snsiconout(iid) {
     qr(ta.attr("href"),"homepage_snsqrshow","img","10","","");
     $("#homepage_snsqrshowbox").css("display","none");
 }
+function bignewslinkmouse(over) {
+    var bignewspopdisplay = "none";
+    if (over) bignewspopdisplay = "inline";
+    $("#homepage_bignewspop").css("display",bignewspopdisplay);
+}
 function qr(text="",innerid="qrview",imgtype="",type="",errorcorrection="",mode="") {
 	if (text == "") {
 		text = window.location.href;
