@@ -1,0 +1,12 @@
+## 许可协议 License
+
+### For users in China:
+
+- 从 commit 3a007ea58fa03a0f5812e14dc8a993acb4b38a29 之后的版本开始（不包括该版本），本 repository 的版权已被 北京未来赛车文化有限公司 购买。在此版本之后发布的任何 commit 版本，均不可以用于商业目的。
+- 如果需要将这些代码用于商业目的，必须得到 北京未来赛车文化有限公司 的允许，并且您可能需要同时为该公司和 kagurazakayashi 支付授权费用。
+- 对于非商业目的的使用，遵循 GPL License 条款发布，所有链接到本产品的软件均应遵循 GPL License 。如果您不能接受 GPL License ，则需要按照上述商业方式购买许可。
+
+### For users in other areas:
+
+- This repository is released under the GPL (GPLv2 or GPLv3). So any link to this repository must follow GPL. If you cannot accept GPL, you need to be licensed from Beijing Future Racing Culture Co.Ltd. and @kagurazakayashi.
+- Free Use for Those Who Never Copy, Modify or Distribute. Commercial Use for Everyone Else. To all commercial organizations, we do recommend the commercial license.
