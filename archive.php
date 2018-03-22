@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header(); $wpNyarukoOption = get_option('wpNyaruko_options'); ?>
 <div class="tshadow">
 <div class="listoption">
 	<div class="clistbox">
@@ -10,7 +10,7 @@
 				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'rand'))); ?>">随机阅读</option>
 				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'commented'))); ?>">评论最多</option>
 				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'title'))); ?>">标题排序</option>
-				<?php if ($debug) { ?>
+				<?php if ($wpNyarukoOption['wpNyarukoPHPDebug']) { ?>
 					<option value="">=======</option>
 					<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'ID'))); ?>">文章ID</option>
 					<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'modified'))); ?>">修改时间</option>
@@ -100,7 +100,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 	<div class="racing_item" onclick="javascript:window.location.href='<?php the_permalink(); ?>'">
 		<div class="racing_list_left">
 			<div class="racing_list_left_class"><?php
-				$ntypename = get_the_tags()[0]->name;
+				$ntypename = @get_the_tags()[0]->name;
 				if ($ntypename == "") {
 					$ntypename = $typename;
 				}
@@ -114,8 +114,8 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 			} else {
 				echo $itemimage;
 			}
-			?>" alt="<?php echo $npost->post_title; ?>" />
-			<?php if (isvideo($npost->post_content)) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
+			?>" alt="<?php echo get_the_title(); ?>" />
+			<?php if (isvideo(get_the_content())) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
 		</div>
 		<div class="racing_list_right" onclick="javascript:window.location.href='<?php the_permalink(); ?>'">
 			<div class="racing_list_right_title"><?php the_title(); ?></div>
@@ -133,6 +133,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 	</div>
 		<?php endwhile; ?>
 </div>
+<p>&emsp;</p>
 <div class="racing_list_tlr"></div>
 		<div class="morebtnbox">
 			<?php previous_posts_link('&lt;&lt; 查看新文章', 0); ?>

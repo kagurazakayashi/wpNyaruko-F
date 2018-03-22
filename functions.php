@@ -100,15 +100,21 @@ function isvideotitle($title) {
 }
 
 function curPageURL() {
-	$pageURL = 'http://';
-
-	$this_page = $_SERVER["REQUEST_URI"]; 
-	if (strpos($this_page , "?") !== false) 
-		$this_page = reset(explode("?", $this_page));
-
-	$pageURL .= $_SERVER["SERVER_NAME"]  . $this_page;
-
-	return $pageURL;
+    $pageURL = 'http';
+    if ($_SERVER["HTTPS"] == "on")
+    {
+        $pageURL .= "s";
+    }
+    $pageURL .= "://";
+    if ($_SERVER["SERVER_PORT"] != "80")
+    {
+        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+    } 
+    else 
+    {
+        $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+    }
+    return $pageURL;
 }
 
 function cpath($i) {
