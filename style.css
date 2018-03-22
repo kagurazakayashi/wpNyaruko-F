@@ -59,6 +59,7 @@ a:active {
 }
 #homepage_titlelogo {
     position: relative;
+    overflow: hidden;
 }
 #homepage_titlebox a {
     color: #FFF;
@@ -72,6 +73,12 @@ a:active {
     height: 100%;
     text-align: center;
     display:table;
+}
+#homepage_logo {
+    height: 60px;
+    width: auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 #homepage_title h1 {
     font-size: 32pt;

@@ -42,6 +42,7 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoFNewsColorF'] = '000000';
         $wpNyarukoOption['wpNyarukoFNewsLink'] = '';
         $wpNyarukoOption['wpNyarukoFNewsLinkN'] = 'on';
+        $wpNyarukoOption['wpNyarukoLogo'] = '';
 
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
@@ -89,6 +90,7 @@ function init() {
         @$wpNyarukoOption['wpNyarukoFNewsColorF'] = stripslashes($_POST['wpNyarukoFNewsColorF']);
         @$wpNyarukoOption['wpNyarukoFNewsLink'] = stripslashes($_POST['wpNyarukoFNewsLink']);
         @$wpNyarukoOption['wpNyarukoFNewsLinkN'] = stripslashes($_POST['wpNyarukoFNewsLinkN']);
+        @$wpNyarukoOption['wpNyarukoLogo'] = stripslashes($_POST['wpNyarukoLogo']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -285,6 +287,10 @@ if(!is_admin()) {
     </div>
     <!-- <div id="colmgr_title"><hr></div> -->
       </td>
+    </tr>
+    <tr>
+      <td>标题图片</td>
+      <td><input name="wpNyarukoLogo" id="wpNyarukoLogo" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoLogo']); ?>" size=64 maxlength=128 alt="标题图片" /><br>点击可以返回网站主页。如果留空，将显示网站名称。建议使用高度为60像素的图片。</td>
     </tr>
     <tr>
       <td>文章概览</td>

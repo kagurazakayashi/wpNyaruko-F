@@ -10,9 +10,10 @@ $(document).ready(function(){
     if ($("#homepage_bignews").length > 0) {
         players[0].height(nyarukoplayerdivheight-64);
         players[1].height(nyarukoplayerdivheight-64);
-        let homepage_topimgbox = $("#homepage_topimgbox");
-        let homepage_topimgboxh = parseInt(homepage_topimgbox.css("height"))+64;
+        var homepage_topimgbox = $("#homepage_topimgbox");
+        var homepage_topimgboxh = parseInt(homepage_topimgbox.css("height"))+64;
         homepage_topimgbox.css("height",homepage_topimgboxh+"px");
+        $("#homepage_titleb").css("padding-top",64);
         reftitlebar();
     } else {
         players[0].height(nyarukoplayerdivheight);
@@ -54,15 +55,38 @@ function reftitlebar() {
     } else if (scr >= windowh) {
         bgcolor = "#3C3C3C";
     }
+    var isshowlogo = false;
+    if ($("#homepage_logo").length > 0) {
+        isshowlogo = true;
+    }
     var homepage_mobilemenubtn = $("#homepage_mobilemenubtn");
     if (scr > 50) {
         $("#homepage_titlebox").css({"position":"fixed","padding-top":"15px","background":bgcolor});
-        if (homepage_mobilemenubtn.css("display") != "none")
-        homepage_mobilemenubtn.css("top","12px");
+        if (homepage_mobilemenubtn.css("display") != "none") {
+            if (isshowlogo) {
+                homepage_mobilemenubtn.css("top","17px");
+            } else {
+                homepage_mobilemenubtn.css("top","12px");
+            }
+        }
+        if (isshowlogo) {
+            var homepage_logo = $("#homepage_logo");
+            if (homepage_logo.css("height") == "60px") {
+                homepage_logo.stop();
+                homepage_logo.animate({"height":"30px"});
+            }
+        }
     } else {
         $("#homepage_titlebox").css({"position":"absolute","padding-top":(titleboxtop+"px"),"background":bgcolor});
         if (homepage_mobilemenubtn.css("display") != "none")
         homepage_mobilemenubtn.css("top",mobilemenubtntop+"px");
+        if ($("#homepage_logo").length > 0) {
+            var homepage_logo = $("#homepage_logo");
+            if (homepage_logo.css("height") == "30px") {
+                homepage_logo.stop();
+                homepage_logo.animate({"height":"60px"});
+            }
+        }
     }
 }
 function loadnyarukoplayer() {

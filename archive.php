@@ -10,7 +10,7 @@
 				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'rand'))); ?>">随机阅读</option>
 				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'commented'))); ?>">评论最多</option>
 				<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'title'))); ?>">标题排序</option>
-				<?php if ($wpNyarukoOption['wpNyarukoPHPDebug']) { ?>
+				<?php if (@$wpNyarukoOption['wpNyarukoPHPDebug']) { ?>
 					<option value="">=======</option>
 					<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'ID'))); ?>">文章ID</option>
 					<option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'modified'))); ?>">修改时间</option>

@@ -161,7 +161,15 @@ $keywords = trim(strip_tags($keywords));
 	?>
 		<div id="homepage_titlebox">
 			<span id="homepage_mobilemenubtn" onclick="mobilemenu();"><i class="material-icons">&#xE5D2;</i></span>
-			<span id="homepage_titlelogo"><a href="<?php bloginfo('url'); ?>" title="返回<?php bloginfo('name'); ?>主页"><?php bloginfo('name'); ?></a></span>
+			<span id="homepage_titlelogo">
+			<?php
+			if (@$wpNyarukoOption['wpNyarukoLogo'] == "") {
+				echo '<a href="'.get_bloginfo('url').'" title="返回'.get_bloginfo('name').'主页">'.get_bloginfo('name').'</a>';
+			} else {
+				echo '<a href="'.get_bloginfo('url').'" title="返回'.get_bloginfo('name').'主页"><img id="homepage_logo" src="'.$wpNyarukoOption['wpNyarukoLogo'].'" alt="'.get_bloginfo('name').'" /></a>';
+			}
+			?>
+			</span>
 			<span class="homepage_menu" id="homepage_mainmenu">
 				<div class="mainmenu_com"><?php wp_nav_menu(array(
 					"menu"=>"mainmenu"
