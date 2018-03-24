@@ -263,6 +263,10 @@ a:active {
     width: 200px;
     height: 200px;
 }
+video {
+    width: 100% !important;
+    height: auto !important;
+}
 /* #foot:hover {
     background-color: rgba(0, 0, 0, 0.5);
 } */
@@ -840,9 +844,14 @@ select {
 }
 .flex-item {
     position: relative;
+    overflow: hidden;
 }
 
 /* Carousel */
+.carousel-inner {
+    /* height: 241.16px; */
+    border-radius: 5px;
+}
 .carousel-example {
     padding: 20px 0 50px 0;
 }

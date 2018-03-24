@@ -27,8 +27,8 @@ if( function_exists('register_sidebar') ) {
 // 获取预览
 function clearcontent($content) {
 	$wpNyarukoOption = get_option('wpNyaruko_options');
-	$replacef = ['/\[video.*?\]/','/\[\/video.*?\]/'];
-	foreach ($replacef as $replacen){ 
+	$ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/'];
+	foreach ($ravideo as $replacen){ 
 		$content = preg_replace($replacen,'&emsp;',$content);
 	}
 	$content = strip_tags($content);
@@ -50,7 +50,8 @@ function catch_image($npost) {
 	$first_img = '';
 	ob_start();
 	ob_end_clean();
-	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $npost->post_content, $matches);
+	$raimage = '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i';
+	$output = preg_match_all($raimage, $npost->post_content, $matches);
 	//获取文章中第一张图片的路径并输出
 	$first_img = @$matches[1][0];
 	if(empty($first_img)){
@@ -60,13 +61,10 @@ function catch_image($npost) {
 	return $first_img;
 }
 function removevideoimage($content) {
-	$mode = 1; //0不过滤图片 1过滤第一张图片 2过滤所有图片
+	$mode = 1; //TODO: 0不过滤图片 1过滤第一张图片 2过滤所有图片
+	$raimage = '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i';
 	if ($mode > 0 && isvideo($content)) {
-		$replacef = ['/<img.+src=[\'"]([^\'"]+)[\'"].*>/i'];
-		foreach ($replacef as $replacen){
-			$content = preg_replace($replacen,'',$content);
-			if ($mode == 1) break;
-		}
+		$content = preg_replace($raimage,'',$content);
 	}
 	return $content;
 }
@@ -77,9 +75,10 @@ function typetitle($name) {
 }
 
 function isvideo($content) {
-	$replacef = ['/\[video.*?\]/','/\[\/video.*?\]/'];
-	foreach ($replacef as $replacen){
-		$newcontent = preg_replace($replacen,'',$content);
+	$ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/'];
+	$newcontent = $content;
+	foreach ($ravideo as $replacen){
+		$newcontent = preg_replace($replacen,'',$newcontent);
 	}
 	if ($content != $newcontent) {
 		return true;

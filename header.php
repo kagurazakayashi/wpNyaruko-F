@@ -145,7 +145,7 @@ $keywords = trim(strip_tags($keywords));
 			?>
 			<div id="homepage_footbox">
 				<span id="homepage_foot">
-					© 北京未来赛车文化有限公司
+					<!-- footmenu -->
 				</span>
 					<span id="homepage_snsqrshowbox"><div id="homepage_snsqrshow"></div>点击图标可直接打开</span>
 				<span id="homepage_sociallist">
