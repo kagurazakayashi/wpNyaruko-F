@@ -845,11 +845,10 @@ select {
 .flex-item {
     position: relative;
     overflow: hidden;
+    height: 200px;
 }
-
 /* Carousel */
 .carousel-inner {
-    /* height: 241.16px; */
     border-radius: 5px;
 }
 .carousel-example {

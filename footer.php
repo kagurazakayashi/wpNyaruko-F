@@ -19,7 +19,5 @@ if ($consolelog != "") {
   echo "<script language='javascript' type='text/javascript'>console.log('".$consolelog."');</script>";
 }
 ?>
-<script src="resources/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/flexible-bootstrap-carousel.js"></script>
 </body>
 </html>

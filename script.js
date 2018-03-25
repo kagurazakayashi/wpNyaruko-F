@@ -36,7 +36,53 @@ $(document).ready(function(){
     }else{
         image169_H();
     }
+    // $('.flex-item a').height("2px");
+    // console.log($(".img-responsive img").width());
+    // console.log($(".img-responsive img")[0].width());
+
+    // console.log($(".row .flex-item").width());
+    // console.log($(".row .col-xs-4 .flex-item").width());
+
+    // $('.row .flex-item a').ready(function (){
+    //     var fi = $('.row .flex-item').width();
+    //     console.log($('.row .flex-item').width());
+    // })
+
+    scrollpicreheight();
+
+    // $(".row .flex-item").each(function (index,domEle){
+    //     // console.log(domEle);
+    //     console.log(domEle.width());
+    // });
+
+
+    // $(".flex-item").height(flex0.width()/16*9);
+
+    // var iw = $('.flex-item a').width();
+    // var ih = $('.flex-item a').height();
+    // iwh = iw/ih;
+    // if(iwh > 1){
+    //     image169_W();
+    // }else{
+    //     image169_H();
+    // }
 });
+
+function scrollpicreheight() {
+    var windowwidth = $(window).width();
+    var scrollpicflwid = 30;
+    var scrollpicflwsn = 2;
+    var scrollpicflpic = 3;
+    if (windowwidth < 653) {
+        scrollpicflwsn = 0;
+        scrollpicflpic = 1;
+    } else if (windowwidth < 972) {
+        scrollpicflwsn = 1;
+        scrollpicflpic = 2;
+    }
+    var flexwidth = (windowwidth-scrollpicflwid*scrollpicflwsn)/scrollpicflpic;
+    proportion16_9b('.row .flex-item',false,flexwidth);
+}
 function reftitlebar() {
     var scr = $(window).scrollTop();
     var windowh = $("#nyarukoplayer").height();
@@ -90,7 +136,7 @@ function reftitlebar() {
     }
 }
 function loadnyarukoplayer() {
-    nyarukoplayer_init("homepage/nyarukoplayer/racing1.json",false);
+    nyarukoplayer_init(nyarukoplayerjson,false);
     nyarukoplayerCallback_AnimateStart = function() {
     }
     nyarukoplayerCallback_AnimateEnd = function() {
@@ -119,6 +165,17 @@ function picsetting(imgclass,imgDivW,imgDivH){
             img.style.width = imgDivW + 'px';
             var imgtop = (img.height - imgDivH) / 2;
             img.style.top = '-' + imgtop + 'px';
+        }
+    }
+}
+function proportion16_9b(objDiv,isframe,width) {
+    for (var i = 0; i < $(objDiv).length; i++) {
+        var obj = $(objDiv)[i];
+        var objWidth = width;
+        if (isframe) {
+            obj.style.height = objWidth/16*9*1.5 + "px";
+        } else {
+            obj.style.height = objWidth/16*9 + "px";
         }
     }
 }

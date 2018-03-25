@@ -7,7 +7,7 @@
         "webp":true,
         "replay":true,
         "autoplay":true,
-        "imgdir":"homepage/nyarukoplayer/",
+        "imgdir":"/homepage/nyarukoplayer/",
         "musicbtnimg":"",
         "lrcfile":"",
         "musicfile":"",
