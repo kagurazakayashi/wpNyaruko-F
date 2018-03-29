@@ -1,12 +1,11 @@
 <?php 
 include("KagurazakaYashi.php");
 function getOptions() {
-    $wpNyarukoOption = get_option('wpNyaruko_options'); //SELECT * FROM `cxc_options` WHERE `option_name` = 'wpNyaruko_options'
-?>
-<script type="text/javascript" src="/resources/jquery.min.js"></script>
-<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/lib/colorpicker.min.js"></script>
-<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/theme-options.js"></script>
-<?php
+  $wpNyarukoOption = get_option('wpNyaruko_options');
+    if (strpos($_SERVER['QUERY_STRING'],'theme-options.php')) {
+      echo '<script type="text/javascript" src="/resources/jquery.min.js"></script>';
+      echo '<script type="text/javascript" src="'.get_bloginfo("template_url").'/lib/colorpicker.min.js"></script>';
+      echo '<script type="text/javascript" src="'.get_bloginfo("template_url").'/theme-options.js"></script>';
     //读取设置
     if (!is_array($wpNyarukoOption)) {
         $wpNyarukoOption['wpNyarukoTest'] = '此处可以任意填写一些笔记';
@@ -47,6 +46,7 @@ function getOptions() {
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
+  }
     return $wpNyarukoOption;
 }
 function init() {
@@ -236,22 +236,35 @@ if(!is_admin()) {
                 }
                 ?>
                 <hr><h2>设置<hr></h2>
-                <p>栏目分类<br/>
+                <p>栏目分类<br/>(不含id>1000和空分类)<br/>
                     <select id="colmgr_blo_stype" onchange="colmgr_blo_stypeonchange(this.value);">
-                    <?php $categories = get_categories(); 
+                    <?php $categories = get_categories();
+                    $categoriesi = 0;
                     for ($i=0; $i <= count($categories); $i++) {
-                        if (!array_key_exists($i,$categories)) {
-                            continue;
+                      $ni = $i+$categoriesi;
+                        if (!array_key_exists($ni,$categories)) {
+                          $i--;
+                          $categoriesi++;
+                          if ($categoriesi > 1000) break;
+                          continue;
                         }
-                        $nowcategories = $categories[$i];
+                        $nowcategories = $categories[$ni];
                         $selected = "";
+                        $nowcategoriesid = $nowcategories->term_id;
+                        if (!$nowcategoriesid) {
+                          $nowcategoriesid = "0";
+                        }
+                        $nowcategoriesname = $nowcategories->name;
+                        if (!$nowcategoriesname) {
+                          $nowcategoriesname = "无效分类";
+                        }
                         if ($i == 0) {
                           $selected = " selected";
-                          echo '<script>colmgr_blo_stype = '.$nowcategories->term_id.';</script>';
+                          echo '<script>colmgr_blo_stype = '.$nowcategoriesid.';</script>';
                         }
-                        if ($nowcategories->term_id && $nowcategories->name) {
-                          echo '<option value='.$nowcategories->term_id.$selected.'>'.$nowcategories->term_id.'&nbsp;'.$nowcategories->name.'</option><script>colmgr_blo_names["id'.$nowcategories->term_id.'"]="'.$nowcategories->name.'";</script>';
-                        }
+                        // if ($nowcategories->term_id && $nowcategories->name) {
+                          echo '<option value='.$nowcategoriesid.$selected.'>'.$nowcategoriesid.'&nbsp;'.$nowcategoriesname.'</option><script>colmgr_blo_names["id'.$nowcategoriesid.'"]="'.$nowcategoriesname.'";</script>';
+                        // }
                     }
                     ?>
                     </select>

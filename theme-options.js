@@ -11,19 +11,19 @@ $(document).ready(function(){
     if ($("#footer-thankyou").length > 0) $("#footer-thankyou").append('感谢使用<a href="https://github.com/kagurazakayashi/wpNyaruko-N">wpNyaruko</a>系列主题。');
     if ($("#wpNyarukoOptionTitle").length == 0) {
         console.log("未加载主题设定");
-        return false;
-    }
-    colmgr_cmd = $("#wpNyarukoIndexModule").attr("value");
-    colmgr_blo_cmd2gui();
-    flexicolorpickerinit();
-    $(".chcolor").focus(function(){
-        chcolorclick($(this));
-    });
-    $(".chpicture").focus(function(){
-        chpictureclick($(this));
-    });
-    window.send_to_editor = function(html) {
-        picturepickerselectpic(html);
+    } else {
+        colmgr_cmd = $("#wpNyarukoIndexModule").attr("value");
+        colmgr_blo_cmd2gui();
+        flexicolorpickerinit();
+        $(".chcolor").focus(function(){
+            chcolorclick($(this));
+        });
+        $(".chpicture").focus(function(){
+            chpictureclick($(this));
+        });
+        window.send_to_editor = function(html) {
+            picturepickerselectpic(html);
+        }
     }
 });
 function colmgr_blo_click(thisdiv) {
