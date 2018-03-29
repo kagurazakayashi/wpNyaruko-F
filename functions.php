@@ -24,6 +24,7 @@ if( function_exists('register_sidebar') ) {
 		'after_title' => '</h4>'
 	));
 }
+register_nav_menu('mainmenu', '右上角导航菜单');
 // 获取预览
 function clearcontent($content) {
 	$wpNyarukoOption = get_option('wpNyaruko_options');

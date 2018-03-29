@@ -31,6 +31,7 @@ foreach ($modules as $moduleinfos) {
     }
 }
 ?></div>
-
+<script type="text/javascript" src="/resources/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resources/flexible-bootstrap-carousel.js"></script>
 <!-- 7页脚 -->
 <?php get_footer(); ?>

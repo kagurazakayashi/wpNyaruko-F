@@ -24,6 +24,36 @@ $(document).ready(function(){
     $(window).scroll(function() {
         reftitlebar();
     });
+    var rlli = $('.racing_list_left_img').length;
+    $('.racing_list_left_img').load(function(){
+        if(!--rlli){
+            picsetting('.racing_list_left_img',352,198);
+        }
+    });
+    var rsti = $('.racing_sidebar_top_img').length;
+    $('.racing_sidebar_top_img').load(function(){
+        if(!--rsti){
+            picsetting('.racing_sidebar_top_img',256,144);
+        }
+    });
+    var rpl = $('.racing_phone_list').length;
+    $('.racing_phone_list').load(function(){
+        if(!--rpl){
+            proportion16_9('.racing_phone_list',true);
+        }
+    });
+    var rplt = $('.racing_phone_list_top').length;
+    $('.racing_phone_list_top').load(function(){
+        if(!--rplt){
+            proportion16_9('.racing_phone_list_top',false);
+        }
+    });
+    var tplti = $('.racing_phone_list_top_img').length;
+    $('.racing_phone_list_top_img').load(function(){
+        if(!--tplti){
+            picsetting('.racing_phone_list_top_img',$('.racing_phone_list_top').width(),$('.racing_phone_list_top').height());
+        }
+    });
     picsetting('.racing_list_left_img',352,198);
     picsetting('.racing_sidebar_top_img',256,144);
     proportion16_9('.racing_phone_list',true);
@@ -39,14 +69,24 @@ $(document).ready(function(){
     }
 
     var imgNum1=$('.items .flex-item img').length;
+    var iroww = 0;
+    var iroww0 = 0;
     var irw = 0;
+    var irw0 = 0;
+    var timernum0 = false;
     var timernum = 0;
+    var timernum1 = 0;
     $('.items .flex-item img').load(function(){
         if(!--imgNum1){
+            timernum0 = true;
             var timer = setInterval(function(){
-                var iroww = $('.carousel-inner img').width();
+                if(iroww == 0){
+                    iroww = $('.carousel-inner img').width();
+                }
                 if(iroww !== 0 && iroww){
-                    irw = iroww/16*9;
+                    if(irw == 0){
+                        irw = iroww/16*9;
+                    }
                     var timer1 = setInterval(function(){
                         $(".carousel-inner img").each(function (index,domEle){
                             if(irw > domEle.clientHeight && domEle.clientHeight != 0){
@@ -55,12 +95,12 @@ $(document).ready(function(){
                             $('.carousel-inner .flex-item').height(irw + "px");
                         });
                         fiimgWH = iroww/irw;
-                        console.log(fiimgWH);
-                        if(timernum > 5){
+                        // console.log(fiimgWH);
+                        if(timernum > 10){
                             clearInterval(timer1);
                         }
                         timernum++;
-                    }, 5000);
+                    }, 2500);
                     fiimgWH = iroww/irw;
                     $('.carousel-inner .flex-item').height(irw + "px");
                     clearInterval(timer);
@@ -68,6 +108,31 @@ $(document).ready(function(){
             }, 1000);
         }
     });
+    var timer2 = setInterval(function(){
+        if(timernum0){
+            clearInterval(timer2);
+        }
+        if(iroww0 == 0){
+            iroww0 = $('.carousel-inner img').width();
+        }
+        if(iroww0 && iroww0 != 0){
+            if(irw0 == 0){
+                irw0 = iroww0/16*9;
+            }
+            $(".carousel-inner img").each(function (index,domEle){
+                if(irw0 > domEle.clientHeight && domEle.clientHeight != 0){
+                    irw0 = domEle.clientHeight;
+                }
+                $('.carousel-inner .flex-item').height(irw0 + "px");
+            });
+            fiimgWH = iroww0/irw0;
+            // console.log(fiimgWH);
+            if(timernum1 > 10){
+                clearInterval(timer2);
+            }
+            timernum1++;
+        }
+    }, 1000);
 
     // $('.flex-item a').height("2px");
     // console.log($(".img-responsive img").width());

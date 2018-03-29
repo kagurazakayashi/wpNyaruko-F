@@ -185,6 +185,9 @@ a:active {
     margin: 0px;
     float: left;
 }
+.mainmenu_com ul {
+    margin-bottom: 2px;
+}
 .homepage_menu li a {
 	text-decoration: none;
 }

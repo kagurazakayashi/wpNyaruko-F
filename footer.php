@@ -5,6 +5,7 @@
 	?></div>
 </div>
 <!--end wrapper-->
+<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
 <?php wp_footer(); 
 $consolelog = "";
 if (isset($wpNyarukoOption['wpNyarukoConsoleLog']) && $wpNyarukoOption['wpNyarukoConsoleLog'] != "") {
@@ -19,7 +20,5 @@ if ($consolelog != "") {
   echo "<script language='javascript' type='text/javascript'>console.log('".$consolelog."');</script>";
 }
 ?>
-<script src="resources/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/flexible-bootstrap-carousel.js"></script>
 </body>
 </html>
