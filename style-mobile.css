@@ -50,6 +50,7 @@
     .racing_list_tlr {
         display: table-cell;
         width: auto;
+        background-color: #F1F1F1;
     }
     .racing_single{
         margin-left: 0%;

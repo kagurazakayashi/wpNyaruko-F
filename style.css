@@ -503,7 +503,7 @@ video {
 }
 .racing_list{
     display: table-cell;
-    width: auto;
+    /* width: auto; */
 }
 .racing_list_tlr {
     display: table-cell;
