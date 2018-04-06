@@ -5,12 +5,47 @@
     .homepage_menu {
         display: none;
     }
-    #homepage_foot {
-        display: none;
+    #homepage_footbox {
+        left: 0px;
+        right: 0px;
     }
-    #homepage_sociallist {
+    #homepage_foot {
         width: 100%;
         text-align: center;
+    }
+    #racing_tabmenu {
+        position: relative;
+        top: 20px;
+    }
+    #racing_tabmenu li {
+        height: 70px;
+        padding-left: 5px;
+        padding-right: 5px;
+        text-align: center;
+    }
+    #racing_tabmenu img {
+        height: 30px;
+    }
+    #homepage_sociallist {
+        position: fixed;
+        right: 5%;
+        top: 45px;
+        cursor: pointer;
+        text-align: right;
+        z-index: 1;
+    }
+    #homepage_sociallist span {
+        width: 5px;
+        height: 25px;
+    }
+    #homepage_sociallist img {
+        width: 25px;
+        height: 25px;
+    }
+    #homepage_titlelogo {
+        left: -20px;
+        position: relative;
+        overflow: hidden;
     }
     #homepage_mobilemenubtn {
         display: block;

@@ -21,6 +21,8 @@ $(document).ready(function(){
         players[1].height(nyarukoplayerdivheight);
     }
     loadnyarukoplayer();
+    tabmenu();
+    centerlist();
     $(window).scroll(function() {
         reftitlebar();
     });
@@ -134,6 +136,8 @@ $(document).ready(function(){
         }
     }, 1000);
 
+
+
     // $('.flex-item a').height("2px");
     // console.log($(".img-responsive img").width());
     // console.log($(".img-responsive img")[0].width());
@@ -165,7 +169,24 @@ $(document).ready(function(){
     //     image169_H();
     // }
 });
-
+function tabmenu() {
+    var lii = 0;
+    $('#racing_tabmenu li').each(function(){
+        var thisli = $(this);
+        var tid = "racing_tabmenu_item" + (lii++);
+        thisli.attr("id",tid);
+        var thisa = $("#"+tid+" a");
+        var hrefs = thisa.text().split('#');
+        if (!hrefs[1]) hrefs[1] = "";
+        var imgh = '<img src="'+hrefs[0]+'" alt="'+hrefs[1]+'" />';
+        if (thisa.attr("href") == window.location.href) {
+            thisli.attr("class","racing_tabmenu_select");
+        } else {
+            thisli.attr("class","");
+        }
+        thisa.html(imgh);
+    });
+}
 function scrollpicreheight() {
     var windowwidth = $(window).width();
     var scrollpicflwid = 30;
@@ -204,26 +225,37 @@ function reftitlebar() {
         isshowlogo = true;
     }
     var homepage_mobilemenubtn = $("#homepage_mobilemenubtn");
+    var homepage_sociallist = $("#homepage_sociallist");
+    if (homepage_sociallist.css("text-align") != "right") {
+        homepage_sociallist = null;
+    }
     if (scr > 50) {
         $("#homepage_titlebox").css({"position":"fixed","padding-top":"15px","background":bgcolor});
         if (homepage_mobilemenubtn.css("display") != "none") {
             if (isshowlogo) {
                 homepage_mobilemenubtn.css("top","17px");
+                homepage_sociallist.css("top","17px");
             } else {
                 homepage_mobilemenubtn.css("top","12px");
+                homepage_sociallist.css("top","17px");
             }
         }
         if (isshowlogo) {
             var homepage_logo = $("#homepage_logo");
             if (homepage_logo.css("height") == "60px") {
                 homepage_logo.stop();
-                homepage_logo.animate({"height":"30px"});
+                if (homepage_mobilemenubtn.css("display") != "none") {
+                    homepage_logo.animate({"height":"30px","left":"0px"});
+                } else {
+                    homepage_logo.animate({"height":"30px"});
+                }
             }
         }
     } else {
         $("#homepage_titlebox").css({"position":"absolute","padding-top":(titleboxtop+"px"),"background":bgcolor});
         if (homepage_mobilemenubtn.css("display") != "none")
         homepage_mobilemenubtn.css("top",mobilemenubtntop+"px");
+        homepage_sociallist.css("top",mobilemenubtntop+"px");
         if ($("#homepage_logo").length > 0) {
             var homepage_logo = $("#homepage_logo");
             if (homepage_logo.css("height") == "30px") {
@@ -317,7 +349,14 @@ $(window).resize(function(){
     }else{
         image169_H();
     }
+    centerlist();
 });
+function centerlist() {
+    var pagewidth = $("body").width();
+    var listwidth = $(".racing_list").width();
+    var blankwidth = (pagewidth - listwidth) / 2;
+    $(".racing_list_tlr").width(blankwidth);
+}
 function image169_W() {
     var i169width = $(image_16_9_div).width();
     var i169height = i169width/16*9;

@@ -222,9 +222,37 @@ a:active {
 .mainmenu_mob a {
     color: #000;
 }
-/* .menu span:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-} */
+#racing_tabmenu {
+    position: relative;
+    top: -20px;
+}
+#racing_tabmenu ul {
+	padding: 0px;
+    margin: 0px;
+}
+#racing_tabmenu li {
+    list-style: none;
+    display: inline-block;
+    border-style:none;
+    height: 110px;
+    background-color: transparent;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    box-shadow: none;
+}
+.racing_tabmenu_select {
+    background-color: #F1F1F1 !important;
+    box-shadow: 0px 5px 0px lightgray inset !important;
+}
+#racing_tabmenu li:hover {
+    background-color: #F1F1F1;
+    box-shadow: 0px 5px 0px lightsalmon inset;
+}
+#racing_tabmenu img {
+    height: 50px;
+}
 .homepage_menu h1 {
     font-size: 12pt;
     line-height: 0px;
