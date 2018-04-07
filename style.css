@@ -246,6 +246,10 @@ a:active {
     background-color: #F1F1F1 !important;
     box-shadow: 0px 5px 0px lightgray inset !important;
 }
+.racing_tabmenu_select2 {
+    background-color: #FFF !important;
+    box-shadow: 0px 5px 0px lightgray inset !important;
+}
 #racing_tabmenu li:hover {
     background-color: #F1F1F1;
     box-shadow: 0px 5px 0px lightsalmon inset;
@@ -318,7 +322,12 @@ video {
     top: 0;
     left: 0;
 }
-#homepage_sociallist span, #homepage_sociallist img {
+#homepage_sociallist span {
+    display: inline-block;
+    width: 10px;
+    height: 1px;
+}
+#homepage_sociallist img {
     width: 32px;
     height: 32px;
 }
