@@ -42,6 +42,11 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoFNewsLink'] = '';
         $wpNyarukoOption['wpNyarukoFNewsLinkN'] = 'on';
         $wpNyarukoOption['wpNyarukoLogo'] = '';
+        $wpNyarukoOption['wpNyarukoPlayerAutoMiniSize'] = '';
+        $wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeU'] = '';
+        $wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'] = 'on';
+        $wpNyarukoOption['wpNyarukoPlayerAutoStop'] = '';
+        $wpNyarukoOption['wpNyarukoPlayerAutoRemove'] = '';
 
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
@@ -91,6 +96,11 @@ function init() {
         @$wpNyarukoOption['wpNyarukoFNewsLink'] = stripslashes($_POST['wpNyarukoFNewsLink']);
         @$wpNyarukoOption['wpNyarukoFNewsLinkN'] = stripslashes($_POST['wpNyarukoFNewsLinkN']);
         @$wpNyarukoOption['wpNyarukoLogo'] = stripslashes($_POST['wpNyarukoLogo']);
+        @$wpNyarukoOption['wpNyarukoPlayerAutoMiniSize'] = stripslashes($_POST['wpNyarukoPlayerAutoMiniSize']);
+        @$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeU'] = stripslashes($_POST['wpNyarukoPlayerAutoMiniSizeU']);
+        @$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'] = stripslashes($_POST['wpNyarukoPlayerAutoMiniSizeA']);
+        @$wpNyarukoOption['wpNyarukoPlayerAutoStop'] = stripslashes($_POST['wpNyarukoPlayerAutoStop']);
+        @$wpNyarukoOption['wpNyarukoPlayerAutoRemove'] = stripslashes($_POST['wpNyarukoPlayerAutoRemove']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -306,11 +316,15 @@ if(!is_admin()) {
       <td><input name="wpNyarukoLogo" id="wpNyarukoLogo" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoLogo']); ?>" size=64 maxlength=128 alt="标题图片" /><br>点击可以返回网站主页。如果留空，将显示网站名称。建议使用高度为60像素的图片。</td>
     </tr>
     <tr>
+      <td>动画头图<br/>动画完成<br/>第一遍循<br/>环后操作</td>
+      <td><input name="wpNyarukoPlayerAutoMiniSize" type="checkbox" id="wpNyarukoPlayerAutoMiniSize" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoMiniSize']!='')echo('checked'); ?> />首页的动画头图区自动缩小高度到一半<br/>&emsp;<input name="wpNyarukoPlayerAutoMiniSizeU" type="checkbox" id="wpNyarukoPlayerAutoMiniSizeU" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeU']!='')echo('checked'); ?> />如果用户已经向下划离动画头图区域则不缩小<br/>&emsp;<input name="wpNyarukoPlayerAutoMiniSizeA" type="checkbox" id="wpNyarukoPlayerAutoMiniSizeA" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA']!='')echo('checked'); ?> />使用动画过渡<br/><input name="wpNyarukoPlayerAutoStop" type="checkbox" id="wpNyarukoPlayerAutoStop" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoStop']!='')echo('checked'); ?> />停止播放动画<br/>&emsp;<input name="wpNyarukoPlayerAutoRemove" type="checkbox" id="wpNyarukoPlayerAutoRemove" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoRemove']!='')echo('checked'); ?> />隐藏 NyarukoPlayer </td>
+    </tr>
+    <tr>
       <td>文章概览</td>
       <td>文章列表中只预览前<input name="wpNyarukoWordlimit" type="text" id="wpNyarukoWordlimit" value="<?php echo(@$wpNyarukoOption['wpNyarukoWordlimit']); ?>" size="3" maxlength="3" />个字，并在后面添加<input name="wpNyarukoWLInfo" type="text" id="wpNyarukoWLInfo" value="<?php echo(@$wpNyarukoOption['wpNyarukoWLInfo']); ?>" size="20" maxlength="20" /></td>
     </tr>
     <tr>
-      <td>大图左下角信息</td>
+      <td>动画头图信息(弃用)</td>
       <td><input name="wpNyarukoTitleFootInfo" type="text" id="wpNyarukoTitleFootInfo" value="<?php echo(@$wpNyarukoOption['wpNyarukoTitleFootInfo']); ?>" size="64" maxlength="512" /></td>
     </tr>
     <tr>
@@ -327,15 +341,15 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>自定义 jQuery 路径</td>
-      <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo(@$wpNyarukoOption['wpNyarukoJQ']); ?>" size="40" maxlength="100" /></td>
+      <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo(@$wpNyarukoOption['wpNyarukoJQ']); ?>" size="64" maxlength="100" /></td>
     </tr>
     <tr>
       <td>自定义 jQuery<br/>cookie 路径</td>
-      <td><input name="wpNyarukoJQcookie" type="text" id="wpNyarukoJQcookie" value="<?php echo(@$wpNyarukoOption['wpNyarukoJQcookie']); ?>" size="40" maxlength="100" /></td>
+      <td><input name="wpNyarukoJQcookie" type="text" id="wpNyarukoJQcookie" value="<?php echo(@$wpNyarukoOption['wpNyarukoJQcookie']); ?>" size="64" maxlength="100" /></td>
     </tr>
     <tr>
-      <td>自定义 Bootstrap<br/>css 路径</td>
-      <td><input name="wpNyarukoBScss" type="text" id="wpNyarukoBScss" value="<?php echo(@$wpNyarukoOption['wpNyarukoBScss']); ?>" size="40" maxlength="100" /></td>
+      <td>自定义 Bootstrap<br/>css 路径(将弃用)</td>
+      <td><input name="wpNyarukoBScss" type="text" id="wpNyarukoBScss" value="<?php echo(@$wpNyarukoOption['wpNyarukoBScss']); ?>" size="64" maxlength="100" /></td>
     </tr>
     <tr>
       <td>评论方式</td>

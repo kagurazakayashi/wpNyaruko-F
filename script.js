@@ -3,6 +3,7 @@ var image_16_9 = '.image_169';
 var fiimgWH = 0;//height = width / fiimgwh
 var iwh = 0;
 var isnowsingle = false;
+var anifirstend = false;
 $(document).ready(function(){
     var nyarukoplayerdivheight = $(window).height();
     var players = [$("#homepage_topimgbox"),$("#nyarukoplayer")];
@@ -247,7 +248,7 @@ function reftitlebar() {
     }
     var homepage_mobilemenubtn = $("#homepage_mobilemenubtn");
     var homepage_sociallist = $("#homepage_sociallist");
-    if (homepage_sociallist.css("text-align") != "right") {
+    if (homepage_sociallist && homepage_sociallist.css("text-align") != "right") {
         homepage_sociallist = null;
     }
     if (scr > 50) {
@@ -255,7 +256,7 @@ function reftitlebar() {
         if (homepage_mobilemenubtn.css("display") != "none") {
             if (isshowlogo) {
                 homepage_mobilemenubtn.css("top","17px");
-                homepage_sociallist.css("top","17px");
+                if (homepage_sociallist) homepage_sociallist.css("top","17px");
             } else {
                 homepage_mobilemenubtn.css("top","12px");
                 homepage_sociallist.css("top","17px");
@@ -287,10 +288,39 @@ function reftitlebar() {
     }
 }
 function loadnyarukoplayer() {
+    if (playerdef[3] == "on") {
+        nyarukoplayer_replay = false;
+    }
     nyarukoplayer_init(nyarukoplayerjson,false);
     nyarukoplayerCallback_AnimateStart = function() {
     }
     nyarukoplayerCallback_AnimateEnd = function() {
+        if (!anifirstend) {
+            var inyarukoplayer = $("#nyarukoplayer");
+            if (playerdef[0] == "on") {
+                var scrh = $(window).scrollTop();
+                var winh = $(window).height();
+                var winh2 = winh / 2;
+                if (playerdef[1] == "on" && scrh > winh) {
+    
+                } else if (inyarukoplayer.height() > winh2) {
+                    var winh2px = winh2+"px";
+                    var cssto = {"height":winh2px};
+                    if (playerdef[2] == "on") {
+                        inyarukoplayer.animate(cssto);
+                        $("#homepage_topimgbox").animate(cssto);
+                    } else {
+                        inyarukoplayer.css(cssto);
+                        $("#homepage_topimgbox").css(cssto);
+                    }
+                }
+            }
+            if (playerdef[4] == "on") {
+                nyarukoplayer_replay = false;
+                inyarukoplayer.css("display","none");
+            }
+        }
+        anifirstend = true;
     }
     nyarukoplayerCallback_AnimateReady = function(autoplay) {
     }

@@ -111,10 +111,17 @@ $keywords = trim(strip_tags($keywords));
 		echo '"'.$wpNyarukoOption['wpNyarukoQRecorrection'].'",';
 		echo '"'.$wpNyarukoOption['wpNyarukoQRmode'].'",';
 		echo '"'.$wpNyarukoOption['wpNyarukoQRecode'].'",';
-		echo '"'.$wpNyarukoOption['wpNyarukoQRimgtype'].'"];</script>';
+		echo '"'.$wpNyarukoOption['wpNyarukoQRimgtype'].'"];';
 	} else {
-		echo '<script type="text/javascript">var qrdef = [];</script>';
+		echo '<script type="text/javascript">var qrdef = [];';
 	}
+	//Playerdef
+	echo 'var playerdef = [';
+	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSize'].'",';
+	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeU'].'",';
+	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'].'",';
+	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoStop'].'",';
+	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoRemove'].'"];</script>';
 	?>
 	<!-- 1顶端大图 -->
 	<div id="nyarukoplayer_loading">
