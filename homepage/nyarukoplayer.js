@@ -310,7 +310,7 @@ function nyarukoplayer_playmusic(play) {
         return;
     }
     if (play) {
-        if (document.getElementById("nyarukoplayer_musiccontrol").paused) {
+        if (document.getElementById("nyarukoplayer_musiccontrol") && document.getElementById("nyarukoplayer_musiccontrol").paused) {
             if (nyarukoplayer_consolelog) console.log("[NyarukoPlayer] Music Play.");
             $("#nyarukoplayer_audiodiv").css("animation","change 2s linear infinite");
             document.getElementById("nyarukoplayer_musiccontrol").play();
@@ -319,7 +319,7 @@ function nyarukoplayer_playmusic(play) {
             }
         }
     } else {
-        if (!document.getElementById("nyarukoplayer_musiccontrol").paused) {
+        if (document.getElementById("nyarukoplayer_musiccontrol") && !document.getElementById("nyarukoplayer_musiccontrol").paused) {
             if (nyarukoplayer_consolelog) console.log("[NyarukoPlayer] Music Pause.");
             $("#nyarukoplayer_audiodiv").css("animation","none");
             document.getElementById("nyarukoplayer_musiccontrol").pause();
@@ -337,6 +337,31 @@ function nyarukoplayer_error(msg = "一些资源加载失败，请稍后刷新�
     if($.isFunction(nyarukoplayerCallback_Error)){
         nyarukoplayerCallback_Error(msg);
     }
+}
+function nyarukoplayer_unload(removediv) {
+    nyarukoplayer_unbindcallback();
+    nyarukoplayer_stop();
+    if (removediv) $("#nyarukoplayer").remove();
+}
+function nyarukoplayer_unbindcallback() {
+    nyarukoplayerCallback_AnimateStart = null;
+    nyarukoplayerCallback_AnimateEnd = null;
+    nyarukoplayerCallback_LyricEnd = null;
+    nyarukoplayerCallback_ConfigurationLoaded = null;
+    nyarukoplayerCallback_ImageLoaded = null;
+    nyarukoplayerCallback_LyricsLoaded = null;
+    nyarukoplayerCallback_MusicLanguageblock = null;
+    nyarukoplayerCallback_MusicDisabled = null;
+    nyarukoplayerCallback_Error = null;
+    nyarukoplayerCallback_MusicPlay = null;
+    nyarukoplayerCallback_MusicPause = null;
+    nyarukoplayerCallback_AnimateReady = null;
+}
+function nyarukoplayer_stop() {
+    nyarukoplayer_musicdiglog_close();
+    nyarukoplayer_playmusic(false);
+    nyarukoplayer_replay = false;
+    nyarukoplayer_animateend($(".nyarukodiv"),true);
 }
 function nyarukoplayer_play(back = false) {
     if (!back) {
@@ -365,17 +390,21 @@ function nyarukoplayer_play(back = false) {
             nyarukodiv.remove();
             nyarukoplayer_play(true);
         } else {
-            if (nyarukoplayer_consolelog) console.log("[NyarukoPlayer] Animate End.");
-            if($.isFunction(nyarukoplayerCallback_AnimateEnd)){
-                nyarukoplayerCallback_AnimateEnd();  
-            }
-            if (nyarukoplayer_replay) {
-                nyarukoplayer_now = 0;
-                nyarukodiv.remove();
-                nyarukoplayer_play(true);
-            }
+            nyarukoplayer_animateend(nyarukodiv,false);
         }
     });
+}
+function nyarukoplayer_animateend(nyarukodiv,replaynow) {
+    if (nyarukoplayer_consolelog) console.log("[NyarukoPlayer] Animate End.");
+    if($.isFunction(nyarukoplayerCallback_AnimateEnd)){
+        nyarukoplayerCallback_AnimateEnd();
+    }
+    if (nyarukoplayer_replay || replaynow) {
+        nyarukoplayer_now = 0;
+        nyarukodiv.stop();
+        nyarukodiv.remove();
+        nyarukoplayer_play(nyarukoplayer_replay);
+    }
 }
 function nyarukoplayer_frame(position,imgwidth,imgheight) {
     var screenwidth = $("#nyarukoplayer").width();
