@@ -223,6 +223,7 @@ a:active {
     color: #000;
 }
 #racing_tabmenu {
+    display: none;
     position: relative;
     top: -20px;
 }
@@ -280,13 +281,10 @@ a:active {
     position: absolute;
     right: 0px;
 }
-#homepage_snsqrshowbox {
+.homepage_snsqrshowbox {
     display: none;
-    position: absolute;
     width: 200px;
     height: 220px;
-    right: 0px;
-    bottom: 5px;
     background-color: #FFF;
     box-shadow: 0px 0px 5px #FFF;
     color: #000;
@@ -294,7 +292,12 @@ a:active {
     text-align: center;
     text-shadow: none;
 }
-#homepage_snsqrshowbox img, #homepage_snsqrshowbox svg, #homepage_snsqrshowbox table {
+#homepage_h1snsqrshowbox {
+    position: absolute;
+    right: 0px;
+    bottom: 5px;
+}
+.homepage_snsqrshowbox img, .homepage_snsqrshowbox svg, .homepage_snsqrshowbox table {
     width: 200px;
     height: 200px;
 }
@@ -354,7 +357,7 @@ video {
     overflow: hidden;
     user-select: none;
 }
-#nyarukoplayer_def {
+.nyarukoplayer_def {
     position: fixed;
     left: 0%;
     top: 0%;
@@ -362,7 +365,7 @@ video {
     height: 100%;
     overflow: hidden;
 }
-#nyarukoplayer {
+.nyarukoplayer {
     /* position: absolute; */
     left: 0%;
     top: 0%;
@@ -372,7 +375,7 @@ video {
     background:purple url("homepage/nyarukoplayer/1.jpg") no-repeat left top;
     background-size: 100% 100%;
 }
-#nyarukoplayer_audiodiv {
+.nyarukoplayer_audiodiv {
     position: fixed;
     background-size: cover;
     top: 20px;
@@ -382,7 +385,7 @@ video {
     animation: none;
     z-index: 2;
 }
-#nyarukoplayer_lrc {
+.nyarukoplayer_lrc {
     text-align: center;
     font-size: 20px;
     color: #FFF;
@@ -399,7 +402,7 @@ video {
         transform:rotate(360deg);
     }
 }
-#nyarukoplayer_loading {
+.nyarukoplayer_loading {
     position: fixed;
     width: 100%;
     height: 15px;
@@ -408,7 +411,7 @@ video {
     background: linear-gradient(#888888, #000);
     z-index: 4;
 }
-#nyarukoplayer_loadingok {
+.nyarukoplayer_loadingok {
     position: fixed;
     width: 0%;
     height: 15px;
@@ -417,7 +420,7 @@ video {
     text-align: right;
     font-size: 9pt;
 }
-#nyarukoplayer_musicdiglog {
+.nyarukoplayer_musicdiglog {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -428,10 +431,10 @@ video {
     z-index: 3;
     text-align: center;
 }
-#nyarukoplayer_musicdiglog h1 {
+.nyarukoplayer_musicdiglog h1 {
     font-size: 18pt;
 }
-#nyarukoplayer_musicdiglog a {
+.nyarukoplayer_musicdiglog a {
     width: 100px;
     text-align: center;
     background-color: transparent;
@@ -439,10 +442,10 @@ video {
     padding: 5px 100px 5px 100px;
     cursor: url('../resources/hand.cur'), auto;
 }
-#nyarukoplayer_musicdiglog #nyarukoplayer_musicdiglog_yes {
+.nyarukoplayer_musicdiglog .nyarukoplayer_musicdiglog_yes {
     color: #FFFF00;
 }
-#nyarukoplayer_musicdiglog a:hover {
+.nyarukoplayer_musicdiglog a:hover {
     background-color: #000;
 }
 /* 栏目标题 */
@@ -1127,19 +1130,19 @@ a.carousel-control.right {
     z-index: 20;
 }
 .racing_phone_menu{
-    width: 60%;
+    width: 300px;
     height: 100%;
     position: fixed;
     top: 0;
     left: -60%;
-    background: #FFF;
+    background: #F1F1F1;
     box-shadow: 5px 0px 5px #999;
     z-index: 20;
 }
 #mobilemenu_userinfo {
     width: 100%;
     height: 150px;
-    background-color: gray;
+    background-color: #141414;
     color: #FFF;
     display:table;
     padding: 20px;
@@ -1227,3 +1230,107 @@ a.carousel-control.right {
 	100%{left: -90%;}
 }
 /* mobilemenu] */
+/* [header2 */
+#racing_h2menudef {
+    width: 100%;
+    height: 110px;
+}
+.racing_h2menu {
+    width: 100%;
+    display: table;
+}
+#racing_h2menu1 {
+    height: 60px;
+    background-color: #141414;
+}
+#racing_h2menu2 {
+    height: 50px;
+    background-color: #333;
+    width: auto;
+}
+#racing_h2menu2box {
+    width: auto;
+    background-color: #333;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space:nowrap;
+}
+#racing_h2menu2box::-webkit-scrollbar {
+    display: none;
+}
+#racing_h2menu2box::scrollbar {
+    display: none;
+}
+.racing_h2menucell {
+    display: table-cell;
+    vertical-align: middle;
+}
+#racing_h2menu1l {
+    padding-left: 20px;
+    text-align: left;
+}
+#racing_h2menu1r {
+    padding-right: 20px;
+    text-align: right;
+}
+#racing_h2logo {
+    height: 32px;
+    width: auto;
+}
+#racing_h2mobilemenubtn i {
+    color: #FFF;
+    font-size: 30px;
+}
+#racing_h2menu1r img {
+    width: 30px;
+    height: 30px;
+}
+#racing_h2menu2 {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+    color: gainsboro;
+    vertical-align: middle;
+    font-size: 12pt;
+}
+#racing_h2menu2l {
+    text-align: left;
+    width: 80px;
+}
+#racing_h2menu2r {
+    text-align: center;
+    text-align: left;
+    width: auto;
+}
+#racing_h2tabmenu {
+    display: none;
+}
+#racing_h2tabmenu ul {
+	padding: 0px;
+    margin: 0px;
+}
+#racing_h2tabmenu li {
+    list-style: none;
+    display: inline-block;
+    padding-left: 10px;
+}
+#racing_h2tabmenu img {
+    height: 32px;
+    width: auto;
+}
+#homepage_h2snsqrshowbox {
+    position: fixed;
+    right: 20px;
+    top: 60px;
+    z-index: 12;
+}
+#racing_h2nyarukopbg {
+    height: 110px;
+}
+#racing_h2menubox {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 11;
+}
+/* header2] */

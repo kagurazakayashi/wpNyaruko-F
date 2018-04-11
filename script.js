@@ -6,9 +6,12 @@ var isnowsingle = false;
 var anifirstend = false;
 $(document).ready(function(){
     var nyarukoplayerdivheight = $(window).height();
-    var players = [$("#homepage_topimgbox"),$("#nyarukoplayer")];
+    var players = [$("#homepage_topimgbox"),$(".nyarukoplayer")];
     if (ishome == false) {
         nyarukoplayerdivheight /= 2;
+    }
+    if (wpnyaruko_headermode == 2) {
+        nyarukoplayerdivheight -= 110;
     }
     if ($("#homepage_bignews").length > 0) {
         players[0].height(nyarukoplayerdivheight-64);
@@ -23,14 +26,31 @@ $(document).ready(function(){
         players[1].height(nyarukoplayerdivheight);
     }
     loadnyarukoplayer();
+    tabmenu();
     if (wpnyaruko_headermode == 1) {
-        tabmenu();
-        centerlist();
         centertab();
+    } else if (wpnyaruko_headermode == 2) {
+        players[0].css("top","110px");
+        headerstyle2();
+
+        $('#racing_h2menu2box').bind('mousewheel', function(event, delta) {
+            var dir = delta > 0 ? 'Up' : 'Down';
+            if (dir == 'Up') {
+                var ml = $('#racing_h2menu2box').scrollLeft() - 20;
+                $('#racing_h2menu2box').scrollLeft(ml);
+            } else {
+                var ml = $('#racing_h2menu2box').scrollLeft() + 20;
+                $('#racing_h2menu2box').scrollLeft(ml);
+            }
+            return false;
+        });
     }
+    centerlist();
     $(window).scroll(function() {
         if (wpnyaruko_headermode == 1) {
             reftitlebar();
+        } else if (wpnyaruko_headermode == 2) {
+            reftitlebar2();
         }
     });
     var rlli = $('.racing_list_left_img').length;
@@ -144,23 +164,27 @@ $(document).ready(function(){
     }, 1000);
 });
 function tabmenu() {
+    var h2mode = "";
+    if (wpnyaruko_headermode == 2) {
+        h2mode = "h2";
+    }
     var lii = 0;
     var racingsingles = [];
     $(".racing_single_info a").each(function(){
         racingsingles.push($(this).text());
     });
-    var selectcss = "racing_tabmenu_select";
+    var selectcss = "racing_"+h2mode+"tabmenu_select";
     if (racingsingles.length > 0) {
-        selectcss = "racing_tabmenu_select2";
+        selectcss = "racing_"+h2mode+"tabmenu_select2";
         $("#homepage_topimgbox").css("overflow","hidden");
     }
-    if (!isnowsingle && $(".racing_single").length > 0) {
+    if (!isnowsingle && $(".racing_"+h2mode+"single").length > 0) {
         isnowsingle = true;
     }
-    $('#racing_tabmenu li').each(function(){
+    $("#racing_"+h2mode+"tabmenu li").each(function(){
         var isnowsinglethis = false;
         var thisli = $(this);
-        var tid = "racing_tabmenu_item" + (lii++);
+        var tid = "racing_"+h2mode+"tabmenu_item" + (lii++);
         thisli.attr("id",tid);
         var thisa = $("#"+tid+" a");
         var hrefs = thisa.text().split('#');
@@ -179,6 +203,7 @@ function tabmenu() {
         }
         thisa.html(imgh);
     });
+    $("#racing_"+h2mode+"tabmenu").css("display","inline");
 }
 function scrollpicreheight() {
     var windowwidth = $(window).width();
@@ -194,6 +219,10 @@ function scrollpicreheight() {
     }
     var flexwidth = (windowwidth-scrollpicflwid*scrollpicflwsn)/scrollpicflpic;
     proportion16_9b('.row .flex-item',false,flexwidth);
+}
+function reftitlebar2() {
+    var scr = $(window).scrollTop();
+    $("#homepage_topimgbox").css("top",(0-scr+110)+"px");
 }
 function reftitlebar() {
     var scr = $(window).scrollTop();
@@ -269,7 +298,8 @@ function loadnyarukoplayer() {
     }
     nyarukoplayerCallback_AnimateEnd = function() {
         if (!anifirstend && ishome) { //TODO:设置是否只影响主页
-            var inyarukoplayer = $("#nyarukoplayer");
+            var inyarukoplayer = $(".nyarukoplayer");
+            var homepage_topimgbox = $("#homepage_topimgbox");
             if (playerdef[0] == "on") {
                 var scrh = $(window).scrollTop();
                 var winh = $(window).height();
@@ -282,15 +312,23 @@ function loadnyarukoplayer() {
                     var cssto = {"height":miniwinhpx};
                     if (playerdef[2] == "on") {
                         inyarukoplayer.animate(cssto);
-                        $("#homepage_topimgbox").animate(cssto);
+                        homepage_topimgbox.animate(cssto);
                     } else {
                         inyarukoplayer.css(cssto);
-                        $("#homepage_topimgbox").css(cssto);
+                        homepage_topimgbox.css(cssto);
                     }
                 }
             }
             if (playerdef[4] == "on") {
-                nyarukoplayer_unload(false);
+                $("#homepage_title").remove();
+                $("#homepage_topimgbox").remove();
+                if (playerdef[2] == "on") {
+                    inyarukoplayer.animate({"height":"0px"},function(){
+                        nyarukoplayer_unload(true);
+                    });
+                } else {
+                    nyarukoplayer_unload(true);
+                }
             }
         }
         anifirstend = true;
@@ -411,19 +449,22 @@ function image169_H() {
     $(image_16_9).css('left',imageleft);
 }
 function snsiconover(iid) {
-    if ($("#homepage_mobilemenubtn").css("display")!="block") {
+    if ($("#homepage_mobilemenubtn").css("display")!="block" || wpnyaruko_headermode == 2) {
         let ta = $("#homepage_snsa_"+iid);
         qr(ta.attr("href"),"homepage_snsqrshow","img","10","","");
-        $("#homepage_snsqrshowbox").css("display","block");
+        $(".homepage_snsqrshowbox").css("display","block");
     }
 }
 function snsiconout(iid) {
     let ta = $("#homepage_snsa_"+iid);
     qr(ta.attr("href"),"homepage_snsqrshow","img","10","","");
-    $("#homepage_snsqrshowbox").css("display","none");
+    $(".homepage_snsqrshowbox").css("display","none");
 }
 function bignewslinkmouse(over) {
     var bignewspopdisplay = "none";
     if (over) bignewspopdisplay = "inline";
     $("#homepage_bignewspop").css("display",bignewspopdisplay);
+}
+function headerstyle2() {
+
 }

@@ -34,6 +34,7 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
 <?php } ?>
 <script type="text/javascript" src="<?php echo @$wpNyarukoOption['wpNyarukoJQ']; ?>"></script>
 <script type="text/javascript" src="<?php echo @$wpNyarukoOption['wpNyarukoJQcookie']; ?>"></script>
+<script type="text/javascript" src="/resources/jquery.mousewheel.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script-first.js"></script>
 <link href="<?php echo @$wpNyarukoOption['wpNyarukoBScss']; ?>" rel="stylesheet">
 <?php
@@ -85,7 +86,7 @@ $keywords = trim(strip_tags($keywords));
 <div id="mobilemenubox">
 	<div class="racing_phone_menuback" onclick="mobilemenu();"></div>
 	<div class="racing_phone_menu">
-		<div id="mobilemenu_userinfo" style="background-image: url(<?php bloginfo("template_url"); ?>/images/defaultuserbg.jpg)">
+		<div id="mobilemenu_userinfo">
 			<div id="mobilemenu_userinfoc"><b>栏目导航</b><br/><?php bloginfo('name'); ?></div>
 		</div>
 		<div class="mainmenu_mob"><?php wp_nav_menu(array(
@@ -132,9 +133,9 @@ $keywords = trim(strip_tags($keywords));
 	echo '</script>';
 	?>
 	<!-- 1顶端大图 -->
-	<div id="nyarukoplayer_loading">
+	<div class="nyarukoplayer_loading">
 		<noscript>错误：页面没有成功运行，请允许 javascript 以获得最佳浏览体验。</noscript>
-		<div id="nyarukoplayer_loadingok">
+		<div class="nyarukoplayer_loadingok">
 			Loading...
 		</div>
 	</div>
@@ -154,5 +155,5 @@ $keywords = trim(strip_tags($keywords));
 	<?php } 
 	echo "<script>wpnyaruko_headermode = 2;</script>";
 	//include "header_transparent.php";
-	//include "header_clear.php";
+	include "header_clear.php";
 	?>
