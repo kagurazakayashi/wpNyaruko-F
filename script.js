@@ -23,11 +23,15 @@ $(document).ready(function(){
         players[1].height(nyarukoplayerdivheight);
     }
     loadnyarukoplayer();
-    tabmenu();
-    centerlist();
-    centertab();
+    if (wpnyaruko_headermode == 1) {
+        tabmenu();
+        centerlist();
+        centertab();
+    }
     $(window).scroll(function() {
-        reftitlebar();
+        if (wpnyaruko_headermode == 1) {
+            reftitlebar();
+        }
     });
     var rlli = $('.racing_list_left_img').length;
     $('.racing_list_left_img').load(function(){
@@ -138,39 +142,6 @@ $(document).ready(function(){
             timernum1++;
         }
     }, 1000);
-
-
-
-    // $('.flex-item a').height("2px");
-    // console.log($(".img-responsive img").width());
-    // console.log($(".img-responsive img")[0].width());
-
-    // console.log($(".row .flex-item").width());
-    // console.log($(".row .col-xs-4 .flex-item").width());
-
-    // $('.row .flex-item a').ready(function (){
-    //     var fi = $('.row .flex-item').width();
-    //     console.log($('.row .flex-item').width());
-    // })
-
-    // scrollpicreheight();
-
-    // $(".row .flex-item").each(function (index,domEle){
-    //     // console.log(domEle);
-    //     console.log(domEle.width());
-    // });
-
-
-    // $(".flex-item").height(flex0.width()/16*9);
-
-    // var iw = $('.flex-item a').width();
-    // var ih = $('.flex-item a').height();
-    // iwh = iw/ih;
-    // if(iwh > 1){
-    //     image169_W();
-    // }else{
-    //     image169_H();
-    // }
 });
 function tabmenu() {
     var lii = 0;
@@ -236,9 +207,11 @@ function reftitlebar() {
     }
     var winb = 100/windowh;
     $("#homepage_topimgbox").css("top",(0-scr)+"px");
-    var bgcolor = "transparent";
+    var homepage_titlebox = $("#homepage_titlebox")
+    var bgcolor = homepage_titlebox.css("background");
     if (scr > 0 && scr < windowh) {
-        bgcolor = "rgba(60,60,60,"+(scr/windowh)+")";
+        var newbackgrounda = (scr/windowh); //+0.5初始菜单透明度设置
+        bgcolor = "rgba(60,60,60,"+newbackgrounda+")";
     } else if (scr >= windowh) {
         bgcolor = "#3C3C3C";
     }
@@ -252,7 +225,7 @@ function reftitlebar() {
         homepage_sociallist = null;
     }
     if (scr > 50) {
-        $("#homepage_titlebox").css({"position":"fixed","padding-top":"15px","background":bgcolor});
+        homepage_titlebox.css({"position":"fixed","padding-top":"15px","background":bgcolor});
         if (homepage_mobilemenubtn.css("display") != "none") {
             if (isshowlogo) {
                 homepage_mobilemenubtn.css("top","17px");
@@ -274,7 +247,7 @@ function reftitlebar() {
             }
         }
     } else {
-        $("#homepage_titlebox").css({"position":"absolute","padding-top":(titleboxtop+"px"),"background":bgcolor});
+        homepage_titlebox.css({"position":"absolute","padding-top":(titleboxtop+"px"),"background":bgcolor});
         if (homepage_mobilemenubtn.css("display") != "none")
         homepage_mobilemenubtn.css("top",mobilemenubtntop+"px");
         if (homepage_sociallist != null) homepage_sociallist.css("top",mobilemenubtntop+"px");
@@ -295,17 +268,18 @@ function loadnyarukoplayer() {
     nyarukoplayerCallback_AnimateStart = function() {
     }
     nyarukoplayerCallback_AnimateEnd = function() {
-        if (!anifirstend) {
+        if (!anifirstend && ishome) { //TODO:设置是否只影响主页
             var inyarukoplayer = $("#nyarukoplayer");
             if (playerdef[0] == "on") {
                 var scrh = $(window).scrollTop();
                 var winh = $(window).height();
                 var winh2 = winh / 2;
-                if (playerdef[1] == "on" && scrh > winh) {
+                var miniwinh = winh * 0.3; //TODO:设置缩小比率
+                if (playerdef[1] == "on" && scrh > miniwinh) {
     
-                } else if (inyarukoplayer.height() > winh2) {
-                    var winh2px = winh2+"px";
-                    var cssto = {"height":winh2px};
+                } else if (inyarukoplayer.height() > miniwinh) {
+                    var miniwinhpx = miniwinh+"px";
+                    var cssto = {"height":miniwinhpx};
                     if (playerdef[2] == "on") {
                         inyarukoplayer.animate(cssto);
                         $("#homepage_topimgbox").animate(cssto);
@@ -316,8 +290,7 @@ function loadnyarukoplayer() {
                 }
             }
             if (playerdef[4] == "on") {
-                nyarukoplayer_replay = false;
-                inyarukoplayer.css("display","none");
+                nyarukoplayer_unload(false);
             }
         }
         anifirstend = true;

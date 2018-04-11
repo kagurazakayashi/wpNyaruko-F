@@ -25,8 +25,8 @@ if( function_exists('register_sidebar') ) {
 	));
 }
 register_nav_menus(array(
-	'mainmenu' => '右上角导航菜单',
-	'tabmenu' => '标签页图片菜单'
+	'mainmenu' => '顶端主菜单(文本)',
+	'tabmenu' => '选项卡菜单(图片)'
 ));
 // 获取预览
 function clearcontent($content) {

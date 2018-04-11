@@ -55,7 +55,7 @@ a:active {
     padding-top: 50px;
     padding-left: 50px;
     padding-right: 50px;
-    background: transparent;
+    background: rgba(60,60,60,0);
 }
 #homepage_titlelogo {
     position: relative;

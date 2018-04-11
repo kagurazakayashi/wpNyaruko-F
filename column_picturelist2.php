@@ -8,10 +8,17 @@ $nposts = get_posts(array(
 <div class="carouseljs">
 	<?php
 	echo "<script>var scrollimgs = [";
+	$scrollimgsfirst = true;
 	if(empty($nposts)){
-		echo "<center><p>暂无内容</p></center>";
+		echo "";
 	} else {
 		foreach($nposts as $npost){
+			if ($scrollimgsfirst) {
+				$scrollimgsfirst = false;
+			} else {
+				echo ",";
+			}
+			echo "['".$npost->post_title."',";
 			$itemimage = catch_image($npost);
 			if ($itemimage == "") {
 				bloginfo("template_url");
@@ -19,9 +26,9 @@ $nposts = get_posts(array(
 			} else {
 				echo "'".$itemimage."',";
 			}
+			echo "'".get_permalink($npost->ID)."']";
 		}
 	}
-	//$npost->post_title;
-	echo "null];console.log(scrollimgs);</script>";
+	echo "];console.log(scrollimgs);</script>";
 	echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>'; ?>
 </div>
