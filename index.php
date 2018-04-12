@@ -23,7 +23,7 @@ foreach ($modules as $moduleinfos) {
             include "column_contentlist.php";
             break;
         case 2:
-            include "column_picturelist.php";
+            include "column_picturelist2.php";
             break;
         default:
             include "column_blank.php";

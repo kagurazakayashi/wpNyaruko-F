@@ -1138,6 +1138,7 @@ a.carousel-control.right {
     background: #F1F1F1;
     box-shadow: 5px 0px 5px #999;
     z-index: 20;
+    font-size: 12pt;
 }
 #mobilemenu_userinfo {
     width: 100%;
@@ -1315,7 +1316,7 @@ a.carousel-control.right {
     padding-left: 10px;
 }
 #racing_h2tabmenu img {
-    height: 32px;
+    height: 24px;
     width: auto;
 }
 #homepage_h2snsqrshowbox {
@@ -1334,3 +1335,83 @@ a.carousel-control.right {
     z-index: 11;
 }
 /* header2] */
+/* [ScrollPic */
+.spfatherDIV{
+    position: relative;
+    overflow: hidden;
+}
+.scrollpicture{
+    width: 100%;
+    display: table;
+    position: absolute;
+    top: 0;
+}
+.spDIV{
+    float: left;
+    display: table-cell;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+}
+.spDIV a div{
+    width: 100%;
+    height: 100%;
+}
+.sp{
+    width: 100%;
+}
+.spDIV img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.spCentercss{
+    margin: 0 10px 0 10px;
+}
+.spleftcss{
+    margin: 0 5px 0 0;
+}
+.sprightcss{
+    margin: 0 0 0 5px;
+}
+
+.spbutton{
+    cursor: pointer;
+    height: 100%;
+    width: 50px;
+    position: absolute;
+    top: 0;
+}
+.spleft{
+    left: 0;
+}
+.spbutton {
+    right: 0;
+    display: table;
+}
+.spbuttoncell {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.triangle-facing {
+    display: inline-block;  
+    border-right: #FFF 6px solid;
+    border-bottom: #FFF 6px solid;
+    width: 30px; height: 30px;
+    /* box-shadow: 0px 0px 5px gray; */
+}
+.triangle-facing:hover {
+    border-right: yellow 6px solid;
+    border-bottom: yellow 6px solid;
+}
+.triangle-facing-right {
+    transform: rotate(-45deg);
+}
+.triangle-facing-left {
+    transform: rotate(135deg);
+}
+/* ScrollPic] */

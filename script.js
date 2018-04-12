@@ -190,6 +190,7 @@ function tabmenu() {
         var hrefs = thisa.text().split('#');
         if (!hrefs[1]) hrefs[1] = "";
         var imgh = '<img src="'+hrefs[0]+'" alt="'+hrefs[1]+'" />';
+        thisa.attr("title",hrefs[1]);
         for(var i in racingsingles){
             if (racingsingles[i] == hrefs[1]) {
                 isnowsinglethis = true;
@@ -413,6 +414,7 @@ $(window).resize(function(){
     }
     centerlist();
     centertab();
+    rewh();
 });
 function centerlist() {
     if ($(".racing_list_tlr").length > 0) {

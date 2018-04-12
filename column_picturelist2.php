@@ -6,6 +6,16 @@ $nposts = get_posts(array(
 	'numberposts' => $numberposts,
 )); ?>
 <div class="carouseljs">
+	<div class="spfatherDIV" id="sp<?php echo $colid; ?>">
+		<div class="sp"></div>
+		<div class="scrollpicture"></div>
+		<div class="spbutton spleft" onclick="leftbutton('sp<?php echo $colid; ?>');">
+			<div class="spbuttoncell"><div class="triangle-facing triangle-facing-left"></div></div>
+		</div>
+		<div class="spbutton spright" onclick="rightbutton('sp<?php echo $colid; ?>');">
+			<div class="spbuttoncell"><div class="triangle-facing triangle-facing-right"></div></div>
+		</div>
+	</div>
 	<?php
 	echo "<script>var scrollimgs = [";
 	$scrollimgsfirst = true;
@@ -29,6 +39,6 @@ $nposts = get_posts(array(
 			echo "'".get_permalink($npost->ID)."']";
 		}
 	}
-	echo "];console.log(scrollimgs);</script>";
-	echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>'; ?>
+	echo "];setscrollimgs(scrollimgs);scrollpicture('sp".$colid."');</script>";
+	echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div><br/>'; ?>
 </div>
