@@ -25,6 +25,9 @@ $(document).ready(function(){
             picturepickerselectpic(html);
         }
     }
+    if (showwpnyarukooptions2 && $(window).width() >= 640) {
+        $("#wpbody").load("../wp-content/themes/wpNyaruko-N/theme-options2.php");
+    }
 });
 function colmgr_blo_click(thisdiv) {
     var classname0 = thisdiv.attr("class").split(" ")[0];

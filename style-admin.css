@@ -351,3 +351,98 @@
     font-weight: bold;
 }
 /* PicturePicker] */
+/* [PanelBox */
+#wpNyarukoPanelBox {
+    position: fixed;
+    background-color: #f1f1f1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    padding: 20px;
+    font-size: 12pt;
+    color: #000;
+}
+#wpNyarukoPanelBox a {
+    text-decoration: none;
+    color: #000;
+}
+#wpNyarukoPanelBox a:hover {
+    text-decoration: none;
+    color: #000;
+}
+#wpNyarukoPanelBox h2 {
+    font-size: 14pt;
+    font-style: normal;
+}
+#wpNyarukoPanelLogo {
+    display: inline-block;
+    width: 320px;
+    height: 59px;
+    background-image: url("images/wpNyaruko.gif");
+    background-size: 320px 59px;
+}
+#wpNyarukoPanelLogo:hover {
+    background-image: url("images/wpNyaruko2.gif");
+}
+.wpNyarukoPanelTable {
+    display: table;
+    width: 100%;
+}
+.wpNyarukoPanelTablecell {
+    display: table-cell;
+}
+.wpNyarukoPanelTablecellpadding {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.wpNyarukoPanelTablecellAutoW {
+    width: auto;
+}
+.wpNyarukoPanelCenter {
+    text-align: center;
+}
+#wpNyarukoPanelCL {
+    width: 320px;
+}
+#wpNyarukoPanelCC {
+    background-color: lightgray;
+    width: 1px;
+}
+.wpNyarukoPanelh2h {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: lightgray;
+}
+#wpNyarukoPanelSysInfoL {
+    width: 100px;
+}
+.wpNyarukoPanelBtn {
+    display: inline-block;
+    background-color: #f1f1f1;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    box-shadow: none;
+    text-align: center;
+}
+.wpNyarukoPanelBtn:hover {
+    background-color: #FFF;
+    box-shadow: 0px 0px 5px #888888;
+}
+.wpNyarukoPanelBtn img {
+    margin: 10px;
+    width: 48px;
+    height: 48px;
+}
+#wpNyarukoPanelBoxM1 {
+    display: none;
+}
+@media screen and (max-width: 640px) {
+    #wpNyarukoPanelBox {
+        display: none;
+    }
+}
+/* PanelBox] */

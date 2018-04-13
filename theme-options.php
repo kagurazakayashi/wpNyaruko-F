@@ -1,11 +1,19 @@
 <?php 
 include("KagurazakaYashi.php");
+function loadjs() {
+  echo '<link rel="stylesheet" href="'.get_bloginfo("template_url").'/style-admin.css" type="text/css" media="screen" />';
+  echo '<script type="text/javascript" src="/resources/jquery.min.js"></script>';
+  echo '<script type="text/javascript" src="'.get_bloginfo("template_url").'/lib/colorpicker.min.js"></script>';
+  echo '<script type="text/javascript" src="'.get_bloginfo("template_url").'/theme-options.js"></script>';
+}
 function getOptions() {
   $wpNyarukoOption = get_option('wpNyaruko_options');
-    if (strpos($_SERVER['QUERY_STRING'],'theme-options.php')) {
-      echo '<script type="text/javascript" src="/resources/jquery.min.js"></script>';
-      echo '<script type="text/javascript" src="'.get_bloginfo("template_url").'/lib/colorpicker.min.js"></script>';
-      echo '<script type="text/javascript" src="'.get_bloginfo("template_url").'/theme-options.js"></script>';
+  if ($_SERVER['PHP_SELF'] == "/wp-admin/index.php" && !isset($_GET["nowpnyaruko"])) {
+    echo "<script>var showwpnyarukooptions2 = true;</script>";
+    loadjs();
+    // include "theme-options2.php";
+  } else if (strpos($_SERVER['QUERY_STRING'],'theme-options.php')) {
+    loadjs();
     //读取设置
     if (!is_array($wpNyarukoOption)) {
         $wpNyarukoOption['wpNyarukoTest'] = '此处可以任意填写一些笔记';
@@ -110,7 +118,6 @@ function init() {
 }
 function display() {
 ?>
-<link rel="stylesheet" href="<?php bloginfo("template_url") ?>/style-admin.css" type="text/css" media="screen" />
 <!-- <img id="optionbg" class="optionfull" src="<?php bloginfo("template_url") ?>/nya.jpg" /> -->
 
 <div class="colorpickerbox wpnyarukodiglog">
