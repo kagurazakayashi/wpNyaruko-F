@@ -1,8 +1,8 @@
 <!-- Footer -->
-	<div class="foot tshadow"><?php
-	$wpNyarukoOption = get_option('wpNyaruko_options');
-	echo @$wpNyarukoOption['wpNyarukoFooter'];
-	?></div>
+    <div class="foot tshadow"><?php
+    $wpNyarukoOption = get_option('wpNyaruko_options');
+    echo @$wpNyarukoOption['wpNyarukoFooter'];
+    ?></div>
 </div>
 <!--end wrapper-->
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>

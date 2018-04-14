@@ -7,6 +7,7 @@ $wpNyarukoOption = get_option('wpNyaruko_options');
 $wpNyarukoIndexModule = $wpNyarukoOption['wpNyarukoIndexModule'];
 $categories = get_categories();
 $modules = explode("|",$wpNyarukoIndexModule);
+$showids = array();
 foreach ($modules as $moduleinfos) {
     if ($moduleinfos == "") {
         continue;

@@ -10,18 +10,18 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
 ?>
 <?php include_once("KagurazakaYashi.php"); ?>
 <title><?php if ( is_home() ) {
-		bloginfo('name'); echo " - "; bloginfo('description');
-	} elseif ( is_category() ) {
-		single_cat_title(); echo " - "; bloginfo('name');
-	} elseif (is_single() || is_page() ) {
-		single_post_title();
-	} elseif (is_search() ) {
-		echo "搜索结果"; echo " - "; bloginfo('name');
-	} elseif (is_404() ) {
-		echo '页面未找到!';
-	} else {
-		wp_title('',true);
-	} ?></title>
+        bloginfo('name'); echo " - "; bloginfo('description');
+    } elseif ( is_category() ) {
+        single_cat_title(); echo " - "; bloginfo('name');
+    } elseif (is_single() || is_page() ) {
+        single_post_title();
+    } elseif (is_search() ) {
+        echo "搜索结果"; echo " - "; bloginfo('name');
+    } elseif (is_404() ) {
+        echo '页面未找到!';
+    } else {
+        wp_title('',true);
+    } ?></title>
 <?php echo @$wpNyarukoOption['wpNyarukoHeader']; ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
@@ -84,83 +84,83 @@ $keywords = trim(strip_tags($keywords));
 
 <body>
 <div id="mobilemenubox">
-	<div class="racing_phone_menuback" onclick="mobilemenu();"></div>
-	<div class="racing_phone_menu">
-		<div id="mobilemenu_userinfo">
-			<div id="mobilemenu_userinfoc"><b>栏目导航</b><br/><?php bloginfo('name'); ?></div>
-		</div>
-		<div class="mainmenu_mob"><?php wp_nav_menu(array(
-			"theme_location"=>"mainmenu",
-			'menu_class' => 'mobilemenu'
-		)) ?></div>
-	</div>
+    <div class="racing_phone_menuback" onclick="mobilemenu();"></div>
+    <div class="racing_phone_menu">
+        <div id="mobilemenu_userinfo">
+            <div id="mobilemenu_userinfoc"><b>栏目导航</b><br/><?php bloginfo('name'); ?></div>
+        </div>
+        <div class="mainmenu_mob"><?php wp_nav_menu(array(
+            "theme_location"=>"mainmenu",
+            'menu_class' => 'mobilemenu'
+        )) ?></div>
+    </div>
 </div>
 <div id="wrapper">
-	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.min.js"></script>
-	<script type="text/javascript">var nyarukoplayerjson = "/wp-content/themes/wpNyaruko-N/homepage/nyarukoplayer/nyarukoplayer.json";</script>
-	<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/lib/qrcode.js"></script>
-	<?php
-	//QRdef
-	if ($wpNyarukoOption['wpNyarukoQRtype'] && $wpNyarukoOption['wpNyarukoQRtype'] != "" &&
-	$wpNyarukoOption['wpNyarukoQRecorrection'] && $wpNyarukoOption['wpNyarukoQRecorrection'] != "" &&
-	$wpNyarukoOption['wpNyarukoQRmode'] && $wpNyarukoOption['wpNyarukoQRmode'] != "" &&
-	$wpNyarukoOption['wpNyarukoQRecode'] && $wpNyarukoOption['wpNyarukoQRecode'] != "" &&
-	$wpNyarukoOption['wpNyarukoQRimgtype'] && $wpNyarukoOption['wpNyarukoQRimgtype'] != ""
-	) {
-		echo '<script type="text/javascript">var qrdef = [';
-		echo $wpNyarukoOption['wpNyarukoQRtype'].',';
-		echo '"'.$wpNyarukoOption['wpNyarukoQRecorrection'].'",';
-		echo '"'.$wpNyarukoOption['wpNyarukoQRmode'].'",';
-		echo '"'.$wpNyarukoOption['wpNyarukoQRecode'].'",';
-		echo '"'.$wpNyarukoOption['wpNyarukoQRimgtype'].'"];';
-	} else {
-		echo '<script type="text/javascript">var qrdef = [];';
-	}
-	//Playerdef
-	echo 'var playerdef = [';
-	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSize'].'",';
-	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeU'].'",';
-	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'].'",';
-	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoStop'].'",';
-	echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoRemove'].'"];';
-	//ishome
-	echo 'var ishome=';
-	if(is_home()) {
-		echo 'true;';
-	} else {
-		echo 'false;';
-	}
-	//bigpic
-	if ($wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] && $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] != "") {
-		echo 'var bigpicdef = [';
-		echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSize'].'",';
-		echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'].'",';
-		echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'].'"];';
-	}
-	echo '</script>';
-	?>
-	<!-- 1顶端大图 -->
-	<div class="nyarukoplayer_loading">
-		<noscript>错误：页面没有成功运行，请允许 javascript 以获得最佳浏览体验。</noscript>
-		<div class="nyarukoplayer_loadingok">
-			Loading...
-		</div>
-	</div>
-	<?php if (strlen($wpNyarukoOption['wpNyarukoFNewsTitle']) > 0) { ?>
-		<div class="homepage_bignewsbox" id="homepage_bignews" style="background-color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;">
-			<span id="homepage_bignewsimg">
-				<img src="<?php echo @$wpNyarukoOption['wpNyarukoFNewsImage']; ?>" />
-				<span id="homepage_bignewsit" style="background: linear-gradient(to right, transparent 50%, #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 100%);"></span>
-			</span>
-			<span id="homepage_bignewstxt" style="color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorF']; ?>; text-shadow:#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 1px 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> -1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 -1px 0;"><?php echo @$wpNyarukoOption['wpNyarukoFNewsTitle']; ?></span>
-		</div>
-		<div class="homepage_bignewsbox" id="homepage_bignewslink" onmouseover="bignewslinkmouse(true);" onmouseout="bignewslinkmouse(false);"><a href="<?php echo @$wpNyarukoOption['wpNyarukoFNewsLink']; ?>"<?php if (@$wpNyarukoOption['wpNyarukoFNewsLinkN'] == "on") echo 'target="_blank"'; ?>></a></div>
-		<div id="homepage_bignewspop">
-			<div id="homepage_bignewspopup" style="border-bottom: 20px solid #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;"></div>
-			<img id="homepage_bignewspopimg" src="<?php echo @$wpNyarukoOption['wpNyarukoFNewsImageB']; ?>" style="border: 10px solid #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;" />
-		</div>
-	<?php } 
-	echo "<script>wpnyaruko_headermode = 2;</script>";
-	//include "header_transparent.php";
-	include "header_clear.php";
-	?>
+    <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.min.js"></script>
+    <script type="text/javascript">var nyarukoplayerjson = "/wp-content/themes/wpNyaruko-N/homepage/nyarukoplayer/nyarukoplayer.json";</script>
+    <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/lib/qrcode.js"></script>
+    <?php
+    //QRdef
+    if ($wpNyarukoOption['wpNyarukoQRtype'] && $wpNyarukoOption['wpNyarukoQRtype'] != "" &&
+    $wpNyarukoOption['wpNyarukoQRecorrection'] && $wpNyarukoOption['wpNyarukoQRecorrection'] != "" &&
+    $wpNyarukoOption['wpNyarukoQRmode'] && $wpNyarukoOption['wpNyarukoQRmode'] != "" &&
+    $wpNyarukoOption['wpNyarukoQRecode'] && $wpNyarukoOption['wpNyarukoQRecode'] != "" &&
+    $wpNyarukoOption['wpNyarukoQRimgtype'] && $wpNyarukoOption['wpNyarukoQRimgtype'] != ""
+    ) {
+        echo '<script type="text/javascript">var qrdef = [';
+        echo $wpNyarukoOption['wpNyarukoQRtype'].',';
+        echo '"'.$wpNyarukoOption['wpNyarukoQRecorrection'].'",';
+        echo '"'.$wpNyarukoOption['wpNyarukoQRmode'].'",';
+        echo '"'.$wpNyarukoOption['wpNyarukoQRecode'].'",';
+        echo '"'.$wpNyarukoOption['wpNyarukoQRimgtype'].'"];';
+    } else {
+        echo '<script type="text/javascript">var qrdef = [];';
+    }
+    //Playerdef
+    echo 'var playerdef = [';
+    echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSize'].'",';
+    echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeU'].'",';
+    echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'].'",';
+    echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoStop'].'",';
+    echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoRemove'].'"];';
+    //ishome
+    echo 'var ishome=';
+    if(is_home()) {
+        echo 'true;';
+    } else {
+        echo 'false;';
+    }
+    //bigpic
+    if ($wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] && $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] != "") {
+        echo 'var bigpicdef = [';
+        echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSize'].'",';
+        echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'].'",';
+        echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'].'"];';
+    }
+    echo '</script>';
+    ?>
+    <!-- 1顶端大图 -->
+    <div class="nyarukoplayer_loading">
+        <noscript>错误：页面没有成功运行，请允许 javascript 以获得最佳浏览体验。</noscript>
+        <div class="nyarukoplayer_loadingok">
+            Loading...
+        </div>
+    </div>
+    <?php if (strlen($wpNyarukoOption['wpNyarukoFNewsTitle']) > 0) { ?>
+        <div class="homepage_bignewsbox" id="homepage_bignews" style="background-color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;">
+            <span id="homepage_bignewsimg">
+                <img src="<?php echo @$wpNyarukoOption['wpNyarukoFNewsImage']; ?>" />
+                <span id="homepage_bignewsit" style="background: linear-gradient(to right, transparent 50%, #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 100%);"></span>
+            </span>
+            <span id="homepage_bignewstxt" style="color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorF']; ?>; text-shadow:#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 1px 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> -1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 -1px 0;"><?php echo @$wpNyarukoOption['wpNyarukoFNewsTitle']; ?></span>
+        </div>
+        <div class="homepage_bignewsbox" id="homepage_bignewslink" onmouseover="bignewslinkmouse(true);" onmouseout="bignewslinkmouse(false);"><a href="<?php echo @$wpNyarukoOption['wpNyarukoFNewsLink']; ?>"<?php if (@$wpNyarukoOption['wpNyarukoFNewsLinkN'] == "on") echo 'target="_blank"'; ?>></a></div>
+        <div id="homepage_bignewspop">
+            <div id="homepage_bignewspopup" style="border-bottom: 20px solid #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;"></div>
+            <img id="homepage_bignewspopimg" src="<?php echo @$wpNyarukoOption['wpNyarukoFNewsImageB']; ?>" style="border: 10px solid #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;" />
+        </div>
+    <?php } 
+    echo "<script>wpnyaruko_headermode = 2;</script>";
+    //include "header_transparent.php";
+    include "header_clear.php";
+    ?>

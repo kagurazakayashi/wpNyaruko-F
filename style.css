@@ -10,30 +10,30 @@ Author URI:
 /* Global Styles */
 /* 页头 */
 body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	background-repeat: no-repeat;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    background-repeat: no-repeat;
     background-size:100px 100px;
     color: #000;
     font-family: "思源黑体","Source Han Sans","微软雅黑","Microsoft YaHei","Hiragino Sans GB","STHeiti Light","SimHei";
     background-color: #F1F1F1;
 }
 a:link {
-	text-decoration: none;
+    text-decoration: none;
 }
 a:visited {
-	text-decoration: none;
+    text-decoration: none;
 }
 a:hover {
-	text-decoration: none;
+    text-decoration: none;
 }
 a:active {
-	text-decoration: none;
+    text-decoration: none;
 }
 .linkbtn {
-	text-decoration: none;
+    text-decoration: none;
 }
 #homepage_topimgbox {
     position: fixed;
@@ -174,7 +174,7 @@ a:active {
     border-radius: 5px;
 }
 .mainmenu_com {
-	float: right;
+    float: right;
 }
 .mainmenu_com li{
     width: 100px;
@@ -189,17 +189,17 @@ a:active {
     margin-bottom: 2px;
 }
 .homepage_menu li a {
-	text-decoration: none;
+    text-decoration: none;
 }
 .mainmenu_com .menu-main-menu-container {
-	display:inline-block;
+    display:inline-block;
     position: relative;
     right: 0px;
     text-align: center;
 }
 .mainmenu_com a {
-	color: #FFF;
-	text-decoration: none;
+    color: #FFF;
+    text-decoration: none;
 }
 .mainmenu_com span {
     /* font-family: 'webfont'; */
@@ -210,7 +210,7 @@ a:active {
     float: right;
 }
 .mainmenu_mob ul {
-	padding: 0px;
+    padding: 0px;
     margin: 0px;
 }
 .mainmenu_mob li {
@@ -228,7 +228,7 @@ a:active {
     top: -20px;
 }
 #racing_tabmenu ul {
-	padding: 0px;
+    padding: 0px;
     margin: 0px;
 }
 #racing_tabmenu li {
@@ -883,7 +883,7 @@ select {
 /* phone_list] */
 /* [scrollpics */
 .carousel.flexible .items {
-	display: none;
+    display: none;
 }
 .flex-item {
     position: relative;
@@ -903,41 +903,41 @@ select {
     border-radius: 5px;
 }
 #complicated-content-carousel .carousel-control {
-	position: absolute;
-	top: -20px;
-	right: 0;
-	left: auto;
-	bottom: auto;
-	width: 14px;
-	font-size: 25px;
-	color: #3c3c3c !important;
-	opacity: 1;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    left: auto;
+    bottom: auto;
+    width: 14px;
+    font-size: 25px;
+    color: #3c3c3c !important;
+    opacity: 1;
 }
 
 #complicated-content-carousel .carousel-control.left,
 #complicated-content-carousel .carousel-control.right {
-	background-image: none;
+    background-image: none;
 }
 
 #complicated-content-carousel .carousel-control.left {
-	right: 35px;
+    right: 35px;
 }
 
 .carousel-control {
-	width: 50px;
-	height: 50px;
-	top: 50%;
-	transform: translateY(-50%);
-	bottom: auto;
-	font-size: 30px;
-	text-align: center;
-	opacity: 1;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+    font-size: 30px;
+    text-align: center;
+    opacity: 1;
 }
 
 a.carousel-control.left,
 a.carousel-control.right {
-	background-image: none;
-	opacity: 1;
+    background-image: none;
+    opacity: 1;
     text-align: center;
     color: #FFF;
 }
@@ -945,16 +945,16 @@ a.carousel-control.right {
 /* MEDIA QUERIES */
 /* styles for phones' displays */
 @media only screen and (max-width: 350px) {
-	#complicated-content-carousel .flex-item {
-		width: 300px;
-	}
+    #complicated-content-carousel .flex-item {
+        width: 300px;
+    }
 }
 
 /* styles for medium size displays */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-	#complicated-content-carousel .flex-item {
-		width: 300px;
-	}
+    #complicated-content-carousel .flex-item {
+        width: 300px;
+    }
 }
 /* scrollpics] */
 /* [bigpicnews */
@@ -1182,20 +1182,20 @@ a.carousel-control.right {
     animation-play-state: running;
 }
 @keyframes frameAnim {
-	0%{left: -90%;}
-	100%{left: 0%;}
+    0%{left: -90%;}
+    100%{left: 0%;}
 }
 @-moz-keyframes frameAnim {
-	0%{left: -90%;}
-	100%{left: 0%;}
+    0%{left: -90%;}
+    100%{left: 0%;}
 }
 @-webkit-keyframes frameAnim {
-	0%{left: -90%;}
-	100%{left: 0%;}
+    0%{left: -90%;}
+    100%{left: 0%;}
 }
 @-o-keyframes frameAnim {
-	0%{left: -90%;}
-	100%{left: 0%;}
+    0%{left: -90%;}
+    100%{left: 0%;}
 }
 .frameAnimImg0 {
     animation: frameAnim0;
@@ -1220,20 +1220,20 @@ a.carousel-control.right {
     animation-play-state: running;
 }
 @keyframes frameAnim0 {
-	0%{left: 0%;}
-	100%{left: -90%;}
+    0%{left: 0%;}
+    100%{left: -90%;}
 }
 @-moz-keyframes frameAnim0 {
-	0%{left: 0%;}
-	100%{left: -90%;}
+    0%{left: 0%;}
+    100%{left: -90%;}
 }
 @-webkit-keyframes frameAnim0 {
-	0%{left: 0%;}
-	100%{left: -90%;}
+    0%{left: 0%;}
+    100%{left: -90%;}
 }
 @-o-keyframes frameAnim0 {
-	0%{left: 0%;}
-	100%{left: -90%;}
+    0%{left: 0%;}
+    100%{left: -90%;}
 }
 /* mobilemenu] */
 /* [header2 */
@@ -1312,7 +1312,7 @@ a.carousel-control.right {
     display: none;
 }
 #racing_h2tabmenu ul {
-	padding: 0px;
+    padding: 0px;
     margin: 0px;
 }
 #racing_h2tabmenu li {

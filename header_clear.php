@@ -35,7 +35,7 @@
 <div id="homepage_topimgbox">
     <div id="homepage_title"></div>
 </div>
-	<!-- <div id="homepage_topimgbox">
+    <!-- <div id="homepage_topimgbox">
         <div id="homepage_title"></div>
         <div id="homepage_footbox">
                 <span id="homepage_snsqrshowbox"><div id="homepage_snsqrshow"></div>点击图标可直接打开</span>
@@ -47,4 +47,4 @@
                     )) ?></div>
                 </span>
             </div>
-	</div> -->
+    </div> -->

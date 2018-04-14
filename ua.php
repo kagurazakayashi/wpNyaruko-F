@@ -25,7 +25,7 @@ function get_broswer($useragent){
             break;
         }
     }
-	return [$broswerName,$broswerVersion];
+    return [$broswerName,$broswerVersion];
 }
 function get_os($useragent) {
     $systems = [

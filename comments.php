@@ -11,9 +11,9 @@
         if (!$wpNyarukoCommentMode) {
 ?>
 <div class="commentsbox">
-		<h1><i class="material-icons">&#xE254;</i>&nbsp;评论</h1>
-		<?php
-    		if (!empty($post->post_password) && $_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password) {
+        <h1><i class="material-icons">&#xE254;</i>&nbsp;评论</h1>
+        <?php
+          if (!empty($post->post_password) && $_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password) {
         ?>
 <div class="cinfo"><ul><li style="list-style: inside;">请输入密码再查看评论内容。</div>
     <?php

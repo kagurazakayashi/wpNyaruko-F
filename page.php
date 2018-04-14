@@ -4,13 +4,13 @@
 
 <!-- <?php the_permalink(); comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?> -->
 <div class="racing_single">
-	<div class="racing_single_single">
-		<div class="racing_single_info">
-			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>主页">主页</a><?php echo cpath(true).get_the_title(); ?>
-			<?php edit_post_link('编辑', '　(已使用有', '权限的账户登录)'); ?>
-		</div>
-		<?php echo do_shortcode(removevideoimage(get_the_content())); ?>
-	</div>
+    <div class="racing_single_single">
+        <div class="racing_single_info">
+            <a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>主页">主页</a><?php echo cpath(true).get_the_title(); ?>
+            <?php edit_post_link('编辑', '　(已使用有', '权限的账户登录)'); ?>
+        </div>
+        <?php echo do_shortcode(removevideoimage(get_the_content())); ?>
+    </div>
 <script type="text/javascript">contentformat();</script>
 <?php comments_template(); ?>
 </div>
