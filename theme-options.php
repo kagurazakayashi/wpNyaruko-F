@@ -55,6 +55,9 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'] = 'on';
         $wpNyarukoOption['wpNyarukoPlayerAutoStop'] = '';
         $wpNyarukoOption['wpNyarukoPlayerAutoRemove'] = '';
+        $wpNyarukoOption['wpNyarukoBigPicTitleAutoSize'] = 'on';
+        $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] = '10';
+        $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] = '32';
 
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
@@ -109,6 +112,9 @@ function init() {
         @$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'] = stripslashes($_POST['wpNyarukoPlayerAutoMiniSizeA']);
         @$wpNyarukoOption['wpNyarukoPlayerAutoStop'] = stripslashes($_POST['wpNyarukoPlayerAutoStop']);
         @$wpNyarukoOption['wpNyarukoPlayerAutoRemove'] = stripslashes($_POST['wpNyarukoPlayerAutoRemove']);
+        @$wpNyarukoOption['wpNyarukoBigPicTitleAutoSize'] = stripslashes($_POST['wpNyarukoBigPicTitleAutoSize']);
+        @$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] = stripslashes($_POST['wpNyarukoBigPicTitleAutoSizeF']);
+        @$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] = stripslashes($_POST['wpNyarukoBigPicTitleAutoSizeT']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -325,6 +331,10 @@ if(!is_admin()) {
     <tr>
       <td>首页的动<br/>画头图播<br/>放完第一<br/>遍之后执<br/>行的操作</td>
       <td><input name="wpNyarukoPlayerAutoMiniSize" type="checkbox" id="wpNyarukoPlayerAutoMiniSize" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoMiniSize']!='')echo('checked'); ?> />首页的动画头图区自动缩小高度到一半<br/>&emsp;<input name="wpNyarukoPlayerAutoMiniSizeU" type="checkbox" id="wpNyarukoPlayerAutoMiniSizeU" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeU']!='')echo('checked'); ?> />如果用户已经向下划离动画头图区域则不缩小<br/><input name="wpNyarukoPlayerAutoStop" type="checkbox" id="wpNyarukoPlayerAutoStop" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoStop']!='')echo('checked'); ?> />停止播放动画<br/>&emsp;<input name="wpNyarukoPlayerAutoRemove" type="checkbox" id="wpNyarukoPlayerAutoRemove" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoRemove']!='')echo('checked'); ?> />卸载 NyarukoPlayer<br/><input name="wpNyarukoPlayerAutoMiniSizeA" type="checkbox" id="wpNyarukoPlayerAutoMiniSizeA" <?php if(@$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA']!='')echo('checked'); ?> />缩小或卸载 NyarukoPlayer 时使用动画过渡</td>
+    </tr>
+    <tr>
+      <td>大图展示<br/>模块设置</td>
+      <td><input name="wpNyarukoBigPicTitleAutoSize" type="checkbox" id="wpNyarukoBigPicTitleAutoSize" <?php if(@$wpNyarukoOption['wpNyarukoBigPicTitleAutoSize']!='')echo('checked'); ?> />当大图中间的标题文字容纳不下时，将文字缩小而不是自动换行<br/>&emsp;文字尺寸应在&nbsp;<input name="wpNyarukoBigPicTitleAutoSizeF" type="text" id="wpNyarukoBigPicTitleAutoSizeF" value="<?php echo(@$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF']); ?>" size="4" maxlength="4" />像素&nbsp;到&nbsp;<input name="wpNyarukoBigPicTitleAutoSizeT" type="text" id="wpNyarukoBigPicTitleAutoSizeT" value="<?php echo(@$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT']); ?>" size="4" maxlength="4" />像素&nbsp;之间</td>
     </tr>
     <tr>
       <td>文章概览</td>

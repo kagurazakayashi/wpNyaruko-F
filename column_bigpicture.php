@@ -20,12 +20,12 @@ if(empty($nposts)){
 				echo $itemimage;
 			}
 			?>" />
-			<div class="pictitle"><?php
+			<div class="pictitle"><div class="pictitletext"><?php
 				if (isvideo($npost->post_content)) {
-					echo '<i class="material-icons">play_circle_outline</i> ';
+					echo '<i class="material-icons">&#xE039;&nbsp;</i>';
 				}
 				echo $npost->post_title;
-			?></div>
+			?></div></div>
 		</div>
 		<?php
 	}

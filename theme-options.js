@@ -27,6 +27,8 @@ $(document).ready(function(){
     }
     if (showwpnyarukooptions2 && $(window).width() >= 640) {
         $("#wpbody").load("../wp-content/themes/wpNyaruko-N/theme-options2.php");
+        var wpadminbarcss = {"background":"#f1f1f1","color":"#000","overflow":"hidden"};
+        $("#wpadminbar, #wpadminbar .ab-empty-item, #wpadminbar a.ab-item, #wpadminbar>#wp-toolbar span.ab-label, #wpadminbar>#wp-toolbar span.noticon").css(wpadminbarcss);
     }
 });
 function colmgr_blo_click(thisdiv) {

@@ -130,6 +130,13 @@ $keywords = trim(strip_tags($keywords));
 	} else {
 		echo 'false;';
 	}
+	//bigpic
+	if ($wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] && $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] != "") {
+		echo 'var bigpicdef = [';
+		echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSize'].'",';
+		echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'].'",';
+		echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'].'"];';
+	}
 	echo '</script>';
 	?>
 	<!-- 1顶端大图 -->

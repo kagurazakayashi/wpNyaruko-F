@@ -37,7 +37,7 @@ $nposts = get_posts(array(
 					echo $itemimage;
 				}
 				?>" alt="<?php echo $npost->post_title; ?>" />
-				<?php if (isvideo($npost->post_content)) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
+				<?php if (isvideo($npost->post_content)) { echo '<div class="racing_list_left_play material-icons">&#xE039;</div>'; } ?>
 			</div>
 			<div class="racing_list_right" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
 				<div class="racing_list_right_title"><?php echo $npost->post_title; ?></div>

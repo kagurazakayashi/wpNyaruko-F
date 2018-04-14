@@ -27,6 +27,7 @@ $(document).ready(function(){
     }
     loadnyarukoplayer();
     tabmenu();
+    resizebigpictitle();
     if (wpnyaruko_headermode == 1) {
         centertab();
     } else if (wpnyaruko_headermode == 2) {
@@ -344,6 +345,42 @@ function disablemedia() {
         nyarukoplayer_disable(true);
     }
 }
+function resizebigpictitle() {
+    if (bigpicdef[0] == "on") {
+        var pictitle = $(".pictitle");
+        var pictitletext = $(".pictitletext");
+        var pictitletexti = $(".pictitletext i");
+        var pictitletextprepend = "&emsp;&emsp;";
+        if (pictitletexti.length > 0) {
+            pictitletexti.remove();
+            pictitletextprepend += "&emsp;&nbsp;";
+        }
+        var pictitletexttext = pictitletext.text();
+        pictitletext.prepend(pictitletextprepend);
+        var newfontsize = resizetext(pictitletext, pictitle.width(), parseInt(bigpicdef[1]), parseInt(bigpicdef[2]));
+        pictitletext.html('<i class="material-icons" style="font-size:'+newfontsize+';">&#xE039;&nbsp;</i>'+pictitletexttext);
+    }
+}
+function resizetext(wordbox, maxWidth, minSize, maxSize) {
+    var newfontsize = minSize + "px";
+    wordbox.css('font-size', newfontsize);
+    wordbox.each(function () {
+        for (var i = minSize; i <= maxSize; i++) {
+            // console.log("resize",i,$(this).width(),maxWidth);
+            if ($(this).width() >= maxWidth) {
+                newfontsize = (i - 2) + 'px';
+                $(this).css('font-size', newfontsize);
+                // console.log("break",i,$(this).width(),maxWidth);
+                break;
+            } else {
+                newfontsize = i + 'px';
+                $(this).css('font-size', newfontsize);  
+            }
+        }
+    });
+    return newfontsize;
+};
+
 function picsetting(imgclass,imgDivW,imgDivH){
     for (var i = 0; i < $(imgclass).length; i++) {
         var img = $(imgclass)[i];
@@ -415,6 +452,7 @@ $(window).resize(function(){
     centerlist();
     centertab();
     rewh();
+    resizebigpictitle();
 });
 function centerlist() {
     if ($(".racing_list_tlr").length > 0) {

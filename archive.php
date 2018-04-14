@@ -115,7 +115,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 				echo $itemimage;
 			}
 			?>" alt="<?php echo get_the_title(); ?>" />
-			<?php if (isvideo(get_the_content())) { echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; } ?>
+			<?php if (isvideo(get_the_content())) { echo '<div class="racing_list_left_play material-icons">&#xE039;</div>'; } ?>
 		</div>
 		<div class="racing_list_right" onclick="javascript:window.location.href='<?php the_permalink(); ?>'">
 			<div class="racing_list_right_title"><?php the_title(); ?></div>

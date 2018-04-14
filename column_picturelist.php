@@ -28,7 +28,7 @@ $nposts = get_posts(array(
 				?>" alt="<?php echo $npost->post_title; ?>" />
 				</a>
 				<?php if (isvideo($npost->post_content)) {
-				echo '<div class="racing_list_left_play material-icons">play_circle_outline</div>'; }?>
+				echo '<div class="racing_list_left_play material-icons">&#xE039;</div>'; }?>
 			</div>
 			<?php
 				}
