@@ -68,7 +68,7 @@
     color: 000;
     font-family: 'Courier New', Courier, monospace;
 }
-#submitoption, #optionbox a {
+#submitoption, #op_form a {
   color: #ffffff;
   font-size: 14px;
   padding-top: 10px;
@@ -87,7 +87,7 @@
   background: linear-gradient(to bottom,#666666 0,gray 100%);
   cursor:pointer;
 }
-#submitoption:hover, #submitoption:focus, #optionbox a:hover, #optionbox a:focus {
+#submitoption:hover, #submitoption:focus, #op_form a:hover, #op_form a:focus {
     background: #e62097;
 }
 #wpfooter {

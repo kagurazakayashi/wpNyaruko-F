@@ -1024,23 +1024,24 @@ a.carousel-control.right {
     margin-left: 50px;
     margin-right: 50px;
     text-align: left;
-    /* text-indent: 24pt; */
-    line-height: 40px;
-    font-size: 12pt;
 }
 .racing_single_single img {
-    width: 100% !important;
-    height: auto !important;
-    box-shadow: 0px 3px 3px #999;
-    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* box-shadow: 0px 3px 3px #999;
+    border-radius: 5px; */
 }
 .racing_single_info {
-    width: 100%;
-    font-size: 9pt;
-    color: gray;
+    width: 100% !important;
+    font-size: 9pt !important;
+    color: gray !important;
+    padding-bottom: 40px !important;
+    text-indent: 0px !important;
 }
 .racing_single_info i, .sorting i{
-    font-size: 10pt;
+    font-size: 10pt !important;
 }
 /* page] */
 /* [comment */

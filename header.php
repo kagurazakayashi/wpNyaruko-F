@@ -83,6 +83,7 @@ $keywords = trim(strip_tags($keywords));
 <?php flush(); ?>
 
 <body>
+    <?php include "style.php"; gcss($wpNyarukoOption);?>
 <div id="mobilemenubox">
     <div class="racing_phone_menuback" onclick="mobilemenu();"></div>
     <div class="racing_phone_menu">

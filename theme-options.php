@@ -58,7 +58,27 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoBigPicTitleAutoSize'] = 'on';
         $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] = '10';
         $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] = '32';
-
+        $wpNyarukoPageT = ["Size","Color","Line"];
+        for ($i=0; $i < 7; $i++) {
+            foreach ($wpNyarukoPageT as $wpNyarukoPageTv) {
+                $tv = "";
+                if ($wpNyarukoPageTv == "Size") {
+                    if ($i == 0) {
+                        $tv = 12;
+                    } else {
+                        $tv = 23 - $i;
+                    }
+                } else if ($wpNyarukoPageTv == "Color") {
+                    $tv = "#000000";
+                } else if ($wpNyarukoPageTv == "Line") {
+                    $tv = 25;
+                }
+                $wpNyarukoOption[("wpNyarukoPageH".$i."Font".$wpNyarukoPageTv)] = $tv;
+            }
+        }
+        $wpNyarukoOption['wpNyarukoPageIndent'] = '40';
+        $wpNyarukoOption['wpNyarukoPageImgWidth'] = '80';
+        $wpNyarukoOption['wpNyarukoPageImgWidthM'] = '100';
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -73,48 +93,16 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        @$wpNyarukoOption['wpNyarukoTest'] = stripslashes($_POST['wpNyarukoTest']);
-        @$wpNyarukoOption['wpNyarukoBanBrowser'] = stripslashes($_POST['wpNyarukoBanBrowser']);
-        @$wpNyarukoOption['wpNyarukoPHPDebug'] = stripslashes($_POST['wpNyarukoPHPDebug']);
-        @$wpNyarukoOption['wpNyarukoWordlimit'] = stripslashes($_POST['wpNyarukoWordlimit']);
-        @$wpNyarukoOption['wpNyarukoWLInfo'] = stripslashes($_POST['wpNyarukoWLInfo']);
-        @$wpNyarukoOption['wpNyarukoIndexModule'] = stripslashes($_POST['wpNyarukoIndexModule']);
-        @$wpNyarukoOption['wpNyarukoTitleFootInfo'] = stripslashes($_POST['wpNyarukoTitleFootInfo']);
-        @$wpNyarukoOption['wpNyarukoSNSWeibo'] = stripslashes($_POST['wpNyarukoSNSWeibo']);
-        @$wpNyarukoOption['wpNyarukoSNSWeChat'] = stripslashes($_POST['wpNyarukoSNSWeChat']);
-        @$wpNyarukoOption['wpNyarukoQRtype'] = stripslashes($_POST['wpNyarukoQRtype']);
-        @$wpNyarukoOption['wpNyarukoQRecorrection'] = stripslashes($_POST['wpNyarukoQRecorrection']);
-        @$wpNyarukoOption['wpNyarukoQRmode'] = stripslashes($_POST['wpNyarukoQRmode']);
-        @$wpNyarukoOption['wpNyarukoQRecode'] = stripslashes($_POST['wpNyarukoQRecode']);
-        @$wpNyarukoOption['wpNyarukoQRimgtype'] = stripslashes($_POST['wpNyarukoQRimgtype']);
-        @$wpNyarukoOption['wpNyarukoConsoleLog'] = stripslashes($_POST['wpNyarukoConsoleLog']);
-        @$wpNyarukoOption['wpNyarukoConsoleLogT'] = stripslashes($_POST['wpNyarukoConsoleLogT']);
-        @$wpNyarukoOption['wpNyarukoCommentMode'] = stripslashes($_POST['wpNyarukoCommentMode']);
-        @$wpNyarukoOption['wpNyarukoCommentBox'] = stripslashes($_POST['wpNyarukoCommentBox']);
-        @$wpNyarukoOption['wpNyarukoHeader'] = stripslashes($_POST['wpNyarukoHeader']);
-        @$wpNyarukoOption['wpNyarukoFooter'] = stripslashes($_POST['wpNyarukoFooter']);
-        @$wpNyarukoOption['wpNyarukoIndexKeywords'] = stripslashes($_POST['wpNyarukoIndexKeywords']);
-        @$wpNyarukoOption['wpNyarukoRSSArticle'] = stripslashes($_POST['wpNyarukoRSSArticle']);
-        @$wpNyarukoOption['wpNyarukoRSSComment'] = stripslashes($_POST['wpNyarukoRSSComment']);
-        @$wpNyarukoOption['wpNyarukoJQ'] = stripslashes($_POST['wpNyarukoJQ']);
-        @$wpNyarukoOption['wpNyarukoJQcookie'] = stripslashes($_POST['wpNyarukoJQcookie']);
-        @$wpNyarukoOption['wpNyarukoBScss'] = stripslashes($_POST['wpNyarukoBScss']);
-        @$wpNyarukoOption['wpNyarukoFNewsTitle'] = stripslashes($_POST['wpNyarukoFNewsTitle']);
-        @$wpNyarukoOption['wpNyarukoFNewsImage'] = stripslashes($_POST['wpNyarukoFNewsImage']);
-        @$wpNyarukoOption['wpNyarukoFNewsImageB'] = stripslashes($_POST['wpNyarukoFNewsImageB']);
-        @$wpNyarukoOption['wpNyarukoFNewsColorB'] = stripslashes($_POST['wpNyarukoFNewsColorB']);
-        @$wpNyarukoOption['wpNyarukoFNewsColorF'] = stripslashes($_POST['wpNyarukoFNewsColorF']);
-        @$wpNyarukoOption['wpNyarukoFNewsLink'] = stripslashes($_POST['wpNyarukoFNewsLink']);
-        @$wpNyarukoOption['wpNyarukoFNewsLinkN'] = stripslashes($_POST['wpNyarukoFNewsLinkN']);
-        @$wpNyarukoOption['wpNyarukoLogo'] = stripslashes($_POST['wpNyarukoLogo']);
-        @$wpNyarukoOption['wpNyarukoPlayerAutoMiniSize'] = stripslashes($_POST['wpNyarukoPlayerAutoMiniSize']);
-        @$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeU'] = stripslashes($_POST['wpNyarukoPlayerAutoMiniSizeU']);
-        @$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'] = stripslashes($_POST['wpNyarukoPlayerAutoMiniSizeA']);
-        @$wpNyarukoOption['wpNyarukoPlayerAutoStop'] = stripslashes($_POST['wpNyarukoPlayerAutoStop']);
-        @$wpNyarukoOption['wpNyarukoPlayerAutoRemove'] = stripslashes($_POST['wpNyarukoPlayerAutoRemove']);
-        @$wpNyarukoOption['wpNyarukoBigPicTitleAutoSize'] = stripslashes($_POST['wpNyarukoBigPicTitleAutoSize']);
-        @$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] = stripslashes($_POST['wpNyarukoBigPicTitleAutoSizeF']);
-        @$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] = stripslashes($_POST['wpNyarukoBigPicTitleAutoSizeT']);
+        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoTitleFootInfo","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM"];
+        $wpNyarukoPageT = ["Size","Color","Line"];
+        for ($i=0; $i < 7; $i++) {
+            foreach ($wpNyarukoPageT as $wpNyarukoPageTv) {
+                array_push($options,("wpNyarukoPageH".$i."Font".$wpNyarukoPageTv));
+            }
+        }
+        foreach ($options as $value) {
+            @$wpNyarukoOption[$value] = stripslashes($_POST[$value]);
+        }
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -211,7 +199,7 @@ function display() {
     echo '<div id="wpNyarukoInfo">已受理您的变更。</div>';
   }
 ?>
-<div id="wpNyarukoOptionTitle"><span class="wp-menu-image dashicons dashicons-admin-settings" id="wpNyarukoOptionTitleIcon"></span><span>&emsp;wpNyaruko 主题首选项</span></div><hr>
+<div id="wpNyarukoOptionTitle"><a title="版本升级日志" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-N/commits/master" target="_blank"><div id="wpNyarukoPanelLogo"></div></a>&nbsp;设置中心（版本&nbsp;<?php include "version.php"; ?>）</div><hr>
 <?php
 if(!is_admin()) {
   echo '<p>欢迎使用 wpNyaruko 主题，<br/>请使用管理员权限登录来继续设置。</p><hr><p>';
@@ -223,29 +211,58 @@ if(!is_admin()) {
     <table border="0" cellspacing="0" cellpadding="10">
     <tbody>
     <tr>
-      <td>笔记(不呈现)</td>
-      <td><input name="wpNyarukoTest" type="text" id="wpNyarukoTest" value="<?php echo(@$wpNyarukoOption['wpNyarukoTest']); ?>" size=64 maxlength=128 /></td>
+        <td>笔记(不呈现)</td>
+        <td><input name="wpNyarukoTest" type="text" id="wpNyarukoTest" value="<?php echo(@$wpNyarukoOption['wpNyarukoTest']); ?>" size=64 maxlength=128 /></td>
     </tr>
     <tr>
-      <td>正在进行<br/>活动提示</td>
-      <td>
-      活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsTitle']); ?>" size=55 maxlength=128 alt="活动标题" /><br/>
-      若要关闭主页上的此提示信息,请清空活动标题。<br/>
-      小图网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsImage']); ?>" size=55 maxlength=128 alt="小图网址" /><br/>
-      大图网址：<input name="wpNyarukoFNewsImageB" id="wpNyarukoFNewsImageB" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsImageB']); ?>" size=55 maxlength=128 alt="大图网址" /><br/>
-      链接网址：<input name="wpNyarukoFNewsLink" id="wpNyarukoFNewsLink" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsLink']); ?>" size=55 maxlength=128 /><br/>
-      背景颜色：#<input name="wpNyarukoFNewsColorB" id="wpNyarukoFNewsColorB" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsColorB']); ?>" size=6 maxlength=6 alt="背景颜色"  readonly="readonly" />&emsp;
-      标题颜色：#<input name="wpNyarukoFNewsColorF" id="wpNyarukoFNewsColorF" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsColorF']); ?>" size=6 maxlength=6 alt="标题颜色"  readonly="readonly" />&emsp;
-      点击时：<input name="wpNyarukoFNewsLinkN" type="checkbox" id="wpNyarukoFNewsLinkN" <?php if(@$wpNyarukoOption['wpNyarukoFNewsLinkN']!='')echo('checked'); ?> />在新标签页中打开
-      </td>
+        <td>正在进行<br/>活动提示</td>
+        <td>
+        活动标题：<input name="wpNyarukoFNewsTitle" id="wpNyarukoFNewsTitle" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsTitle']); ?>" size=55 maxlength=128 alt="活动标题" /><br/>
+        若要关闭主页上的此提示信息,请清空活动标题。<br/>
+        小图网址：<input name="wpNyarukoFNewsImage" id="wpNyarukoFNewsImage" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsImage']); ?>" size=55 maxlength=128 alt="小图网址" /><br/>
+        大图网址：<input name="wpNyarukoFNewsImageB" id="wpNyarukoFNewsImageB" class="chpicture" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsImageB']); ?>" size=55 maxlength=128 alt="大图网址" /><br/>
+        链接网址：<input name="wpNyarukoFNewsLink" id="wpNyarukoFNewsLink" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsLink']); ?>" size=55 maxlength=128 /><br/>
+        背景颜色：#<input name="wpNyarukoFNewsColorB" id="wpNyarukoFNewsColorB" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsColorB']); ?>" size=6 maxlength=6 alt="背景颜色" readonly="readonly" />&emsp;
+        标题颜色：#<input name="wpNyarukoFNewsColorF" id="wpNyarukoFNewsColorF" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption['wpNyarukoFNewsColorF']); ?>" size=6 maxlength=6 alt="标题颜色" readonly="readonly" />&emsp;
+        点击时：<input name="wpNyarukoFNewsLinkN" type="checkbox" id="wpNyarukoFNewsLinkN" <?php if(@$wpNyarukoOption['wpNyarukoFNewsLinkN']!='')echo('checked'); ?> />在新标签页中打开
+        </td>
     </tr>
     <tr>
-      <td>主页模块<br/>设定</td>
-      <td>
-      <div id="colmgr_title"><span>
+        <td>正文版式</td>
+        <td align="center"><table width="400" border="0" cellspacing="10" cellpadding="0">
+        <tbody>
+            <tr>
+            <th>文章元素</th>
+            <th>文字字号</th>
+            <th>文字颜色</th>
+            <th>行距</th>
+            </tr>
+            <?php $wpNyarukoPageSetTitle = ["正文","一级标题","二级标题","三级标题","四级标题","五级标题","六级标题"];
+            for ($i=0; $i < count($wpNyarukoPageSetTitle); $i++) {
+                $sname = "wpNyarukoPageH".$i."Font";
+                ?>
+                <tr>
+                <th><?php echo $wpNyarukoPageSetTitle[$i]; ?></th>
+                <td align="center"><input name="<?php echo $sname; ?>Size" type="text" id="<?php echo $sname; ?>Size" value="<?php echo(@$wpNyarukoOption[$sname.'Size']); ?>" size="2" maxlength="2" />码</td>
+                <td align="center">#<input name="<?php echo $sname; ?>Color" id="<?php echo $sname; ?>Color" class="chcolor" type="text" value="<?php echo(@$wpNyarukoOption[$sname.'Color']); ?>" size=6 maxlength=6 alt="<?php echo $wpNyarukoPageSetTitle[$i]; ?>颜色" readonly="readonly" /></td>
+                <td align="center"><input name="<?php echo $sname; ?>Line" type="text" id="<?php echo $sname; ?>Line" value="<?php echo(@$wpNyarukoOption[$sname.'Line']); ?>" size="2" maxlength="2" />像素</td>
+                </tr>
+                <?php
+            }
+            ?>
+        </tbody>
+        </table>
+    每个自然段前自动添加<input name="wpNyarukoPageIndent" type="text" id="wpNyarukoPageIndent" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageIndent']); ?>" size="2" maxlength="2" />像素的空格<br/>
+    文章中的图片宽度为正文宽度的百分之<input name="wpNyarukoPageImgWidth" type="text" id="wpNyarukoPageImgWidth" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidth']); ?>" size="3" maxlength="3" />(电脑版) 和 百分之<input name="wpNyarukoPageImgWidthM" type="text" id="wpNyarukoPageImgWidthM" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidthM']); ?>" size="3" maxlength="3" />(手机版)
+    </td>
+    </tr>
+    <tr>
+        <td>主页模块<br/>设定</td>
+        <td>
+        <div id="colmgr_title"><span>
         <!-- wpNyaruko-N 主页模块设定<hr> -->
         <input type="text" id="wpNyarukoIndexModule" name="wpNyarukoIndexModule" onfocus="this.select();" value="<?php echo(@$wpNyarukoOption['wpNyarukoIndexModule']); ?>"/>
-    </span></div>
+        </span></div>
     <div id="colmgr_tb">
         <div class="colmgr_tb_lr cell"></div>
         <div class="colmgr_tb_sel cell">
