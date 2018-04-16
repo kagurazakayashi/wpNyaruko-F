@@ -38,7 +38,7 @@ function clearcontent($content) {
     $content = strip_tags($content);
     $wpNyarukoWordlimit = intval($wpNyarukoOption['wpNyarukoWordlimit']);
     if (strlen($content) >= $wpNyarukoWordlimit) {
-        $content = substr($content,0,$wpNyarukoWordlimit).$wpNyarukoOption['wpNyarukoWLInfo'];
+        $content = mb_substr($content,0,$wpNyarukoWordlimit).$wpNyarukoOption['wpNyarukoWLInfo'];
     }
     echo $content;
 }
