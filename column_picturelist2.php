@@ -1,13 +1,24 @@
 <?php
 $typename = get_category($categoryid)->name;
 typetitle($typename);
+$usededuplication = 1;
+if(@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication3']!='') {
+    $usededuplication = 2;
+}
 $nposts = get_posts(array(
     'category' => $categoryid,
-    'numberposts' => ($numberposts*2),
+    'numberposts' => ($numberposts*$usededuplication),
 ));
 $dedupreturn = deduplication($showids,$nposts,$numberposts);
-$nposts = $dedupreturn[0];
-$showids = $dedupreturn[1];
+if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication3']!='') {
+    $nposts = $dedupreturn[0];
+}
+if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication3M']!='') {
+    $showids = $dedupreturn[1];
+}
+if(empty($nposts)){
+    echo "<center><p>暂无内容</p><p>&emsp;</p></center>";
+} else {
 ?>
 <div class="carouseljs">
     <div class="spfatherDIV" id="sp<?php echo $colid; ?>">
@@ -44,5 +55,6 @@ $showids = $dedupreturn[1];
         }
     }
     echo "];setscrollimgs(scrollimgs);scrollpicture('sp".$colid."');</script>";
-    echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div><br/>'; ?>
+    echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div><br/>'; 
+} ?>
 </div>

@@ -1,15 +1,23 @@
 <?php
 $typename = get_category($categoryid)->name;
 typetitle($typename);
+$usededuplication = 1;
+if(@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication1']!='') {
+    $usededuplication = 2;
+}
 $nposts = get_posts(array(
     'category' => $categoryid,
-    'numberposts' => ($numberposts*2),
+    'numberposts' => ($numberposts*$usededuplication),
 ));
 $dedupreturn = deduplication($showids,$nposts,$numberposts);
-$nposts = $dedupreturn[0];
-$showids = $dedupreturn[1];
+if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication1']!='') {
+    $nposts = $dedupreturn[0];
+}
+if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication1M']!='') {
+    $showids = $dedupreturn[1];
+}
 if(empty($nposts)){
-    echo "<center><p>暂无内容</p></center>";
+    echo "<center><p>暂无内容</p><p>&emsp;</p></center>";
 } else {
     foreach($nposts as $npost){
         ?>

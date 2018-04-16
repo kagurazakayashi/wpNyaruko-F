@@ -1,20 +1,28 @@
 <?php
 $typename = get_category($categoryid)->name;
 typetitle($typename);
+$usededuplication = 1;
+if(@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication2']!='') {
+    $usededuplication = 2;
+}
 $nposts = get_posts(array(
     'category' => $categoryid,
-    'numberposts' => ($numberposts*2),
+    'numberposts' => ($numberposts*$usededuplication),
 ));
 $dedupreturn = deduplication($showids,$nposts,$numberposts);
-$nposts = $dedupreturn[0];
-$showids = $dedupreturn[1];
+if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication2']!='') {
+    $nposts = $dedupreturn[0];
+}
+if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNyarukoDeduplication2M']!='') {
+    $showids = $dedupreturn[1];
+}
 ?>
 <div class="racing_listbox">
     <div class="racing_list_tlr"></div>
     <div class="racing_list">
         <?php  
         if(empty($nposts)){
-            echo "<center><p>暂无内容</p></center>";
+            echo "<center><p>暂无内容</p><p>&emsp;</p></center>";
         } else {
             foreach($nposts as $npost){
         ?>

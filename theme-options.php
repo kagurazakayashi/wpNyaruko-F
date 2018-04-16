@@ -27,7 +27,6 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoQRmode'] = 'Byte';
         $wpNyarukoOption['wpNyarukoQRecode'] = 'UTF-8';
         $wpNyarukoOption['wpNyarukoQRimgtype'] = 'img';
-        $wpNyarukoOption['wpNyarukoTitleFootInfo'] = '©';
         $wpNyarukoOption['wpNyarukoSNSWeibo'] = '';
         $wpNyarukoOption['wpNyarukoSNSWeChat'] = '';
         $wpNyarukoOption['wpNyarukoConsoleLog'] = '';
@@ -79,6 +78,11 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoPageIndent'] = '40';
         $wpNyarukoOption['wpNyarukoPageImgWidth'] = '80';
         $wpNyarukoOption['wpNyarukoPageImgWidthM'] = '100';
+        for ($i=0; $i < 4; $i++) {
+            $wpNyarukoOption[("wpNyarukoDeduplication".$i)] = '';
+            $wpNyarukoOption[("wpNyarukoDeduplication".$i."M")] = '';
+        }
+        $wpNyarukoOption['wpNyarukoFonts'] = '';
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -93,12 +97,16 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoTitleFootInfo","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM"];
+        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts"];
         $wpNyarukoPageT = ["Size","Color","Line"];
         for ($i=0; $i < 7; $i++) {
             foreach ($wpNyarukoPageT as $wpNyarukoPageTv) {
                 array_push($options,("wpNyarukoPageH".$i."Font".$wpNyarukoPageTv));
             }
+        }
+        for ($i=0; $i < 4; $i++) {
+            array_push($options,("wpNyarukoDeduplication".$i));
+            array_push($options,("wpNyarukoDeduplication".$i."M"));
         }
         foreach ($options as $value) {
             @$wpNyarukoOption[$value] = stripslashes($_POST[$value]);
@@ -257,6 +265,22 @@ if(!is_admin()) {
     </td>
     </tr>
     <tr>
+        <td>字体</td>
+        <td><table border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+            <td width="200px"><textarea name="wpNyarukoFonts" cols="20" rows="10" maxlength="2000" id="wpNyarukoFonts"><?php echo(@$wpNyarukoOption['wpNyarukoFonts']); ?></textarea></td>
+            <td width="300px"><ul>
+            <li>-&nbsp;输入字体名称，显示时会从上而下依次尝试使用字体。</li>
+            <li>-&nbsp;建议输入多个字体，如果用户电脑中没有第一个字体，则会尝试使用第二个，以此类推。</li>
+            <li>-&nbsp;留空将使用默认值：</li>
+            <li>思源黑体,Source Han Sans,苹方黑体,PingFang SC,冬青黑体,Hiragino Sans GB,微软雅黑,Microsoft YaHei,Hiragino Sans GB,STHeiti Light,SimHei,serif,sans-serif,cursive,fantasy,monospace</li>
+            </ul></td>
+            </tr>
+        </tbody>
+        </table></td>
+    </tr>
+    <tr>
         <td>主页模块<br/>设定</td>
         <td>
         <div id="colmgr_title"><span>
@@ -358,8 +382,8 @@ if(!is_admin()) {
       <td>文章列表中只预览前<input name="wpNyarukoWordlimit" type="text" id="wpNyarukoWordlimit" value="<?php echo(@$wpNyarukoOption['wpNyarukoWordlimit']); ?>" size="3" maxlength="3" />个字，并在后面添加<input name="wpNyarukoWLInfo" type="text" id="wpNyarukoWLInfo" value="<?php echo(@$wpNyarukoOption['wpNyarukoWLInfo']); ?>" size="20" maxlength="20" /></td>
     </tr>
     <tr>
-      <td>动画头图信息(弃用)</td>
-      <td><input name="wpNyarukoTitleFootInfo" type="text" id="wpNyarukoTitleFootInfo" value="<?php echo(@$wpNyarukoOption['wpNyarukoTitleFootInfo']); ?>" size="64" maxlength="512" /></td>
+      <td>主页内容<br/>智能去重</td>
+      <td><input name="wpNyarukoDeduplication0" type="checkbox" id="wpNyarukoDeduplication0" <?php if(@$wpNyarukoOption['wpNyarukoDeduplication0']!='')echo('checked'); ?> />对主页中重复列出的文章，从上而下进行去重过滤。<br/>&emsp;过滤来源于以下模块：<br/>&emsp;&emsp;<input name="wpNyarukoDeduplication1M" type="checkbox" id="wpNyarukoDeduplication1M" <?php if(@$wpNyarukoOption['wpNyarukoDeduplication1M']!='')echo('checked'); ?> />大图展示&emsp;<input name="wpNyarukoDeduplication2M" type="checkbox" id="wpNyarukoDeduplication2M" <?php if(@$wpNyarukoOption['wpNyarukoDeduplication2M']!='')echo('checked'); ?> />纵向列表&emsp;<input name="wpNyarukoDeduplication3M" type="checkbox" id="wpNyarukoDeduplication3M" <?php if(@$wpNyarukoOption['wpNyarukoDeduplication3M']!='')echo('checked'); ?> />横向图片<br/>&emsp;过滤应用于以下模块：<br/>&emsp;&emsp;<input name="wpNyarukoDeduplication1" type="checkbox" id="wpNyarukoDeduplication1" <?php if(@$wpNyarukoOption['wpNyarukoDeduplication1']!='')echo('checked'); ?> />大图展示&emsp;<input name="wpNyarukoDeduplication2" type="checkbox" id="wpNyarukoDeduplication2" <?php if(@$wpNyarukoOption['wpNyarukoDeduplication2']!='')echo('checked'); ?> />纵向列表&emsp;<input name="wpNyarukoDeduplication3" type="checkbox" id="wpNyarukoDeduplication3" <?php if(@$wpNyarukoOption['wpNyarukoDeduplication3']!='')echo('checked'); ?> />横向图片</td>
     </tr>
     <tr>
       <td>社交网络用户名</td>
