@@ -46,14 +46,41 @@ function qr(text="",innerid="qrview",imgtype="",type="",errorcorrection="",mode=
 }
 function contentformat() {
     var texts = $(".racing_text");
-    var textps = $(".racing_text p");
-    var indent = '<span class="racing_indent"></span>';
-    if (textps.length == 0) {
-        texts.prepend(indent);
-    } else {
-        textps.prepend(indent);
+    var textlines = texts.html().split('\n');
+    var firstline = true;
+    var spacespan = '<span class="racing_indent"></span>';
+    for (let line = 0; line < textlines.length; line++) {
+        var nowline = textlines[line];
+        var nowlinetype = nowline.replace(/(^\s*)|(\s*$)/g, "").substr(0,2);
+        if (nowlinetype == "<i" || nowlinetype == "<s" || nowlinetype == "<d" || nowlinetype == "<v" || nowlinetype == "") {
+            if (firstline && nowlinetype != "") {
+                if (firstline) {
+                    if (nowlinetype == "<d") {
+                        $("#sortingtotext").css("height","20px");
+                    } else if (nowlinetype != "") {
+                        $("#sortingtotext").css("height","0px");
+                    }
+                    firstline = false;
+                }
+            }
+        } else  {
+            if (nowlinetype != "<p") {
+                textlines[line] = spacespan + textlines[line];
+            }
+            firstline = false;
+        }
     }
-    // $(".wp-video").css("width","100%");
+    var newhtml = textlines.join('\n');
+    newhtml = newhtml.replace(/\n\n/g, '<br/>');
+    texts.html(newhtml);
+}
+function insertstr(scrstr,instr,strindex) {
+    var newstr="";
+    for(var i=0;i<scrstr.length;i+=strindex){
+        var tmp=scrstr.substring(i, i+strindex);
+        newstr+=tmp+instr;
+    }
+    return newstr;
 }
 //[滚动图片 ready:scrollpicture('sp1'); resize:rewh();
 var sparr = {"":[]};
