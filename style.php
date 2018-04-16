@@ -17,6 +17,9 @@ body {
     height: 1px;
     width: <?php echo @$wpNyarukoOption['wpNyarukoPageIndent']; ?>px;
 }
+.racing_text p {
+    text-indent: <?php echo @$wpNyarukoOption['wpNyarukoPageIndent']; ?>px;
+}
 <?php
 $wpNyarukoPageT = array("Size"=>"font-size","Color"=>"color","Line"=>"line-height");
 for ($i=1; $i < 7; $i++) {

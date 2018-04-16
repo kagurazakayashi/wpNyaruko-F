@@ -131,14 +131,23 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
             </div>
         </div>
     </div>
-        <?php endwhile; ?>
+    <?php endwhile; ?>
+    <div class="morebtnbox morebtnboxarchive">
+        <?php
+        $nppostslinkspan = "";
+        $previouspostslink = get_previous_posts_link("&lt;&lt;", 0);
+        $previouspostslink = str_replace("&lt;&lt;",'<span><i class="material-icons">&#xE314;</i></span><span>查看新文章</span>',$previouspostslink);
+        $nextpostslink = get_next_posts_link("&lt;&lt;", 0);
+        $nextpostslink = str_replace("&lt;&lt;",'<span>查看旧文章</span><span class="material-icons">&#xE315;</span>',$nextpostslink);
+        if ($previouspostslink && $nextpostslink) {
+            $nppostslinkspan = "&emsp;&emsp;";
+        }
+        echo str_replace("\n","",$previouspostslink.$nppostslinkspan.$nextpostslink);
+        ?>
+    </div>
 </div>
 <p>&emsp;</p>
 <div class="racing_list_tlr"></div>
-        <div class="morebtnbox">
-            <?php previous_posts_link('&lt;&lt; 查看新文章', 0); ?>
-            <?php next_posts_link('查看旧文章 &gt;&gt;', 0); ?>
-        </div>
         <?php else : ?>
         <center><p>暂无内容</p></center>
         <?php endif; ?>
