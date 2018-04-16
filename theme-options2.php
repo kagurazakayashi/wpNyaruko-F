@@ -1,6 +1,6 @@
 <div id="wpNyarukoPanelBox">
 <?php $imgdir = "../wp-content/themes/wpNyaruko-N/images/"; ?>
-    <a title="版本升级日志" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-N/commits/master" target="_blank"><div id="wpNyarukoPanelLogo"></div> N v0.6.2</a>
+    <a title="版本升级日志" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-N/commits/master" target="_blank"><div id="wpNyarukoPanelLogo"></div> <?php include "version.php"; ?></a>
     <hr>
     <div class="wpNyarukoPanelTable">
         <div class="wpNyarukoPanelTablecell wpNyarukoPanelTablecellpadding" id="wpNyarukoPanelCL">

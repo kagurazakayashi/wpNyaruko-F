@@ -1,11 +1,21 @@
 <?php function gcss($wpNyarukoOption) { ?>
 <style>
 /* [page */
-.racing_single_single, .racing_single_single p, .racing_single_single div {
+body {
+    font-family: <?php if ($wpNyarukoOption['wpNyarukoFontsF']!='') { fontsettingconv(@$wpNyarukoOption['wpNyarukoFonts']); } ?>;
+}
+.racing_text, .racing_text p {
     font-size: <?php echo @$wpNyarukoOption['wpNyarukoPageH0FontSize']; ?>pt;
     color: #<?php echo @$wpNyarukoOption['wpNyarukoPageH0FontColor']; ?>;
     line-height: <?php echo @$wpNyarukoOption['wpNyarukoPageH0FontLine']; ?>px;
-    text-indent: <?php echo @$wpNyarukoOption['wpNyarukoPageIndent']; ?>px;
+    font-family: <?php if ($wpNyarukoOption['wpNyarukoFontsF']=='') { fontsettingconv(@$wpNyarukoOption['wpNyarukoFonts']); } ?>;
+}
+/* text-indent: */
+.racing_indent {
+    display: inline-block;
+    background-color: transparent;
+    height: 1px;
+    width: <?php echo @$wpNyarukoOption['wpNyarukoPageIndent']; ?>px;
 }
 <?php
 $wpNyarukoPageT = array("Size"=>"font-size","Color"=>"color","Line"=>"line-height");

@@ -387,6 +387,10 @@
 #wpNyarukoPanelLogo:hover {
     background-image: url("images/wpNyaruko2.gif");
 }
+#wpNyarukoPanelLogoBtn {
+    width: 90%;
+    padding: 5%;
+}
 .wpNyarukoPanelTable {
     display: table;
     width: 100%;

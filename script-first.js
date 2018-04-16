@@ -45,7 +45,15 @@ function qr(text="",innerid="qrview",imgtype="",type="",errorcorrection="",mode=
     }
 }
 function contentformat() {
-    // $(".racing_single_single img").css({"width":"90%","height":"auto"});
+    var texts = $(".racing_text");
+    var textps = $(".racing_text p");
+    var indent = '<span class="racing_indent"></span>';
+    if (textps.length == 0) {
+        texts.prepend(indent);
+    } else {
+        textps.prepend(indent);
+    }
+    // $(".wp-video").css("width","100%");
 }
 //[滚动图片 ready:scrollpicture('sp1'); resize:rewh();
 var sparr = {"":[]};

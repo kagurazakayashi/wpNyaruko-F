@@ -154,7 +154,7 @@ function deduplication($showids,$nposts,$numberposts) {
         return [array(),$showids];
     } else {
         $nownumberposts = $numberposts;
-        for ($i=0; $i < $numberposts; $i++) {
+        for ($i=0; $i < $nownumberposts; $i++) {
             if (!isset($nposts[$i])) {
                 break;
             }
@@ -177,7 +177,22 @@ function deduplication($showids,$nposts,$numberposts) {
         return array($newnposts,$newshowids);
     }
 }
+function deduplicationonlylog() {
 
+}
+function fontsettingconv($fontsset) {
+    $fontarr = explode("\n",$fontsset);
+    $fontfamilycss = "";
+    foreach ($fontarr as $fontv) {
+        $fonttv = $fontv;
+        if (substr($fonttv,strlen($fonttv)-1,0) == "") {
+            $fonttv = substr($fonttv,0,strlen($fonttv)-1);
+        }
+        $fontfamilycss = $fontfamilycss.'"'.$fonttv.'",';
+    }
+    $fontfamilycss = substr($fontfamilycss,0,strlen($fontfamilycss)-1);
+    print_r($fontfamilycss);
+}
 // function deduplication($showids,$nposts,$numberposts) {
 
 // print_r($showids);

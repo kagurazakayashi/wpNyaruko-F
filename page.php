@@ -9,7 +9,9 @@
             <a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>主页">主页</a><?php echo cpath(true).get_the_title(); ?>
             <?php edit_post_link('编辑', '　(已使用有', '权限的账户登录)'); ?>
         </div>
+        <div class="racing_text">
         <?php echo do_shortcode(removevideoimage(get_the_content())); ?>
+        </div>
     </div>
 <script type="text/javascript">contentformat();</script>
 <?php comments_template(); ?>

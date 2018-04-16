@@ -8,7 +8,11 @@ var colmgr_cmd = "";
 var colorpickerbindid = null;
 var picturepickerbindid = null;
 $(document).ready(function(){
-    if ($("#footer-thankyou").length > 0) $("#footer-thankyou").append('感谢使用<a href="https://github.com/kagurazakayashi/wpNyaruko-N">wpNyaruko</a>系列主题。');
+    var welcomehtml = '感谢使用<a href="https://github.com/kagurazakayashi/wpNyaruko-N">wpNyaruko</a>系列主题。';
+    var menuaddhtml = '<a href="themes.php?page=theme-options.php" title="进入主题首选项"><img id="wpNyarukoPanelLogoBtn" src="../wp-content/themes/wpNyaruko-N/images/wpNyaruko3.gif" alt="wpNyaruko" /></a>';
+    console.log(welcomehtml);
+    if ($("#footer-thankyou").length > 0) $("#footer-thankyou").append(welcomehtml);
+    if ($("#adminmenu").length > 0 && $("#wpNyarukoPanelLogoBtn").length == 0) $("#adminmenu").append(menuaddhtml);
     if ($("#wpNyarukoOptionTitle").length == 0) {
         console.log("未加载主题设定");
     } else {
@@ -25,7 +29,7 @@ $(document).ready(function(){
             picturepickerselectpic(html);
         }
     }
-    if (showwpnyarukooptions2 && $(window).width() >= 640) {
+    if (typeof(showwpnyarukooptions2) != "undefined" && $(window).width() >= 640) {
         $("#wpbody").load("../wp-content/themes/wpNyaruko-N/theme-options2.php");
         var wpadminbarcss = {"background":"#f1f1f1","color":"#000","overflow":"hidden"};
         $("#wpadminbar, #wpadminbar .ab-empty-item, #wpadminbar a.ab-item, #wpadminbar>#wp-toolbar span.ab-label, #wpadminbar>#wp-toolbar span.noticon").css(wpadminbarcss);

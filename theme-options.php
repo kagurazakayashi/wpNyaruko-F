@@ -83,6 +83,7 @@ function getOptions() {
             $wpNyarukoOption[("wpNyarukoDeduplication".$i."M")] = '';
         }
         $wpNyarukoOption['wpNyarukoFonts'] = '';
+        $wpNyarukoOption['wpNyarukoFontsF'] = 'on';
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -97,7 +98,7 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts"];
+        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts","wpNyarukoFontsF"];
         $wpNyarukoPageT = ["Size","Color","Line"];
         for ($i=0; $i < 7; $i++) {
             foreach ($wpNyarukoPageT as $wpNyarukoPageTv) {
@@ -269,9 +270,10 @@ if(!is_admin()) {
         <td><table border="0" cellspacing="0" cellpadding="0">
         <tbody>
             <tr>
-            <td width="200px"><textarea name="wpNyarukoFonts" cols="20" rows="10" maxlength="2000" id="wpNyarukoFonts"><?php echo(@$wpNyarukoOption['wpNyarukoFonts']); ?></textarea></td>
+            <td width="200px"><textarea name="wpNyarukoFonts" cols="20" rows="14" maxlength="2000" id="wpNyarukoFonts"><?php echo(@$wpNyarukoOption['wpNyarukoFonts']); ?></textarea></td>
             <td width="300px"><ul>
-            <li>-&nbsp;输入字体名称，显示时会从上而下依次尝试使用字体。</li>
+            <li><input name="wpNyarukoFontsF" type="checkbox" id="wpNyarukoFontsF" <?php if(@$wpNyarukoOption['wpNyarukoFontsF']!='')echo('checked'); ?> />将字体设置应用于本网站页面中所有文字，而不是只有文章中的文字。</li>
+            <li>-&nbsp;输入字体名称，每个字体名称一行（使用换行作为分隔符），不用加引号。</li>
             <li>-&nbsp;建议输入多个字体，如果用户电脑中没有第一个字体，则会尝试使用第二个，以此类推。</li>
             <li>-&nbsp;留空将使用默认值：</li>
             <li>思源黑体,Source Han Sans,苹方黑体,PingFang SC,冬青黑体,Hiragino Sans GB,微软雅黑,Microsoft YaHei,Hiragino Sans GB,STHeiti Light,SimHei,serif,sans-serif,cursive,fantasy,monospace</li>
