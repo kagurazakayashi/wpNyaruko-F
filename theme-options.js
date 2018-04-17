@@ -7,6 +7,7 @@ var colmgr_blo_stypes = [];
 var colmgr_cmd = "";
 var colorpickerbindid = null;
 var picturepickerbindid = null;
+var colmgr_nowmodule = null;
 $(document).ready(function(){
     var welcomehtml = '感谢使用<a href="https://github.com/kagurazakayashi/wpNyaruko-N">wpNyaruko</a>系列主题。';
     var menuaddhtml = '<a href="themes.php?page=theme-options.php" title="进入主题首选项"><img id="wpNyarukoPanelLogoBtn" src="../wp-content/themes/wpNyaruko-N/images/wpNyaruko3.gif" alt="wpNyaruko" /></a>';
@@ -16,7 +17,8 @@ $(document).ready(function(){
     if ($("#wpNyarukoOptionTitle").length == 0) {
         console.log("未加载主题设定");
     } else {
-        colmgr_cmd = $("#wpNyarukoIndexModule").attr("value");
+        colmgr_nowmodule = $("#wpNyarukoIndexModule");
+        colmgr_cmd = colmgr_nowmodule.attr("value");
         colmgr_blo_cmd2gui();
         flexicolorpickerinit();
         $(".chcolor").focus(function(){
@@ -75,7 +77,7 @@ function colmgr_blnmgr_click(mode) {
         }
         colmgr_bln_val = -1;
         colmgr_cmd = items.join("|");
-        $("#wpNyarukoIndexModule").attr("value",colmgr_cmd);
+        colmgr_nowmodule.attr("value",colmgr_cmd);
         colmgr_blo_cmd2gui();
         if (newselect >= 0 && newselect < items.length-1) {
             $("#colmgr_bln_"+newselect).attr("class","colmgr_bln colmgr_blo_selected");
@@ -84,7 +86,7 @@ function colmgr_blnmgr_click(mode) {
     }
 }
 function colmgr_blnset_click(mode) {
-    var colmgr_indexcol = $("#wpNyarukoIndexModule");
+    var colmgr_indexcol = colmgr_nowmodule;
     var imp = prompt("主页模块配置代码:",colmgr_indexcol.attr("value"));
     if (imp != null){
         colmgr_indexcol.attr("value",imp);
@@ -96,24 +98,26 @@ function colmgr_blo_add() {
     if (colmgr_blo_val >= 0) {
         var blocmd = colmgr_blo_val + "_" + colmgr_blo_stype + "_" + colmgr_blo_snum + "|";
         colmgr_cmd += blocmd;
-        $("#wpNyarukoIndexModule").attr("value",colmgr_cmd);
+        colmgr_nowmodule.attr("value",colmgr_cmd);
         colmgr_blo_cmd2gui();
     }
 }
 function colmgr_blo_cmd2gui() {
-    var items = colmgr_cmd.split("|");
     var html = "";
-    for (let i = 0; i < items.length; i++) {
-        var iteminfo = items[i].split("_");
-        if (iteminfo.length == 3) {
-            var ncolmgr_blo_val = iteminfo[0];
-            var ncolmgr_blo_stype = iteminfo[1];
-            var ncolmgr_blo_snum = iteminfo[2];
-            var show_ncolmgr_blo_snum = "";
-            if (ncolmgr_blo_snum >= 0) {
-                show_ncolmgr_blo_snum = '，显示 '+ncolmgr_blo_snum+' 篇</div>';
+    if (colmgr_cmd) {
+        var items = colmgr_cmd.split("|");
+        for (let i = 0; i < items.length; i++) {
+            var iteminfo = items[i].split("_");
+            if (iteminfo.length == 3) {
+                var ncolmgr_blo_val = iteminfo[0];
+                var ncolmgr_blo_stype = iteminfo[1];
+                var ncolmgr_blo_snum = iteminfo[2];
+                var show_ncolmgr_blo_snum = "";
+                if (ncolmgr_blo_snum >= 0) {
+                    show_ncolmgr_blo_snum = '，显示 '+ncolmgr_blo_snum+' 篇</div>';
+                }
+                html += '<div class="colmgr_bln" id="colmgr_bln_'+i+'" onclick="colmgr_blo_click($(this));"><b>'+colmgr_blo_names["id"+ncolmgr_blo_stype.toString()]+'</b><br/>'+colmgr_blo_stypes[ncolmgr_blo_val]+show_ncolmgr_blo_snum+'</div>';
             }
-            html += '<div class="colmgr_bln" id="colmgr_bln_'+i+'" onclick="colmgr_blo_click($(this));"><b>'+colmgr_blo_names["id"+ncolmgr_blo_stype.toString()]+'</b><br/>'+colmgr_blo_stypes[ncolmgr_blo_val]+show_ncolmgr_blo_snum+'</div>';
         }
     }
     var colmgr_nowtb = $("#colmgr_nowtb");
@@ -122,6 +126,17 @@ function colmgr_blo_cmd2gui() {
     } else {
         colmgr_nowtb.html(html);
     }
+}
+function colmgr_pcmobileradio(devid) {
+    if (devid == 1) {
+        $("#colmgr_tbch").html("管理电脑版模块<hr>");
+        colmgr_nowmodule = $("#wpNyarukoIndexModule");
+    } else if (devid == 2) {
+        $("#colmgr_tbch").html("管理手机版模块<hr>");
+        colmgr_nowmodule = $("#wpNyarukoIndexModuleM");
+    }
+    colmgr_cmd = colmgr_nowmodule.attr("value");
+    colmgr_blo_cmd2gui();
 }
 var fcpDefault,fcpiHex,fcpiR,fcpiG,fcpiB,fcpiH,fcpiS,fcpiV,fcpcolor = null;
 var fcpinitialHex = '#f4329c';

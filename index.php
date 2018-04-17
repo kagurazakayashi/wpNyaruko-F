@@ -4,7 +4,13 @@
 
 <div class="tshadow"><?php
 $wpNyarukoOption = get_option('wpNyaruko_options');
-$wpNyarukoIndexModule = $wpNyarukoOption['wpNyarukoIndexModule'];
+$wpNyarukoIndexModule = null;
+if (isMobile()) {
+    $wpNyarukoIndexModule = $wpNyarukoOption['wpNyarukoIndexModuleM'];
+} else {
+    $wpNyarukoIndexModule = $wpNyarukoOption['wpNyarukoIndexModule'];
+}
+
 $categories = get_categories();
 $modules = explode("|",$wpNyarukoIndexModule);
 $showids = array();

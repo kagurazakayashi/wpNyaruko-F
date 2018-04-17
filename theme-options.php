@@ -22,6 +22,7 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoWordlimit'] = '300';
         $wpNyarukoOption['wpNyarukoWLInfo'] = ' ... [阅读全文]';
         $wpNyarukoOption['wpNyarukoIndexModule'] = '';
+        $wpNyarukoOption['wpNyarukoIndexModuleM'] = '';
         $wpNyarukoOption['wpNyarukoQRtype'] = 10;
         $wpNyarukoOption['wpNyarukoQRecorrection'] = 'L';
         $wpNyarukoOption['wpNyarukoQRmode'] = 'Byte';
@@ -98,7 +99,7 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts","wpNyarukoFontsF"];
+        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoIndexModuleM","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts","wpNyarukoFontsF"];
         $wpNyarukoPageT = ["Size","Color","Line"];
         for ($i=0; $i < 7; $i++) {
             foreach ($wpNyarukoPageT as $wpNyarukoPageTv) {
@@ -283,11 +284,20 @@ if(!is_admin()) {
         </table></td>
     </tr>
     <tr>
-        <td>主页模块<br/>设定</td>
+        <td>主页模块设定<br/><p>
+          <label>
+            <input type="radio" name="wpNyarukoIndexModuleO" value="wpNyarukoIndexModuleOP" id="wpNyarukoIndexModuleOP" checked="checked" onchange="colmgr_pcmobileradio(1);">
+            电脑版</label>
+          <br>
+          <label>
+            <input type="radio" name="wpNyarukoIndexModuleO" value="wpNyarukoIndexModuleOM" id="wpNyarukoIndexModuleOM" onchange="colmgr_pcmobileradio(2);">
+            手机版</label>
+          <br>
+        </p></td>
         <td>
         <div id="colmgr_title"><span>
-        <!-- wpNyaruko-N 主页模块设定<hr> -->
-        <input type="text" id="wpNyarukoIndexModule" name="wpNyarukoIndexModule" onfocus="this.select();" value="<?php echo(@$wpNyarukoOption['wpNyarukoIndexModule']); ?>"/>
+        <input type="text" class="wpNyarukoIndexModule" id="wpNyarukoIndexModule" name="wpNyarukoIndexModule" onfocus="this.select();" value="<?php echo(@$wpNyarukoOption['wpNyarukoIndexModule']); ?>"/>
+        <input type="text" class="wpNyarukoIndexModule" id="wpNyarukoIndexModuleM" name="wpNyarukoIndexModuleM" onfocus="this.select();" value="<?php echo(@$wpNyarukoOption['wpNyarukoIndexModuleM']); ?>"/>
         </span></div>
     <div id="colmgr_tb">
         <div class="colmgr_tb_lr cell"></div>
@@ -354,7 +364,7 @@ if(!is_admin()) {
         </div>
         <div class="colmgr_tb_set cell">
             <div class="colmgr_tbc">
-                <h2>管理模块<hr></h2>
+                <h2 id="colmgr_tbch">管理电脑版模块<hr></h2>
                 <div id="colmgr_nowtb">
                     <p>当前没有模块</p>
                 </div>
