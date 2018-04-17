@@ -121,7 +121,7 @@ function curPageURL() {
 }
 
 function cpath($i) {
-    $n = '&emsp;<i class="material-icons">&#xE037;</i>&emsp;';
+    $n = '&emsp;<span class="sortingi"><i class="material-icons">&#xE037;</i></span>&emsp;';
     if ($i) return $n;
     echo $n;
 }

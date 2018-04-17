@@ -314,6 +314,9 @@ function leftbutton(spid){
         sparr1 = [];
     });
 }
+function disableautowidth() {
+    $(".racing_single_single img").css({"width":"","height":""});
+}
 function rightbutton(spid){
     $('#' + spid + ' .spright').removeAttr("onclick");
     var spw = $('#' + spid + ' .scrollpicture').position().left - $('body').width();

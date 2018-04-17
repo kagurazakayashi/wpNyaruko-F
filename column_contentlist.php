@@ -28,7 +28,7 @@ if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNya
         ?>
         <div class="racing_item" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
             <div class="racing_list_left">
-                <div class="racing_list_left_class"><?php
+                <div class="racing_list_left_class" onclick="racinglistleftclass('<?php echo get_tag_link(@get_the_tags()[0]->term_id); ?>')"><?php
                     $tags = wp_get_post_tags($npost->ID);
                     if (count($tags) == 0) {
                         $ntypename = $typename;
@@ -51,7 +51,7 @@ if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNya
                 ?>" alt="<?php echo $npost->post_title; ?>" />
                 <?php if (isvideo($npost->post_content)) { echo '<div class="racing_list_left_play material-icons">&#xE039;</div>'; } ?>
             </div>
-            <div class="racing_list_right" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
+            <div class="racing_list_right" onclick="racinglistgotolink('<?php echo get_permalink($npost->ID); ?>')">
                 <div class="racing_list_right_title"><?php echo $npost->post_title; ?></div>
                 <div class="racing_list_right_content"><?php clearcontent($npost->post_content); ?></div>
                 <div class="racing_list_right_bottom">

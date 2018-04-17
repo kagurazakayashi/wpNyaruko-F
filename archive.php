@@ -97,9 +97,9 @@ else if ( isset($_GET['order']) && ($_GET['order']=='alpha') )
     query_posts($arms);
 }
 if (have_posts()) : while (have_posts()) : the_post(); ?>
-    <div class="racing_item" onclick="javascript:window.location.href='<?php the_permalink(); ?>'">
+    <div class="racing_item" onclick="racinglistgotolink('<?php the_permalink(); ?>')">
         <div class="racing_list_left">
-            <div class="racing_list_left_class"><?php
+            <div class="racing_list_left_class" onclick="racinglistleftclass('<?php echo get_tag_link(@get_the_tags()[0]->term_id); ?>')"><?php
                 $ntypename = @get_the_tags()[0]->name;
                 if ($ntypename == "") {
                     $ntypename = $typename;
@@ -117,7 +117,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
             ?>" alt="<?php echo get_the_title(); ?>" />
             <?php if (isvideo(get_the_content())) { echo '<div class="racing_list_left_play material-icons">&#xE039;</div>'; } ?>
         </div>
-        <div class="racing_list_right" onclick="javascript:window.location.href='<?php the_permalink(); ?>'">
+        <div class="racing_list_right" onclick="racinglistgotolink('<?php the_permalink(); ?>')">
             <div class="racing_list_right_title"><?php the_title(); ?></div>
             <div class="racing_list_right_content"><?php clearcontent(get_the_content()); ?></div>
             <div class="racing_list_right_bottom">
@@ -146,7 +146,6 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
         ?>
     </div>
 </div>
-<p>&emsp;</p>
 <div class="racing_list_tlr"></div>
         <?php else : ?>
         <center><p>暂无内容</p></center>
