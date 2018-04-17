@@ -4,6 +4,7 @@ var fiimgWH = 0;//height = width / fiimgwh
 var iwh = 0;
 var isnowsingle = false;
 var anifirstend = false;
+var racinglistleftclassing = false;
 $(document).ready(function(){
     var nyarukoplayerdivheight = $(window).height();
     var players = [$("#homepage_topimgbox"),$(".nyarukoplayer")];
@@ -489,7 +490,7 @@ function image169_H() {
     $(image_16_9).css('left',imageleft);
 }
 function snsiconover(iid) {
-    if ($("#homepage_mobilemenubtn").css("display")!="block" || wpnyaruko_headermode == 2) {
+    if (($("#homepage_mobilemenubtn").css("display")!="block" || wpnyaruko_headermode == 2) && !isMobile) {
         let ta = $("#homepage_snsa_"+iid);
         qr(ta.attr("href"),"homepage_snsqrshow","img","10","","");
         $(".homepage_snsqrshowbox").css("display","block");
@@ -507,4 +508,15 @@ function bignewslinkmouse(over) {
 }
 function headerstyle2() {
 
+}
+function racinglistgotolink(link) {
+    if (!racinglistleftclassing) {
+        window.location.href = link;
+    } else {
+        racinglistleftclassing = false;
+    }
+}
+function racinglistleftclass(link) {
+    racinglistleftclassing = true;
+    window.location.href = link;
 }

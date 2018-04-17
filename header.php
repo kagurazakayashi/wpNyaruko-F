@@ -83,12 +83,23 @@ $keywords = trim(strip_tags($keywords));
 <?php flush(); ?>
 
 <body>
-    <?php include "style.php"; gcss($wpNyarukoOption);?>
+    <?php 
+    echo '<script type="text/javascript">var isMobile=';
+    include "ua.php";
+    if (isMobile()) {
+        echo 'true';
+    } else {
+        echo 'false';
+    }
+    echo ';</script>';
+    include "style.php";
+    gcss($wpNyarukoOption);
+    ?>
 <div id="mobilemenubox">
     <div class="racing_phone_menuback" onclick="mobilemenu();"></div>
     <div class="racing_phone_menu">
         <div id="mobilemenu_userinfo">
-            <div id="mobilemenu_userinfoc"><b>栏目导航</b><br/><?php bloginfo('name'); ?></div>
+            <div id="mobilemenu_userinfoc"><br/><?php bloginfo('name'); ?></div>
         </div>
         <div class="mainmenu_mob"><?php wp_nav_menu(array(
             "theme_location"=>"mainmenu",
