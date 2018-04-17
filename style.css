@@ -17,6 +17,8 @@ body {
     background-repeat: no-repeat;
     color: #000;
     background-color: #F1F1F1;
+    min-width: 320px;
+    overflow-x: hidden;
 }
 a:link {
     text-decoration: none;
@@ -32,6 +34,9 @@ a:active {
 }
 .linkbtn {
     text-decoration: none;
+}
+#wrapper {
+    overflow-x: hidden;
 }
 #homepage_topimgbox {
     position: fixed;
@@ -515,6 +520,7 @@ video {
     height: 32px;
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 .morebtnbox a {
     color: #000;
@@ -534,7 +540,7 @@ video {
 }
 .morebtnboxarchive a {
     height: 40px;
-    width: 150px;
+    width: 130px;
     font-size: 10pt;
     display: inline-table;
     padding-left: 20px;
@@ -586,6 +592,10 @@ video {
     left: 0px;
     top: 0px;
     z-index: 1;
+}
+.racing_list_left_class:hover {
+    color: blue;
+    opacity:1;
 }
 .racing_list_left_img{
     object-fit:cover;
@@ -1018,6 +1028,16 @@ a.carousel-control.right {
     display: inline-block;
     width: auto;
 }
+.pictitle2 {
+    width: 100%;
+    text-align: center;
+    font-size: 14pt;
+    padding-top: 5px;
+}
+.pictitle2 i {
+    display: inline-block;
+    font-size: 16pt;
+}
 /* bigpicnews] */
 .foot {
     width: 100%;
@@ -1055,6 +1075,11 @@ a.carousel-control.right {
 }
 .sorting i{
     font-size: 10pt !important;
+    position: relative;
+    top: 2px;
+}
+.sortingi {
+    display: inline-block;
 }
 #sortingtotext {
     height: 40px;
@@ -1152,7 +1177,7 @@ a.carousel-control.right {
     z-index: 20;
 }
 .racing_phone_menu{
-    width: 300px;
+    width: 250px;
     height: 100%;
     position: fixed;
     top: 0;

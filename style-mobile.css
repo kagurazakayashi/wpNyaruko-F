@@ -123,8 +123,14 @@
         z-index: 12;
     }
 }
-@media screen and (min-width: 841px) {
-    
+@media screen and (max-width: 352px) {
+    .racing_list_left {
+        width: 318px;
+        height: 179px;
+    }
+    .racing_list_right{
+        width: 318px;
+    }
 }
 /* [header2 */
 
