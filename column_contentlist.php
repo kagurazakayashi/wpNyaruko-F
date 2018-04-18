@@ -28,7 +28,7 @@ if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNya
         ?>
         <div class="racing_item" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
             <div class="racing_list_left">
-                <div class="racing_list_left_class" onclick="racinglistleftclass('<?php echo get_tag_link(@get_the_tags()[0]->term_id); ?>')"><?php
+                <div class="racing_list_left_class" onclick="racinglistleftclass('<?php echo get_tag_link(@get_the_tags($npost->ID)[0]->term_id); ?>')"><?php
                     $tags = wp_get_post_tags($npost->ID);
                     if (count($tags) == 0) {
                         $ntypename = $typename;

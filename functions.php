@@ -75,6 +75,7 @@ function removevideoimage($content) {
 /*获取图片完*/
 
 function typetitle($name) {
+    //echo '<div class="racing_typetitle"><div class="racing_typetitlehr cell" style="text-align: right;"><img class="racing_typetitlehrimg" id="racing_typetitlehrimgl" src="'.get_bloginfo("template_url").'/images/400004705.gif" /></div><div class="racing_typetitletxt cell">'.$name.'</div><div class="racing_typetitlehr cell"><img class="racing_typetitlehrimg" id="racing_typetitlehrimgr" src="'.get_bloginfo("template_url").'/images/400004705.gif" /></div></div>';
     echo '<div class="racing_typetitle"><div class="racing_typetitlehr cell"><div class="racing_celldotted"></div></div><div class="racing_typetitletxt cell">'.$name.'</div><div class="racing_typetitlehr cell"><div class="racing_celldotted"></div></div></div>';
 }
 

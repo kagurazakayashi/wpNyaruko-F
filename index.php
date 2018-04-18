@@ -1,16 +1,14 @@
 <?php $colid = 0; ?>
 <!-- 1顶端大图 -->
 <?php get_header(); ?>
-
 <div class="tshadow"><?php
 $wpNyarukoOption = get_option('wpNyaruko_options');
 $wpNyarukoIndexModule = null;
-if (isMobile()) {
+if (isMobile() && $wpNyarukoOption['wpNyarukoIndexModuleM']) {
     $wpNyarukoIndexModule = $wpNyarukoOption['wpNyarukoIndexModuleM'];
 } else {
     $wpNyarukoIndexModule = $wpNyarukoOption['wpNyarukoIndexModule'];
 }
-
 $categories = get_categories();
 $modules = explode("|",$wpNyarukoIndexModule);
 $showids = array();

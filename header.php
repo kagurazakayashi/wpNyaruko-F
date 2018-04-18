@@ -8,7 +8,7 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
     echo "<!-- wpNyaruko DEBUG MODE -->";
 }
 ?>
-<?php include_once("KagurazakaYashi.php"); ?>
+<?php $wpNyarukoHeaderTheme = 2; include_once("KagurazakaYashi.php"); ?>
 <title><?php if ( is_home() ) {
         bloginfo('name'); echo " - "; bloginfo('description');
     } elseif ( is_category() ) {
@@ -158,21 +158,11 @@ $keywords = trim(strip_tags($keywords));
             Loading...
         </div>
     </div>
-    <?php if (strlen($wpNyarukoOption['wpNyarukoFNewsTitle']) > 0) { ?>
-        <div class="homepage_bignewsbox" id="homepage_bignews" style="background-color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;">
-            <span id="homepage_bignewsimg">
-                <img src="<?php echo @$wpNyarukoOption['wpNyarukoFNewsImage']; ?>" />
-                <span id="homepage_bignewsit" style="background: linear-gradient(to right, transparent 50%, #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 100%);"></span>
-            </span>
-            <span id="homepage_bignewstxt" style="color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorF']; ?>; text-shadow:#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 1px 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> -1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 -1px 0;"><?php echo @$wpNyarukoOption['wpNyarukoFNewsTitle']; ?></span>
-        </div>
-        <div class="homepage_bignewsbox" id="homepage_bignewslink" onmouseover="bignewslinkmouse(true);" onmouseout="bignewslinkmouse(false);"><a href="<?php echo @$wpNyarukoOption['wpNyarukoFNewsLink']; ?>"<?php if (@$wpNyarukoOption['wpNyarukoFNewsLinkN'] == "on") echo 'target="_blank"'; ?>></a></div>
-        <div id="homepage_bignewspop">
-            <div id="homepage_bignewspopup" style="border-bottom: 20px solid #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;"></div>
-            <img id="homepage_bignewspopimg" src="<?php echo @$wpNyarukoOption['wpNyarukoFNewsImageB']; ?>" style="border: 10px solid #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?>;" />
-        </div>
-    <?php } 
-    echo "<script>wpnyaruko_headermode = 2;</script>";
-    //include "header_transparent.php";
-    include "header_clear.php";
+    <?php
+    echo "<script>wpnyaruko_headermode = ".$wpNyarukoHeaderTheme.";</script>";
+    if ($wpNyarukoHeaderTheme == 1) {
+        include "header_transparent.php";
+    } else if ($wpNyarukoHeaderTheme == 2) {
+        include "header_clear.php";
+    }
     ?>
