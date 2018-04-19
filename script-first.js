@@ -84,8 +84,12 @@ function insertstr(scrstr,instr,strindex) {
 }
 //[滚动图片 ready:scrollpicture('sp1'); resize:rewh();
 var sparr = {"":[]};
+var sparr0 = [];
 var sparr1 = [];
 var scrollimgs = [];
+var sparr2 = [];
+var scrollimgnum2 = {"":[]};
+var scrollimgnum = {"":[]};
 var spw = 0;
 var spc = 10;
 var spimgw = 0;
@@ -98,7 +102,10 @@ function setscrollimgs(imgsarr){
 }
 function scrollpicture(spid) {
     var sparr00 = [];
+    var spshownum00 = true;//不足每页的需求
+    var spshownum01 = true;
     sparr[spid] = [];
+    spnum = 0;
     if(spdivlen < 3){
         spdivlen = 3;
     }
@@ -114,6 +121,7 @@ function scrollpicture(spid) {
     var spimgw = (spw - spc*(spshownum-1)) / spshownum;
     var spimgh = spimgw / 16 * 9;
     scrollimgs.forEach(function(obj,i){
+        spnum++;
         var spcss = 'spDIV';
         if (spshownum == 3){
             if (i % spshownum == 1) {
@@ -130,14 +138,24 @@ function scrollpicture(spid) {
         if (spshownum == 3){
             if (i % spshownum == 2){
                 var nowarr = sparr[spid];
-                nowarr.push(sparr00);
+                if (spshownum01){
+                    nowarr.unshift(sparr00);
+                    spshownum01 = false;
+                }else{
+                    nowarr.push(sparr00);
+                }
                 sparr[spid] = nowarr;
                 sparr00 = [];
             }
         }else if (spshownum == 2){
             if (i % spshownum == 1){
                 var nowarr = sparr[spid];
-                nowarr.push(sparr00);
+                if (spshownum01){
+                    nowarr.unshift(sparr00);
+                    spshownum01 = false;
+                }else{
+                    nowarr.push(sparr00);
+                }
                 sparr[spid] = nowarr;
                 sparr00 = [];
             }
@@ -147,23 +165,54 @@ function scrollpicture(spid) {
                 sparr00 = [];
             }
         }
-        spnum++;
+        if (spnum == scrollimgs.length && ((i % (spshownum-1)) < (spshownum - 1)) && spnum % spshownum != 0){
+            var nowarr = sparr[spid];
+            var fori = spshownum-(i % (spshownum-1));
+            for(var i = 0;i < fori;i++){
+                if (spshownum == 3){
+                    if (fori > 1 && i == 1) {
+                        spcss += ' spCentercss';
+                    }
+                }else if (spshownum == 2){
+                    spcss += ' sprightcss';
+                }
+                sparr00.push("<div class='" + spcss + "' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'></div>");
+            }
+            if (spshownum00){
+                nowarr.unshift(sparr00);
+                spshownum00 = false;
+            }else{
+                nowarr.push(sparr00);
+            }
+            sparr[spid] = nowarr;
+            sparr00 = [];
+        }
     });
-    
+    scrollimgnum[spid] = 1;
+    // if(spshownum == 1){
+    //     var nowarr = sparr[spid];
+    //     sparr2[spid] = nowarr;
+    //     scrollimgnum2 = true;
+    // }
     switch(sparr[spid].length){
         case 1:
             var nowarr = sparr[spid];
             nowarr.push(sparr[spid][0],sparr[spid][0]);
             sparr[spid] = nowarr;
+            scrollimgnum2[spid] = false;
             break;
         case 2:
             var nowarr = sparr[spid];
+            sparr2[spid] = nowarr;
+            scrollimgnum2[spid] = true;
             nowarr.push(sparr[spid][0]);
             sparr[spid] = nowarr;
             break;
         default:
+        scrollimgnum2[spid] = false;
             break;
     }
+    
     sparr[spid].forEach(function(obj,i){
         $('#' + spid + ' .scrollpicture').append(sparr[spid][i]);
     });
@@ -174,6 +223,10 @@ function scrollpicture(spid) {
     $('.scrollpicture').height($('.spDIV').height());
     $(".scrollpicture").css({'left': -spw + 'px'});
     $('.spDIV img').bind('load',function(){
+        var imgwidth = this.width;
+        if (!imgwidth){
+            imgwidth = $('.spDIV').width();
+        }
         if(this.height > $('.spDIV').height()){
             $(this).css({'top': -(this.height - $('.spDIV').height())/2 + 'px'});
         }else if(this.height < $('.spDIV').height()){
@@ -243,6 +296,8 @@ function rewh(){
                     break;
                 case 2:
                     var nowarr = sparr[spid];
+                    sparr2[spid] = nowarr;
+                    scrollimgnum2[spid] = true;
                     nowarr.push(sparr[spid][0]);
                     sparr[spid] = nowarr;
                     break;
@@ -286,10 +341,19 @@ function leftbutton(spid){
         $('.scrollpicture').css({'left': -$('body').width() + 'px'});
         $('#' + spid + ' .scrollpicture').html("");
         sparr[spid].forEach(function(obj, i){
-            if (i < (sparr[spid].length - 1)){
-                sparr1.push(obj);
+            if (scrollimgnum2[spid]){
+                sparr1.push(sparr2[spid][scrollimgnum[spid]]);
+                if(scrollimgnum[spid] == 0){
+                    scrollimgnum[spid]++;
+                }else if(scrollimgnum[spid] == 1){
+                    scrollimgnum[spid]--;
+                }
             }else{
-                sparr1.unshift(sparr[spid][i]);
+                if (i < (sparr[spid].length - 1)){
+                    sparr1.push(obj);
+                }else{
+                    sparr1.unshift(obj);
+                }
             }
         });
         sparr1.forEach(function(obj,i){
@@ -325,16 +389,24 @@ function rightbutton(spid){
         $('.scrollpicture').css({'left': -$('body').width() + 'px'});
         $('#' + spid + ' .scrollpicture').html("");
         sparr[spid].forEach(function(obj, i){
-            if (i == 0){
-                sparr1.push(obj);
+            if (scrollimgnum2[spid]){
+                sparr1.push(sparr2[spid][scrollimgnum[spid]]);
+                if(scrollimgnum[spid] == 0){
+                    scrollimgnum[spid]++;
+                }else if(scrollimgnum[spid] == 1){
+                    scrollimgnum[spid]--;
+                }
             }else{
-                sparr1.splice(i-1,0,sparr[spid][i]);
+                if (i == 0){
+                    sparr1.push(obj);
+                }else{
+                    sparr1.splice(i-1,0,obj);
+                }
             }
         });
         sparr1.forEach(function(obj,i){
             $('#' + spid + ' .scrollpicture').append(obj);
         });
-        // rewh();
         $('.spDIV img').each(function(){
             if(this.height > $('.spDIV').height()){
                 $(this).css({'top': -(this.height - $('.spDIV').height())/2 + 'px'});
