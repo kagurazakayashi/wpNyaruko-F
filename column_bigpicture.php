@@ -21,8 +21,8 @@ if(empty($nposts)){
 } else {
     foreach($nposts as $npost){
         ?>
-        <div class="racing_bigpicnews image_169_div" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
-            <img class="image_169" src="<?php 
+        <div class="racing_bigpicnews" id="racing_bigpicnews_<?php echo $categoryid; ?>" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
+            <img id="racing_bigpicnews_<?php echo $categoryid; ?>img" src="<?php 
             $itemimage = catch_image($npost);
             if ($itemimage == "") {
                 bloginfo("template_url");

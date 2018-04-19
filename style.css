@@ -1007,6 +1007,11 @@ a.carousel-control.right {
     border-radius: 5px;
     /* overflow: hidden; */
     cursor: pointer;
+    overflow: hidden;
+}
+.racing_bigpicnews img {
+    top: 0;
+    width: 100%;
 }
 .image_169_div{
     /* width: 100%; */

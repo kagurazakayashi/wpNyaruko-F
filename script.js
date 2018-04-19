@@ -6,6 +6,7 @@ var isnowsingle = false;
 var anifirstend = false;
 var racinglistleftclassing = false;
 $(document).ready(function(){
+    console.log("Loading...");
     var nyarukoplayerdivheight = $(window).height();
     var players = [$("#homepage_topimgbox"),$(".nyarukoplayer")];
     if (ishome == false) {
@@ -29,6 +30,8 @@ $(document).ready(function(){
     loadnyarukoplayer();
     tabmenu();
     resizebigpictitle();
+    resizebignews();
+    centerlist();
     if (wpnyaruko_headermode == 1) {
         centertab();
     } else if (wpnyaruko_headermode == 2) {
@@ -47,7 +50,6 @@ $(document).ready(function(){
             return false;
         });
     }
-    centerlist();
     $(window).scroll(function() {
         if (wpnyaruko_headermode == 1) {
             reftitlebar();
@@ -164,7 +166,16 @@ $(document).ready(function(){
             timernum1++;
         }
     }, 1000);
+    console.log("Loading...OK");
 });
+function resizebignews() {
+    $(".racing_bigpicnews").each(function(){
+        var racingbigpicnews = $(this);
+        var racingbigpicnewsid = racingbigpicnews.attr("id").split('_').pop();
+        var imgheight = $("#racing_bigpicnews_"+racingbigpicnewsid+"img").height();
+        racingbigpicnews.height(imgheight);
+    });
+}
 function tabmenu() {
     var h2mode = "";
     if (wpnyaruko_headermode == 2) {
@@ -207,6 +218,18 @@ function tabmenu() {
         thisa.html(imgh);
     });
     $("#racing_"+h2mode+"tabmenu").css("display","inline");
+    $(".racing_bigpicnews img").bind('load',function(){
+        $(this).css({'top':'0px'});
+        $(this).width("100%");
+        if(this.height > $('.racing_bigpicnews').height()){
+
+            $(this).css({'top': -(this.height - $('.racing_bigpicnews').height())/2 + 'px'});
+        }else if(this.height < $('.racing_bigpicnews').height()){
+            $(this).width('auto');
+            $(this).height($('.racing_bigpicnews').height());
+            $(this).css({'left': -(this.width - $('.racing_bigpicnews').width())/2 + 'px'});
+        }
+    });
 }
 function scrollpicreheight() {
     var windowwidth = $(window).width();
@@ -454,6 +477,7 @@ $(window).resize(function(){
     centertab();
     rewh();
     resizebigpictitle();
+    resizebignews();
 });
 function centerlist() {
     if ($(".racing_list_tlr").length > 0) {
@@ -516,7 +540,13 @@ function racinglistgotolink(link) {
         racinglistleftclassing = false;
     }
 }
-function racinglistleftclass(link) {
+function racinglistleftclass(link,event) {
+    var e = event || window.event;
+    if (e && e.stopPropagation){
+        e.stopPropagation();    
+    }else{
+        e.cancelBubble=true;//兼容IE
+    }
     racinglistleftclassing = true;
     window.location.href = link;
 }
