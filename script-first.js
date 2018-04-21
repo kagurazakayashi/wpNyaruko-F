@@ -97,6 +97,7 @@ var spimgh = 0;
 var spnum = 0;
 var spshownum = 3;
 var spdivlen = Math.ceil(spnum/spshownum);
+var spith = 40;
 function setscrollimgs(imgsarr){
     scrollimgs = imgsarr;
 }
@@ -119,7 +120,7 @@ function scrollpicture(spid) {
     }
     var spc = 10;
     var spimgw = (spw - spc*(spshownum-1)) / spshownum;
-    var spimgh = spimgw / 16 * 9;
+    var spimgh = (spimgw / 16 * 9)+spith;
     scrollimgs.forEach(function(obj,i){
         spnum++;
         var spcss = 'spDIV';
@@ -133,8 +134,11 @@ function scrollpicture(spid) {
             }else{
                 spcss += ' sprightcss';
             }
+        } else if (spshownum == 1){
+            spdivlen = scrollimgs.length;
         }
-        sparr00.push("<div class='" + spcss + "' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'><a href='" + obj[2] + "'><div></div><img src='" + obj[1] + "'/></a></div>");
+
+        sparr00.push("<div class='" + spcss + "' style='width: " + spimgw + "px;height: " + (spimgh+spith) + "px;'><div class='spimgdiv' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'><a href='" + obj[2] + "'><img src='" + obj[1] + "'/></a></div><div class='scrolltitle'>" + obj[0] + "</div></div>");
         if (spshownum == 3){
             if (i % spshownum == 2){
                 var nowarr = sparr[spid];
@@ -176,7 +180,7 @@ function scrollpicture(spid) {
                 }else if (spshownum == 2){
                     spcss += ' sprightcss';
                 }
-                sparr00.push("<div class='" + spcss + "' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'></div>");
+                sparr00.push("<div class='" + spcss + "' style='width: " + spimgw + "px;height: " + (spimgh+spith) + "px;'><div class='spimgdiv' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'></div></div>");
             }
             if (spshownum00){
                 nowarr.unshift(sparr00);
@@ -219,20 +223,22 @@ function scrollpicture(spid) {
     
     
     $('.sp').height($('.spDIV').height());
+    $('.scrollpicturetitle').width(spimgw);
+    $('.scrollpicturetitle').height(40);
     $('.scrollpicture').width(spdivlen * spw);
     $('.scrollpicture').height($('.spDIV').height());
     $(".scrollpicture").css({'left': -spw + 'px'});
-    $('.spDIV img').bind('load',function(){
+    $('.spimgdiv img').bind('load',function(){
         var imgwidth = this.width;
         if (!imgwidth){
-            imgwidth = $('.spDIV').width();
+            imgwidth = $('.spimgdiv').width();
         }
-        if(this.height > $('.spDIV').height()){
-            $(this).css({'top': -(this.height - $('.spDIV').height())/2 + 'px'});
-        }else if(this.height < $('.spDIV').height()){
+        if(this.height > $('.spimgdiv').height()){
+            $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+        }else if(this.height < $('.spimgdiv').height()){
             $(this).width('auto');
-            $(this).height($('.spDIV').height());
-            $(this).css({'left': -(this.width - $('.spDIV').width())/2 + 'px'});
+            $(this).height($('.spimgdiv').height());
+            $(this).css({'left': -(this.width - $('.spimgdiv').width())/2 + 'px'});
         }
     });
     $(".spbutton").height($('.spDIV').height());
@@ -314,7 +320,7 @@ function rewh(){
         });
     });
     var spimgw = (spw - spc*(spshownum-1)) / spshownum;
-    spimgh = spimgw / 16 * 9;
+    spimgh = spimgw / 16 * 9+spith;
     $(".spDIV").width(spimgw);
     $(".spDIV").height(spimgh);
     $('.sp').height($('.spDIV').height());
@@ -322,13 +328,13 @@ function rewh(){
     $('.scrollpicture').height($('.spDIV').height());
     $(".scrollpicture").css({'left': -spw + 'px'});
     // if (oldspshownum != spshownum) {
-        $('.spDIV img').each(function(){            
-            if(this.height > $('.spDIV').height()){
-                $(this).css({'top': -(this.height - $('.spDIV').height())/2 + 'px'});
-            }else if(this.height < $('.spDIV').height()){
+        $('.spimgdiv img').each(function(){            
+            if(this.height > $('.spimgdiv').height()){
+                $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+            }else if(this.height < $('.spimgdiv').height()){
                 $(this).width('auto');
-                $(this).height($('.spDIV').height());
-                $(this).css({'left': -(this.width - $('.spDIV').width())/2 + 'px'});
+                $(this).height($('.spimgdiv').height());
+                $(this).css({'left': -(this.width - $('.spimgdiv').width())/2 + 'px'});
             }
         });
     // }
@@ -360,18 +366,18 @@ function leftbutton(spid){
             $('#' + spid + ' .scrollpicture').append(obj);
         });
         // rewh();
-        $('.spDIV img').each(function(){
-            if(this.height > $('.spDIV').height()){
-                $(this).css({'top': -(this.height - $('.spDIV').height())/2 + 'px'});
-            }else if(this.height < $('.spDIV').height()){
+        $('.spimgdiv img').each(function(){
+            if(this.height > $('.spimgdiv').height()){
+                $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+            }else if(this.height < $('.spimgdiv').height()){
                 $(this).width('auto');
-                $(this).height($('.spDIV').height());
+                $(this).height($('.spimgdiv').height());
                 spw = $('body').width();
                 var spimgw = (spw - spc*(spshownum-1)) / spshownum;
-                spimgh = spimgw / 16 * 9;
-                $(".spDIV").height(spimgh);
-                $(".spDIV").width(spimgw);
-                $(this).css({'left': -($(this).width - $('.spDIV').width())/2 + 'px'});
+                spimgh = spimgw / 16 * 9 + spith;
+                $(".spimgdiv").height(spimgh);
+                $(".spimgdiv").width(spimgw);
+                $(this).css({'left': -($(this).width - $('.spimgdiv').width())/2 + 'px'});
             }
         });
         sparr[spid] = sparr1;
@@ -407,18 +413,18 @@ function rightbutton(spid){
         sparr1.forEach(function(obj,i){
             $('#' + spid + ' .scrollpicture').append(obj);
         });
-        $('.spDIV img').each(function(){
-            if(this.height > $('.spDIV').height()){
-                $(this).css({'top': -(this.height - $('.spDIV').height())/2 + 'px'});
-            }else if(this.height < $('.spDIV').height()){
+        $('.spimgdiv img').each(function(){
+            if(this.height > $('.spimgdiv').height()){
+                $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+            }else if(this.height < $('.spimgdiv').height()){
                 $(this).width('auto');
-                $(this).height($('.spDIV').height());
+                $(this).height($('.spimgdiv').height());
                 spw = $('body').width();
                 var spimgw = (spw - spc*(spshownum-1)) / spshownum;
-                spimgh = spimgw / 16 * 9;
-                $(".spDIV").height(spimgh);
-                $(".spDIV").width(spimgw);
-                $(this).css({'left': -(this.width - $('.spDIV').width())/2 + 'px'});
+                spimgh = spimgw / 16 * 9 + spith;
+                $(".spimgdiv").height(spimgh);
+                $(".spimgdiv").width(spimgw);
+                $(this).css({'left': -(this.width - $('.spimgdiv').width())/2 + 'px'});
             }
         });
         sparr[spid] = sparr1;

@@ -43,7 +43,14 @@ if(empty($nposts)){
             } else {
                 echo ",";
             }
-            echo "['".$npost->post_title."',";
+            $posttitle = '<span class="scrollimgcell">'.$npost->post_title.'</span>';
+            if (isvideo($npost->post_content)) {
+                if (isvideo($npost->post_content)) {
+                    $posttitle = '<span class="scrollimgcell"><i class="material-icons">&#xE039;&nbsp;</i></span>'.$posttitle;
+                }
+            }
+            $posttitle = '<span class="pictitletable">'.$posttitle.'</span>';
+            echo "['".$posttitle."',";
             $itemimage = catch_image($npost);
             if ($itemimage == "") {
                 bloginfo("template_url");
@@ -55,6 +62,6 @@ if(empty($nposts)){
         }
     }
     echo "];setscrollimgs(scrollimgs);scrollpicture('sp".$colid."');</script>";
-    echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div><br/>'; 
+    echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div><br/>';
 } ?>
 </div>
