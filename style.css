@@ -7,8 +7,18 @@ Author:
 Author URI: 
 */
 
-/* Global Styles */
-/* 页头 */
+/* [通用布局 */
+.table {
+    display: table;
+}
+.tablecell {
+    display: table-cell;
+}
+.tablecolumn {
+    display: table-column;
+}
+/* 通用布局] */
+/* [页头 */
 body {
     margin-left: 0px;
     margin-top: 0px;
@@ -528,7 +538,6 @@ video {
     height: 32px;
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 .morebtnbox a {
     color: #000;
@@ -1004,10 +1013,12 @@ a.carousel-control.right {
     text-align: center;
     /* line-height: 600px; */
     box-shadow: 0px 3px 3px #999;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     /* overflow: hidden; */
     cursor: pointer;
     overflow: hidden;
+    height: auto;
 }
 .racing_bigpicnews img {
     top: 0;
@@ -1043,13 +1054,44 @@ a.carousel-control.right {
     width: auto;
 }
 .pictitle2 {
-    width: 100%;
-    text-align: center;
+    width: 80%;
+    text-align: left;
     font-size: 14pt;
-    padding-top: 5px;
+    margin-left: 10%;
+    padding-left: 20px;
+    margin-right: 10%;
+    background: #FFF;
+    box-shadow: 0px 3px 3px #999;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .pictitle2 i {
-    display: inline-block;
+    display: block;
+    font-size: 16pt;
+}
+.pictitletable {
+    display: inline-table;
+    width: auto;
+}
+.pictitletablecell {
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+}
+.scrollimgcell {
+    display: table-cell;
+    vertical-align: center;
+    height: 40px;
+}
+.scrolltitle {
+    height: 40px;
+    display: block;
+    text-align: center;
+    font-size: 12pt;
+    white-space:nowrap;
+}
+.scrolltitle i {
+    display: block;
     font-size: 16pt;
 }
 /* bigpicnews] */
@@ -1412,11 +1454,22 @@ a.carousel-control.right {
     display: table-cell;
     overflow: hidden;
     position: relative;
-    border-radius: 5px;
 }
 .spDIV a div{
     width: 100%;
     height: 100%;
+}
+.spimgdiv {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.scrollpicturetitle {
+    height: 40px;
+    display: block;
+    text-align: center;
+    font-size: 12pt;
+    white-space:nowrap;
 }
 .sp{
     width: 100%;

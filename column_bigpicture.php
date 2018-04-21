@@ -38,12 +38,19 @@ if(empty($nposts)){
                 echo $npost->post_title;
             ?></div></div> -->
         </div>
-        <div class="pictitle2"><?php
+        <div class="pictitle2">
+            <span class="pictitletable">
+            <?php
+            $posttitle = '<span class="pictitletablecell">'.$npost->post_title.'</span>';
             if (isvideo($npost->post_content)) {
-                echo '<i class="material-icons">&#xE039;&nbsp;</i>';
+                if (isvideo($npost->post_content)) {
+                    echo '<span class="pictitletablecell"><i class="material-icons">&#xE039;&nbsp;</i></span>';
+                }
             }
-            echo $npost->post_title;
-        ?></div>
+            echo $posttitle;
+            ?>
+            </span>
+        </div>
         <?php
     }
     // echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>';

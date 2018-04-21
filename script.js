@@ -173,7 +173,11 @@ function resizebignews() {
         var racingbigpicnews = $(this);
         var racingbigpicnewsid = racingbigpicnews.attr("id").split('_').pop();
         var imgheight = $("#racing_bigpicnews_"+racingbigpicnewsid+"img").height();
-        racingbigpicnews.height(imgheight);
+        if (imgheight > 0) {
+            racingbigpicnews.height(imgheight);
+        } else {
+            racingbigpicnews.height("auto");
+        }
     });
 }
 function tabmenu() {
