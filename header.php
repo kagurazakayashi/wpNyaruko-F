@@ -84,9 +84,10 @@ $keywords = trim(strip_tags($keywords));
 
 <body>
     <?php 
-    echo '<script type="text/javascript">var isMobile=';
     include "ua.php";
-    if (isMobile()) {
+    $mobile = isMobile();
+    echo '<script type="text/javascript">var isMobile=';
+    if ($mobile) {
         echo 'true';
     } else {
         echo 'false';
@@ -101,8 +102,11 @@ $keywords = trim(strip_tags($keywords));
         <div id="mobilemenu_userinfo">
             <div id="mobilemenu_userinfoc"><br/><?php bloginfo('name'); ?></div>
         </div>
-        <div class="mainmenu_mob"><?php wp_nav_menu(array(
-            "theme_location"=>"mainmenu",
+        <div class="mainmenu_mob"><?php 
+        $mobilemenulocation = "SlidingPcMenu";
+        if ($mobile) $mobilemenulocation = "SlidingMobileMenu";
+        wp_nav_menu(array(
+            "theme_location" => $mobilemenulocation,
             'menu_class' => 'mobilemenu'
         )) ?></div>
     </div>

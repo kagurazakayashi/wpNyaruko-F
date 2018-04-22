@@ -24,9 +24,13 @@ if( function_exists('register_sidebar') ) {
         'after_title' => '</h4>'
     ));
 }
+//风格一　电脑：MainMenu、TabMenu　手机：SlidingMobileMenu、TabMenu
+//风格二　电脑：MainMenu、SlidingPcMenu、TabMenu　手机：SlidingMobileMenu、TabMenu
 register_nav_menus(array(
-    'mainmenu' => '顶端主菜单(文本)',
-    'tabmenu' => '选项卡菜单(图片)'
+    'MainMenu' => '顶端主菜单,文字链接,仅电脑平台,所有风格',
+    'SlidingPcMenu' => '左侧展开菜单栏,文字链接,仅电脑平台',
+    'SlidingMobileMenu' => '左侧展开菜单栏,文字链接,仅手机平台,所有风格',
+    'TabMenu' => '选项卡菜单,图片链接,全部平台,所有风格'
 ));
 // 获取预览
 function clearcontent($content) {

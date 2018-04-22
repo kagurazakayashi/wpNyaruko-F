@@ -1373,9 +1373,23 @@ a.carousel-control.right {
     padding-left: 20px;
     text-align: left;
 }
+#racing_h2menu1c {
+    text-align: right;
+    overflow: hidden;
+    word-wrap: none;
+    color: #FFF;
+    font-size: 12pt;
+}
+#racing_h2menu1c a {
+    color: #FFF;
+}
+#racing_h2menu1c a:hover {
+    color: yellow;
+}
 #racing_h2menu1r {
     padding-right: 20px;
     text-align: right;
+    width: 170px;
 }
 #racing_h2logo {
     height: 32px;
