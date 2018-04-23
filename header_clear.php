@@ -12,7 +12,10 @@
             ?>
         </div>
         <div class="racing_h2menucell" id="racing_h2menu1c">
-        待定区域&emsp;待定区域&emsp;待定区域&emsp;待定区域&emsp;待定区域&emsp;待定区域
+        <?php wp_nav_menu(array(
+            "theme_location" => "MainMenu",
+            "container_id" => "racing_topmenu"
+        )) ?>
         </div>
         <div class="racing_h2menucell" id="racing_h2menu1r">
             <a href="javascript:mobilemenu();" id="homepage_snsa_weibo" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_weibo" src="<?php bloginfo("template_url"); ?>/homepage/ic_menu_white_48dp_2x.png" alt="打开主菜单"></a>

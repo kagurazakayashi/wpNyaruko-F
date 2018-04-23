@@ -5,6 +5,7 @@ var iwh = 0;
 var isnowsingle = false;
 var anifirstend = false;
 var racinglistleftclassing = false;
+var topmenumaxwidth = 500;
 $(document).ready(function(){
     console.log("Loading...");
     var nyarukoplayerdivheight = $(window).height();
@@ -37,19 +38,10 @@ $(document).ready(function(){
     } else if (wpnyaruko_headermode == 2) {
         players[0].css("top","110px");
         headerstyle2();
-
-        $('#racing_h2menu2box').bind('mousewheel', function(event, delta) {
-            var dir = delta > 0 ? 'Up' : 'Down';
-            if (dir == 'Up') {
-                var ml = $('#racing_h2menu2box').scrollLeft() - 20;
-                $('#racing_h2menu2box').scrollLeft(ml);
-            } else {
-                var ml = $('#racing_h2menu2box').scrollLeft() + 20;
-                $('#racing_h2menu2box').scrollLeft(ml);
-            }
-            return false;
-        });
+        addyscroll('#racing_h2menu2box');
+        addyscroll('#racing_topmenu');
     }
+    $("#racing_h2logo").bind("load",resizetopmenu(true));
     $(window).scroll(function() {
         if (wpnyaruko_headermode == 1) {
             reftitlebar();
@@ -373,6 +365,32 @@ function disablemedia() {
         nyarukoplayer_disable(true);
     }
 }
+function resizetopmenu(isfirest) {
+    if (isfirest) {
+        topmenumaxwidth = $("#racing_topmenu ul").width();
+    }
+    if ($("#racing_topmenu").length > 0) {
+        var ulw = $(window).width() - $("#racing_h2logo").width() - 40 - 170;
+        if (ulw > topmenumaxwidth) {
+            $("#racing_topmenu").width("auto");
+        } else {
+            $("#racing_topmenu").width(ulw);
+        }
+    }
+}
+function addyscroll(divn) {
+    $(divn).bind('mousewheel', function(event, delta) {
+        var dir = delta > 0 ? 'Up' : 'Down';
+        if (dir == 'Up') {
+            var ml = $(divn).scrollLeft() - 20;
+            $(divn).scrollLeft(ml);
+        } else {
+            var ml = $(divn).scrollLeft() + 20;
+            $(divn).scrollLeft(ml);
+        }
+        return false;
+    });
+}
 function resizebigpictitle() {
     if (bigpicdef[0] == "on") {
         if (wpnyaruko_headermode == 1) {
@@ -500,6 +518,7 @@ $(window).resize(function(){
     rewh();
     resizebigpictitle();
     resizebignews();
+    resizetopmenu(false);
 });
 function centerlist() {
     if ($(".racing_list_tlr").length > 0) {
