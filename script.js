@@ -375,18 +375,36 @@ function disablemedia() {
 }
 function resizebigpictitle() {
     if (bigpicdef[0] == "on") {
-        var pictitle = $(".pictitle");
-        var pictitletext = $(".pictitletext");
-        var pictitletexti = $(".pictitletext i");
-        var pictitletextprepend = "&emsp;&emsp;";
-        if (pictitletexti.length > 0) {
-            pictitletexti.remove();
-            pictitletextprepend += "&emsp;&nbsp;";
+        if (wpnyaruko_headermode == 1) {
+            resizebigpictitle1();
+        } else if (wpnyaruko_headermode == 2) {
+            resizebigpictitle2();
         }
-        var pictitletexttext = pictitletext.text();
-        pictitletext.prepend(pictitletextprepend);
-        var newfontsize = resizetext(pictitletext, pictitle.width(), parseInt(bigpicdef[1]), parseInt(bigpicdef[2]));
-        pictitletext.html('<i class="material-icons" style="font-size:'+newfontsize+';">&#xE039;&nbsp;</i>'+pictitletexttext);
+    }
+}
+function resizebigpictitle()
+{   
+    if (bigpicdef[0] != "on") {
+        return;
+    }
+    var pictitle = $(".pictitle2b");
+    var pictitletext = $("#pictitletablecellr");
+    var pictitletexti = $("#pictitletablecelll i");
+    var pictitletextprepend = "";
+    var pictitletexttext = pictitletext.text();
+    var isi = false;
+    if (pictitletexti.length > 0) {
+        pictitletexti.css("display","none");
+        pictitletextprepend += "一一";
+        isi = true;
+    }
+    pictitletext.prepend(pictitletextprepend);
+    var newfontsize = resizetext(pictitletext, pictitle.width(), parseInt(bigpicdef[1]), parseInt(bigpicdef[2]));
+    pictitletext.html(pictitletexttext);
+    pictitletext.css("font-size",newfontsize);
+    if (isi) {
+        pictitletexti.css("display","block");
+        pictitletexti.css("font-size",newfontsize);
     }
 }
 function resizetext(wordbox, maxWidth, minSize, maxSize) {

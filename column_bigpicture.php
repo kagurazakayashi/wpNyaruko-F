@@ -39,17 +39,19 @@ if(empty($nposts)){
             ?></div></div> -->
         </div>
         <div class="pictitle2">
+        <div class="pictitle2b">
             <span class="pictitletable">
             <?php
-            $posttitle = '<span class="pictitletablecell">'.$npost->post_title.'</span>';
+            $posttitle = '<span class="pictitletablecell" id="pictitletablecellr">'.$npost->post_title.'</span>';
             if (isvideo($npost->post_content)) {
                 if (isvideo($npost->post_content)) {
-                    echo '<span class="pictitletablecell"><i class="material-icons">&#xE039;&nbsp;</i></span>';
+                    echo '<span class="pictitletablecell" id="pictitletablecelll"><i class="material-icons">&#xE039;&nbsp;</i></span>';
                 }
             }
             echo $posttitle;
             ?>
             </span>
+        </div>
         </div>
         <?php
     }
