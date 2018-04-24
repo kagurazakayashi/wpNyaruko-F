@@ -6,6 +6,7 @@ var isnowsingle = false;
 var anifirstend = false;
 var racinglistleftclassing = false;
 var topmenumaxwidth = 500;
+var mobilemenuarr = new Array();
 $(document).ready(function(){
     console.log("Loading...");
     var nyarukoplayerdivheight = $(window).height();
@@ -30,6 +31,7 @@ $(document).ready(function(){
     }
     loadnyarukoplayer();
     tabmenu();
+    msubmenu();
     resizebigpictitle();
     resizebignews();
     centerlist();
@@ -227,6 +229,68 @@ function tabmenu() {
         }
     });
 }
+function openmsubmenu(i) {
+    var speed = 500;
+    var nowa = $("#submenumaterialiconsa"+i);
+    var nowi = $("#submenumaterialiconsi"+i);
+    var mobilemenusubitem = $(".mobilemenusubitem");
+    if (mobilemenusubitem.length > 0) mobilemenusubitem.stop();
+    if (nowa.attr("value") == 1) {
+        mobilemenusubitem.fadeOut(speed,function(){
+            mobilemenusubitem.remove();
+        });
+        nowa.attr("value",0);
+        nowi.attr("class","material-icons l90");
+    } else {
+        var exarrs = mobilemenuarr[i];
+        var newexarrs = new Array();
+        exarrs.forEach(menuitem => {
+            var nowmenuitem = $(menuitem);
+            nowmenuitem.attr("class","mobilemenusubitem");
+            newexarrs.push(nowmenuitem);
+        });
+        $(".mobilemenu li:eq("+i+")").after(newexarrs);
+        mobilemenusubitem = $(".mobilemenusubitem");
+        mobilemenusubitem.fadeOut(0);
+        mobilemenusubitem.fadeIn(speed);
+        //$(selector).animate({params},speed,callback);
+        nowi.attr("class","material-icons r90");
+        nowa.attr("value",1);
+    }
+}
+function msubmenu() {
+    if ($(".mobilemenu").length > 0) {
+        mobilemenuarr = li2array($(".mobilemenu li"));
+        msubmenureload();
+    }
+}
+function msubmenureload() {
+    var mobilemenuhtml = "";
+    for (let i = 0; i < mobilemenuarr.length; i++) {
+        var nowmenu = mobilemenuarr[i];
+        if ((typeof nowmenu) == "string") {
+            mobilemenuhtml += nowmenu;
+        }
+    }
+    $(".mobilemenu").html(mobilemenuhtml);
+}
+function li2array(lis) {
+    var narray = new Array();
+    for (let i = 0; i < lis.length; i++) {
+        var nowobj = $(lis[i]);
+        var nowid = nowobj.attr("id");
+        if ($("#"+nowid+" ul").length > 0) {
+            var newa = '<li><a href="javascript:openmsubmenu('+i+');" id="submenumaterialiconsa'+i+'" value=0><i class="material-icons" id="submenumaterialiconsi'+i+'">&#xE037;</i>&nbsp;'+$($("#"+nowid+" a")[0]).text()+'</a></li>';
+            nowobj = li2array($("#"+nowid+" ul li"));
+            i += nowobj.length;
+            narray.push(nowobj);
+            narray.push(newa);
+        } else {
+            narray.push("<li>"+nowobj.html()+"</li>");
+        }
+    }
+    return narray;
+}
 function scrollpicreheight() {
     var windowwidth = $(window).width();
     var scrollpicflwid = 30;
@@ -366,10 +430,10 @@ function disablemedia() {
     }
 }
 function resizetopmenu(isfirest) {
-    if (isfirest) {
-        topmenumaxwidth = $("#racing_topmenu ul").width();
-    }
     if ($("#racing_topmenu").length > 0) {
+        if (isfirest) {
+            topmenumaxwidth = $("#racing_topmenu ul").width();
+        }
         var ulw = $(window).width() - $("#racing_h2logo").width() - 40 - 170;
         if (ulw > topmenumaxwidth) {
             $("#racing_topmenu").width("auto");

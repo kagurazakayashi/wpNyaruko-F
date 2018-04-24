@@ -1248,6 +1248,8 @@ a.carousel-control.right {
     box-shadow: 5px 0px 5px #999;
     z-index: 20;
     font-size: 12pt;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 #mobilemenu_userinfo {
     width: 100%;
@@ -1262,6 +1264,43 @@ a.carousel-control.right {
 #mobilemenu_userinfoc {
     display:table-cell;
     vertical-align:bottom;
+}
+.mobilemenu a:hover {
+    text-decoration: none;
+}
+.mobilemenu a:focus {
+    text-decoration: none;
+}
+.mobilemenu i {
+    display: inline-block;
+    font-size: 12pt;
+}
+.mobilemenusubitem {
+    padding-left: 60px !important;
+}
+.r90 {
+    transform:rotate(90deg);
+    animation:r90 0.5s;
+}
+.l90 {
+    transform:rotate(0deg);
+    animation:l90 0.5s;
+}
+@keyframes l90{
+    0% {
+    transform:rotate(90deg)
+    }
+    100% {
+    transform:rotate(0deg)
+    }
+}
+@keyframes r90{
+    0% {
+    transform:rotate(0deg)
+    }
+    100% {
+    transform:rotate(90deg)
+    }
 }
 .frameAnimImg {
     animation: frameAnim;
@@ -1286,18 +1325,6 @@ a.carousel-control.right {
     animation-play-state: running;
 }
 @keyframes frameAnim {
-    0%{left: -90%;}
-    100%{left: 0%;}
-}
-@-moz-keyframes frameAnim {
-    0%{left: -90%;}
-    100%{left: 0%;}
-}
-@-webkit-keyframes frameAnim {
-    0%{left: -90%;}
-    100%{left: 0%;}
-}
-@-o-keyframes frameAnim {
     0%{left: -90%;}
     100%{left: 0%;}
 }
