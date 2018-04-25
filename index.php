@@ -27,7 +27,7 @@ foreach ($modules as $moduleinfos) {
             include "column_bigpicture.php";
             break;
         case 1:
-            include "column_contentlist.php";
+            include "column_contentlist2.php";
             break;
         case 2:
             include "column_picturelist2.php";
