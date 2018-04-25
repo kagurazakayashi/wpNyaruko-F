@@ -20,7 +20,7 @@ if(empty($nposts)){
     echo "<center><p>暂无内容</p><p>&emsp;</p></center>";
 } else {
 ?>
-<div class="carouseljs">
+<div class="scrollview">
     <div class="spfatherDIV" id="sp<?php echo $colid; ?>">
         <div class="sp"></div>
         <div class="scrollpicture"></div>

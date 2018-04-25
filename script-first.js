@@ -110,7 +110,7 @@ function scrollpicture(spid) {
     if(spdivlen < 3){
         spdivlen = 3;
     }
-    var spw = $('body').width();
+    var spw = $('.scrollview').width();
     if (spw <= 480) {
         spshownum = 1;
     } else if (spw <= 840) {
@@ -244,7 +244,7 @@ function scrollpicture(spid) {
     $(".spbutton").height($('.spDIV').height());
 }
 function rewh(){
-    spw = $('body').width();
+    spw = $('.scrollview').width();
     var oldspshownum = spshownum;
     if (spw <= 480) {
         spshownum = 1;
@@ -280,14 +280,14 @@ function rewh(){
                         sparr[spid] = nowarr;
                         sparr00 = [];
                     }
-                }else if (spshownum == 2){
+                } else if (spshownum == 2){
                     if (i % spshownum == 1){
                         var nowarr = sparr[spid];
                         nowarr.push(sparr00);
                         sparr[spid] = nowarr;
                         sparr00 = [];
                     }
-                }else if (spshownum == 1){
+                } else if (spshownum == 1){
                     if (i == (scrollimgs.length - 1)){
                         sparr[spid] = sparr00;
                         sparr00 = [];
@@ -328,7 +328,7 @@ function rewh(){
     $('.scrollpicture').height($('.spDIV').height());
     $(".scrollpicture").css({'left': -spw + 'px'});
     // if (oldspshownum != spshownum) {
-        $('.spimgdiv img').each(function(){            
+        $('.spimgdiv img').each(function(){     
             if(this.height > $('.spimgdiv').height()){
                 $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
             }else if(this.height < $('.spimgdiv').height()){
@@ -341,10 +341,10 @@ function rewh(){
 }
 function leftbutton(spid){
     $('#' + spid + ' .spleft').removeAttr("onclick");
-    var spw = $('#' + spid + ' .scrollpicture').position().left + $('body').width();
+    var spw = $('#' + spid + ' .scrollpicture').position().left + $('.scrollview').width();
     $('#' + spid + ' .scrollpicture').animate({left: spw + "px"},500,function(){
         $('#' + spid + ' .spleft').attr("onclick","leftbutton('" + spid + "');");
-        $('.scrollpicture').css({'left': -$('body').width() + 'px'});
+        $('.scrollpicture').css({'left': -$('.scrollview').width() + 'px'});
         $('#' + spid + ' .scrollpicture').html("");
         sparr[spid].forEach(function(obj, i){
             if (scrollimgnum2[spid]){
@@ -372,7 +372,7 @@ function leftbutton(spid){
             }else if(this.height < $('.spimgdiv').height()){
                 $(this).width('auto');
                 $(this).height($('.spimgdiv').height());
-                spw = $('body').width();
+                spw = $('.scrollview').width();
                 var spimgw = (spw - spc*(spshownum-1)) / spshownum;
                 spimgh = spimgw / 16 * 9 + spith;
                 $(".spimgdiv").height(spimgh);
@@ -389,10 +389,10 @@ function disableautowidth() {
 }
 function rightbutton(spid){
     $('#' + spid + ' .spright').removeAttr("onclick");
-    var spw = $('#' + spid + ' .scrollpicture').position().left - $('body').width();
+    var spw = $('#' + spid + ' .scrollpicture').position().left - $('.scrollview').width();
     $('#' + spid + ' .scrollpicture').animate({left: spw + "px"},500,function(){
         $('#' + spid + ' .spright').attr("onclick","rightbutton('" + spid + "');");
-        $('.scrollpicture').css({'left': -$('body').width() + 'px'});
+        $('.scrollpicture').css({'left': -$('.scrollview').width() + 'px'});
         $('#' + spid + ' .scrollpicture').html("");
         sparr[spid].forEach(function(obj, i){
             if (scrollimgnum2[spid]){
@@ -419,7 +419,7 @@ function rightbutton(spid){
             }else if(this.height < $('.spimgdiv').height()){
                 $(this).width('auto');
                 $(this).height($('.spimgdiv').height());
-                spw = $('body').width();
+                spw = $('.scrollview').width();
                 var spimgw = (spw - spc*(spshownum-1)) / spshownum;
                 spimgh = spimgw / 16 * 9 + spith;
                 $(".spimgdiv").height(spimgh);

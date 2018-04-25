@@ -1585,6 +1585,11 @@ a.carousel-control.right {
 }
 /* header2] */
 /* [ScrollPic */
+.scrollview {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
 .spfatherDIV{
     position: relative;
     overflow: hidden;
