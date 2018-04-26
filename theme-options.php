@@ -305,10 +305,10 @@ if(!is_admin()) {
             <div class="colmgr_tbc">
                 <h2>添加模块<hr></h2>
                 <?php
-                $stypes = ["大图展示","纵向列表","横向图片","空白模块"];
+                $stypes = ["大图展示","纵向列表","横向图片","块状列表","空白模块"];
                 for ($j=0; $j < count($stypes); $j++) { 
                   $nowstype = $stypes[$j];
-                  echo '<div class="colmgr_blo" id="colmgr_blo_'.($j).'" onclick="colmgr_blo_click($(this));">'.$nowstype.'</div><script>colmgr_blo_stypes.push("'.$nowstype.'");</script>';
+                  echo '<div class="colmgr_blo racing_itembg" id="colmgr_blo_'.($j).'" onclick="colmgr_blo_click($(this));">'.$nowstype.'</div><script>colmgr_blo_stypes.push("'.$nowstype.'");</script>';
                 }
                 ?>
                 <hr><h2>设置<hr></h2>

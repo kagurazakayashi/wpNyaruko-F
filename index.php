@@ -27,10 +27,13 @@ foreach ($modules as $moduleinfos) {
             include "column_bigpicture.php";
             break;
         case 1:
-            include "column_contentlist2.php";
+            include "column_contentlist.php";
             break;
         case 2:
             include "column_picturelist2.php";
+            break;
+        case 3:
+            include "column_contentlist2.php";
             break;
         default:
             include "column_blank.php";

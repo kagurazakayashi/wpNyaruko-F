@@ -596,7 +596,7 @@ video {
 }
 .racing_item2 {
     cursor: pointer;
-    background-color: #FFF;
+    background-color: #EEEEEE;
     width: 318px;
     height: 280px;
     margin-bottom: 15px;
@@ -608,6 +608,9 @@ video {
     color: gray;
     display: inline-block;
     text-align: left;
+}
+.racing_itembg {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
 }
 .racing_item2 a {
     color: gray;
@@ -1586,9 +1589,9 @@ a.carousel-control.right {
 /* header2] */
 /* [ScrollPic */
 .scrollview {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 90%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
 }
 .spfatherDIV{
     position: relative;

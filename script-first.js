@@ -193,11 +193,6 @@ function scrollpicture(spid) {
         }
     });
     scrollimgnum[spid] = 1;
-    // if(spshownum == 1){
-    //     var nowarr = sparr[spid];
-    //     sparr2[spid] = nowarr;
-    //     scrollimgnum2 = true;
-    // }
     switch(sparr[spid].length){
         case 1:
             var nowarr = sparr[spid];
@@ -327,17 +322,15 @@ function rewh(){
     $('.scrollpicture').width(spdivlen * spw);
     $('.scrollpicture').height($('.spDIV').height());
     $(".scrollpicture").css({'left': -spw + 'px'});
-    // if (oldspshownum != spshownum) {
-        $('.spimgdiv img').each(function(){     
-            if(this.height > $('.spimgdiv').height()){
-                $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
-            }else if(this.height < $('.spimgdiv').height()){
-                $(this).width('auto');
-                $(this).height($('.spimgdiv').height());
-                $(this).css({'left': -(this.width - $('.spimgdiv').width())/2 + 'px'});
-            }
-        });
-    // }
+    $('.spimgdiv img').each(function(){     
+        if(this.height > $('.spimgdiv').height()){
+            $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+        }else if(this.height < $('.spimgdiv').height()){
+            $(this).width('auto');
+            $(this).height($('.spimgdiv').height());
+            $(this).css({'left': -(this.width - $('.spimgdiv').width())/2 + 'px'});
+        }
+    });
 }
 function leftbutton(spid){
     $('#' + spid + ' .spleft').removeAttr("onclick");
@@ -365,7 +358,6 @@ function leftbutton(spid){
         sparr1.forEach(function(obj,i){
             $('#' + spid + ' .scrollpicture').append(obj);
         });
-        // rewh();
         $('.spimgdiv img').each(function(){
             if(this.height > $('.spimgdiv').height()){
                 $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});

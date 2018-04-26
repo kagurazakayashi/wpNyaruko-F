@@ -127,6 +127,13 @@
         font-style: italic;
         z-index: 12;
     }
+    /* [list2 */
+    .scrollview {
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+    }
+    /* list2] */
 }
 @media screen and (max-width: 352px) {
     .racing_list_left {
@@ -135,6 +142,15 @@
     }
     .racing_list_right{
         width: 318px;
+    }
+    .scrollview {
+        margin-left: 0%;
+        margin-right: 0%;
+        width: 100%;
+    }
+    .racing_item2 {
+        margin-left: 0px;
+        margin-right: 0px;
     }
 }
 /* [header2 */

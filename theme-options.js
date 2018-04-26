@@ -40,12 +40,12 @@ $(document).ready(function(){
 function colmgr_blo_click(thisdiv) {
     var classname0 = thisdiv.attr("class").split(" ")[0];
     if (classname0 == "colmgr_blo") {
-        $(".colmgr_blo").attr("class","colmgr_blo");
-        thisdiv.attr("class","colmgr_blo colmgr_blo_selected");
+        $(".colmgr_blo").attr("class","colmgr_blo racing_itembg");
+        thisdiv.attr("class","colmgr_blo racing_itembg colmgr_blo_selected");
         colmgr_blo_val = parseInt(thisdiv.attr("id").split("_")[2]);
     } else if (classname0 == "colmgr_bln") {
-        $(".colmgr_bln").attr("class","colmgr_bln");
-        thisdiv.attr("class","colmgr_bln colmgr_blo_selected");
+        $(".colmgr_bln").attr("class","colmgr_bln racing_itembg");
+        thisdiv.attr("class","colmgr_bln racing_itembg colmgr_blo_selected");
         colmgr_bln_val = parseInt(thisdiv.attr("id").split("_")[2]);
     }
 }
@@ -80,7 +80,7 @@ function colmgr_blnmgr_click(mode) {
         colmgr_nowmodule.attr("value",colmgr_cmd);
         colmgr_blo_cmd2gui();
         if (newselect >= 0 && newselect < items.length-1) {
-            $("#colmgr_bln_"+newselect).attr("class","colmgr_bln colmgr_blo_selected");
+            $("#colmgr_bln_"+newselect).attr("class","colmgr_bln racing_itembg colmgr_blo_selected");
             colmgr_bln_val = newselect;
         }
     }
@@ -116,7 +116,7 @@ function colmgr_blo_cmd2gui() {
                 if (ncolmgr_blo_snum >= 0) {
                     show_ncolmgr_blo_snum = '，显示 '+ncolmgr_blo_snum+' 篇</div>';
                 }
-                html += '<div class="colmgr_bln" id="colmgr_bln_'+i+'" onclick="colmgr_blo_click($(this));"><b>'+colmgr_blo_names["id"+ncolmgr_blo_stype.toString()]+'</b><br/>'+colmgr_blo_stypes[ncolmgr_blo_val]+show_ncolmgr_blo_snum+'</div>';
+                html += '<div class="colmgr_bln racing_itembg" id="colmgr_bln_'+i+'" onclick="colmgr_blo_click($(this));"><b>'+colmgr_blo_names["id"+ncolmgr_blo_stype.toString()]+'</b><br/>'+colmgr_blo_stypes[ncolmgr_blo_val]+show_ncolmgr_blo_snum+'</div>';
             }
         }
     }
