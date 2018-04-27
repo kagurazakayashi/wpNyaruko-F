@@ -8,6 +8,7 @@ var racinglistleftclassing = false;
 var topmenumaxwidth = 500;
 var mobilemenuarr = new Array();
 var oldsize = [0,0];
+var reloadtimer = null;
 $(document).ready(function(){
     console.log("Loading...");
     var nyarukoplayerdivheight = $(window).height();
@@ -578,7 +579,8 @@ function mobilemenu() {
 }
 //image169
 $(window).resize(function(){
-    var newsize = [$("body").width(),$("body").height()];
+    var tbody = $("body");
+    var newsize = [tbody.width(),tbody.height()];
     centerlist();
     centertab();
     if (oldsize[0] < newsize[0]) {
@@ -597,6 +599,13 @@ $(window).resize(function(){
         autohidelist2();
     }
     saveoldsize();
+    clearTimeout(reloadtimer);
+    reloadtimer = null;
+    reloadtimer = setTimeout(function(){
+        console.log("Reloading...");
+        location.reload(false)
+    },1000);
+    
 });
 function centerlist() {
     if ($(".racing_list_tlr").length > 0) {
@@ -653,7 +662,6 @@ function autohidelist2() {
     var widthlevel = [733,1103,1471];
     var witemsi = widthlevel.length + 1;
     var bodywidth = $("body").width();
-    console.log(bodywidth);
     for (let levi = 0; levi < widthlevel.length; levi++) {
         if (bodywidth < widthlevel[levi]) {
             witemsi = levi + 1;
