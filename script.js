@@ -7,6 +7,7 @@ var anifirstend = false;
 var racinglistleftclassing = false;
 var topmenumaxwidth = 500;
 var mobilemenuarr = new Array();
+var oldsize = [0,0];
 $(document).ready(function(){
     console.log("Loading...");
     var nyarukoplayerdivheight = $(window).height();
@@ -35,6 +36,7 @@ $(document).ready(function(){
     resizebigpictitle();
     resizebignews();
     centerlist();
+    autohidelist2();
     if (wpnyaruko_headermode == 1) {
         centertab();
     } else if (wpnyaruko_headermode == 2) {
@@ -162,6 +164,10 @@ $(document).ready(function(){
     }, 1000);
     console.log("Loading...OK");
 });
+function saveoldsize() {
+    var bodyo = $("body");
+    oldsize = [bodyo.width(),bodyo.height()];
+}
 function resizebignews() {
     $(".racing_bigpicnews").each(function(){
         var racingbigpicnews = $(this);
@@ -572,17 +578,25 @@ function mobilemenu() {
 }
 //image169
 $(window).resize(function(){
+    var newsize = [$("body").width(),$("body").height()];
+    centerlist();
+    centertab();
+    if (oldsize[0] < newsize[0]) {
+        autohidelist2();
+    }
     if(iwh > 1){
         image169_W();
     }else{
         image169_H();
     }
-    centerlist();
-    centertab();
     rewh();
     resizebigpictitle();
     resizebignews();
     resizetopmenu(false);
+    if (oldsize[0] > newsize[0]) {
+        autohidelist2();
+    }
+    saveoldsize();
 });
 function centerlist() {
     if ($(".racing_list_tlr").length > 0) {
@@ -634,6 +648,44 @@ function bignewslinkmouse(over) {
     var bignewspopdisplay = "none";
     if (over) bignewspopdisplay = "inline";
     $("#homepage_bignewspop").css("display",bignewspopdisplay);
+}
+function autohidelist2() {
+    var widthlevel = [733,1103,1471];
+    var witemsi = widthlevel.length + 1;
+    var bodywidth = $("body").width();
+    console.log(bodywidth);
+    for (let levi = 0; levi < widthlevel.length; levi++) {
+        if (bodywidth < widthlevel[levi]) {
+            witemsi = levi + 1;
+            break;
+        }
+    }
+    var racinglist2 = $(".racing_listbox");
+    racinglist2.each(function(){
+        var listid = "#" + $(this).attr("id");
+        var listzonewidth = $(listid+" .racing_list2").width();
+        var items = $(listid+" .racing_item2");
+        var nowlineitemi = 0;
+        var oneline = true;
+        for (let i = 0; i < items.length; i++) {
+            nowlineitemi++;
+            if (nowlineitemi >= witemsi) {
+                nowlineitemi = 0;
+                oneline = false;
+            }
+        }
+        items.css("display","inline-block");
+        if (nowlineitemi > 0 && !oneline) {
+            for (let j = 0; j < items.length; j++) {
+                var nowitem = $(items[items.length-1-j]);
+                nowitem.css("display","none");
+                nowlineitemi--;
+                if (nowlineitemi <= 0) {
+                    break;
+                }
+            }
+        }
+    });
 }
 function headerstyle2() {
 

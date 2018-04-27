@@ -17,7 +17,7 @@ if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNya
     $showids = $dedupreturn[1];
 }
 ?>
-<div class="racing_listbox">
+<div class="racing_listbox" id="racing_listbox2_<?php echo $colid; ?>">
     <div class="racing_list_tlr2"></div>
     <div class="racing_list2">
         <?php  
