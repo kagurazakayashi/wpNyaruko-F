@@ -18,7 +18,7 @@ if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNya
 }
 ?>
 <div class="racing_listbox" id="racing_listbox2_<?php echo $colid; ?>">
-    <div class="racing_list_tlr2"></div>
+    <!-- <div class="racing_list_tlr2"></div> -->
     <div class="racing_list2">
         <?php  
         if(empty($nposts)){
@@ -62,7 +62,8 @@ if (@$wpNyarukoOption['wpNyarukoDeduplication0']!='' && @$wpNyarukoOption['wpNya
             }
         }
         ?>
+        <!-- <div class="racing_list_test"></div> -->
     </div>
-        <div class="racing_list_tlr2"></div>
+        <!-- <div class="racing_list_tlr2"></div> -->
 </div>
     <?php echo '<div class="morebtnbox"><a class="morebtn" title="更多'.$typename.'" href="'.get_category_link($categoryid).'">更多</a></div>'; ?>

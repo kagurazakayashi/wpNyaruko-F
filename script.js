@@ -9,8 +9,8 @@ var topmenumaxwidth = 500;
 var mobilemenuarr = new Array();
 var oldsize = [0,0];
 var reloadtimer = null;
+var autoreload = true;
 $(document).ready(function(){
-    console.log("Loading...");
     var nyarukoplayerdivheight = $(window).height();
     var players = [$("#homepage_topimgbox"),$(".nyarukoplayer")];
     if (ishome == false) {
@@ -34,10 +34,7 @@ $(document).ready(function(){
     loadnyarukoplayer();
     tabmenu();
     msubmenu();
-    resizebigpictitle();
-    resizebignews();
     centerlist();
-    autohidelist2();
     if (wpnyaruko_headermode == 1) {
         centertab();
     } else if (wpnyaruko_headermode == 2) {
@@ -163,7 +160,11 @@ $(document).ready(function(){
             timernum1++;
         }
     }, 1000);
-    console.log("Loading...OK");
+    resizealllrmargin(autohidelist2());
+    resizebignews();
+    startscrollpicture();
+    resizebigpictitle();
+    console.log("Loading (1/2)HTML ...OK");
 });
 function saveoldsize() {
     var bodyo = $("body");
@@ -462,15 +463,15 @@ function addyscroll(divn) {
         return false;
     });
 }
-function resizebigpictitle() {
-    if (bigpicdef[0] == "on") {
-        if (wpnyaruko_headermode == 1) {
-            resizebigpictitle1();
-        } else if (wpnyaruko_headermode == 2) {
-            resizebigpictitle2();
-        }
-    }
-}
+// function resizebigpictitle() {
+//     if (bigpicdef[0] == "on") {
+//         if (wpnyaruko_headermode == 1) {
+//             resizebigpictitle1();
+//         } else if (wpnyaruko_headermode == 2) {
+//             resizebigpictitle2();
+//         }
+//     }
+// }
 function resizebigpictitle()
 {   
     if (bigpicdef[0] != "on") {
@@ -579,12 +580,14 @@ function mobilemenu() {
 }
 //image169
 $(window).resize(function(){
+    if (isMobile) return;
     var tbody = $("body");
     var newsize = [tbody.width(),tbody.height()];
     centerlist();
     centertab();
+    var listwidth = 0;
     if (oldsize[0] < newsize[0]) {
-        autohidelist2();
+        listwidth = autohidelist2();
     }
     if(iwh > 1){
         image169_W();
@@ -593,19 +596,22 @@ $(window).resize(function(){
     }
     rewh();
     resizebigpictitle();
-    resizebignews();
     resizetopmenu(false);
     if (oldsize[0] > newsize[0]) {
-        autohidelist2();
+        listwidth = autohidelist2();
     }
     saveoldsize();
     clearTimeout(reloadtimer);
-    reloadtimer = null;
-    reloadtimer = setTimeout(function(){
-        console.log("Reloading...");
-        location.reload(false)
-    },1000);
-    
+    resizealllrmargin(listwidth);
+    resizebignews();
+    scrollpicturereload();
+    if (autoreload) {
+        reloadtimer = null;
+        reloadtimer = setTimeout(function(){
+            console.log("Reloading...");
+            location.reload(false)
+        },1000);
+    }
 });
 function centerlist() {
     if ($(".racing_list_tlr").length > 0) {
@@ -659,24 +665,34 @@ function bignewslinkmouse(over) {
     $("#homepage_bignewspop").css("display",bignewspopdisplay);
 }
 function autohidelist2() {
-    var widthlevel = [733,1103,1471];
-    var witemsi = widthlevel.length + 1;
+    // var widthlevel = [733,1103,1471,65536]; //lr 10%
+    var widthlevel = [660,992,1324,1656,1988,65536];
+    var witemsi = 0;
     var bodywidth = $("body").width();
     for (let levi = 0; levi < widthlevel.length; levi++) {
         if (bodywidth < widthlevel[levi]) {
-            witemsi = levi + 1;
+            witemsi = levi;
             break;
         }
     }
+    witemsi++;
     var racinglist2 = $(".racing_listbox");
+    var itemswidth = 0;
+    var onelineitemi = 0;
+    var linewidth = 0;
     racinglist2.each(function(){
         var listid = "#" + $(this).attr("id");
         var listzonewidth = $(listid+" .racing_list2").width();
         var items = $(listid+" .racing_item2");
         var nowlineitemi = 0;
         var oneline = true;
+        itemswidth = items.width() + parseInt(items.css("margin-left")) + parseInt(items.css("margin-right"));
+        onelineitemi = 0;
         for (let i = 0; i < items.length; i++) {
             nowlineitemi++;
+            if (oneline) {
+                onelineitemi++;
+            }
             if (nowlineitemi >= witemsi) {
                 nowlineitemi = 0;
                 oneline = false;
@@ -694,6 +710,18 @@ function autohidelist2() {
             }
         }
     });
+    linewidth = onelineitemi * itemswidth;
+    // $(".racing_list_test").width(linewidth);
+    // $(".racing_list_test").text(witemsi+" = "+onelineitemi+" * "+linewidth+" / "+bodywidth);
+    return linewidth;
+}
+function resizealllrmargin(linewidth) {
+    var bodywidth = $("body").width();
+    var newmargin = ((bodywidth - linewidth) * 0.5) + "px";
+    var newcss = {"margin-left":newmargin,"margin-right":newmargin,"width":"auto"};
+    $(".scrollview").css(newcss);
+    $(".racing_bigpicnews").css(newcss); resizebigpictitle();
+    $(".pictitle2").css(newcss);
 }
 function headerstyle2() {
 
@@ -715,3 +743,352 @@ function racinglistleftclass(link,event) {
     racinglistleftclassing = true;
     window.location.href = link;
 }
+//[滚动图片 ready:scrollpicture('sp1'); resize:rewh();
+var sparr = {"":[]};
+var sparr0 = [];
+var sparr1 = [];
+var scrollimgs = [];
+var sparr2 = [];
+var scrollimgnum2 = {"":[]};
+var scrollimgnum = {"":[]};
+var spw = 0;
+var spc = 10;
+var spimgw = 0;
+var spimgh = 0;
+var spnum = 0;
+var spshownum = 3;
+var spdivlen = Math.ceil(spnum/spshownum);
+var spith = 40;
+function startscrollpicture() {
+    for(var i = 0; i < scrollpicturespid.length; i++){
+        scrollimgs = scrollpictureimgs[i];
+        scrollpictureload(scrollpicturespid[i]);
+    }
+}
+function scrollpicturereload() {
+    $(".scrollpicture").html("");
+    startscrollpicture();
+}
+function scrollpictureload(spid) {
+    var sparr00 = [];
+    var spshownum00 = true;//不足每页的需求
+    var spshownum01 = true;
+    sparr[spid] = [];
+    spnum = 0;
+    if(spdivlen < 3){
+        spdivlen = 3;
+    }
+    var spw = $('.scrollview').width();
+    if (spw <= 480) {
+        spshownum = 1;
+    } else if (spw <= 840) {
+        spshownum = 2;
+    } else {
+        spshownum = 3;
+    }
+    var spc = 10;
+    var spimgw = (spw - spc*(spshownum-1)) / spshownum;
+    var spimgh = (spimgw / 16 * 9)+spith;
+    scrollimgs.forEach(function(obj,i){
+        spnum++;
+        var spcss = 'spDIV';
+        if (spshownum == 3){
+            if (i % spshownum == 1) {
+                spcss += ' spCentercss';
+            }
+        }else if (spshownum == 2){
+            if (i % spshownum == 0) {
+                spcss += ' spleftcss';
+            }else{
+                spcss += ' sprightcss';
+            }
+        } else if (spshownum == 1){
+            spdivlen = scrollimgs.length;
+        }
+
+        sparr00.push("<div class='" + spcss + "' style='width: " + spimgw + "px;height: " + (spimgh+spith) + "px;'><div class='spimgdiv' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'><a href='" + obj[2] + "'><img src='" + obj[1] + "'/></a></div><div class='scrolltitle'>" + obj[0] + "</div></div>");
+        if (spshownum == 3){
+            if (i % spshownum == 2){
+                var nowarr = sparr[spid];
+                if (spshownum01){
+                    nowarr.unshift(sparr00);
+                    spshownum01 = false;
+                }else{
+                    nowarr.push(sparr00);
+                }
+                sparr[spid] = nowarr;
+                sparr00 = [];
+            }
+        }else if (spshownum == 2){
+            if (i % spshownum == 1){
+                var nowarr = sparr[spid];
+                if (spshownum01){
+                    nowarr.unshift(sparr00);
+                    spshownum01 = false;
+                }else{
+                    nowarr.push(sparr00);
+                }
+                sparr[spid] = nowarr;
+                sparr00 = [];
+            }
+        }else if (spshownum == 1){
+            if (i == (scrollimgs.length - 1)){
+                sparr[spid] = sparr00;
+                sparr00 = [];
+            }
+        }
+        if (spnum == scrollimgs.length && ((i % (spshownum-1)) < (spshownum - 1)) && spnum % spshownum != 0){
+            var nowarr = sparr[spid];
+            var fori = spshownum-(i % (spshownum-1));
+            for(var i = 0;i < fori;i++){
+                if (spshownum == 3){
+                    if (fori > 1 && i == 1) {
+                        spcss += ' spCentercss';
+                    }
+                }else if (spshownum == 2){
+                    spcss += ' sprightcss';
+                }
+                sparr00.push("<div class='" + spcss + "' style='width: " + spimgw + "px;height: " + (spimgh+spith) + "px;'><div class='spimgdiv' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'></div></div>");
+            }
+            if (spshownum00){
+                nowarr.unshift(sparr00);
+                spshownum00 = false;
+            }else{
+                nowarr.push(sparr00);
+            }
+            sparr[spid] = nowarr;
+            sparr00 = [];
+        }
+    });
+    scrollimgnum[spid] = 1;
+    switch(sparr[spid].length){
+        case 1:
+            var nowarr = sparr[spid];
+            nowarr.push(sparr[spid][0],sparr[spid][0]);
+            sparr[spid] = nowarr;
+            scrollimgnum2[spid] = false;
+            break;
+        case 2:
+            var nowarr = sparr[spid];
+            sparr2[spid] = nowarr;
+            scrollimgnum2[spid] = true;
+            nowarr.push(sparr[spid][0]);
+            sparr[spid] = nowarr;
+            break;
+        default:
+        scrollimgnum2[spid] = false;
+            break;
+    }
+    
+    sparr[spid].forEach(function(obj,i){
+        $('#' + spid + ' .scrollpicture').append(sparr[spid][i]);
+    });
+    
+    
+    $('.sp').height($('.spDIV').height()-1);
+    $('.scrollpicturetitle').width(spimgw);
+    $('.scrollpicturetitle').height(40);
+    $('.scrollpicture').width(spdivlen * spw);
+    $('.scrollpicture').height($('.spDIV').height());
+    $(".scrollpicture").css({'left': -spw + 'px'});
+    $('.spimgdiv img').bind('load',function(){
+        var imgwidth = this.width;
+        if (!imgwidth){
+            imgwidth = $('.spimgdiv').width();
+        }
+        if(this.height > $('.spimgdiv').height()){
+            $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+        }else if(this.height < $('.spimgdiv').height()){
+            $(this).width('auto');
+            $(this).height($('.spimgdiv').height());
+            $(this).css({'left': -(this.width - $('.spimgdiv').width())/2 + 'px'});
+        }
+    });
+    $(".spbutton").height($('.spimgdiv').height());
+}
+function rewh(){
+    spw = $('.scrollview').width();
+    var oldspshownum = spshownum;
+    if (spw <= 480) {
+        spshownum = 1;
+    } else if (spw <= 840) {
+        spshownum = 2;
+    } else {
+        spshownum = 3;
+    }
+    if (oldspshownum != spshownum) {
+        sparr = {"":[]};
+        $(".spfatherDIV").each(function() {
+            var spid = $(this).attr("id");
+            sparr[spid] = [];
+            var sparr00 = [];
+            scrollimgs.forEach(function(obj,i){
+                var spcss = 'spDIV';
+                if (spshownum == 3){
+                    if (i % spshownum == 1) {
+                        spcss += ' spCentercss';
+                    }
+                }else if (spshownum == 2){
+                    if (i % spshownum == 0) {
+                        spcss += ' spleftcss';
+                    }else{
+                        spcss += ' sprightcss';
+                    }
+                }
+                sparr00.push("<div class='" + spcss + "' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'><a href='" + obj[2] + "'><div></div><img src='" + obj[1] + "'/></a></div>");
+                if (spshownum == 3){
+                    if (i % spshownum == 2){
+                        var nowarr = sparr[spid];
+                        nowarr.push(sparr00);
+                        sparr[spid] = nowarr;
+                        sparr00 = [];
+                    }
+                } else if (spshownum == 2){
+                    if (i % spshownum == 1){
+                        var nowarr = sparr[spid];
+                        nowarr.push(sparr00);
+                        sparr[spid] = nowarr;
+                        sparr00 = [];
+                    }
+                } else if (spshownum == 1){
+                    if (i == (scrollimgs.length - 1)){
+                        sparr[spid] = sparr00;
+                        sparr00 = [];
+                    }
+                }
+            });
+            switch(sparr[spid].length){
+                case 1:
+                    var nowarr = sparr[spid];
+                    nowarr.push(sparr[spid][0],sparr[spid][0]);
+                    sparr[spid] = nowarr;
+                    break;
+                case 2:
+                    var nowarr = sparr[spid];
+                    sparr2[spid] = nowarr;
+                    scrollimgnum2[spid] = true;
+                    nowarr.push(sparr[spid][0]);
+                    sparr[spid] = nowarr;
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+    $('.scrollpicture').html("");
+    $(".spfatherDIV").each(function() {
+        var spid = $(this).attr("id");
+        sparr[spid].forEach(function(obj,j){
+            $('#' + spid + ' .scrollpicture').append(sparr[spid][j]);
+        });
+    });
+    var spimgw = (spw - spc*(spshownum-1)) / spshownum;
+    spimgh = spimgw / 16 * 9+spith;
+    $(".spDIV").width(spimgw);
+    $(".spDIV").height(spimgh);
+    $('.sp').height($('.spDIV').height());
+    $('.scrollpicture').width(spdivlen * spw);
+    $('.scrollpicture').height($('.spDIV').height());
+    $(".scrollpicture").css({'left': -spw + 'px'});
+    $('.spimgdiv img').each(function(){     
+        if(this.height > $('.spimgdiv').height()){
+            $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+        }else if(this.height < $('.spimgdiv').height()){
+            $(this).width('auto');
+            $(this).height($('.spimgdiv').height());
+            $(this).css({'left': -(this.width - $('.spimgdiv').width())/2 + 'px'});
+        }
+    });
+}
+function leftbutton(spid){
+    $('#' + spid + ' .spleft').removeAttr("onclick");
+    var spw = $('#' + spid + ' .scrollpicture').position().left + $('.scrollview').width();
+    $('#' + spid + ' .scrollpicture').animate({left: spw + "px"},500,function(){
+        $('#' + spid + ' .spleft').attr("onclick","leftbutton('" + spid + "');");
+        $('.scrollpicture').css({'left': -$('.scrollview').width() + 'px'});
+        $('#' + spid + ' .scrollpicture').html("");
+        sparr[spid].forEach(function(obj, i){
+            if (scrollimgnum2[spid]){
+                sparr1.push(sparr2[spid][scrollimgnum[spid]]);
+                if(scrollimgnum[spid] == 0){
+                    scrollimgnum[spid]++;
+                }else if(scrollimgnum[spid] == 1){
+                    scrollimgnum[spid]--;
+                }
+            }else{
+                if (i < (sparr[spid].length - 1)){
+                    sparr1.push(obj);
+                }else{
+                    sparr1.unshift(obj);
+                }
+            }
+        });
+        sparr1.forEach(function(obj,i){
+            $('#' + spid + ' .scrollpicture').append(obj);
+        });
+        $('.spimgdiv img').each(function(){
+            if(this.height > $('.spimgdiv').height()){
+                $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+            }else if(this.height < $('.spimgdiv').height()){
+                $(this).width('auto');
+                $(this).height($('.spimgdiv').height());
+                spw = $('.scrollview').width();
+                var spimgw = (spw - spc*(spshownum-1)) / spshownum;
+                spimgh = spimgw / 16 * 9 + spith;
+                $(".spimgdiv").height(spimgh);
+                $(".spimgdiv").width(spimgw);
+                $(this).css({'left': -($(this).width - $('.spimgdiv').width())/2 + 'px'});
+            }
+        });
+        sparr[spid] = sparr1;
+        sparr1 = [];
+    });
+}
+function disableautowidth() {
+    $(".racing_single_single img").css({"width":"","height":""});
+}
+function rightbutton(spid){
+    $('#' + spid + ' .spright').removeAttr("onclick");
+    var spw = $('#' + spid + ' .scrollpicture').position().left - $('.scrollview').width();
+    $('#' + spid + ' .scrollpicture').animate({left: spw + "px"},500,function(){
+        $('#' + spid + ' .spright').attr("onclick","rightbutton('" + spid + "');");
+        $('.scrollpicture').css({'left': -$('.scrollview').width() + 'px'});
+        $('#' + spid + ' .scrollpicture').html("");
+        sparr[spid].forEach(function(obj, i){
+            if (scrollimgnum2[spid]){
+                sparr1.push(sparr2[spid][scrollimgnum[spid]]);
+                if(scrollimgnum[spid] == 0){
+                    scrollimgnum[spid]++;
+                }else if(scrollimgnum[spid] == 1){
+                    scrollimgnum[spid]--;
+                }
+            }else{
+                if (i == 0){
+                    sparr1.push(obj);
+                }else{
+                    sparr1.splice(i-1,0,obj);
+                }
+            }
+        });
+        sparr1.forEach(function(obj,i){
+            $('#' + spid + ' .scrollpicture').append(obj);
+        });
+        $('.spimgdiv img').each(function(){
+            if(this.height > $('.spimgdiv').height()){
+                $(this).css({'top': -(this.height - $('.spimgdiv').height())/2 + 'px'});
+            }else if(this.height < $('.spimgdiv').height()){
+                $(this).width('auto');
+                $(this).height($('.spimgdiv').height());
+                spw = $('.scrollview').width();
+                var spimgw = (spw - spc*(spshownum-1)) / spshownum;
+                spimgh = spimgw / 16 * 9 + spith;
+                $(".spimgdiv").height(spimgh);
+                $(".spimgdiv").width(spimgw);
+                $(this).css({'left': -(this.width - $('.spimgdiv').width())/2 + 'px'});
+            }
+        });
+        sparr[spid] = sparr1;
+        sparr1 = [];
+    });
+}
+//滚动图片]
