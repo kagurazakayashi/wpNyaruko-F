@@ -1,10 +1,17 @@
-# wpNyaruko-N 0.6
+# wpNyaruko-N 0.7
+
+[介绍](#功能) | [功能](#功能) | [自定义](#自定义) | [截图](#截图) | [兼容性](#兼容性) | [第三方](#使用的第三方软件) | [License](#许可协议-license)
+
+## 介绍
 
 - wpNyaruko 系列的又一个主题，拥有主题 wpNyaruko-W 的一些特性。
   - 此分支虽然提供了很多自定义设置，但仍然主要是以定制网站开发的，因此不保证在其他网站上可以正确运行。
-- 属于
-  - 这是[雅诗个人网站项目](https://github.com/kagurazakayashi/kagurazakayashi.github.com)的一部分。
-  - 这是北京未来赛车文化有限公司官网项目的一部分。
+  - 目前尚未开发完成。
+- 版权归属
+  - 这是 [yaNyaruko Project](https://github.com/kagurazakayashi) 项目的一部分，神楽坂雅詩拥有其部分版权。
+  - 这是 [北京未来赛车文化有限公司](https://www.futureracing.com.cn) 官网的一部分，北京未来赛车文化有限公司拥有其主要版权。
+  - 这是 北京篝火网络科技有限公司 业务的一部分，北京篝火网络科技有限公司拥有其部分版权。
+  - 非以上单位或个人，请勿将此项目用于商业用途，其他目的须遵守 GPL 协议。有关详细信息请前往[许可协议](#许可协议-license)节了解。
 
 ## 功能
 
@@ -20,6 +27,10 @@
     - 大图片。一张大图片，点击转到文章。
     - 纵向文章列表。一个文章一行的目录，包括关键字、时间日期、图片预览、标题、文章预览，点击转到文章。
     - 横向图片列表。横向滚动的图片，一个文章一张图片，点击转到文章。
+    - 块状文章列表。瓷砖布局，一个文字一个块，包括关键字、时间日期、图片预览、标题，点击转到文章。
+      - 支持动态横向列表数量，可从每行显示 1-5 个文章预览，根据宽度自动决定。
+      - 支持同步自身宽度到其他模块，使整个页面所有元素左右留白同等。
+      - 多出来的未填满的行可以实时自动进行隐藏。
     - 空白。用于调试和占位。
 - 集成定制版 [NyarukoPlayer.js](https://github.com/kagurazakayashi/NyarukoPlayer.js) 动态背景图片效果。
   - 在主页上显示全屏动态图片背景。
@@ -52,7 +63,7 @@
     - 前往网址可以在后台自定义，二维码为自动生成。
     - 首页向下浏览，可以看到后台设定的所有内容模块。
 
-## 自定义功能
+## 自定义
 
 暂无说明。
 
@@ -74,14 +85,17 @@
 
 - [jquery](https://github.com/jquery) / [jQuery](https://github.com/jquery/jquery)
 - [kazuhikoarase](https://github.com/kazuhikoarase) / [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator/tree/master/js)
-- [kagurazakayashi](https://github.com/kagurazakayashi) / [NyarukoPlayer.js](https://github.com/kagurazakayashi/NyarukoPlayer.js)
+- yaNyaruko Project [@kagurazakayashi](https://github.com/kagurazakayashi)
+  - [NyarukoPlayer.js](https://github.com/kagurazakayashi/NyarukoPlayer.js)
+  - [NyarukoShowcase.js](https://github.com/kagurazakayashi/NyarukoShowcase.js)
 
 ## 许可协议 License
 
 ### For users in China:
 
 - 从 commit 3a007ea58fa03a0f5812e14dc8a993acb4b38a29 之后的版本开始（不包括该版本），本 repository 的版权已被 北京未来赛车文化有限公司 购买。在此版本之后发布的任何 commit 版本，均不可以用于商业目的。
-- 如果需要将这些代码用于商业目的，必须得到 北京未来赛车文化有限公司 的允许，并且您可能需要同时为该公司和 kagurazakayashi 支付授权费用。
+- 北京未来赛车文化有限公司、北京篝火网络科技有限公司、kagurazakayashi 共享本作品版权。
+- 如果需要将这些代码用于商业目的，必须得到 北京未来赛车文化有限公司 的允许，并且您可能需要同时为该公司和 北京篝火网络科技有限公司 或 kagurazakayashi 支付授权费用。您可以[通过 issues 请求购买](https://github.com/kagurazakayashi/wpNyaruko-N/issues)。
 - 对于非商业目的的使用，遵循 GPL License 条款发布，所有链接到本产品的软件均应遵循 GPL License 。如果您不能接受 GPL License ，则需要按照上述商业方式购买许可。
 
 ### For users in other areas:

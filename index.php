@@ -1,5 +1,4 @@
 <?php $colid = 0; ?>
-<!-- 1顶端大图 -->
 <?php get_header(); ?>
 
 <div class="tshadow"><?php
@@ -43,5 +42,4 @@ foreach ($modules as $moduleinfos) {
 ?></div>
 <script type="text/javascript" src="/resources/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/flexible-bootstrap-carousel.js"></script>
-<!-- 7页脚 -->
 <?php get_footer(); ?>

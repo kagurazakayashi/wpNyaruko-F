@@ -82,7 +82,7 @@ $keywords = trim(strip_tags($keywords));
 
 <?php flush(); ?>
 
-<body>
+<body onload="medialoaded();">
     <?php 
     include "ua.php";
     $mobile = isMobile();
