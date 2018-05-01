@@ -50,32 +50,53 @@ function qr(text="",innerid="qrview",imgtype="",type="",errorcorrection="",mode=
 }
 function contentformat() {
     var texts = $(".racing_text");
-    var textlines = texts.html().split('\n');
+    var alltext = texts.html();
+    var textlines = alltext.split('\n');
     var firstline = true;
     var spacespan = '<span class="racing_indent"></span>';
-    for (let line = 0; line < textlines.length; line++) {
-        var nowline = textlines[line];
-        var nowlinetype = nowline.replace(/(^\s*)|(\s*$)/g, "").substr(0,2);
-        if (nowlinetype == "<i" || nowlinetype == "<s" || nowlinetype == "<d" || nowlinetype == "<v" || nowlinetype == "") {
-            if (firstline && nowlinetype != "") {
-                if (firstline) {
-                    if (nowlinetype == "<d") {
-                        $("#sortingtotext").css("height","20px");
-                    } else if (nowlinetype != "") {
-                        $("#sortingtotext").css("height","0px");
-                    }
-                    firstline = false;
-                }
-            }
-        } else  {
-            if (nowlinetype != "<p") {
-                textlines[line] = spacespan + textlines[line];
-            }
-            firstline = false;
+    var noformat = '[noformat]';
+    var isnoformat = false;
+    var newhtml = "";
+    if (textlines[0].length >= noformat.length) {
+        if (textlines[0].substr(0,noformat.length) == noformat) {
+            isnoformat = true;
+            newhtml = alltext.substr(noformat.length,alltext.length-noformat.length);
         }
     }
-    var newhtml = textlines.join('\n');
-    newhtml = newhtml.replace(/\n\n/g, '<br/>');
+    if (!isnoformat) {
+        for (let line = 0; line < textlines.length; line++) {
+            var nowline = textlines[line];
+            var nowlinetype = nowline.replace(/(^\s*)|(\s*$)/g, "").substr(0,2);
+            //console.log(line,nowlinetype,nowline);
+            if (nowlinetype == "<i" || nowlinetype == "<s" || nowlinetype == "<d" || nowlinetype == "<v" || nowlinetype == "") {
+                if (firstline && nowlinetype != "") {
+                    if (firstline) {
+                        if (nowlinetype == "<d" || nowlinetype == "<p") {
+                            $("#sortingtotext").css("height","20px");
+                        } else if (nowlinetype != "") {
+                            $("#sortingtotext").css("height","0px");
+                        }
+                        firstline = false;
+                    }
+                }
+            } else  {
+                firstline = false;
+            }
+            if (nowlinetype == "<p") {
+                var nowlinesplit = nowline.split('>');
+                var nowlinetype2 = nowlinesplit[1];
+                if (nowlinetype2.length > 4) {
+                    if (nowlinetype2.substr(0,4) != "<img") {
+                        textlines[line] = nowlinesplit[0] + ">" + spacespan + nowlinetype2 + ">";
+                    }
+                }
+            } else if (nowlinetype != "" && nowlinetype.substr(0,1) != "<") {
+                textlines[line] = spacespan + nowline;
+            }
+        }
+        newhtml = textlines.join('\n');
+        newhtml = newhtml.replace(/\n\n/g, '<br/>');
+    }
     texts.html(newhtml);
 }
 function insertstr(scrstr,instr,strindex) {
