@@ -1533,6 +1533,10 @@ a.carousel-control.right {
     height: 32px;
     width: auto;
 }
+#wpnyaruko_goadminbtn {
+    height: 32px;
+    width: 32px;
+}
 #racing_h2mobilemenubtn i {
     color: #FFF;
     font-size: 30px;

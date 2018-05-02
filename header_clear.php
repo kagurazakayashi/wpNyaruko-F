@@ -9,6 +9,16 @@
             } else {
                 echo '<a href="'.get_bloginfo('url').'" title="返回'.get_bloginfo('name').'主页"><img id="racing_h2logo" src="'.$wpNyarukoOption['wpNyarukoLogo'].'" alt="'.get_bloginfo('name').'" /></a>';
             }
+            global $current_user;
+            $canuseadminsetting = ['author','editor','administrator'];
+            $ucanuseadminsetting = false;
+            foreach ($canuseadminsetting as $nowcanuseadminsetting) {
+                if(isset($current_user->roles[0]) && $current_user->roles[0] == $nowcanuseadminsetting) {
+                    $ucanuseadminsetting = true;
+                    break;
+                }
+            }
+            if ($ucanuseadminsetting) echo '&emsp;<a href="/wp-admin/" title="已使用具备访问后台权限的用户登录，点此前往网站后台。"><img id="wpnyaruko_goadminbtn" src="'.get_bloginfo("template_url").'/homepage/ic_settings_white_48pt_2x.png" alt="后台" /></a>';
             ?>
         </div>
         <div class="racing_h2menucell" id="racing_h2menu1c">
