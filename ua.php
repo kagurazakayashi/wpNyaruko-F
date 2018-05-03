@@ -128,6 +128,6 @@ function isMobile() {
         return true;
       } 
     } 
-    return true;
+    return false;
 }
 ?>

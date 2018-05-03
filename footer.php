@@ -1,10 +1,8 @@
-<!-- Footer -->
     <div class="foot tshadow"><?php
     $wpNyarukoOption = get_option('wpNyaruko_options');
     echo @$wpNyarukoOption['wpNyarukoFooter'];
     ?></div>
 </div>
-<!--end wrapper-->
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
 <?php wp_footer(); 
 $consolelog = "";
@@ -21,4 +19,5 @@ if ($consolelog != "") {
 }
 ?>
 </body>
+<!-- <?php if (isMobile()) {echo "MOBILE : ";} else {echo "DESKTOP : ";} if (isset($_SERVER['HTTP_USER_AGENT'])) echo $_SERVER['HTTP_USER_AGENT']; ?> -->
 </html>
