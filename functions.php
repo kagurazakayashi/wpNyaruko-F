@@ -47,7 +47,7 @@ function clearcontent($content) {
     echo $content;
 }
 function cleardate($post) {
-    echo mysql2date('Y-m-d　h:i',$post->post_date);
+    echo mysql2date('Y-m-d　H:i',$post->post_date);
 }
 /*获取图片开始*/
 function catch_that_image() {
