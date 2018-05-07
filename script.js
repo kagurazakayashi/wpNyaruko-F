@@ -837,9 +837,14 @@ function scrollpictureload(spid) {
                 sparr00 = [];
             }
         }
-        if (spnum == scrollimgs.length && ((i % (spshownum-1)) < (spshownum - 1)) && spnum % spshownum != 0){
+        if ((spnum == scrollimgs.length) && ((i % (spshownum-1)) < (spshownum - 1)) && (spnum % spshownum != 0)){
             var nowarr = sparr[spid];
-            var fori = spshownum-(i % (spshownum-1));
+            var fori = 0;
+            if (scrollimgs.length == 4){
+                fori = spshownum-(i % (spshownum-1));
+            }else if(scrollimgs.length == 5){
+                fori = 1;
+            }
             for(var i = 0;i < fori;i++){
                 if (spshownum == 3){
                     if (fori > 1 && i == 1) {
@@ -883,7 +888,6 @@ function scrollpictureload(spid) {
     sparr[spid].forEach(function(obj,i){
         $('#' + spid + ' .scrollpicture').append(sparr[spid][i]);
     });
-    
     
     $('.sp').height($('.spDIV').height()-1);
     $('.scrollpicturetitle').width(spimgw);
