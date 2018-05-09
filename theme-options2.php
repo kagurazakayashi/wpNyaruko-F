@@ -1,5 +1,23 @@
 <div id="wpNyarukoPanelBox">
-<?php $imgdir = "../wp-content/themes/wpNyaruko-N/images/"; ?>
+<?php
+function plugininstalled($pluginfile) {
+    $nowphpfile = explode(DIRECTORY_SEPARATOR, __FILE__);
+    $wpdir = "";
+    for ($i=0; $i < sizeof($nowphpfile); $i++) {
+        if ($nowphpfile[$i] == "wp-content") {
+            break;
+        } else {
+            if ($i == 0) {
+                $wpdir = $wpdir.$nowphpfile[$i];
+            } else {
+                $wpdir = $wpdir.DIRECTORY_SEPARATOR.$nowphpfile[$i];
+            }
+        }
+    }
+    return file_exists($wpdir.DIRECTORY_SEPARATOR.'wp-content'.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$pluginfile);
+}
+$imgdir = "../wp-content/themes/wpNyaruko-N/images/";
+?>
     <a title="版本升级日志" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-N/commits/master" target="_blank"><div id="wpNyarukoPanelLogo"></div> <?php include "version.php"; ?></a>
     <hr>
     <div class="wpNyarukoPanelTable">
@@ -90,6 +108,10 @@
                 <a href="edit-tags.php?taxonomy=category"><span class="wpNyarukoPanelBtn"><img src="<?php echo $imgdir; ?>ic_merge_type_black_48px.svg" /><br/>分类管理</span></a>
                 <a href="nav-menus.php?action=locations"><span class="wpNyarukoPanelBtn"><img src="<?php echo $imgdir; ?>ic_menu_black_48px.svg" /><br/>修改菜单</span></a>
                 <a href="themes.php?page=theme-options.php"><span class="wpNyarukoPanelBtn"><img src="<?php echo $imgdir; ?>ic_select_all_black_48px.svg" /><br/>外观设置</span></a>
+                <?php
+                if (plugininstalled('wpNyarukoLive'.DIRECTORY_SEPARATOR.'nyarukolive.php')) { ?>
+                <a href="tools.php?page=nyarukolive-options"><span class="wpNyarukoPanelBtn"><img src="<?php echo $imgdir; ?>baseline-live_tv-24px.svg" /><br/>视频直播</span></a>
+                <?php } ?>
                 <a href="index.php?nowpnyaruko"><span class="wpNyarukoPanelBtn"><img src="<?php echo $imgdir; ?>ic_settings_black_48px.svg" /><br/>全部设置</span></a>
                 <a href="profile.php"><span class="wpNyarukoPanelBtn"><img src="<?php echo $imgdir; ?>ic_assignment_ind_black_48px.svg" /><br/>我的信息</span></a>
                 <a href="wp-login.php?action=logout"><span class="wpNyarukoPanelBtn"><img src="<?php echo $imgdir; ?>ic_exit_to_app_black_48px.svg" /><br/>登出系统</span></a>

@@ -11,7 +11,6 @@ var colmgr_nowmodule = null;
 $(document).ready(function(){
     var welcomehtml = '感谢使用<a href="https://github.com/kagurazakayashi/wpNyaruko-N">wpNyaruko</a>系列主题。';
     var menuaddhtml = '<a href="themes.php?page=theme-options.php" title="进入主题首选项"><img id="wpNyarukoPanelLogoBtn" src="../wp-content/themes/wpNyaruko-N/images/wpNyaruko3.gif" alt="wpNyaruko" /></a>';
-    console.log(welcomehtml);
     if ($("#footer-thankyou").length > 0) $("#footer-thankyou").append(welcomehtml);
     if ($("#adminmenu").length > 0 && $("#wpNyarukoPanelLogoBtn").length == 0) $("#adminmenu").append(menuaddhtml);
     if ($("#wpNyarukoOptionTitle").length == 0) {

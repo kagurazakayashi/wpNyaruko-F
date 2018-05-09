@@ -473,7 +473,7 @@ function addyscroll(divn) {
 //     }
 // }
 function resizebigpictitle()
-{   
+{
     if (bigpicdef[0] != "on") {
         return;
     }
@@ -609,7 +609,7 @@ $(window).resize(function(){
         reloadtimer = null;
         reloadtimer = setTimeout(function(){
             console.log("Reloading...");
-            location.reload(false)
+            location.reload(false);
         },1000);
     }
 });
