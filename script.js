@@ -13,7 +13,7 @@ var autoreload = true;
 $(document).ready(function(){
     var nyarukoplayerdivheight = $(window).height();
     var players = [$("#homepage_topimgbox"),$(".nyarukoplayer")];
-    if (ishome == false) {
+    if (pagetype != 1) {
         nyarukoplayerdivheight /= 2;
     }
     if (wpnyaruko_headermode == 2) {
@@ -391,7 +391,7 @@ function loadnyarukoplayer() {
     nyarukoplayerCallback_AnimateStart = function() {
     }
     nyarukoplayerCallback_AnimateEnd = function() {
-        if (!anifirstend && ishome) { //TODO:设置是否只影响主页
+        if (!anifirstend && pagetype == 1) { //TODO:设置是否只影响主页
             var inyarukoplayer = $(".nyarukoplayer");
             var homepage_topimgbox = $("#homepage_topimgbox");
             if (playerdef[0] == "on") {
@@ -605,7 +605,7 @@ $(window).resize(function(){
     resizealllrmargin(listwidth);
     resizebignews();
     scrollpicturereload();
-    if (autoreload) {
+    if (autoreload && pagetype == 1) {
         reloadtimer = null;
         reloadtimer = setTimeout(function(){
             console.log("Reloading...");

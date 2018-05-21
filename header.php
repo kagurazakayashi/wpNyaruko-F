@@ -86,13 +86,6 @@ $keywords = trim(strip_tags($keywords));
     <?php 
     include "ua.php";
     $mobile = isMobile();
-    echo '<script type="text/javascript">var isMobile=';
-    if ($mobile) {
-        echo 'true';
-    } else {
-        echo 'false';
-    }
-    echo ';</script>';
     include "style.php";
     gcss($wpNyarukoOption);
     ?>
@@ -115,7 +108,7 @@ $keywords = trim(strip_tags($keywords));
     <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/homepage/nyarukoplayer.min.js"></script>
     <script type="text/javascript">var nyarukoplayerjson = "/wp-content/themes/wpNyaruko-N/homepage/nyarukoplayer/nyarukoplayer.json";</script>
     <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/lib/qrcode.js"></script>
-    <?php
+    <?php //JS VAR
     //QRdef
     if ($wpNyarukoOption['wpNyarukoQRtype'] && $wpNyarukoOption['wpNyarukoQRtype'] != "" &&
     $wpNyarukoOption['wpNyarukoQRecorrection'] && $wpNyarukoOption['wpNyarukoQRecorrection'] != "" &&
@@ -132,6 +125,9 @@ $keywords = trim(strip_tags($keywords));
     } else {
         echo '<script type="text/javascript">var qrdef = [];';
     }
+    //isMobile
+    echo 'var isMobile=';
+    echo ($mobile) ? "true;" : "false;";
     //Playerdef
     echo 'var playerdef = [';
     echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSize'].'",';
@@ -139,13 +135,26 @@ $keywords = trim(strip_tags($keywords));
     echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoMiniSizeA'].'",';
     echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoStop'].'",';
     echo '"'.$wpNyarukoOption['wpNyarukoPlayerAutoRemove'].'"];';
-    //ishome
-    echo 'var ishome=';
-    if(is_home()) {
-        echo 'true;';
-    } else {
-        echo 'false;';
+    //pagetype
+    $pagetype = 0;
+    if (is_home()) {
+        $pagetype = 1;
+    } else if (is_single()) {
+        $pagetype = 2;
+    } else if (is_page()) {
+        $pagetype = 3;
+    } else if (is_category()) {
+        $pagetype = 4;
+    } else if (is_tag()) {
+        $pagetype = 5;
+    } else if (is_archive() || is_year() || is_month() || is_day() || is_time()) {
+        $pagetype = 6;
+    } else if (is_search()) {
+        $pagetype = 7;
     }
+    echo 'var pagetype="'.$pagetype.'";';
+    echo 'var ispaged=';
+    echo (is_paged()) ? "true;" : "false;";
     //bigpic
     if ($wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] && $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] != "") {
         echo 'var bigpicdef = [';
