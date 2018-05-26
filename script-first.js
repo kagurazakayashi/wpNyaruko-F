@@ -1,4 +1,6 @@
 console.log("Loading...");
+var yashitheme = "wpnyarukof";
+var wpnyarukolive_ready = true;
 function medialoaded() {
     console.log('Loading (2/2)Media ...OK');
 }
