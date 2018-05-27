@@ -203,6 +203,15 @@ function fontsettingconv($fontsset) {
     $fontfamilycss = substr($fontfamilycss,0,strlen($fontfamilycss)-1);
     print_r($fontfamilycss);
 }
+function descriptionwithtag($scrdescription) {
+    if (strlen($scrdescription) > 8) {
+        if (strpos($scrdescription,"page_id=")) {
+            $nowdpid = intval(explode("=", $scrdescription)[1]);
+            return get_post($nowdpid)->post_content;
+        }
+    }
+    return $scrdescription;
+}
 // function deduplication($showids,$nposts,$numberposts) {
 
 // print_r($showids);

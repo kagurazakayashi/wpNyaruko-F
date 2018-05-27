@@ -102,7 +102,7 @@ else if ( isset($_GET['order']) && ($_GET['order']=='alpha') )
     query_posts($arms);
 }
 if ($description != "") {
-    echo '<div id="description" class="racing_text">'.$description.'</div>';
+    echo '<div id="description" class="racing_text">'.descriptionwithtag($description).'</div>';
 }
 if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div class="racing_item" onclick="racinglistgotolink('<?php the_permalink(); ?>')">
