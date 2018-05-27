@@ -808,7 +808,10 @@ select {
     color: gray;
 }
 /* list] */
-
+#description {
+    width: 100%;
+    margin-bottom: 20px;
+}
 /* [sidebar */
 .racing_sidebarbox {
     display:table-cell;
@@ -823,7 +826,6 @@ select {
 .racing_sidebar_top{
     width: 100%;
     height: 144px;
-    background: red;
     position: relative;
     overflow: hidden;
 }

@@ -21,14 +21,19 @@
         <a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>主页">主页</a><?php
         cpath(false);
             $typename = "";
+            $description = "";
             if (is_category()) {
                 $typename = single_cat_title('', false);
                 echo "分类".cpath(true).$typename;
-                if (category_description()) echo ' > '.category_description();
+                if (category_description()) {
+                    $description = category_description();
+                }
             } elseif (is_tag()) {
                 $typename = single_tag_title('', false);
                 echo "标签".cpath(true).$typename;
-                if (tag_description()) echo ' > '.tag_description();
+                if (tag_description()) {
+                    $description = tag_description();
+                }
             } elseif (is_day()) {
                 $typename = get_the_time('j日');
                 echo "日期存档".cpath(true).get_the_time('Y年n月j日');
@@ -95,6 +100,9 @@ else if ( isset($_GET['order']) && ($_GET['order']=='alpha') )
         $wp_query->query
     );
     query_posts($arms);
+}
+if ($description != "") {
+    echo '<div id="description" class="racing_text">'.$description.'</div>';
 }
 if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div class="racing_item" onclick="racinglistgotolink('<?php the_permalink(); ?>')">
