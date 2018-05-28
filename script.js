@@ -874,17 +874,27 @@ function scrollpictureload(spid) {
             scrollimgnum2[spid] = false;
             break;
         case 2:
+            if ((scrollimgs.length == 4 || scrollimgs.length == 5) && spshownum == 3){
+                sparr[spid].unshift(sparr[spid].pop());
+            }
             var nowarr = sparr[spid];
             sparr2[spid] = nowarr;
             scrollimgnum2[spid] = true;
-            nowarr.push(sparr[spid][0]);
+            var spi = sparr[spid].length - 1;
+            nowarr.unshift(sparr[spid][spi]);
             sparr[spid] = nowarr;
             break;
         default:
-        scrollimgnum2[spid] = false;
+            scrollimgnum2[spid] = false;
             break;
     }
     
+    if (scrollimgs.length == 6 && spshownum < 3){
+        sparr[spid].unshift(sparr[spid].pop());
+    }else if((scrollimgs.length == 4 || scrollimgs.length == 5) && spshownum == 1){
+        sparr[spid].unshift(sparr[spid].pop());
+    }
+
     sparr[spid].forEach(function(obj,i){
         $('#' + spid + ' .scrollpicture').append(sparr[spid][i]);
     });
