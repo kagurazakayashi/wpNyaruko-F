@@ -74,10 +74,10 @@ function catch_image($npost) {
     return $first_img;
 }
 function removevideoimage($content) {
-    $mode = 1; //TODO: 0不过滤图片 1过滤第一张图片 2过滤所有图片
+    $mode = 1; //TODO: -1过滤所有图片 0不过滤图片 1过滤第一张图片
     $raimage = '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i';
-    if ($mode > 0 && isvideo($content)) {
-        $content = preg_replace($raimage,'',$content);
+    if ($mode != 0 && isvideo($content)) {
+        $content = preg_replace($raimage,'',$content,$mode);
     }
     return $content;
 }
@@ -88,8 +88,8 @@ function typetitle($name) {
     echo '<div class="racing_typetitle"><div class="racing_typetitlehr cell"><div class="racing_celldotted"></div></div><div class="racing_typetitletxt cell">'.$name.'</div><div class="racing_typetitlehr cell"><div class="racing_celldotted"></div></div></div>';
 }
 
-function isvideo($content) {
-    $ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/'];
+function isvideo($content) {//nyarukolive
+    $ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/','[nyarukolive'];
     $newcontent = $content;
     foreach ($ravideo as $replacen){
         $newcontent = preg_replace($replacen,'',$newcontent);

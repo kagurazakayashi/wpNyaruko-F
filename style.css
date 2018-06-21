@@ -1,1694 +1,772 @@
 /*
-Theme Name: wpNyaruko-N
-Theme URI: 
-Description: a
-Version: 0.1
-Author: 
-Author URI: 
+Theme Name: wpNyaruko
+Theme URI: https://github.com/kagurazakayashi/wpNyaruko-W
+Description: 该主题为定制向主题，不保证在其他网站上可以正确运行。
+Version: 1.3
+Author: yashi
+Author URI: https://github.com/kagurazakayashi/wpNyaruko-W
+Tags: nyaruko, acg
 */
 
-/* [通用布局 */
-.table {
-    display: table;
+/* Global Styles */
+#bodyhidden {
+	position: fixed;
+	z-index: 201;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: #FFF;
 }
-.tablecell {
-    display: table-cell;
-}
-.tablecolumn {
-    display: table-column;
-}
-/* 通用布局] */
-/* [页头 */
-body {
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    background-repeat: no-repeat;
-    color: #000;
-    background-color: #F1F1F1;
-    min-width: 320px;
-    overflow-x: hidden;
-}
-a:link {
-    text-decoration: none;
-}
-a:visited {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: none;
-}
-a:active {
-    text-decoration: none;
-}
-.linkbtn {
-    text-decoration: none;
-}
-#wrapper {
-    overflow-x: hidden;
-}
-#homepage_topimgbox {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    color: #FFF;
-    z-index: 10;
-    text-shadow: 0px 0px 10px #000;
-    font-size: 12pt;
-}
-#homepage_titlebox {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    right: 0px;
-    padding: 15px;
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background: rgba(60,60,60,0);
-}
-#homepage_titlelogo {
-    position: relative;
-    overflow: hidden;
-}
-#homepage_titlebox a {
-    color: #FFF;
-}
-#homepage_titlebox a:hover {
-    color: yellow;
-}
-#homepage_title {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    display:table;
-}
-#homepage_logo {
-    height: 60px;
-    width: auto;
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
-#homepage_title h1 {
-    font-size: 32pt;
-    color: white;
-}
-#homepage_title h2 {
-    font-size: 16pt;
-    color: lightgray;
-}
-#homepage_titleb {
-    display:table-cell;
-    vertical-align:middle;
-}
-.homepage_bignewsbox {
-    height: 64px;
-    width: 100%;
-    display: table;
-}
-#homepage_bignews {
-    display: table;
-    /* background-color: gold; */
-    cursor: pointer;
-}
-#homepage_bignewslink {
+/*顶端大图片上端渐变*/
+#bannerimg #bannertw {
     position: absolute;
     top: 0px;
-    left: 0px;
-    z-index: 11;
-}
-#homepage_bignewslink a {
-    display: block;
-    height: 100%;
     width: 100%;
-    background-color: transparent;
-}
-/* #homepage_bignewslink a:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-} */
-#homepage_bignewsimg {
-    width: 320px;
-    height: 64px;
-    display: table-cell;
-}
-#homepage_bignewsimg img {
-    /* position: absolute; */
-    left: 0px;
-    top: 0px;
-    width: 320px;
-    height: 64px;
-    z-index: 1;
-}
-#homepage_bignewsit {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 320px;
-    height: 64px;
+    height: 20%;
     background: transparent;
-    z-index: 2;
-    display: block;
 }
-#homepage_bignewstxt {
-    display: table-cell;
-    height: 64px;
-    line-height: 64px;
-    vertical-align:middle;
-    font-size: 12pt;
-    font-style: italic;
-    text-align: left;
-}
-#homepage_bignewspop {
-    position: fixed;
-    top: 64px;
-    width: 100%;
-    text-align: center;
-    z-index: 11;
-    display: none;
-}
-#homepage_bignewspopup {
-    width: 0;
-    height: 0;
-    margin-left: 50%;
-    margin-left: calc(50% - 10px);
-    border-right: 20px solid transparent;
-    border-left: 20px solid transparent;
-    padding-top: 10px;
-}
-#homepage_bignewspopimg {
-    width: 80%;
-    height: auto;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 5px;
-}
-.mainmenu_com {
-    float: right;
-}
-.mainmenu_com li{
-    width: 100px;
-    /* height: 40px; */
-    /* line-height: 40px; */
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-    float: left;
-}
-.mainmenu_com ul {
-    margin-bottom: 2px;
-}
-.homepage_menu li a {
-    text-decoration: none;
-}
-.mainmenu_com .menu-main-menu-container {
-    display:inline-block;
-    position: relative;
-    right: 0px;
-    text-align: center;
-}
-.mainmenu_com a {
-    color: #FFF;
-    text-decoration: none;
-}
-.mainmenu_com span {
-    /* font-family: 'webfont'; */
-    text-align: center;
-    width: 100px;
-    height: 100%;
-    text-shadow:0px 0px 5px #000000;
-    float: right;
-}
-.mainmenu_mob ul {
-    padding: 0px;
-    margin: 0px;
-}
-.mainmenu_mob li {
-    padding-left: 30px;
-    height: 50px;
-    line-height: 50px;
-    border-bottom:1px solid lightgray;
-}
-.mainmenu_mob a {
-    color: #000;
-}
-#racing_tabmenu {
-    display: none;
-    position: relative;
-    top: -20px;
-}
-#racing_tabmenu ul {
-    padding: 0px;
-    margin: 0px;
-}
-#racing_tabmenu li {
-    list-style: none;
-    display: inline-block;
-    border-style:none;
-    height: 110px;
-    background-color: transparent;
-    padding: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    overflow: hidden;
-    box-shadow: none;
-}
-.racing_tabmenu_select {
-    background-color: #F1F1F1 !important;
-    box-shadow: 0px 5px 0px lightgray inset !important;
-}
-.racing_tabmenu_select2 {
-    background-color: #FFF !important;
-    box-shadow: 0px 5px 0px lightgray inset !important;
-}
-#racing_tabmenu li:hover {
-    background-color: #F1F1F1;
-    box-shadow: 0px 5px 0px lightsalmon inset;
-}
-#racing_tabmenu img {
-    height: 50px;
-}
-.homepage_menu h1 {
-    font-size: 12pt;
-    line-height: 0px;
-}
-.homepage_menu h2 {
-    font-size: 12pt;
-    line-height: 0px;
-}
-#homepage_footbox {
-    position: absolute;
-    bottom: 80px;
-    left: 50px;
-    right: 50px;
-}
-#homepage_foot {
-    position: absolute;
-    left: 0px;
-    font-size: 9pt;
-}
-#homepage_sociallist {
-    position: absolute;
-    right: 0px;
-}
-.homepage_snsqrshowbox {
-    display: none;
-    width: 200px;
-    height: 220px;
-    background-color: #FFF;
-    box-shadow: 0px 0px 5px #FFF;
-    color: #000;
-    font-size: 10pt;
-    text-align: center;
-    text-shadow: none;
-}
-#homepage_h1snsqrshowbox {
-    position: absolute;
-    right: 0px;
-    bottom: 5px;
-}
-.homepage_snsqrshowbox img, .homepage_snsqrshowbox svg, .homepage_snsqrshowbox table {
-    width: 200px;
-    height: 200px;
-}
-video {
-    width: 100% !important;
-    height: auto !important;
-}
-/* #foot:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-} */
-#homepage_weibobox {
-    position: fixed;
-    z-index: 5;
-    background-color: #FFF;
-    color: #000;
-    top: 100px;
-    top: calc(50% - 281px);
-    right: 0px;
-    width: 208px;
-    height: 563px;
-}
-#homepage_weiboiframe {
-    width: 208px;
-    height: 563px;
-    top: 0;
-    left: 0;
-}
-#homepage_sociallist span {
-    display: inline-block;
-    width: 10px;
-    height: 1px;
-}
-#homepage_sociallist img {
-    width: 32px;
-    height: 32px;
-}
-#homepage_mobilemenubtn {
-    display: none;
-    position: absolute;
-    left: 5%;
-    top: 45px;
-    cursor: pointer;
-}
-#homepage_mobilemenubtn i {
-    font-size: 20pt;
-}
-.tshadow {
-    box-shadow:0px 5px 5px #999 inset;
-}
-/* nyarukoplayer */
-.nyarukodiv img {
-    width: 100%;
-    height: 100%;
-}
-.nyarukodiv {
-    position: relative;
-    overflow: hidden;
-    user-select: none;
-}
-.nyarukoplayer_def {
-    position: fixed;
-    left: 0%;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-.nyarukoplayer {
-    /* position: absolute; */
-    left: 0%;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background:transparent url("homepage/nyarukoplayer/1.jpg") no-repeat left top;
-    background-size: 100% 100%;
-}
-.nyarukoplayer_audiodiv {
-    position: fixed;
-    background-size: cover;
+/*网站logo*/
+#bannerimg #title {
+    position:absolute;
     top: 20px;
-    right: 20px;
-    width: 36px;
-    height: 36px;
-    animation: none;
-    z-index: 2;
+    left: 20px;
+    width: 200px;
 }
-.nyarukoplayer_lrc {
+/*主菜单框架*/
+#bannerimg #mainmenubox {
+    position:absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    bottom: 130px;
+    right: 0px;
+    width: 80%;
+    height: 80px;
+    box-shadow: 5px 5px 5px lightgray;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    text-align:center;
+    color:#666;
+}
+#bannerimg #mainmenubox:hover {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+/*搜索框框架*/
+#bannerimg #mainmenubox #searchbox {
+    position:absolute;
+    background-color: rgba(0, 0, 0, 0.1);
+    top: 25px;
+    right: 30px;
+    width: 200px;
+    height: 30px;
+    border-radius: 30px;
+}
+/*搜索框*/
+#bannerimg #mainmenubox #searchbox #searchkeyword {
+    height: 30px;
     text-align: center;
-    font-size: 20px;
-    color: #FFF;
-    text-shadow: 0px 0px 5px #000;
+    border: none;
+    background-color: transparent;
+    color: gray;
 }
-@keyframes change {
+/*主菜单*/
+#bannerimg #mainmenubox li a {
+	height: 80px;
+	line-height:80px;
+}
+#bannerimg #mainmenubox ul{
+    position:absolute;
+    list-style:none;
+    top: -18px;
+    font-size: 15pt;
+    align-content: center;
+	width: 100%;
+	width: calc(100% - 300px);
+}
+#bannerimg #mainmenubox a{
+    display:block;
+    text-align:center;
+	width: 100%;
+}
+#bannerimg #mainmenubox a:link{
+    color:#666;
+    text-decoration:none;
+}
+#bannerimg #mainmenubox a:visited{
+    color:#666;
+    text-decoration:underline;
+}
+.hidden {
+	display: none;
+}
+/*页脚*/
+#foot {
+    position:relative;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: lightgray;
+    background-size: cover;
+    background-position: bottom center;
+    overflow: hidden;
+    color: #666;
+    font-size: 10pt;
+}
+/*页脚内容框架*/
+#foot #footbox {
+    position:absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    top: 70px;
+    left: 0px;
+    width: 80%;
+    box-shadow: -5px 5px 5px lightgray;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 0;
+    text-align: center;
+}
+#foot #footbox:hover {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+/*#foot #footbox a:link {
+	color: #CC00FF;
+	text-decoration: none;
+}
+#foot #footbox a:visited {
+	text-decoration: none;
+	color: #CC00FF;
+}
+#foot #footbox a:hover {
+	text-decoration: none;
+	color: #CC00FF;
+}
+#foot #footbox a:active {
+	text-decoration: none;
+	color: #CC00FF;
+}*/
+#foot #bannertw {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom,#FFF 0%,rgba(255, 255, 255, 0) 100%);
+}
+
+/*滚动图片*/
+#scrollpic {
+	width: 80%;
+	float: left;
+}
+/*主页大图+边栏区域*/
+#indexinfoshow {
+	width: 100%;
+	overflow: auto;
+}
+/*头条列表*/
+#scrolltext, #scrolltextsingle {
+	width: 20%;
+	/*width: calc(20% - 1px);*/
+	float: right;
+}
+/*主页面区域*/
+.page {
+    position: absolute;
+	width: 100%;
+	overflow: hidden;
+}
+/*页面居中区域*/
+.page2 {
+		margin: 0 auto;
+		width: 1090px;
+}
+/*文章颜色*/
+/*p, h3, label, cite {
+	color: #000;
+}*/
+/*文章内容带评论框架*/
+.postcommentdiv {
+	width:100%;
+	float:left;
+	margin-right:-260px;
+	/*background:yellow;*/
+}
+.postcommentdivinner {
+	height:auto;
+	margin-right:250px;
+	padding: 20px;
+	/*background:#666;*/
+}
+/*小工具框架*/
+.sidebars {
+	width:100%;
+	height:auto;
+	float:right;
+	align-self: center;
+}
+.sidebarsbox li{
+	margin-top: 5px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow: hidden;
+}
+/*文章列表框架*/
+.postlist {
+	width:100%;
+	float:left;
+	margin-right:-260px;
+	/*background:deeppink;*/
+}
+.postlistinner {
+	height:auto;
+	margin-right:250px;
+	padding: 20px;
+	/*background:#666;*/
+}
+/*文章列表分隔线*/
+.postlisthr {
+	height: 20px;
+	color: transparent;
+}
+/*文章标题框架*/
+.titlebox {
+    position:relative;
+    background-color: #f9f9f9;
+	background: linear-gradient(#e2e2e2 0%,#FFF 100%);
+    top: 70px;
+    left: -20px;
+    width: 80%;
+    box-shadow: -5px 5px 5px lightgray;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 0;
+    text-align: left;
+	padding-left: 20px;
+	padding-bottom: 2px;
+}
+/*文章标题*/
+.post .title {
+	color:#393939;
+	font-size:20pt;
+}
+.post .title a {
+	color:#393939;
+	text-decoration:none;
+}
+.post a.button:hover {
+	text-decoration:none;
+}
+/*文章标题下方内容*/
+.post .sub {
+	position: absolute;
+	font-size:12pt;
+	color:#9d9d9d;
+	top:0px;
+	right: 30px;
+}
+.post .thumb {
+	width:619px;
+	height:150px;
+	padding:5px;
+	border: 1px solid #cccccc;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+/*文章标题区域分类显示*/
+.titletypebox {
+	background-color:#FE99CC;
+	width:70px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	margin-left:0px;
+	font-size:14pt;
+	color:#fff;
+	border-radius:0px 0px 5px 5px;
+}
+.titletypebox a {
+	color:#fff;
+}
+/*文章作者简介*/
+#srdcontentbox #authorimg {
+	border-radius:64px;
+	overflow: hidden;
+	pointer-events: none;
+	user-select: none;
+}
+#srdcontentbox hr {
+	height: 1px;
+	border: none;
+	border-top: 1px dashed gray;
+}
+/*文章右侧广告*/
+.pagead {
+	position: relative;
+	left: 40px;
+}
+.pageadimg {
+	width: 170px;
+}
+/*评论区*/
+#commentsbox {
+	padding: 20px;
+}
+.commitbgDiv div {
+	/*overflow: hidden;*/
+}
+.commitbgDiv table{
+	width: 100vw;
+	margin: 0px;
+	padding: 0px;
+	border-spacing: 0;
+}
+.commitbgDiv .children {
+	margin: 0;
+	padding: 0;
+}
+
+.commitbgDiv #backDiv{width:100%;}
+
+.commitbgDiv #bdtd1{
+	width: 100%;
+}
+.commitbgDiv #bdtd2{
+	height: 1%;
+	border-top: 1px solid #D9D9D9;
+}
+.commitbgDiv #t2backDiv{
+	overflow-y:auto;
+	box-sizing: border-box;
+	width:100%;
+	height:100%;
+}
+.commitbgDiv .tl .tlLeft {
+	height: 16px;
+	overflow: hidden;
+}
+.commitbgDiv .tl .commitname{
+	float: left;
+}
+.commitbgDiv .tl .committime{
+	float: right;
+}
+.commitbgDiv .trRight {
+	height: 16px;
+	float: right;
+}
+.commitbgDiv .tr .commitname{
+	float: right;
+}
+.commitbgDiv .tr .committime {
+	float: left;
+}
+.commitbgDiv #t2{width:100%;}
+.commitbgDiv .l2 {
+	position: relative;
+}
+.commitbgDiv #t2 .l2 .t2{
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+}
+.commitbgDiv #t2 .r2 .t2{
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+}
+.commitbgDiv .l2 .li{
+	width:64px;
+	height:64px;
+	float:left;
+	position: relative;
+}
+.commitbgDiv .comsimg{
+	width:64px;
+	height:64px;
+	border-radius:64px;
+}
+.commitbgDiv .commiticon{
+	width:15px;
+	height:15px;
+	bottom: 0px;
+	right: 0px;
+	border-radius:20px;
+	position: absolute;
+	padding: 5px;
+	}
+.commitbgDiv .commiticon embed, .commiticonimg {
+	width: 15px;
+	height: 15px;
+	pointer-events: none;
+	user-select: none;
+}
+.commitbgDiv .l2 .ls{
+	min-height:50px;
+	border-radius:5px;
+	padding:5px;
+	float:left;
+	margin-left:-1px;
+	max-width:calc(100% - 114px);
+	display:block;
+	}
+.commitbgDiv .l2 .ls .li{
+	width:100px;
+	height:100px;
+	float:left;
+	margin-right:3px;
+	}
+.commitbgDiv .l2 .ls .ll{
+	float:left;
+	}
+.commitbgDiv .l2 .ls .ll .d2{
+	word-break:break-all;
+	word-wrap:break-word;
+}
+.commitbgDiv .l2 .ld{
+	float:left;
+	margin-top:7px;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 5px solid transparent;
+	}
+
+.commitbgDiv .r2{
+	text-align:right;
+	position: relative;
+}
+.commitbgDiv .r2 .ri{
+	width:64px;
+	height:64px;
+	float:right;
+	position: relative;
+}
+.commitbgDiv .r2 .rs{
+	max-width: calc(100% - 114px);
+	min-height:50px;
+	border-radius:5px;
+	padding:5px;
+	float:right;
+}
+.commitbgDiv .r2 .rs .ri{
+	width:100px;
+	height:100px;
+	float:right;
+	margin-left:3px;
+}
+.commitbgDiv .r2 .rs .rl{
+	float:right;
+}
+.commitbgDiv .r2 .rs .rl .d2{
+	word-break:break-all;
+	word-wrap:break-word;
+}
+	
+.commitbgDiv #t3{
+	/*position:absolute;
+	bottom:0px;*/
+	width: 100%;
+}
+.commitbgDiv #downdivD{
+	box-sizing:border-box;
+	width: 100%;
+	max-height: 300px;
+	float: left;
+	padding: 1px;
+	word-break: break-all;
+	outline: none;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+.commitbgDiv #downimgD{
+	float:left;
+	width:20px;
+	height:20px;
+	padding:2px;
+	border:1px solid #000;
+}
+.commitbgDiv #downclickD{
+	margin-bottom:3px;
+	margin-right:3px;
+	float:right;
+	width: 20px;
+	height: 20px;
+	text-align:center;
+	padding:2px;
+
+}
+.commitbgDiv #downclickD img{
+	width: 20px;
+	height: 20px;
+}
+
+.commitbgDiv #downimgoptionbg{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+.commitbgDiv #downimgoption{
+	width: 80%;
+	height: 50%;
+	background-color: #f3f3f3;
+	border: 1px solid #D3D3D3;
+	position: fixed;
+	left: 15px;
+	bottom: 15px;
+}
+.commitbgDiv #downimgoption span{
+	width: 20px;
+	height: 20px;
+}
+.commitbgDiv #downimgoption span img{
+	margin: 5px;
+}
+#committodiv a {
+	text-decoration: none;
+}
+#committodiv a:hover {
+	color: red;
+	text-decoration: line-through;
+}
+#sentcommentbox {
+	text-align: right;
+}
+.cellline {
+	width: 100%;
+	height: 30px;
+	background: transparent;
+}
+#commentd {
+	box-sizing:border-box;
+	width: 100%;
+	max-height: 512px;
+	min-height: 60px;
+	float: left;
+	padding: 1px;
+	word-break: break-all;
+	outline: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-style: none;
+}
+/*评论区结束*/
+/*右下角按钮*/
+#rightbottommenubox {
+    position: fixed;
+    width: 64px;
+    height: 100%;
+    right: 20px;
+    /*background-color: pink;*/
+    z-index: 3;
+    overflow: hidden;
+}
+#rightbottommenuboxf {
+    position: fixed;
+    /*background-color:yellow;*/
+    width: 64px;
+    bottom: 20px;
+    padding: 0px;
+}
+#rightbottommenuboxf ul {
+    list-style: none;
+    padding-left: 0;
+}
+#rightbottommenuboxf li {
+    display: none;
+    width: 64px;
+    height: 74px;
+}
+#rightbottommenuboxf #rightbottommenuswitch span {
+    background-color: #FFF;
+}
+#rightbottommenuboxf #rightbottommenuswitch #rightbottommenuswitch1 {
+    position: absolute;
+    bottom: 30px;
+    left: 22px;
+    width: 20px;
+    height: 4px;
+}
+#rightbottommenuboxf #rightbottommenuswitch #rightbottommenuswitch2 {
+    position: absolute;
+    bottom: 22px;
+    left: 30px;
+    width: 4px;
+    height: 20px;
+}
+@keyframes rightbottommenuopen{
     0%{
         transform:rotate(0deg);
     }
-    50%{
-        transform:rotate(180deg);
+    100%{
+        transform:rotate(45deg);
+    }
+}
+@keyframes rightbottommenuclose{
+    0%{
+        transform:rotate(45deg);
     }
     100%{
-        transform:rotate(360deg);
+        transform:rotate(0deg);
     }
 }
-.nyarukoplayer_loading {
-    position: fixed;
-    width: 100%;
-    height: 15px;
-    top: 0px;
-    background-color: #000;
-    background: linear-gradient(#888888, #000);
-    z-index: 4;
-}
-.nyarukoplayer_loadingok {
-    position: fixed;
-    width: 0%;
-    height: 15px;
-    background-color: #FE99CC;
-    background: linear-gradient(#FE99CC, #C46997, #FE99CC);
-    text-align: right;
-    font-size: 9pt;
-}
-.nyarukoplayer_musicdiglog {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    padding-top: 20%;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 3;
-    text-align: center;
-}
-.nyarukoplayer_musicdiglog h1 {
-    font-size: 18pt;
-}
-.nyarukoplayer_musicdiglog a {
-    width: 100px;
-    text-align: center;
-    background-color: transparent;
-    color: #00FFFF;
-    padding: 5px 100px 5px 100px;
-    cursor: url('../resources/hand.cur'), auto;
-}
-.nyarukoplayer_musicdiglog .nyarukoplayer_musicdiglog_yes {
-    color: #FFFF00;
-}
-.nyarukoplayer_musicdiglog a:hover {
-    background-color: #000;
-}
-/* 栏目标题 */
-.racing_typetitle {
-    width: 100%;
-    display: table;
-    padding-top: 30px;
-    padding-bottom: 20px;
-}
-.racing_typetitlehr {
-    padding: 20px;    
-}
-.racing_celldotted {
-    width: 100%;
-    height: 0px;
-    border-top:2px dotted lightgray;
-    padding-top: 8px;
-}
-.racing_typetitlehrimg {
-    height: 30px;
-    width: auto;
-    user-select: none;
-}
-#racing_typetitlehrimgl {
-    transform: rotateY(180deg);
-}
-.racing_typetitletxt {
-    width: 160px;
-    text-align: center;
-    font-size: 16pt;
-    color: gray;
-}
-.racing_typetitletxt:hover {
-    color: #000;
-}
-.cell {
-    display: table-cell;
-}
-/* 新闻列表 */
-@font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
-    src: local('Material Icons'),
-         local('MaterialIcons-Regular'),
-         url(fonts/MaterialIcons-Regular.woff2) format('woff2'),
-         url(fonts/MaterialIcons-Regular.woff) format('woff'),
-         url(fonts/MaterialIcons-Regular.ttf) format('truetype');
-  }
-  .material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 50px;  /* Preferred icon size */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-  
-    /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
-  
-    /* Support for Firefox. */
-    -moz-osx-font-smoothing: grayscale;
-  
-    /* Support for IE. */
-    font-feature-settings: 'liga';
-  }
-.morebtnbox {
-    width: 100%;
-    height: 32px;
-    text-align: center;
-    margin-top: 20px;
-}
-.morebtnbox a {
-    color: #000;
-    text-decoration: none;
-    display: block;
-    width: 100px;
-    height: 32px;
-    line-height: 32px;
-    background-color: lightgray;
-    border-radius: 5px;
-    margin: auto;
-    left: 0;
-    right: 0;
-}
-.morebtnboxarchive {
-    margin-bottom: 40px;
-}
-.morebtnboxarchive a {
-    height: 40px;
-    width: 130px;
-    font-size: 10pt;
-    display: inline-table;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.morebtnbox .material-icons {
-    font-size: 15pt;
-}
-.morebtnbox a:hover, .morebtnbox .material-icons:hover {
-    background-color: gray;
-    text-decoration: none;
-    color: #FFF;
-}
-.morebtnbox span, .morebtnbox .material-icons {
-    display: table-cell;
-    vertical-align: middle;
-}
-/* [list2 */
-.racing_list2 {
-    width: 100%;
-    display: table-cell;
-    margin-left: 0px;
-    margin-right: 0px;
-    text-align: center;
-}
-.racing_list_test {
-    display: inline-block;
-    background-color: skyblue;
-}
-.racing_list_tlr2 {
-    display: table-cell;
-    width: auto;
-    background-color: #F1F1F1;
-    width: 5%;
-}
-.racing_list_right2{
-    width: 100%;
-    float: left;
-    background-color: transparent;
-}
-.racing_item2 {
-    cursor: pointer;
-    background-color: #EEEEEE;
-    width: 318px;
-    height: 280px;
-    margin-bottom: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
-    box-shadow: 0px 3px 5px lightgray;
-    border-radius: 5px;
-    overflow: hidden;
-    color: gray;
-    display: inline-block;
-    text-align: left;
-}
-.racing_itembg {
-    background-image: linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
-}
-.racing_item2 a {
-    color: gray;
-}
-.racing_item2:hover {
-    background-color: lightgray;
-    color: black;
-}
-.racing_list_left2 {
-    width: 318px;
-    height: 179px;
-    float: left;
-    position: relative;
-    overflow: hidden;
-}
-.racing_list_right_title2 {
-    font-size: 12pt;
-    width: 100%;
-    height: 35px;
-    line-height: 35px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 15px;
-    overflow: hidden;
-    color: black;
-}
-.racing_list_right_bottom2 {
-    width: 100%;
-    height: 35px;
-    margin-left: 20px;
-    margin-right: 20px;
-    position:relative;
-}
-/* list2] */
-/* [list */
-.racing_listbox {
-    width: 100%;
-    display: table;
-}
-.racing_list{
-    display: table-cell;
-    /* width: auto; */
-}
-.racing_list_tlr {
-    display: table-cell;
-    width: 10%;
-}
-.racing_list_left{
-    width: 352px;
-    height: 198px;
-    background: lightgray;
-    float: left;
-    position: relative;
-    overflow: hidden;
-}
-.racing_list_left_class{
-    width: 60px;
-    height: 22px;
-    line-height: 22px;
-    font-size: 10px;
-    text-align: center;
-    background: #FFF;
-    opacity:0.8;
-    color: #000;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 1;
-}
-.racing_list_left_class:hover {
-    color: blue;
-    opacity:1;
-}
-.racing_list_left_img{
-    object-fit:cover;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
-.racing_list_left_play{
-    width: 70px;
-    height: 70px;
-    line-height: 70px;
-    text-align: center;
-    top: calc(50% - 35px);
-    left: calc(50% - 35px);
-    z-index: 0;
-    font-size: 50pt;
-    color: white;
-    position: absolute;
-    pointer-events: none;
-    text-shadow: 0px 0px 5px #000;
-}
-.racing_list_right{
-    width: calc(100% - 352px);
-    height: 100%;
-    float: right;
-    background-color: transparent;
-}
-.racing_item {
-    cursor: pointer;
-    background-color: #FFF;
-    height: 198px;
-    margin-bottom: 15px;
-    box-shadow: 0px 3px 5px lightgray;
-    border-radius: 5px;
-    overflow: hidden;
-    color: gray;
-}
-.racing_item a {
-    color: gray;
-}
-.racing_item:hover {
-    background-color: lightgray;
-    color: black;
-}
-.racing_item:hover a {
-    color: black;
-}
-.racing_list_right_title{
-    font-size: 14pt;
-    width: calc(100% - 60px);
-    height: 35px;
-    line-height: 35px;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    overflow: hidden;
-    color: black;
-}
-.racing_list_right_content{
-    font-size: 10pt;
-    width: calc(100% - 60px);
-    height: calc(100% - 60px - 20px);
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 10px;
-    position:relative;
-    line-height:1.8em;
-    height:5.4em;
-    overflow:hidden;
-    color: black;
-}
-.racing_list_right_bottom{
-    width: calc(100% - 60px);
-    height: 35px;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 5px;
-    position:relative;
-}
-.racing_list_right_bottom_time{
-    font-size: 9pt;
-    position: absolute;
-    bottom: 8px;
-    left: 0px;
-}
-.racing_list_right_bottom_img{
-    font-size: 30px;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-}
-.listoption {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    height: 50px;
-    line-height: 50px;
-}
-.sortby {
-    float: right;
-    text-align: right;
-    color: gray;
-}
-select {
-    background: transparent;
-    width: 110px;
-    padding: 5px;
-    border: 0px solid #ccc;
-    height: 30px;
-}
-.sortby select:hover {
-    border-bottom: 2px solid skyblue;
-    color: #000;
-}
-.sorting {
-    float: left;
-    text-align: left;
-    color: gray;
-}
-/* list] */
-#description {
-    width: 100%;
-    margin-bottom: 20px;
-}
-/* [sidebar */
-.racing_sidebarbox {
-    display:table-cell;
-    width: 300px;
-}
-.racing_sidebar{
-    width: 256px;
-    height: 300px;
-    border: 1px solid #c0c0c0;
-    background: #fff;
-}
-.racing_sidebar_top{
-    width: 100%;
-    height: 144px;
-    position: relative;
-    overflow: hidden;
-}
-.racing_sidebar_top_class{
-    width: 60px;
-    height: 22px;
-    line-height: 22px;
-    font-size: 10px;
-    text-align: center;
-    background: #222222;
-    opacity:0.8;
-    color: #fff;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 10;
-}
-.racing_sidebar_top_img{
-    object-fit:cover;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
-.racing_sidebar_bottom{
-    width: 100%;
-    height: calc(100% - 144px - 5px);
-    padding-top: 5px;
-    /* background: yellowgreen; */
-}
-.racing_sidebar_bottom_title{
-    height: 35px;
-    line-height: 35px;
-    /* background: green; */
-    font-size: 25px;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 5px;
-    overflow: hidden;
-}
-.racing_sidebar_bottom_content{
-    width: calc(100% - 20px);
-    margin-left: 10px;
-    margin-right: 10px;
-    height: calc(100% - 35px - 10px - 20px);
-    position:relative;
-    line-height:1.8em;
-    /* 3 times the line-height to show 3 lines */
-    height:5.4em;
-    overflow:hidden;
-}
-.racing_sidebar_bottom_content::after{
-    content:"...";
-    font-weight:bold;
-    position:absolute;
-    bottom:0;
-    right:0;
-    padding:0 20px 1px 45px;
-    background:url(../image/ellipsis_bg.png) repeat-y;
-}
-.racing_sidebar_bottom_bottom{
-    width: calc(100% - 10px);
-    height: 25px;
-    line-height: 25px;
-    margin-left: 5px;
-    margin-right: 5px;
-    position: relative;
-}
-.racing_sidebar_bottom_bottom_time{
-    font-size: 10px;
-    color: #C0C0C0;
-    /* background: yellow; */
-    position: absolute;
-    bottom: 2px;
-    left: 0px;
-}
-.racing_sidebar_bottom_bottom_img{
-    font-size: 25px;
-    color: rgb(138, 138, 138);
-    /* background: yellow; */
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-}
-/* sidebar] */
-
-/* [phone_list */
-.racing_phone_list{
-    width: calc(100% - 20px);
-    height: 300px;
-    border: 1px solid #c0c0c0;
-    background: #fff;
-    margin: 0 auto;
+/*正在加载提示*/
+#loadstatus {
+	text-align: center;
+	color: gray;
 }
 
-.racing_phone_list_top{
-    width: 100%;
-    height: 144px;
-    background: lightgray;
-    position: relative;
-    overflow: hidden;
+/* 以下是文章列表 */
+.lanbackdiv{
+	background-color:#F3F3F3;
+	width:100%;
+	min-width: 800px;
+	height:200px;
+	box-shadow:0px 3px 10px gray;
 }
-.racing_phone_list_top_class{
-    width: 150px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 25px;
-    text-align: center;
-    background: #222222;
-    opacity:0.8;
-    color: #fff;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 10;
+.lanbackdiv:hover{
+	box-shadow:0px 3px 10px #000;
 }
-.racing_phone_list_top_img{
-    object-fit:cover;
-    position: absolute;
-    left: 0px;
-    top: 0px;
+.lanleftdiv div {
+	-webkit-transform: rotate(-90deg);/*Safari 4+,Google Chrome 1+  */
+	-moz-transform: rotate(-90deg);/*Firefox 3.5+*/
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);/*ie*/
+	position:absolute;
+	left:-95px;
+	top:95px;
+	width:200px;
+	height:10px;
+	line-height:10px;
+	font-size:9pt;
+	color:#fff;
 }
-
-.racing_phone_list_bottom{
-    width: 100%;
-    height: 30%;
-    padding-top: 5px;
-    /* background: yellowgreen; */
+.lancenterdiv{
+	/*width:80%;*/
+	height:200px;
+	float:left;
 }
-.racing_phone_list_bottom_title{
-    height: 80%;
-    line-height: 90px;
-    /* background: green; */
-    font-size: 60px;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 5px;
-    word-wrap: break-word;
-    overflow: hidden;
+.lancenterdiv div .lcdtitle{
+	text-align:left;
+	margin-left: 20px;
+	margin-top: 10px;
+	font-size:15pt;
+	font-weight:bold;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	color: #000;
 }
-.racing_phone_list_bottom_content{
-    width: calc(100% - 40px);
-    margin-top: 5px;
-    margin-left: 20px;
-    margin-right: 20px;
-    font-size: 25px;
+.lancenterdiv div .lcdcontent{
+	margin:10px;
+	margin-left: 50px;
+	height:120px;
+	word-break:break-all;
+	overflow:hidden;
+	font-size: 13pt;
+	color: #000;
+	min-width: 390px;
 }
-
-.racing_phone_list_bottom_bottom{
-    width: calc(100% - 10px);
-    height: 25px;
-    line-height: 25px;
-    margin-left: 5px;
-    margin-right: 5px;
-    position: relative;
-}
-.racing_phone_list_bottom_bottom_time{
-    font-size: 20px;
-    color: #C0C0C0;
-    /* background: yellow; */
-    position: absolute;
-    bottom: 2px;
-    left: 0px;
-}
-.racing_phone_list_bottom_bottom_img{
-    font-size: 45px;
-    color: rgb(138, 138, 138);
-    /* background: yellow; */
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-}
-/* phone_list] */
-/* [scrollpics */
-.carousel.flexible .items {
-    display: none;
-}
-.flex-item {
-    position: relative;
-    overflow: hidden;
-    /* height: 200px; */
-    border-radius: 5px;
-}
-/* Carousel */
-/* .carousel-inner {
-    border-radius: 5px;
-} */
-.carousel-example {
-    padding: 20px 0 50px 0;
-}
-.carousel-example img {
-    /* box-shadow: 0px 3px 3px #999; */
-    border-radius: 5px;
-}
-#complicated-content-carousel .carousel-control {
-    position: absolute;
-    top: -20px;
-    right: 0;
-    left: auto;
-    bottom: auto;
-    width: 14px;
-    font-size: 25px;
-    color: #3c3c3c !important;
-    opacity: 1;
+.lancenterdiv div .lcdcontent a {
+	color: #000;
 }
 
-#complicated-content-carousel .carousel-control.left,
-#complicated-content-carousel .carousel-control.right {
-    background-image: none;
+.lanrightdiv{
+	width:300px;
+	height:200px;
+	float:right;
+	overflow:hidden;
+	position:relative;
+}
+.lanrightdiv div{
+	width:300px;
+	height:200px;
+	top:0;
+	left:0;
+	position:absolute;
+
+	background: -webkit-linear-gradient(left, rgba(243,243,243,1.00), rgba(243,243,243,0.00) , rgba(243,243,243,0.00) , rgba(243,243,243,0.00)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, rgba(243,243,243,1.00), rgba(243,243,243,0.00) , rgba(243,243,243,0.00) , rgba(243,243,243,0.00)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right rgba(243,243,243,1.00), rgba(243,243,243,0.00) , rgba(243,243,243,0.00) , rgba(243,243,243,0.00)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, rgba(243,243,243,1.00), rgba(243,243,243,0.00) , rgba(243,243,243,0.00) , rgba(243,243,243,0.00)); /* 标准的语法（必须放在最后） */
+}
+.lanrightdiv img{
+	position: absolute;
+}
+/* 以上是文章列表 */
+
+#postsbox {
+	width: 100%;
+	position: relative;
+	/*background-color: green;*/
+}
+/*文章块*/
+.blockhiddendiv {
+	position:relative;
+	background-color: #FFF;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 400px;
 }
 
-#complicated-content-carousel .carousel-control.left {
-    right: 35px;
-}
-
-.carousel-control {
-    width: 50px;
-    height: 50px;
-    top: 50%;
-    transform: translateY(-50%);
-    bottom: auto;
-    font-size: 30px;
-    text-align: center;
-    opacity: 1;
-}
-
-a.carousel-control.left,
-a.carousel-control.right {
-    background-image: none;
-    opacity: 1;
-    text-align: center;
-    color: #FFF;
-}
-
-/* MEDIA QUERIES */
-/* styles for phones' displays */
-@media only screen and (max-width: 350px) {
-    #complicated-content-carousel .flex-item {
-        width: 300px;
-    }
-}
-
-/* styles for medium size displays */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    #complicated-content-carousel .flex-item {
-        width: 300px;
-    }
-}
-/* scrollpics] */
-/* [bigpicnews */
-.racing_bigpicnewsbox {
-    height: 600px;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-.racing_bigpicnews {
-    margin-left: 10%;
-    margin-right: 10%;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
-    text-align: center;
-    /* line-height: 600px; */
-    box-shadow: 0px 3px 3px #999;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    /* overflow: hidden; */
-    cursor: pointer;
-    overflow: hidden;
-    height: auto;
-}
-.racing_bigpicnews img {
-    top: 0;
-    width: 100%;
-}
-.image_169_div{
-    /* width: 100%; */
-    overflow: hidden;
-    position: relative;
-}
-.image_169{
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-.pictitle {
-    font-size: 24pt;
-    color: #FFF;
-    text-shadow: 0px 0px 5px #000;
-    cursor: pointer;
-    position: absolute;
-    margin-top: 25%;
-    text-align: center;
-    width: 100%;
-}
-.pictitle i {
-    display: inline-block;
-    font-size: 20pt;
-}
-.pictitletext {
-    display: inline-block;
-    width: auto;
-}
-.pictitle2 {
-    width: 80%;
-    text-align: left;
-    font-size: 14pt;
-    margin-left: 10%;
-    padding-left: 20px;
-    margin-right: 10%;
-    background: #FFF;
-    box-shadow: 0px 3px 3px #999;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-.pictitle2b {
-    width: 100%;
-    height: 50px;
-}
-.pictitle2 i {
-    display: block;
-    font-size: 16pt;
-    word-wrap: unset;
-}
-.pictitletable {
-    display: inline-table;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.pictitletablecell {
-    display: table-cell;
-    vertical-align: middle;
-    height: 50px;
-}
-.scrollimgcell {
-    display: table-cell;
-    vertical-align: middle;
-    height: 40px;
-}
-.scrolltitle {
-    height: 40px;
-    display: block;
-    text-align: center;
-    font-size: 12pt;
-    white-space:nowrap;
-}
-.scrolltitle i {
-    display: block;
-    font-size: 16pt;
-}
-/* bigpicnews] */
-.foot {
-    width: 100%;
-    background-color: lightgray;
-    text-align: center;
-    padding-top: 5px;
-}
-/* [page */
-.racing_single{
-    margin-left: 10%;
-    margin-right: 10%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background: white;
-    text-align: center;
-}
-.racing_single_single{
-    margin-left: 50px;
-    margin-right: 50px;
-    text-align: left;
-}
-.racing_single_single img {
-    width: 100%;
-    height: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    /* box-shadow: 0px 3px 3px #999;
-    border-radius: 5px; */
-}
-.wp-video {
-    width: 100%;
-    height: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.sorting i{
-    font-size: 10pt !important;
-    position: relative;
-    top: 2px;
-}
-.sortingi {
-    display: inline-block;
-}
-#sortingtotext {
-    height: 40px;
-}
-/* page] */
-/* [comment */
-.commentsbox {
-    text-align: left;
-    margin: 10%;
-}
-.commentsbox h1 {
-    font-size: 12pt;
-}
-.commentsbox i {
-    font-size: 22pt;
-}
-.commentsbox li {
-    list-style: none;
-}
-.commentsbox .gravatar {
-    float: left;
-    padding: 5px;
-    box-shadow: 0px 0px 5px #000;
-    border-radius: 5px;
-}
-.comment {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.clearfix {
-    margin-left: 80px;
-    line-height: 30px;
-    height: 68px;
-}
-.comment_text {
-    margin-left: 80px;
-}
-.comment-meta {
-    color: gray;
-}
-.comment-edit-link {
-    float: right;
-    line-height: 1px;
-}
-.commentsbox .cinfo {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-#commentform .cinfo2 {
-    padding-top: 20px;
-}
-#commentform textarea {
-    height: 50px;
-    width: calc(100% - 50px);
-    border: none;
-    border-bottom:1px solid rgb(2, 168, 243);
-}
-#commentform #subbtn {
-    float: right;
-    width: 50px;
-    height: 50px;
-    color: rgb(2, 168, 243);
-    background-color: white;
-    border: none;
-    border-bottom:1px solid rgb(2, 168, 243);
-}
-#commentform input {
-    border: none;
-    border-bottom:1px solid rgb(2, 168, 243);
-    margin-bottom: 20px;
-}
-#commentform .cuserinfo {
-    display: inline-block;
-}
-#commentform i, #commentsclose i {
-    font-size: 10pt;
-}
-#commentsclose {
-    color: #FFF;
-}
-/* comment] */
-/* [mobilemenu */
-#mobilemenubox {
-    display: none;
-}
-.racing_phone_menuback{
-    width: 100%;
-    height: 100%;
-    background: lightgray;
-    opacity: 0.5;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: none;
-    z-index: 20;
-}
-.racing_phone_menu{
-    width: 250px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: -60%;
-    background: #F1F1F1;
-    box-shadow: 5px 0px 5px #999;
-    z-index: 20;
-    font-size: 12pt;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-.racing_phone_menu::-webkit-scrollbar {
-    display: none;
-}
-.racing_phone_menu::scrollbar {
-    display: none;
-}
-#mobilemenu_userinfo {
-    width: 100%;
-    height: 150px;
-    background-color: #141414;
-    color: #FFF;
-    display:table;
-    padding: 20px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-#mobilemenu_userinfoc {
-    display:table-cell;
-    vertical-align:bottom;
-}
-.mobilemenu a:hover {
-    text-decoration: none;
-}
-.mobilemenu a:focus {
-    text-decoration: none;
-}
-.mobilemenu i {
-    display: inline-block;
-    font-size: 12pt;
-}
-.mobilemenusubitem {
-    padding-left: 60px !important;
-}
-.r90 {
-    transform:rotate(90deg);
-    animation:r90 0.5s;
-}
-.l90 {
-    transform:rotate(0deg);
-    animation:l90 0.5s;
-}
-@keyframes l90{
-    0% {
-    transform:rotate(90deg)
-    }
-    100% {
-    transform:rotate(0deg)
-    }
-}
-@keyframes r90{
-    0% {
-    transform:rotate(0deg)
-    }
-    100% {
-    transform:rotate(90deg)
-    }
-}
-.frameAnimImg {
-    animation: frameAnim;
-    animation-duration: .2s;
-    animation-timing-function: linear;
-    animation-play-state: running;
-    -moz-animation: frameAnim;
-    -moz-animation-duration: .2s;
-    -moz-animation-timing-function: linear;
-    -moz-animation-play-state: running;
-    -webkit-animation: frameAnim;
-    -webkit-animation-duration: .2s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-play-state: running;
-    -o-animation: frameAnim;
-    -o-animation-duration: .2s;
-    -o-animation-timing-function: linear;
-    -o-animation-play-state: running;
-    animation: frameAnim;
-    animation-duration: .2s;
-    animation-timing-function: linear;
-    animation-play-state: running;
-}
-@keyframes frameAnim {
-    0%{left: -90%;}
-    100%{left: 0%;}
-}
-.frameAnimImg0 {
-    animation: frameAnim0;
-    animation-duration: .2s;
-    animation-timing-function: linear;
-    animation-play-state: running;
-    -moz-animation: frameAnim0;
-    -moz-animation-duration: .2s;
-    -moz-animation-timing-function: linear;
-    -moz-animation-play-state: running;
-    -webkit-animation: frameAnim0;
-    -webkit-animation-duration: .2s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-play-state: running;
-    -o-animation: frameAnim0;
-    -o-animation-duration: .2s;
-    -o-animation-timing-function: linear;
-    -o-animation-play-state: running;
-    animation: frameAnim0;
-    animation-duration: .2s;
-    animation-timing-function: linear;
-    animation-play-state: running;
-}
-@keyframes frameAnim0 {
-    0%{left: 0%;}
-    100%{left: -90%;}
-}
-@-moz-keyframes frameAnim0 {
-    0%{left: 0%;}
-    100%{left: -90%;}
-}
-@-webkit-keyframes frameAnim0 {
-    0%{left: 0%;}
-    100%{left: -90%;}
-}
-@-o-keyframes frameAnim0 {
-    0%{left: 0%;}
-    100%{left: -90%;}
-}
-/* mobilemenu] */
-/* [header2 */
-#racing_h2menudef {
-    width: 100%;
-    height: 110px;
-}
-.racing_h2menu {
-    width: 100%;
-    display: table;
-}
-#racing_h2menu1 {
-    height: 60px;
-    background-color: #141414;
-}
-#racing_h2menu2 {
-    height: 50px;
-    background-color: #333;
-    width: auto;
-}
-#racing_h2menu2box {
-    width: auto;
-    background-color: #333;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space:nowrap;
-}
-#racing_h2menu2box::-webkit-scrollbar {
-    display: none;
-}
-#racing_h2menu2box::scrollbar {
-    display: none;
-}
-.racing_h2menucell {
-    display: table-cell;
-    vertical-align: middle;
-}
-#racing_h2menu1l {
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: left;
-}
-#racing_h2menu1c {
-    text-align: right;
-    white-space: nowrap;
-    color: #FFF;
-    font-size: 12pt;
-}
-#racing_h2menu1c a {
-    color: #FFF;
-}
-#racing_h2menu1c a:hover {
-    color: yellow;
-}
-#racing_topmenu {
-    white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    display: block;
-    text-align: right;
-}
-#racing_topmenu::-webkit-scrollbar {
-    display: none;
-}
-#racing_topmenu::scrollbar {
-    display: none;
-}
-#racing_topmenu ul {
-    padding: 0px;
-    margin: 0px;
-    width: auto;
-    align-items
-    : right;
-}
-#racing_topmenu li {
-    list-style: none;
-    display: inline-block;
-    padding-left: 10px;
-}
-#racing_h2menu1r {
-    padding-right: 20px;
-    text-align: right;
-    width: 170px;
-}
-#racing_h2logo {
-    height: 32px;
-    width: auto;
-}
-#wpnyaruko_goadminbtn {
-    height: 32px;
-    width: 32px;
-}
-#racing_h2mobilemenubtn i {
-    color: #FFF;
-    font-size: 30px;
-}
-#racing_h2menu1r img {
-    width: 30px;
-    height: 30px;
-}
-#racing_h2menu2 {
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: left;
-    color: gainsboro;
-    vertical-align: middle;
-    font-size: 12pt;
-}
-#racing_h2menu2l {
-    text-align: left;
-    width: 80px;
-}
-#racing_h2menu2r {
-    text-align: center;
-    text-align: left;
-    width: auto;
-}
-#racing_h2tabmenu {
-    display: none;
-}
-#racing_h2tabmenu ul {
-    padding: 0px;
-    margin: 0px;
-}
-#racing_h2tabmenu li {
-    list-style: none;
-    display: inline-block;
-    padding-left: 10px;
-}
-#racing_h2tabmenu img {
-    height: 24px;
-    width: auto;
-}
-#homepage_h2snsqrshowbox {
-    position: fixed;
-    right: 20px;
-    top: 60px;
-    z-index: 16;
-}
-#racing_h2nyarukopbg {
-    height: 110px;
-}
-#racing_h2menubox {
-    position: fixed;
-    width: 100%;
-    top: 0px;
-    z-index: 15;
-}
-/* header2] */
-/* [ScrollPic */
-.scrollview {
-    margin-left: 10%;
-    margin-right: 10%;
-    width: 80%;
-}
-.spfatherDIV{
-    position: relative;
-    overflow: hidden;
-}
-.scrollpicture{
-    width: 100%;
-    display: table;
-    position: absolute;
-    top: 0;
-}
-.spDIV{
-    float: left;
-    display: table-cell;
-    overflow: hidden;
-    position: relative;
-}
-.spDIV a div{
-    width: 100%;
-    height: 100%;
-}
-.spimgdiv {
-    position: relative;
-    overflow: hidden;
-    border-radius: 5px;
-}
-.scrollpicturetitle {
-    height: 40px;
-    display: block;
-    text-align: center;
-    font-size: 12pt;
-    white-space:nowrap;
-}
-.sp{
-    width: 100%;
-}
-.spDIV img {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.spCentercss{
-    margin: 0 10px 0 10px;
-}
-.spleftcss{
-    margin: 0 5px 0 0;
-}
-.sprightcss{
-    margin: 0 0 0 5px;
-}
-
-.spbutton{
-    cursor: pointer;
-    height: 100%;
-    width: 50px;
-    position: absolute;
-    top: 0;
-}
-.spleft{
-    left: 0;
-}
-.spbutton {
-    right: 0;
-    display: table;
-}
-.spbuttoncell {
-    width: 100%;
-    height: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-}
-.triangle-facing {
-    display: inline-block;  
-    border-right: #FFF 6px solid;
-    border-bottom: #FFF 6px solid;
-    width: 30px; height: 30px;
-    /* box-shadow: 0px 0px 5px gray; */
-}
-.triangle-facing:hover {
-    border-right: yellow 6px solid;
-    border-bottom: yellow 6px solid;
-}
-.triangle-facing-right {
-    transform: rotate(-45deg);
-}
-.triangle-facing-left {
-    transform: rotate(135deg);
-}
-/* ScrollPic] */
+.blocktopdiv{
+	width:310px;
+	height:174px;
+	position:relative;
+	overflow:hidden;
+}
+.blocktopdiv img{
+	position: absolute;
+}
+.blockbottomdiv{
+	width:300px;
+	height:216px;
+	max-height:226px;
+	padding:5px;
+}
+/*正文区域*/
+#srdcontent span {
+	line-height: 20px;
+}
+/*single样式*/
+/*.singleleftbox{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}*/
+#singlebdiv{
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	box-shadow: 3px 3px 3px #D3D3D3;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 50px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	overflow: hidden;
+	float: left;
+}
+#srdtitle{
+	line-height: 60px;
+	font-size: 18pt;
+	font-weight: bold;
+	float: left;
+	word-wrap: break-word;
+}
+#srddate{
+	line-height: 30px;
+	font-size: 12pt;
+	float: right;
+	margin-left: 90px;
+	color: #FFF;
+}
+#srddate a {
+	color: #FFF;
+}
+#commentform{
+	width: 80%;
+}
+/*二维码*/
+.qrview {
+	align-items: center;
+}
+/* 作者简介 */
