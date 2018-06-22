@@ -34,9 +34,9 @@
         <div class="racing_h2menucell" id="racing_h2menu1r">
             <a href="javascript:mobilemenu();" id="homepage_snsa_weibo" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_weibo" src="<?php bloginfo("template_url"); ?>/homepage/ic_menu_white_48dp_2x.png" alt="打开主菜单"></a>
             <span>&emsp;</span>
-            <a href="http://weibo.com/<?php echo $wpNyarukoOption['wpNyarukoSNSWeibo']; ?>" id="homepage_snsa_weibo" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_weibo" src="<?php bloginfo("template_url"); ?>/homepage/weibo.png" alt="访问我们的新浪微博" onMouseOver="snsiconover('weibo');" onMouseOut="snsiconout('weibo');"></a>
+            <a href="<?php echo $wpNyarukoOption['wpNyarukoSNSWeibo']; ?>" id="homepage_snsa_weibo" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_weibo" src="<?php bloginfo("template_url"); ?>/homepage/weibo.png" alt="访问我们的新浪微博" onMouseOver="snsiconover('weibo');" onMouseOut="snsiconout('weibo');"></a>
             <span>&emsp;</span>
-            <a href="http://weixin.qq.com/q/<?php echo $wpNyarukoOption['wpNyarukoSNSWeChat']; ?>" id="homepage_snsa_wechat" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_wechat" src="<?php bloginfo("template_url"); ?>/homepage/wechat.png" alt="关注我们的微信公众号" onMouseOver="snsiconover('wechat');" onMouseOut="snsiconout('wechat');"></a>
+            <a href="<?php echo $wpNyarukoOption['wpNyarukoSNSWeChat']; ?>" id="homepage_snsa_wechat" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_wechat" src="<?php bloginfo("template_url"); ?>/homepage/wechat.png" alt="关注我们的微信公众号" onMouseOver="snsiconover('wechat');" onMouseOut="snsiconout('wechat');"></a>
         </div>
     </div>
     <div id="racing_h2menu2box">

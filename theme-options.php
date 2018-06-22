@@ -399,7 +399,7 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>社交网络用户名</td>
-      <td>新浪微博：http://weibo.com/<input name="wpNyarukoSNSWeibo" type="text" id="wpNyarukoSNSWeibo" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeibo']); ?>" size="16" maxlength="16" /><br/>微信公众号链接地址(显示为二维码)：http://weixin.qq.com/q/<input name="wpNyarukoSNSWeChat" type="text" id="wpNyarukoSNSWeChat" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeChat']); ?>" size="16" maxlength="32" /></td>
+      <td>新浪微博：<input name="wpNyarukoSNSWeibo" type="text" id="wpNyarukoSNSWeibo" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeibo']); ?>" size="50" maxlength="128" /><br/>微信公众号：<input name="wpNyarukoSNSWeChat" type="text" id="wpNyarukoSNSWeChat" value="<?php echo(@$wpNyarukoOption['wpNyarukoSNSWeChat']); ?>" size="50" maxlength="128" /></td>
     </tr>
     <tr>
       <td>主页关键字</td>
