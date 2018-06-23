@@ -36,7 +36,6 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
 <script type="text/javascript" src="<?php echo @$wpNyarukoOption['wpNyarukoJQcookie']; ?>"></script>
 <script type="text/javascript" src="/resources/jquery.mousewheel.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script-first.js"></script>
-<link href="<?php echo @$wpNyarukoOption['wpNyarukoBScss']; ?>" rel="stylesheet">
 <?php
 $description = '';
 $keywords = '';

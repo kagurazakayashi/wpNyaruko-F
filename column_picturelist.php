@@ -5,6 +5,8 @@ $nposts = get_posts(array(
     'category' => $categoryid,
     'numberposts' => $numberposts,
 )); ?>
+<script type="text/javascript" src="/resources/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resources/flexible-bootstrap-carousel.js"></script>
 <div class="carousel-example">
     <?php $simplecontentid = "simple-content-carousel-".$colid; ?>
     <div id="<?php echo $simplecontentid; ?>" class="carousel flexible slide" data-ride="carousel" data-interval="5000" data-wrap="true">

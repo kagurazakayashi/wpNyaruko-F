@@ -40,6 +40,4 @@ foreach ($modules as $moduleinfos) {
     }
 }
 ?></div>
-<script type="text/javascript" src="/resources/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/flexible-bootstrap-carousel.js"></script>
 <?php get_footer(); ?>
