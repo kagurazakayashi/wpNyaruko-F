@@ -35,15 +35,23 @@ for ($i=1; $i < 7; $i++) {
     echo "} ";
 }
 ?>
-.racing_single_single img {
-    padding-left: <?php $racingsingleimgpadd = (100-intval(@$wpNyarukoOption['wpNyarukoPageImgWidth']))/2; echo $racingsingleimgpadd; ?>%;
-    padding-right: <?php echo $racingsingleimgpadd; ?>%;
+.racing_single_autosizeimg {
+    padding-left: <?php $racingsingleimgpadd = (100-intval(@$wpNyarukoOption['wpNyarukoPageImgWidth']))/2; echo $racingsingleimgpadd; ?>% !important;
+    padding-right: <?php echo $racingsingleimgpadd; ?>% !important;
+    width: 80% !important;
+    height: auto !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
 }
 /* page] */
 @media screen and (max-width: 840px) {
-    .racing_single_single img {
-        padding-left: <?php $racingsingleimgpadd = (100-intval(@$wpNyarukoOption['wpNyarukoPageImgWidthM']))/2; echo $racingsingleimgpadd; ?>%;
-        padding-right: <?php echo $racingsingleimgpadd; ?>%;
+    .racing_single_autosizeimg {
+        padding-left: <?php $racingsingleimgpadd = (100-intval(@$wpNyarukoOption['wpNyarukoPageImgWidthM']))/2; echo $racingsingleimgpadd; ?>% !important;
+        padding-right: <?php echo $racingsingleimgpadd; ?>% !important;
+        width: 80% !important;
+        height: auto !important;
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
     }
 }
 </style>
