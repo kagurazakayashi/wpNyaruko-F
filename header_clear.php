@@ -25,7 +25,7 @@
         <?php 
         if (!$mobile) {
             wp_nav_menu(array(
-                "theme_location" => "MainMenu",
+                "theme_location" => "wpNyaruko_MainMenu",
                 "container_id" => "racing_topmenu"
             ));
         }
@@ -44,7 +44,7 @@
             <div class="racing_h2menucell" id="racing_h2menu2l">版权资源</div>
             <div class="racing_h2menucell" id="racing_h2menu2r">
                 <?php wp_nav_menu(array(
-                    "theme_location" => "tabmenu",
+                    "theme_location" => "wpNyaruko_TabMenu",
                     "container_id" => "racing_h2tabmenu"
                 )) ?>
             </div>
@@ -78,7 +78,7 @@
             <div id="homepage_titlebox">
                 <span class="homepage_menu" id="homepage_mainmenu">
                     <div class="mainmenu_com"><?php wp_nav_menu(array(
-                        "theme_location"=>"mainmenu"
+                        "theme_location"=>"wpNyaruko_MainMenu"
                     )) ?></div>
                 </span>
             </div>

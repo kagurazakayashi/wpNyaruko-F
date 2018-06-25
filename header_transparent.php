@@ -5,7 +5,7 @@
         <span id="homepage_foot">
             <!-- TODO:footmenu -->
             <?php wp_nav_menu(array(
-                "theme_location" => "tabmenu",
+                "theme_location" => "wpNyaruko_TabMenu",
                 "container_id" => "racing_tabmenu"
             )) ?>
         </span>
@@ -29,7 +29,7 @@
             </span>
             <span class="homepage_menu" id="homepage_mainmenu">
                 <div class="mainmenu_com"><?php wp_nav_menu(array(
-                    "theme_location"=>"mainmenu"
+                    "theme_location"=>"wpNyaruko_MainMenu"
                 )) ?></div>
             </span>
         </div>
