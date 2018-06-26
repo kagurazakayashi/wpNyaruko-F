@@ -89,7 +89,7 @@ function typetitle($name) {
 }
 
 function isvideo($content) {//nyarukolive
-    $ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/','[nyarukolive'];
+    $ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/','/\[\/nyarukolive.*?\]/'];
     $newcontent = $content;
     foreach ($ravideo as $replacen){
         $newcontent = preg_replace($replacen,'',$newcontent);
