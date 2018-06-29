@@ -8,7 +8,8 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
     echo "<!-- wpNyaruko DEBUG MODE -->";
 }
 ?>
-<?php $wpNyarukoHeaderTheme = 2; include_once("KagurazakaYashi.php"); ?>
+<?php $wpNyarukoHeaderTheme = 2; //TODO:切换顶端主题
+include_once("KagurazakaYashi.php"); ?>
 <title><?php if ( is_home() ) {
         bloginfo('name'); echo " - "; bloginfo('description');
     } elseif ( is_category() ) {
