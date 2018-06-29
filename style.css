@@ -1,10 +1,10 @@
 /*
-Theme Name: wpNyaruko-N
-Theme URI: 
-Description: a
-Version: 0.1
-Author: 
-Author URI: 
+Theme Name: wpNyaruko-F
+Theme URI: https://github.com/kagurazakayashi/wpNyaruko-F
+Description: wpNyaruko 系列的又一个主题，拥有模块化的主页，可以自行增减不同的栏目，适合于特定主题的资讯类站点。
+Version: 0.7
+Author: KagurazakaYashi(神楽坂雅詩)
+Author URI: https://github.com/kagurazakayashi
 */
 
 /* [通用布局 */
@@ -1198,14 +1198,14 @@ a.carousel-control.right {
     margin-right: 50px;
     text-align: left;
 }
-.racing_single_single img {
-    /* width: 100%;
+/* .racing_single_single img {
+    width: 100%;
     height: auto;
     padding-top: 20px;
-    padding-bottom: 20px; */
-    /* box-shadow: 0px 3px 3px #999;
-    border-radius: 5px; */
-}
+    padding-bottom: 20px;
+    box-shadow: 0px 3px 3px #999;
+    border-radius: 5px;
+} */
 .wp-video {
     width: 100%;
     height: auto;

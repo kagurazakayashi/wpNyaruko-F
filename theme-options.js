@@ -9,8 +9,8 @@ var colorpickerbindid = null;
 var picturepickerbindid = null;
 var colmgr_nowmodule = null;
 $(document).ready(function(){
-    var welcomehtml = '感谢使用<a href="https://github.com/kagurazakayashi/wpNyaruko-N">wpNyaruko</a>系列主题。';
-    var menuaddhtml = '<a href="themes.php?page=theme-options.php" title="进入主题首选项"><img id="wpNyarukoPanelLogoBtn" src="../wp-content/themes/wpNyaruko-N/images/wpNyaruko3.gif" alt="wpNyaruko" /></a>';
+    var welcomehtml = '感谢使用<a href="https://github.com/kagurazakayashi/wpNyaruko-F">wpNyaruko</a>系列主题。';
+    var menuaddhtml = '<a href="themes.php?page=theme-options.php" title="进入主题首选项"><img id="wpNyarukoPanelLogoBtn" src="../wp-content/themes/wpNyaruko-F/images/wpNyaruko3.gif" alt="wpNyaruko" /></a>';
     if ($("#footer-thankyou").length > 0) $("#footer-thankyou").append(welcomehtml);
     if ($("#adminmenu").length > 0 && $("#wpNyarukoPanelLogoBtn").length == 0) $("#adminmenu").append(menuaddhtml);
     if ($("#wpNyarukoOptionTitle").length == 0) {
@@ -31,7 +31,7 @@ $(document).ready(function(){
         }
     }
     if (typeof(showwpnyarukooptions2) != "undefined" && $(window).width() >= 640) {
-        $("#wpbody").load("../wp-content/themes/wpNyaruko-N/theme-options2.php");
+        $("#wpbody").load("../wp-content/themes/wpNyaruko-F/theme-options2.php");
         var wpadminbarcss = {"background":"#f1f1f1","color":"#000","overflow":"hidden"};
         $("#wpadminbar, #wpadminbar .ab-empty-item, #wpadminbar a.ab-item, #wpadminbar>#wp-toolbar span.ab-label, #wpadminbar>#wp-toolbar span.noticon").css(wpadminbarcss);
     }

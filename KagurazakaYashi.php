@@ -3,7 +3,7 @@ $hideopensrcinfo = true;
 if (!$hideopensrcinfo) {
 ?>
 <!--                 wpNyaruko Theme
-     https://github.com/kagurazakayashi/wpNyaruko-N
+     https://github.com/kagurazakayashi/wpNyaruko-F
                    ,;;77;
                  ...     7
             .;;;,       7D

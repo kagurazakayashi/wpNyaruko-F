@@ -1,6 +1,8 @@
-# wpNyaruko-N 0.7
+![wpNyaruko](https://github.com/kagurazakayashi/wpNyaruko-F/blob/master/images/wpNyaruko.gif) F 0.7
 
 [介绍](#功能) | [功能](#功能) | [自定义](#自定义) | [截图](#截图) | [兼容性](#兼容性) | [第三方](#使用的第三方软件) | [License](#许可协议-license)
+
+- 警告：目前尚未开发完成，请勿使用。
 
 ## 介绍
 
@@ -95,7 +97,7 @@
 
 - 从 commit 3a007ea58fa03a0f5812e14dc8a993acb4b38a29 之后的版本开始（不包括该版本），本 repository 的版权已被 北京未来赛车文化有限公司 购买。在此版本之后发布的任何 commit 版本，均不可以用于商业目的。
 - 北京未来赛车文化有限公司、北京篝火网络科技有限公司、kagurazakayashi 共享本作品版权。
-- 如果需要将这些代码用于商业目的，必须得到 北京未来赛车文化有限公司 的允许，并且您可能需要同时为该公司和 北京篝火网络科技有限公司 或 kagurazakayashi 支付授权费用。您可以[通过 issues 请求购买](https://github.com/kagurazakayashi/wpNyaruko-N/issues)。
+- 如果需要将这些代码用于商业目的，必须得到 北京未来赛车文化有限公司 的允许，并且您可能需要同时为该公司和 北京篝火网络科技有限公司 或 kagurazakayashi 支付授权费用。您可以[通过 issues 请求购买](https://github.com/kagurazakayashi/wpNyaruko-F/issues)。
 - 对于非商业目的的使用，遵循 GPL License 条款发布，所有链接到本产品的软件均应遵循 GPL License 。如果您不能接受 GPL License ，则需要按照上述商业方式购买许可。
 
 ### For users in other areas:

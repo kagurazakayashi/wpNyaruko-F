@@ -16,9 +16,9 @@ function plugininstalled($pluginfile) {
     }
     return file_exists($wpdir.DIRECTORY_SEPARATOR.'wp-content'.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$pluginfile);
 }
-$imgdir = "../wp-content/themes/wpNyaruko-N/images/";
+$imgdir = "../wp-content/themes/wpNyaruko-F/images/";
 ?>
-    <a title="版本升级日志" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-N/commits/master" target="_blank"><div id="wpNyarukoPanelLogo"></div> <?php include "version.php"; ?></a>
+    <a title="版本升级日志" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-F/commits/master" target="_blank"><div id="wpNyarukoPanelLogo"></div> <?php include "version.php"; ?></a>
     <hr>
     <div class="wpNyarukoPanelTable">
         <div class="wpNyarukoPanelTablecell wpNyarukoPanelTablecellpadding" id="wpNyarukoPanelCL">

@@ -35,7 +35,7 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoCommentMode'] = '';
         $wpNyarukoOption['wpNyarukoCommentBox'] = '';
         $wpNyarukoOption['wpNyarukoHeader'] = '';
-        $wpNyarukoOption['wpNyarukoFooter'] = '<b>版权所有 © </b><br/><a rel="external" title="WordPress主页" class="link" href="http://wordpress.org/" target="_blank">WordPress</a> <a title="访问主题主页" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-N" target="_blank">Theme: wpNyaruko-N</a>｜<a class="float right" href="#">页首</a><br/><a href="#" target="_blank" title="如果您对我们的内容有疑问，请点击这里联系我们。">联系我们</a>｜<a href="http://www.miitbeian.gov.cn/" target="_blank" title="如果您对我们的内容有疑问，请先进入「联系我们」栏目解决。">京ICP备XXXXXXXX号</a>';
+        $wpNyarukoOption['wpNyarukoFooter'] = '<b>版权所有 © </b><br/><a rel="external" title="WordPress主页" class="link" href="http://wordpress.org/" target="_blank">WordPress</a> <a title="访问主题主页" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-F" target="_blank">Theme: wpNyaruko-F</a>｜<a class="float right" href="#">页首</a><br/><a href="#" target="_blank" title="如果您对我们的内容有疑问，请点击这里联系我们。">联系我们</a>｜<a href="http://www.miitbeian.gov.cn/" target="_blank" title="如果您对我们的内容有疑问，请先进入「联系我们」栏目解决。">京ICP备XXXXXXXX号</a>';
         $wpNyarukoOption['wpNyarukoIndexKeywords'] = '';
         $wpNyarukoOption['wpNyarukoRSSArticle'] = 'on';
         $wpNyarukoOption['wpNyarukoRSSComment'] = '';
@@ -209,7 +209,7 @@ function display() {
     echo '<div id="wpNyarukoInfo">已受理您的变更。</div>';
   }
 ?>
-<div id="wpNyarukoOptionTitle"><a title="版本升级日志" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-N/commits/master" target="_blank"><div id="wpNyarukoPanelLogo"></div></a>&nbsp;设置中心（版本&nbsp;<?php include "version.php"; ?>）</div><hr>
+<div id="wpNyarukoOptionTitle"><a title="版本升级日志" class="link" href="https://github.com/kagurazakayashi/wpNyaruko-F/commits/master" target="_blank"><div id="wpNyarukoPanelLogo"></div></a>&nbsp;设置中心（版本&nbsp;<?php include "version.php"; ?>）</div><hr>
 <?php
 if(!is_admin()) {
   echo '<p>欢迎使用 wpNyaruko 主题，<br/>请使用管理员权限登录来继续设置。</p><hr><p>';
@@ -529,7 +529,7 @@ if(!is_admin()) {
     </table>
     <hr>
     <p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />&emsp;<a href="themes.php?page=theme-options.php?reset">恢复初始设定</a>&emsp;<?php } 
-    //echo '<a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-N" target="_blank">Github</a>';
+    //echo '<a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-F" target="_blank">Github</a>';
     ?>
     </p></form><p><br/></p>
 </div>
