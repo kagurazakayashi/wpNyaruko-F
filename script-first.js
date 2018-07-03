@@ -67,10 +67,12 @@ function contentformat() {
             break;
         }
     }
-    if (!(textlines[0].length >= noformats[2].length && textlines[0].substr(0,noformats[2].length) == noformats[2])) {
+    if (textlines[0].length >= noformats[2].length && textlines[0].substr(0,noformats[2].length) == noformats[2]) {
+        console.log(noformats[2]);
         isnoformat = false;
     }
-    if (!(textlines[0].length >= noformats[3].length && textlines[0].substr(0,noformats[3].length) == noformats[3])) {
+    if (textlines[0].length >= noformats[3].length && textlines[0].substr(0,noformats[3].length) == noformats[3]) {
+        console.log(noformats[3]);
         spacespan = "";
     }
     if (!isnoformat) {

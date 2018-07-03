@@ -96,8 +96,8 @@ $keywords = trim(strip_tags($keywords));
             <div id="mobilemenu_userinfoc"><br/><?php bloginfo('name'); ?></div>
         </div>
         <div class="mainmenu_mob"><?php 
-        $mobilemenulocation = "SlidingPcMenu";
-        if ($mobile) $mobilemenulocation = "SlidingMobileMenu";
+        $mobilemenulocation = "wpNyaruko_SlidingMenuPc";
+        if ($mobile) $mobilemenulocation = "wpNyaruko_SlidingMenuMobile";
         wp_nav_menu(array(
             "theme_location" => $mobilemenulocation,
             'menu_class' => 'mobilemenu'

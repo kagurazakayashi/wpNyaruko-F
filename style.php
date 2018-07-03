@@ -36,9 +36,12 @@ for ($i=1; $i < 7; $i++) {
 }
 ?>
 .racing_single_autosizeimg {
-    padding-left: <?php $racingsingleimgpadd = (100-intval(@$wpNyarukoOption['wpNyarukoPageImgWidth']))/2; echo $racingsingleimgpadd; ?>% !important;
+    padding-left: <?php
+    $wpNyarukoPageImgWidth = intval(@$wpNyarukoOption['wpNyarukoPageImgWidth']);
+    $racingsingleimgpadd = (100-$wpNyarukoPageImgWidth)/2; echo $racingsingleimgpadd;
+    ?>% !important;
     padding-right: <?php echo $racingsingleimgpadd; ?>% !important;
-    width: 80% !important;
+    width: <?php echo $wpNyarukoPageImgWidth; ?>% !important;
     height: auto !important;
     padding-top: 20px !important;
     padding-bottom: 20px !important;
@@ -46,9 +49,12 @@ for ($i=1; $i < 7; $i++) {
 /* page] */
 @media screen and (max-width: 840px) {
     .racing_single_autosizeimg {
-        padding-left: <?php $racingsingleimgpadd = (100-intval(@$wpNyarukoOption['wpNyarukoPageImgWidthM']))/2; echo $racingsingleimgpadd; ?>% !important;
+        padding-left: <?php
+        $wpNyarukoPageImgWidthM = intval(@$wpNyarukoOption['wpNyarukoPageImgWidthM']);
+        $racingsingleimgpadd = (100-$wpNyarukoPageImgWidthM)/2; echo $racingsingleimgpadd;
+        ?>% !important;
         padding-right: <?php echo $racingsingleimgpadd; ?>% !important;
-        width: 80% !important;
+        width: <?php echo $wpNyarukoPageImgWidthM; ?>% !important;
         height: auto !important;
         padding-top: 20px !important;
         padding-bottom: 20px !important;
