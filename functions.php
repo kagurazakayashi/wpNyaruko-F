@@ -31,12 +31,14 @@ if( function_exists('register_sidebar') ) {
 }
 //风格一　电脑：MainMenu、TabMenu　手机：wpNyaruko_SlidingMenuMobile、TabMenu
 //风格二　电脑：MainMenu、wpNyaruko_SlidingMenuPc、TabMenu　手机：wpNyaruko_SlidingMenuMobile、TabMenu
-register_nav_menus(array(
-    'wpNyaruko_MainMenu' => '顶端主菜单,文字链接,仅电脑平台,所有风格',
-    'wpNyaruko_SlidingMenuPc' => '左侧展开菜单栏,文字链接,仅电脑平台',
-    'wpNyaruko_SlidingMenuMobile' => '左侧展开菜单栏,文字链接,仅手机平台,所有风格',
-    'wpNyaruko_TabMenu' => '选项卡菜单,图片链接,全部平台,所有风格'
-));
+if( function_exists('register_nav_menus') ) {
+    register_nav_menus(array(
+        'wpNyaruko_MainMenu' => '顶端主菜单,文字链接,仅电脑平台,所有风格',
+        'wpNyaruko_SlidingMenuPc' => '左侧展开菜单栏,文字链接,仅电脑平台',
+        'wpNyaruko_SlidingMenuMobile' => '左侧展开菜单栏,文字链接,仅手机平台,所有风格',
+        'wpNyaruko_TabMenu' => '选项卡菜单,图片链接,全部平台,所有风格'
+    ));
+}
 // 获取预览
 function clearcontent($content) {
     $wpNyarukoOption = get_option('wpNyaruko_options');
