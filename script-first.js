@@ -50,13 +50,17 @@ function qr(text="",innerid="qrview",imgtype="",type="",errorcorrection="",mode=
         innerdiv.innerHTML = qrgen.createImgTag();
     }
 }
+if (typeof(wpNyarukoNotFormat) == "undefined") {
+    var wpNyarukoNotFormat = false;
+}
 function contentformat() {
+    if (wpNyarukoNotFormat) return;
     var texts = $(".racing_text");
     var alltext = texts.html();
     var textlines = alltext.split('\n');
     var firstline = true;
     var spacespan = '<span class="racing_indent"></span>';
-    var noformats = ["[noformat]","[noformat=all]","[noformat=img]","[noformat=indent]"];
+    var noformats = ["[noformat]","[noformat=all]","[noformat=img]","[noformat=indent]","[nyarukotabloid]"];
     var isnoformat = false;
     var newhtml = "";
     for (let noformati = 0; noformati < noformats.length; noformati++) {
