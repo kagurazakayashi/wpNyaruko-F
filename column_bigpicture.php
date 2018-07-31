@@ -21,7 +21,7 @@ if(empty($nposts)){
 } else {
     foreach($nposts as $npost){
         ?>
-        <div class="racing_bigpicnews" id="racing_bigpicnews_<?php echo $categoryid; ?>" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'" onload="resizebigpictitle()">
+        <div class="racing_bigpicnews" id="racing_bigpicnews_<?php echo $categoryid; ?>" onclick="javascript:window.location.href='<?php echo get_permalink($npost->ID); ?>'">
             <img id="racing_bigpicnews_<?php echo $categoryid; ?>img" src="<?php 
             $itemimage = catch_image($npost);
             if ($itemimage == "") {
@@ -30,7 +30,7 @@ if(empty($nposts)){
             } else {
                 echo $itemimage;
             }
-            ?>" />
+            ?>" onload="resizebignews(<?php echo $categoryid; ?>);"/>
             <!-- <div class="pictitle"><div class="pictitletext"><?php
                 if (isvideo($npost->post_content)) {
                     echo '<i class="material-icons">&#xE039;&nbsp;</i>';

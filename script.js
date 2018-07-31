@@ -170,17 +170,21 @@ function saveoldsize() {
     var bodyo = $("body");
     oldsize = [bodyo.width(),bodyo.height()];
 }
-function resizebignews() {
-    $(".racing_bigpicnews").each(function(){
-        var racingbigpicnews = $(this);
-        var racingbigpicnewsid = racingbigpicnews.attr("id").split('_').pop();
-        var imgheight = $("#racing_bigpicnews_"+racingbigpicnewsid+"img").height();
-        if (imgheight > 0) {
-            racingbigpicnews.height(imgheight);
-        } else {
-            racingbigpicnews.height("auto");
-        }
-    });
+function resizebignews(categoryid=Number.MAX_VALUE) {
+    if (categoryid == Number.MAX_VALUE) {
+        $('.racing_bigpicnews').each(function (i,thisbigpicnews){
+            var nowbigpicnews = $(thisbigpicnews);
+            var nowbigpicnewsid = nowbigpicnews.attr('id');
+            var nowbigpicnewsimg = $("#"+nowbigpicnewsid+"img");
+            nowbigpicnewsimg.css({"width":"100%","height":"auto"});
+            nowbigpicnews.height(nowbigpicnewsimg.height());
+        });
+    } else {
+        var bigpicnews = $("#racing_bigpicnews_"+categoryid);
+        var bigpicnewsimg = $("#racing_bigpicnews_"+categoryid+"img");
+        bigpicnewsimg.css({"width":"100%","height":"auto"});
+        bigpicnews.height(bigpicnewsimg.height());
+    }
 }
 function tabmenu() {
     var h2mode = "";
@@ -224,18 +228,6 @@ function tabmenu() {
         thisa.html(imgh);
     });
     $("#racing_"+h2mode+"tabmenu").css("display","inline");
-    $(".racing_bigpicnews img").bind('load',function(){
-        $(this).css({'top':'0px'});
-        $(this).width("100%");
-        if(this.height > $('.racing_bigpicnews').height()){
-
-            $(this).css({'top': -(this.height - $('.racing_bigpicnews').height())/2 + 'px'});
-        }else if(this.height < $('.racing_bigpicnews').height()){
-            $(this).width('auto');
-            $(this).height($('.racing_bigpicnews').height());
-            $(this).css({'left': -(this.width - $('.racing_bigpicnews').width())/2 + 'px'});
-        }
-    });
 }
 function openmsubmenu(i) {
     var speed = 500;
@@ -496,6 +488,18 @@ function resizebigpictitle()
         pictitletexti.css("display","block");
         pictitletexti.css("font-size",newfontsize);
     }
+    // // $(".racing_bigpicnews img").bind('load',function(){
+    // $(this).css({'top':'0px'});
+    // $(this).width("100%");
+    // if(this.height > $('.racing_bigpicnews').height()){
+
+    //     $(this).css({'top': -(this.height - $('.racing_bigpicnews').height())/2 + 'px'});
+    // }else if(this.height < $('.racing_bigpicnews').height()){
+    //     $(this).width('auto');
+    //     $(this).height($('.racing_bigpicnews').height());
+    //     $(this).css({'left': -(this.width - $('.racing_bigpicnews').width())/2 + 'px'});
+    // }
+    // // });
 }
 function resizetext(wordbox, maxWidth, minSize, maxSize) {
     var newfontsize = minSize + "px";
@@ -720,7 +724,8 @@ function resizealllrmargin(linewidth) {
     var newmargin = ((bodywidth - linewidth) * 0.5) + "px";
     var newcss = {"margin-left":newmargin,"margin-right":newmargin,"width":"auto"};
     $(".scrollview").css(newcss);
-    $(".racing_bigpicnews").css(newcss); resizebigpictitle();
+    $(".racing_bigpicnews").css(newcss);
+    resizebigpictitle();
     $(".pictitle2").css(newcss);
 }
 function headerstyle2() {
