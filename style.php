@@ -10,11 +10,17 @@ body {
     line-height: <?php echo @$wpNyarukoOption['wpNyarukoPageH0FontLine']; ?>px;
     font-family: <?php if ($wpNyarukoOption['wpNyarukoFontsF']=='') { fontsettingconv(@$wpNyarukoOption['wpNyarukoFonts']); } ?>;
 }
+.racing_texteng, .racing_texteng p {
+    font-size: <?php echo @$wpNyarukoOption['wpNyarukoPageH7FontSize']; ?>pt;
+    color: #<?php echo @$wpNyarukoOption['wpNyarukoPageH7FontColor']; ?>;
+    line-height: <?php echo @$wpNyarukoOption['wpNyarukoPageH7FontLine']; ?>px;
+    font-family: <?php if ($wpNyarukoOption['wpNyarukoFontsF']=='') { fontsettingconv(@$wpNyarukoOption['wpNyarukoFonts']); } ?>;
+}
 /* text-indent: */
 .racing_indent {
     display: inline-block;
     background-color: transparent;
-    height: 1px;
+    height: <?php echo @$wpNyarukoOption['wpNyarukoPageParagraph']; ?>px;
     width: <?php echo @$wpNyarukoOption['wpNyarukoPageIndent']; ?>px;
 }
 <?php

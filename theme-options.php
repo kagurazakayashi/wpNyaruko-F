@@ -58,8 +58,9 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoBigPicTitleAutoSize'] = 'on';
         $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'] = '10';
         $wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'] = '32';
+        $wpNyarukoOption['wpNyarukoPageParagraph'] = '50';
         $wpNyarukoPageT = ["Size","Color","Line"];
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 8; $i++) {
             foreach ($wpNyarukoPageT as $wpNyarukoPageTv) {
                 $tv = "";
                 if ($wpNyarukoPageTv == "Size") {
@@ -99,9 +100,9 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoIndexModuleM","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts","wpNyarukoFontsF"];
+        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoIndexModuleM","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts","wpNyarukoFontsF","wpNyarukoPageParagraph"];
         $wpNyarukoPageT = ["Size","Color","Line"];
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 8; $i++) {
             foreach ($wpNyarukoPageT as $wpNyarukoPageTv) {
                 array_push($options,("wpNyarukoPageH".$i."Font".$wpNyarukoPageTv));
             }
@@ -247,7 +248,7 @@ if(!is_admin()) {
             <th>文字颜色</th>
             <th>行距</th>
             </tr>
-            <?php $wpNyarukoPageSetTitle = ["正文","一级标题","二级标题","三级标题","四级标题","五级标题","六级标题"];
+            <?php $wpNyarukoPageSetTitle = ["正文","一级标题","二级标题","三级标题","四级标题","五级标题","六级标题","英文正文"];
             for ($i=0; $i < count($wpNyarukoPageSetTitle); $i++) {
                 $sname = "wpNyarukoPageH".$i."Font";
                 ?>
@@ -262,8 +263,7 @@ if(!is_admin()) {
             ?>
         </tbody>
         </table>
-    每个自然段前自动添加<input name="wpNyarukoPageIndent" type="text" id="wpNyarukoPageIndent" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageIndent']); ?>" size="2" maxlength="2" />像素的空格<br/>
-    文章中的图片宽度为正文宽度的百分之<input name="wpNyarukoPageImgWidth" type="text" id="wpNyarukoPageImgWidth" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidth']); ?>" size="3" maxlength="3" />(电脑版) 和 百分之<input name="wpNyarukoPageImgWidthM" type="text" id="wpNyarukoPageImgWidthM" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidthM']); ?>" size="3" maxlength="3" />(手机版)
+        正文段落间距：<input name="wpNyarukoPageParagraph" type="text" id="<?php echo $sname; ?>Line" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageParagraph']); ?>" size="2" maxlength="2" />像素<br/>每个自然段前自动添加<input name="wpNyarukoPageIndent" type="text" id="wpNyarukoPageIndent" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageIndent']); ?>" size="2" maxlength="2" />像素的空格<br/>文章中的图片宽度为正文宽度的百分之<input name="wpNyarukoPageImgWidth" type="text" id="wpNyarukoPageImgWidth" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidth']); ?>" size="3" maxlength="3" />(电脑版) 和 百分之<input name="wpNyarukoPageImgWidthM" type="text" id="wpNyarukoPageImgWidthM" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidthM']); ?>" size="3" maxlength="3" />(手机版)
     </td>
     </tr>
     <tr>
