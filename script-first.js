@@ -60,26 +60,36 @@ function contentformat() {
     var textlines = alltext.split('\n');
     var firstline = true;
     var spacespan = '<span class="racing_indent"></span>';
-    var noformats = ["[noformat]","[noformat=all]","[noformat=img]","[noformat=indent]","[nyarukotabloid]"];
+    var noformats = ["[noformat]","[noformat=all]","<script","<link","[noformat=img]","[noformat=indent]","[nyarukotabloid]"];
     var isnoformat = false;
     var newhtml = "";
-    for (let noformati = 0; noformati < noformats.length; noformati++) {
-        const noformat = noformats[noformati];
+    for (let noformatj = 2; noformatj <= 3; noformatj++) {
+        const noformat = noformats[noformatj];
         if (textlines[0].length >= noformat.length && textlines[0].substr(0,noformat.length) == noformat) {
             isnoformat = true;
-            newhtml = alltext.substr(noformat.length,alltext.length-noformat.length);
             break;
         }
     }
-    if (textlines[0].length >= noformats[2].length && textlines[0].substr(0,noformats[2].length) == noformats[2]) {
-        console.log(noformats[2]);
+    if (!isnoformat) {
+        for (let noformati = 0; noformati < noformats.length; noformati++) {
+            const noformat = noformats[noformati];
+            if (textlines[0].length >= noformat.length && textlines[0].substr(0,noformat.length) == noformat) {
+                isnoformat = true;
+                newhtml = alltext.substr(noformat.length,alltext.length-noformat.length);
+                break;
+            }
+        }
+    }
+    if (textlines[0].length >= noformats[4].length && textlines[0].substr(0,noformats[4].length) == noformats[4]) {
+        console.log(noformats[4]);
         isnoformat = false;
     }
-    if (textlines[0].length >= noformats[3].length && textlines[0].substr(0,noformats[3].length) == noformats[3]) {
-        console.log(noformats[3]);
+    if (textlines[0].length >= noformats[5].length && textlines[0].substr(0,noformats[5].length) == noformats[5]) {
+        console.log(noformats[5]);
         spacespan = "";
     }
     if (!isnoformat) {
+        console.log("format...");
         for (let line = 0; line < textlines.length; line++) {
             var nowline = textlines[line];
             var nowlinetype = nowline.replace(/(^\s*)|(\s*$)/g, "").substr(0,2);
@@ -112,12 +122,12 @@ function contentformat() {
         }
         newhtml = textlines.join('\n');
         newhtml = newhtml.replace(/\n\n/g, '<br/>');
-    }
-    texts.html(newhtml);
-    if (!(textlines[0].length >= noformats[2].length && textlines[0].substr(0,noformats[2].length) == noformats[2])) {
-        $(".racing_single_single img").each(function(){
-            $(this).addClass("racing_single_autosizeimg");
-        });
+        texts.html(newhtml);
+        if (!(textlines[0].length >= noformats[2].length && textlines[0].substr(0,noformats[2].length) == noformats[2])) {
+            $(".racing_single_single img").each(function(){
+                $(this).addClass("racing_single_autosizeimg");
+            });
+        }
     }
 }
 function insertstr(scrstr,instr,strindex) {
