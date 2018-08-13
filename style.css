@@ -106,6 +106,10 @@ a:active {
     display:table-cell;
     vertical-align:middle;
 }
+.homepage_bignewsmin {
+    height: 62px;
+    overflow: hidden;
+}
 .homepage_bignewsbox {
     height: 64px;
     width: 100%;
@@ -149,7 +153,7 @@ a:active {
     left: 0px;
     top: 0px;
     width: 320px;
-    height: 64px;
+    height: 62px;
     background: transparent;
     z-index: 2;
     display: block;
