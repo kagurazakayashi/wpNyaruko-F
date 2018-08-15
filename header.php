@@ -11,18 +11,18 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
 <?php $wpNyarukoHeaderTheme = 2; //TODO:切换顶端主题
 include_once("KagurazakaYashi.php"); ?>
 <title><?php if ( is_home() ) {
-        bloginfo('name'); echo " - "; bloginfo('description');
-    } elseif ( is_category() ) {
-        single_cat_title(); echo " - "; bloginfo('name');
-    } elseif (is_single() || is_page() ) {
-        single_post_title();
-    } elseif (is_search() ) {
-        echo "搜索结果"; echo " - "; bloginfo('name');
-    } elseif (is_404() ) {
-        echo '页面未找到!';
-    } else {
-        wp_title('',true);
-    } ?></title>
+    bloginfo('name'); echo " - "; bloginfo('description');
+} elseif ( is_category() ) {
+    single_cat_title(); echo " - "; bloginfo('name');
+} elseif (is_single() || is_page() ) {
+    single_post_title(); echo " - "; bloginfo('name');
+} elseif (is_search() ) {
+    echo "搜索结果"; echo " - "; bloginfo('name');
+} elseif (is_404() ) {
+    echo '页面未找到!';
+} else {
+    wp_title('',true);
+} ?></title>
 <?php echo @$wpNyarukoOption['wpNyarukoHeader']; ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
