@@ -1,5 +1,4 @@
-<?php get_header(); ?>
-    <?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
+    <?php if (have_posts()) : add_action("wp_head","nyarukoFHead"); get_header(); the_post(); update_post_caches($posts); ?>
     <script type="text/javascript">settitle("<?php echo get_the_title(); ?>",'<?php cleardate($post); ?>');</script>
 
     <!-- <?php the_permalink(); comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?> -->
@@ -15,7 +14,7 @@
     <script type="text/javascript">contentformat();</script>
     <?php comments_template(); ?>
 </div>
-<?php else : ?>
+<?php else : get_header(); ?>
 没有文章！
 <?php endif; ?>
 <?php get_sidebar(); ?>

@@ -61,7 +61,7 @@ function catch_that_image() {
     global $post, $posts;
     catch_image($post);
 }
-function catch_image($npost) {
+function catch_image($npost,$showdefaultimg=true) {
     $first_img = '';
     ob_start();
     ob_end_clean();
@@ -69,9 +69,8 @@ function catch_image($npost) {
     $output = preg_match_all($raimage, $npost->post_content, $matches);
     //获取文章中第一张图片的路径并输出
     $first_img = @$matches[1][0];
-    if(empty($first_img)){
-    $first_img = bloginfo("template_url")."/images/default.jpg";
-    //default.jpg
+    if(empty($first_img) && $showdefaultimg){
+        $first_img = get_bloginfo("template_url")."/images/default.jpg";
     }
     return $first_img;
 }
@@ -84,6 +83,20 @@ function removevideoimage($content) {
     return $content;
 }
 /*获取图片完*/
+//在头部加入文章信息
+function nyarukoFHead() {
+    echo "<!-- SingleInfo -->";
+    $post = get_post();
+    $itemimage = catch_image($post,false);
+    if ($itemimage != "") {
+        $dtstrarr = explode('.', $itemimage);
+        $filetype = '-150x150.'.end($dtstrarr);
+        array_pop($dtstrarr);
+        $itemimage = implode('.', $dtstrarr).$filetype;
+        echo "<div id='wx_pic' style='margin:0 auto;display:none;'><img src='".$itemimage."' /></div>";
+    }
+    echo "<!-- SingleInfo END -->";
+}
 
 function typetitle($name) {
     //echo '<div class="racing_typetitle"><div class="racing_typetitlehr cell" style="text-align: right;"><img class="racing_typetitlehrimg" id="racing_typetitlehrimgl" src="'.get_bloginfo("template_url").'/images/400004705.gif" /></div><div class="racing_typetitletxt cell">'.$name.'</div><div class="racing_typetitlehr cell"><img class="racing_typetitlehrimg" id="racing_typetitlehrimgr" src="'.get_bloginfo("template_url").'/images/400004705.gif" /></div></div>';
