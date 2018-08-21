@@ -65,6 +65,9 @@ for ($i=1; $i < 7; $i++) {
         padding-top: 20px !important;
         padding-bottom: 20px !important;
     }
+    .racing_text table {
+        width: 100%;
+    }
 }
 </style>
 <?php } ?>
