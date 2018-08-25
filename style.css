@@ -17,6 +17,20 @@ Author URI: https://github.com/kagurazakayashi
 .tablecolumn {
     display: table-column;
 }
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 1px;
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: blue;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .3) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .3) 50%, rgba(255, 255, 255, .3) 75%, transparent 75%, transparent);
+}
+body::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 5px rgba(0,0,0,0.2); */
+    /*border-radius: 10px;*/
+    background: #000;
+}
 /* 通用布局] */
 /* [页头 */
 body {
@@ -30,6 +44,9 @@ body {
     min-width: 320px;
     overflow-x: hidden;
     font-size: 10pt;
+    scrollbar-arrow-color: blue;
+    scrollbar-shadow-color: gray;
+    scrollbar-face-color: blue;
 }
 a:link {
     text-decoration: none;
@@ -1682,3 +1699,8 @@ a.carousel-control.right {
     transform: rotate(135deg);
 }
 /* ScrollPic] */
+/* [page */
+.racing_text {
+    overflow-x: auto;
+}
+/* page] */
