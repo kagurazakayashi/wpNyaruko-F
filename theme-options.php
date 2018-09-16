@@ -78,8 +78,9 @@ function getOptions() {
             }
         }
         $wpNyarukoOption['wpNyarukoPageIndent'] = '40';
-        $wpNyarukoOption['wpNyarukoPageImgWidth'] = '80';
-        $wpNyarukoOption['wpNyarukoPageImgWidthM'] = '100';
+        $wpNyarukoOption['wpNyarukoTableOverflowW'] = 'on';
+        $wpNyarukoOption['wpNyarukoTableOverflowF'] = 'on';
+        $wpNyarukoOption['wpNyarukoTableOverflowS'] = '';
         for ($i=0; $i < 4; $i++) {
             $wpNyarukoOption[("wpNyarukoDeduplication".$i)] = '';
             $wpNyarukoOption[("wpNyarukoDeduplication".$i."M")] = '';
@@ -100,7 +101,7 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoIndexModuleM","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts","wpNyarukoFontsF","wpNyarukoPageParagraph"];
+        $options = ["wpNyarukoTest","wpNyarukoBanBrowser","wpNyarukoPHPDebug","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoIndexModule","wpNyarukoIndexModuleM","wpNyarukoSNSWeibo","wpNyarukoSNSWeChat","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoJQcookie","wpNyarukoBScss","wpNyarukoFNewsTitle","wpNyarukoFNewsImage","wpNyarukoFNewsImageB","wpNyarukoFNewsColorB","wpNyarukoFNewsColorF","wpNyarukoFNewsLink","wpNyarukoFNewsLinkN","wpNyarukoLogo","wpNyarukoPlayerAutoMiniSize","wpNyarukoPlayerAutoMiniSizeU","wpNyarukoPlayerAutoMiniSizeA","wpNyarukoPlayerAutoStop","wpNyarukoPlayerAutoRemove","wpNyarukoBigPicTitleAutoSize","wpNyarukoBigPicTitleAutoSizeF","wpNyarukoBigPicTitleAutoSizeT","wpNyarukoPageIndent","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoFonts","wpNyarukoFontsF","wpNyarukoPageParagraph","wpNyarukoTableOverflowW","wpNyarukoTableOverflowS","wpNyarukoTableOverflowF"];
         $wpNyarukoPageT = ["Size","Color","Line"];
         for ($i=0; $i < 8; $i++) {
             foreach ($wpNyarukoPageT as $wpNyarukoPageTv) {
@@ -265,6 +266,13 @@ if(!is_admin()) {
         </table>
         正文段落间距：<input name="wpNyarukoPageParagraph" type="text" id="<?php echo $sname; ?>Line" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageParagraph']); ?>" size="2" maxlength="2" />像素<br/>每个自然段前自动添加<input name="wpNyarukoPageIndent" type="text" id="wpNyarukoPageIndent" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageIndent']); ?>" size="2" maxlength="2" />像素的空格<br/>文章中的图片宽度为正文宽度的百分之<input name="wpNyarukoPageImgWidth" type="text" id="wpNyarukoPageImgWidth" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidth']); ?>" size="3" maxlength="3" />(电脑版) 和 百分之<input name="wpNyarukoPageImgWidthM" type="text" id="wpNyarukoPageImgWidthM" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidthM']); ?>" size="3" maxlength="3" />(手机版)
     </td>
+    </tr>
+    <tr>
+        <td>表格排版</td>
+        <td>
+        <input name="wpNyarukoTableOverflowW" type="checkbox" id="wpNyarukoTableOverflowW" <?php if(@$wpNyarukoOption['wpNyarukoTableOverflowW']!='')echo('checked'); ?> />电脑版自动将表格宽度跟随页面宽度而变化。<br/><input name="wpNyarukoTableOverflowF" type="checkbox" id="wpNyarukoTableOverflowF" <?php if(@$wpNyarukoOption['wpNyarukoTableOverflowF']!='')echo('checked'); ?> />移动版自动将表格宽度跟随页面宽度而变化。<br/>
+        或者：<input name="wpNyarukoTableOverflowS" type="checkbox" id="wpNyarukoTableOverflowS" <?php if(@$wpNyarukoOption['wpNyarukoTableOverflowS']!='')echo('checked'); ?> />添加横向滚动条，使表格支持横向拖动。
+        </td>
     </tr>
     <tr>
         <td>字体</td>

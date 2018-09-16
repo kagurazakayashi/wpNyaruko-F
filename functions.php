@@ -80,6 +80,14 @@ function removevideoimage($content) {
     if ($mode != 0 && isvideo($content)) {
         $content = preg_replace($raimage,'',$content,$mode);
     }
+    return tableautowidth($content);
+}
+function tableautowidth($content) {
+    $wpNyarukoOption = get_option('wpNyaruko_options');
+    if ($wpNyarukoOption['wpNyarukoTableOverflowS']!='') {
+        $content = str_replace("<table","<div class=\"scrolltable\"><table",$content);
+        $content = str_replace("</table>","</table></div>",$content);
+    }
     return $content;
 }
 /*获取图片完*/

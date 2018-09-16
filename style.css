@@ -1229,6 +1229,9 @@ a.carousel-control.right {
 #sortingtotext {
     height: 40px;
 }
+.scrolltable {
+    overflow-x: auto;
+}
 /* page] */
 /* [comment */
 .commentsbox {

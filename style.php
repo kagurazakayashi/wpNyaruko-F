@@ -52,6 +52,9 @@ for ($i=1; $i < 7; $i++) {
     padding-top: 20px !important;
     padding-bottom: 20px !important;
 }
+.racing_text table {
+    <?php if ($wpNyarukoOption['wpNyarukoTableOverflowF']!='') { echo "width: 100% !important;"; } ?>
+}
 /* page] */
 @media screen and (max-width: 840px) {
     .racing_single_autosizeimg {
@@ -65,9 +68,9 @@ for ($i=1; $i < 7; $i++) {
         padding-top: 20px !important;
         padding-bottom: 20px !important;
     }
-    /* .racing_text table {
-        width: 100%;
-    } */
+    .racing_text table {
+        <?php if ($wpNyarukoOption['wpNyarukoTableOverflowW']!='') { echo "width: 100% !important;"; } ?>
+    }
 }
 </style>
 <?php } ?>
