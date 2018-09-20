@@ -134,6 +134,8 @@ function contentformat() {
                 $(this).addClass("racing_single_autosizeimg");
             });
         }
+    } else {
+        texts.html(newhtml);
     }
 }
 function insertstr(scrstr,instr,strindex) {

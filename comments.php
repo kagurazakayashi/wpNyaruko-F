@@ -29,7 +29,6 @@
             wp_list_comments('type=comment&callback=aurelius_comment');
         }
     ?>
-</li></ul>
 <?php
 if ( !comments_open() ) :
 // If registration required and not logged in.

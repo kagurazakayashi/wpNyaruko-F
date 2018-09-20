@@ -56,8 +56,10 @@ elseif (is_single()) {
    $keywords = get_post_meta($post->ID, "_keywords_value", true);
    if($keywords == '') {
       $tags = wp_get_post_tags($post->ID);
-      foreach ($tags as $tag ) {
-         $keywords = $keywords . $tag->name . ", ";
+      if(is_array($tags)) {
+        foreach ($tags as $tag ) {
+            $keywords = $keywords . $tag->name . ", ";
+        }
       }
       $keywords = rtrim($keywords, ', ');
    }
