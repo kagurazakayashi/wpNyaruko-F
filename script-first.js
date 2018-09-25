@@ -128,15 +128,18 @@ function contentformat() {
         }
         newhtml = textlines.join('\n');
         newhtml = newhtml.replace(/\n\n/g, '<br/>');
-        texts.html(newhtml);
+        textboxsethtml(texts,newhtml);
         if (!(textlines[0].length >= noformats[2].length && textlines[0].substr(0,noformats[2].length) == noformats[2])) {
             $(".racing_single_single img").each(function(){
                 $(this).addClass("racing_single_autosizeimg");
             });
         }
     } else {
-        texts.html(newhtml);
+        textboxsethtml(texts,newhtml);
     }
+}
+function textboxsethtml(texts,newhtml) {
+    if (newhtml != "") texts.html(newhtml);
 }
 function insertstr(scrstr,instr,strindex) {
     var newstr="";

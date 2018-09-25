@@ -17,6 +17,9 @@ Author URI: https://github.com/kagurazakayashi
 .tablecolumn {
     display: table-column;
 }
+a {
+    cursor: pointer;
+}
 body::-webkit-scrollbar {
     width: 10px;
     height: 1px;
@@ -1513,7 +1516,7 @@ a.carousel-control.right {
 }
 #racing_topmenu {
     white-space: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     display: block;
     text-align: right;
@@ -1589,6 +1592,9 @@ a.carousel-control.right {
 #racing_h2tabmenu img {
     height: 24px;
     width: auto;
+}
+#racing_h2tabmenu a {
+    color: #FFF;
 }
 #homepage_h2snsqrshowbox {
     position: fixed;

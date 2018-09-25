@@ -32,7 +32,7 @@
         ?>
         </div>
         <div class="racing_h2menucell" id="racing_h2menu1r">
-            <a href="javascript:mobilemenu();" id="homepage_snsa_weibo" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_weibo" src="<?php bloginfo("template_url"); ?>/homepage/ic_menu_white_48dp_2x.png" alt="打开主菜单"></a>
+            <a target="_blank" onClick="mobilemenu();"><img class="homepage_snsicon" id="homepage_snsicon_weibo" src="<?php bloginfo("template_url"); ?>/homepage/ic_menu_white_48dp_2x.png" alt="打开主菜单"></a>
             <span>&emsp;</span>
             <a href="<?php echo $wpNyarukoOption['wpNyarukoSNSWeibo']; ?>" id="homepage_snsa_weibo" target="_blank"><img class="homepage_snsicon" id="homepage_snsicon_weibo" src="<?php bloginfo("template_url"); ?>/homepage/weibo.png" alt="访问我们的新浪微博" onMouseOver="snsiconover('weibo');" onMouseOut="snsiconout('weibo');"></a>
             <span>&emsp;</span>
