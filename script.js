@@ -810,8 +810,11 @@ function scrollpictureload(spid) {
         } else if (spshownum == 1){
             spdivlen = scrollimgs.length;
         }
-
-        sparr00.push("<div class='" + spcss + "' style='width: " + spimgw + "px;height: " + (spimgh+spith) + "px;'><div class='spimgdiv' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'><a href='" + obj[2] + "'><img src='" + obj[1] + "'/></a></div><div class='scrolltitle'>" + obj[0] + "</div></div>");
+        var target = '';
+        if (isopenlink(obj[2])) {
+            target = 'target="_blank"';
+        }
+        sparr00.push("<div class='" + spcss + "' style='width: " + spimgw + "px;height: " + (spimgh+spith) + "px;'><div class='spimgdiv' style = 'width: " + spimgw + "px;height: " + spimgh + "px;'><a href='" + obj[2] + "'" + target + " ><img src='" + obj[1] + "'/></a></div><div class='scrolltitle'>" + obj[0] + "</div></div>");
         if (spshownum == 3){
             if (i % spshownum == 2){
                 var nowarr = sparr[spid];

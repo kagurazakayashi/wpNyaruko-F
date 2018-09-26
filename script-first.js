@@ -149,6 +149,19 @@ function insertstr(scrstr,instr,strindex) {
     }
     return newstr;
 }
+function isopenlink(url) {
+    if ((isMobile && linkdef[1] == "on") || (!isMobile && linkdef[0] == "on")) {
+        return true;
+    }
+    return false;
+}
+function openlink(url) {
+    if (isopenlink(url)) {
+        window.open(url, '_blank').location;
+    } else {
+        window.location.href = url;
+    }
+}
 //[滚动图片
 var scrollpicturespid = [];
 var scrollpictureimgs = [];

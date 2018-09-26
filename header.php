@@ -164,6 +164,10 @@ $keywords = trim(strip_tags($keywords));
         echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeF'].'",';
         echo '"'.$wpNyarukoOption['wpNyarukoBigPicTitleAutoSizeT'].'"];';
     }
+    //NewWindow
+    echo 'var linkdef = [';
+    echo '"'.$wpNyarukoOption['wpNyarukoFLinkN'].'",';
+    echo '"'.$wpNyarukoOption['wpNyarukoFLinkNM'].'"];';
     echo '</script>';
     ?>
     <!-- 1顶端大图 -->

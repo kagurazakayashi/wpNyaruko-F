@@ -18,7 +18,7 @@
                     break;
                 }
             }
-            if ($ucanuseadminsetting) echo '&emsp;<a href="/wp-admin/" title="已使用具备访问后台权限的用户登录，点此前往网站后台。"><img id="wpnyaruko_goadminbtn" src="'.get_bloginfo("template_url").'/homepage/ic_settings_white_48pt_2x.png" alt="后台" /></a>';
+            if ($ucanuseadminsetting) echo '&emsp;<a href="/wp-admin/" title="已使用具备访问后台权限的用户登录，点此前往网站后台。" target="_blank"><img id="wpnyaruko_goadminbtn" src="'.get_bloginfo("template_url").'/homepage/ic_settings_white_48pt_2x.png" alt="后台" /></a>';
             ?>
         </div>
         <div class="racing_h2menucell" id="racing_h2menu1c">
@@ -60,7 +60,7 @@
             <span id="homepage_bignewstxt" style="color: #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorF']; ?>; text-shadow:#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 1px 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> -1px 0 0,#<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 0 -1px 0;"><?php echo @$wpNyarukoOption['wpNyarukoFNewsTitle']; ?></span>
         </div>
     </div>
-        <div class="homepage_bignewsbox" id="homepage_bignewslink" onmouseover="bignewslinkmouse(true);" onmouseout="bignewslinkmouse(false);" style="top: 110px;" ><a href="<?php echo @$wpNyarukoOption['wpNyarukoFNewsLink']; ?>"<?php if (@$wpNyarukoOption['wpNyarukoFNewsLinkN'] == "on") echo 'target="_blank"'; ?>></a>
+        <div class="homepage_bignewsbox" id="homepage_bignewslink" onmouseover="bignewslinkmouse(true);" onmouseout="bignewslinkmouse(false);" style="top: 110px;" ><a href="<?php echo @$wpNyarukoOption['wpNyarukoFNewsLink']; ?>"<?php if (@$wpNyarukoOption['wpNyarukoFNewsLinkN'] == "on") echo ' target="_blank"'; ?>></a>
         <span id="homepage_bignewsit" style="background: linear-gradient(to right, transparent 50%, #<?php echo @$wpNyarukoOption['wpNyarukoFNewsColorB']; ?> 100%);"></span>
         </div>
         <div id="homepage_bignewspop" style="top:174px;">
