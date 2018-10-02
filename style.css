@@ -1713,4 +1713,7 @@ a.carousel-control.right {
     overflow-x: auto;
     display: inline;
 }
+.racing_text ul, .racing_text ol {
+    margin-left: 20px;
+}
 /* page] */

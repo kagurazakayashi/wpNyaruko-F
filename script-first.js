@@ -124,10 +124,23 @@ function contentformat() {
                 }
             } else if (nowlinetype != "" && nowlinetype.substr(0,1) != "<") {
                 textlines[line] = spacespan + nowline;
+            } else {
+                textlines[line] = nowline;
             }
         }
-        newhtml = textlines.join('\n');
-        newhtml = newhtml.replace(/\n\n/g, '<br/>');
+        newhtml = textlines.join('<br/>');
+        newhtml = newhtml.replace(/<br\/><br\/>/g, '<br/>');
+        newhtml = newhtml.replace(/<br\/><p/g, '<p');
+        newhtml = newhtml.replace(/<br\/> 	<li>/g, '<li>');
+        newhtml = newhtml.replace(/<br\/><\/ul><br\/>/g, '</ul>');
+        newhtml = newhtml.replace(/<br\/><\/ol><br\/>/g, '</ol>');
+        newhtml = newhtml.replace(/<\/h1><br\/>/g, '</h1>');
+        newhtml = newhtml.replace(/<\/h2><br\/>/g, '</h2>');
+        newhtml = newhtml.replace(/<\/h3><br\/>/g, '</h3>');
+        newhtml = newhtml.replace(/<\/h4><br\/>/g, '</h4>');
+        newhtml = newhtml.replace(/<\/h5><br\/>/g, '</h5>');
+        newhtml = newhtml.replace(/<\/h6><br\/>/g, '</h6>');
+        // console.log(newhtml);
         textboxsethtml(texts,newhtml);
         if (!(textlines[0].length >= noformats[2].length && textlines[0].substr(0,noformats[2].length) == noformats[2])) {
             $(".racing_single_single img").each(function(){
