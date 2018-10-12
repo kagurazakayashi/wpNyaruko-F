@@ -85,7 +85,7 @@ function removevideoimage($content) {
 function tableautowidth($content) {
     $wpNyarukoOption = get_option('wpNyaruko_options');
     if ($wpNyarukoOption['wpNyarukoTableOverflowS']!='') {
-        $content = str_replace("<table","<div class=\"scrolltable\"><table",$content);
+        $content = str_replace("<table","<div class=\"scrolltable\"><table align=\"center\"",$content);
         $content = str_replace("</table>","</table></div>",$content);
     }
     return $content;

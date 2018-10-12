@@ -140,13 +140,13 @@ function contentformat() {
         newhtml = newhtml.replace(/<\/h4><br\/>/g, '</h4>');
         newhtml = newhtml.replace(/<\/h5><br\/>/g, '</h5>');
         newhtml = newhtml.replace(/<\/h6><br\/>/g, '</h6>');
-        // console.log(newhtml);
         textboxsethtml(texts,newhtml);
         if (!(textlines[0].length >= noformats[2].length && textlines[0].substr(0,noformats[2].length) == noformats[2])) {
             $(".racing_single_single img").each(function(){
                 $(this).addClass("racing_single_autosizeimg");
             });
         }
+        $(".scrolltable").html($(".scrolltable table")[0]);
     } else {
         textboxsethtml(texts,newhtml);
     }
