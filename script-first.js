@@ -88,12 +88,24 @@ function contentformat() {
         console.log(noformats[5]);
         spacespan = "";
     }
+    var debug_noformat = window.location.hash == "#noformat" ? true : false;
+    var debug_format = window.location.hash == "#format" ? true : false;
+    if (debug_noformat) {
+        console.log("[DEBUG MODE] noformat");
+        isnoformat = true;
+    }
+    if (debug_format) {
+        console.log("[DEBUG MODE] format");
+        isnoformat = false;
+    }
     if (!isnoformat) {
         console.log("format...");
         for (let line = 0; line < textlines.length; line++) {
             var nowline = textlines[line];
             var nowlinetype = nowline.replace(/(^\s*)|(\s*$)/g, "").substr(0,2);
-            //console.log(line,nowlinetype,nowline);
+            if (window.location.hash == "#formatlog") {
+                console.log(line,nowlinetype,nowline);
+            }
             if (nowlinetype == "<i" || nowlinetype == "<s" || nowlinetype == "<d" || nowlinetype == "<v" || nowlinetype == "") {
                 if (firstline && nowlinetype != "") {
                     if (firstline) {
