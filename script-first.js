@@ -158,7 +158,12 @@ function contentformat() {
                 $(this).addClass("racing_single_autosizeimg");
             });
         }
-        $(".scrolltable").html($(".scrolltable table")[0]);
+        var scrolltable = $(".scrolltable");
+        for (let sti = 0; sti < scrolltable.length; sti++) {
+            const scrolltablen = $(scrolltable[sti]);
+            const scrolltablet = $(".scrolltable table")[sti];
+            scrolltablen.html(scrolltablet);
+        }
     } else {
         textboxsethtml(texts,newhtml);
     }
