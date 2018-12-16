@@ -25,6 +25,9 @@ include_once("KagurazakaYashi.php"); ?>
 } ?></title>
 <?php echo @$wpNyarukoOption['wpNyarukoHeader']; ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="remote_ip" content="<?php echo $_SERVER['REMOTE_ADDR']; ?>"/>
+<meta name="forwarded_ip" content="<?php echo $_SERVER['HTTP_X_FORWARDED_FOR']; ?>"/>
+<meta name="template" content="wpNyaruko-F" />
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php bloginfo("template_url"); ?>/style-mobile.css" type="text/css" media="screen" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
