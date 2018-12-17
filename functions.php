@@ -22,6 +22,7 @@ function set_user_admin_bar_false_by_default($user_id) {
 /** widgets */
 if( function_exists('register_sidebar') ) {
     register_sidebar(array(
+        'id' => 'indexsidebar',
         'name' => 'indexsidebar',
         'before_widget' => '',
         'after_widget' => '',
@@ -137,7 +138,7 @@ function isvideotitle($title) {
 
 function curPageURL() {
     $pageURL = 'http';
-    if ($_SERVER["HTTPS"] == "on")
+    if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on")
     {
         $pageURL .= "s";
     }
