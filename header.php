@@ -25,8 +25,31 @@ include_once("KagurazakaYashi.php"); ?>
 } ?></title>
 <?php echo @$wpNyarukoOption['wpNyarukoHeader']; ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<meta name="remote_ip" content="<?php echo $_SERVER['REMOTE_ADDR']; ?>"/>
-<meta name="forwarded_ip" content="<?php echo $_SERVER['HTTP_X_FORWARDED_FOR']; ?>"/>
+<?php if (isset($_SERVER['SERVER_PORT'])) {
+    echo '<meta name="port" content="'.$_SERVER['SERVER_PORT'].'" />';
+} ?>
+
+<?php if (isset($_SERVER['SERVER_PROTOCOL'])) {
+    echo '<meta name="protocol" content="'.$_SERVER['SERVER_PROTOCOL'].'" />';
+} ?>
+
+<?php if (isset($_SERVER['REQUEST_METHOD'])) {
+    echo '<meta name="method" content="'.$_SERVER['REQUEST_METHOD'].'" />';
+} ?>
+
+<?php if (isset($_SERVER['REMOTE_ADDR'])) {
+    echo '<meta name="remote_ip" content="'.$_SERVER['REMOTE_ADDR'].'" />';
+} ?>
+
+<?php echo '<meta name="server_time" content="'.date("Y-n-j H:i:s").'" />'; ?>
+<?php if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    echo '<meta name="forwarded_ip" content="'.$_SERVER['HTTP_X_FORWARDED_FOR'].'" />';
+} ?>
+
+<?php if (isset($_SERVER['HTTP_USER_AGENT'])) {
+    echo '<meta name="ua" content="'.$_SERVER['HTTP_USER_AGENT'].'" />';
+} ?>
+
 <meta name="template" content="wpNyaruko-F" />
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php bloginfo("template_url"); ?>/style-mobile.css" type="text/css" media="screen" />
