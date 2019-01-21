@@ -19,5 +19,4 @@ if ($consolelog != "") {
 }
 ?>
 </body>
-<!-- <?php if (isMobile()) {echo "MOBILE : ";} else {echo "DESKTOP : ";} if (isset($_SERVER['HTTP_USER_AGENT'])) echo $_SERVER['HTTP_USER_AGENT']; ?> -->
 </html>

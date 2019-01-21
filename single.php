@@ -1,4 +1,10 @@
-    <?php if (have_posts()) : add_action("wp_head","nyarukoFHead"); get_header(); the_post(); update_post_caches($posts); ?>
+<?php if (have_posts()) : 
+    the_post();
+    $nowcontent = get_the_content();
+    nyarukoFHead($nowcontent);
+    get_header();
+    update_post_caches($posts);
+?>
     <script type="text/javascript">settitle("<?php echo get_the_title(); ?>",'<?php cleardate($post); ?>');</script>
 
     <!-- <?php the_permalink(); comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?> -->
@@ -9,7 +15,7 @@
                 <?php edit_post_link('编辑', '　(已使用有', '权限的账户登录)'); ?>
             </div>
             <div id="sortingtotext"></div>
-            <div class="racing_text"><?php echo do_shortcode(removevideoimage(get_the_content())); ?></div>
+            <div class="racing_text"><?php echo do_shortcode(removevideoimage($nowcontent)); ?></div>
         </div>
     <script type="text/javascript">contentformat();</script>
     <?php comments_template(); ?>

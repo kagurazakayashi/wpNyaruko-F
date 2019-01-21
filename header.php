@@ -23,6 +23,19 @@ include_once("KagurazakaYashi.php"); ?>
 } else {
     wp_title('',true);
 } ?></title>
+<?php 
+$sharepicurl = "";
+$sharepiccss = "";
+if (is_single() || is_page()) {
+    $nowcontent = get_the_content();
+    if ($nowcontent) {
+        $sharepicurl = catch_image($nowcontent,false,true);
+        if ($sharepicurl != "") {
+            $sharepiccss = "margin:0 auto; display:none;";
+            echo '<link rel="image" href="'.$sharepicurl.'" />';
+        }
+    }
+} ?>
 <?php echo @$wpNyarukoOption['wpNyarukoHeader']; ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <?php if (isset($_SERVER['SERVER_PORT'])) {
@@ -111,12 +124,20 @@ $keywords = trim(strip_tags($keywords));
 <?php flush(); ?>
 
 <body onload="medialoaded();">
-    <?php 
+<?php 
+    if ($sharepicurl != "") {
+        echo '<div id="wx_pic" style="'.$sharepiccss.'"><img src="'.$sharepicurl.'" /></div>';
+    }
+    $nowcontent = null;
+    if ($featuredimage) {
+        $featuredimagesize = 'width=150 height=150';
+        echo '<div id="wx_pic" '.$featuredimagesize.' style="margin:0 auto;display:none;"><img src="'.$itemimage.'" /></div>';
+    }
     include "ua.php";
     $mobile = isMobile();
     include "style.php";
     gcss($wpNyarukoOption);
-    ?>
+?>
 <div id="mobilemenubox">
     <div class="racing_phone_menuback" onclick="mobilemenu();"></div>
     <div class="racing_phone_menu">
