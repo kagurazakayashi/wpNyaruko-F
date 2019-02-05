@@ -1,7 +1,6 @@
 <?php if (have_posts()) : 
     the_post();
     $nowcontent = get_the_content();
-    nyarukoFHead($nowcontent);
     get_header();
     update_post_caches($posts);
 ?>

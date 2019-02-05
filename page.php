@@ -1,5 +1,9 @@
-<?php get_header(); ?>
-<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
+<?php if (have_posts()) : 
+    the_post();
+    $nowcontent = get_the_content();
+    get_header();
+    update_post_caches($posts);
+?>
 <script type="text/javascript">settitle("<?php echo get_the_title(); ?>",'<?php cleardate($post); ?>');</script>
 
 <!-- <?php the_permalink(); comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?> -->

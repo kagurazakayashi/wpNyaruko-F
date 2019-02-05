@@ -34,6 +34,12 @@ body::-webkit-scrollbar-track {
     /*border-radius: 10px;*/
     background: #000;
 }
+#wx_pic {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
 /* 通用布局] */
 /* [页头 */
 body {

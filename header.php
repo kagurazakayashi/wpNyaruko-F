@@ -25,13 +25,11 @@ include_once("KagurazakaYashi.php"); ?>
 } ?></title>
 <?php 
 $sharepicurl = "";
-$sharepiccss = "";
 if (is_single() || is_page()) {
-    $nowcontent = get_the_content();
+    $nowcontent = get_post()->post_content;
     if ($nowcontent) {
         $sharepicurl = catch_image($nowcontent,false,true);
         if ($sharepicurl != "") {
-            $sharepiccss = "margin:0 auto; display:none;";
             echo '<link rel="image" href="'.$sharepicurl.'" />';
         }
     }
@@ -119,6 +117,7 @@ $keywords = trim(strip_tags($keywords));
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $keywords; ?>" />
 <?php wp_head(); ?>
+
 </head>
 
 <?php flush(); ?>
@@ -126,13 +125,9 @@ $keywords = trim(strip_tags($keywords));
 <body onload="medialoaded();">
 <?php 
     if ($sharepicurl != "") {
-        echo '<div id="wx_pic" style="'.$sharepiccss.'"><img src="'.$sharepicurl.'" /></div>';
+        echo '<div id="wx_pic"><img src="'.$sharepicurl.'" /></div>';
     }
     $nowcontent = null;
-    if ($featuredimage) {
-        $featuredimagesize = 'width=150 height=150';
-        echo '<div id="wx_pic" '.$featuredimagesize.' style="margin:0 auto;display:none;"><img src="'.$itemimage.'" /></div>';
-    }
     include "ua.php";
     $mobile = isMobile();
     include "style.php";
