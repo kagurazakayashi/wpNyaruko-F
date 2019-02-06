@@ -88,6 +88,7 @@ function contentformat() {
         console.log(noformats[5]);
         spacespan = "";
     }
+    if (textlines.length >= 1 && textlines[0].length >= 28 && textlines[0].slice(0,28) == "<!-- wpNyarukoLive Start -->") isnoformat = true;
     var debug_noformat = window.location.hash == "#noformat" ? true : false;
     var debug_format = window.location.hash == "#format" ? true : false;
     if (debug_noformat) {
@@ -134,7 +135,7 @@ function contentformat() {
                         }
                     }
                 }
-            } else if (nowlinetype != "" && nowlinetype.substr(0,1) != "<") {
+            } else if (nowlinetype != "" && (nowlinetype.substr(0,1) != "<" || nowlinetype.substr(0,2) == "<s")) {
                 textlines[line] = spacespan + nowline;
             } else {
                 textlines[line] = nowline;

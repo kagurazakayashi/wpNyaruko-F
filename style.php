@@ -4,13 +4,13 @@
 body {
     font-family: <?php if ($wpNyarukoOption['wpNyarukoFontsF']!='') { fontsettingconv(@$wpNyarukoOption['wpNyarukoFonts']); } ?>;
 }
-.racing_text, .racing_text p {
+.racing_text, .racing_text p, .racing_text strong {
     font-size: <?php echo @$wpNyarukoOption['wpNyarukoPageH0FontSize']; ?>pt;
     color: #<?php echo @$wpNyarukoOption['wpNyarukoPageH0FontColor']; ?>;
     line-height: <?php echo @$wpNyarukoOption['wpNyarukoPageH0FontLine']; ?>px;
     font-family: <?php if ($wpNyarukoOption['wpNyarukoFontsF']=='') { fontsettingconv(@$wpNyarukoOption['wpNyarukoFonts']); } ?>;
 }
-.racing_texteng, .racing_texteng p {
+.racing_texteng, .racing_texteng p, .racing_texteng strong {
     font-size: <?php echo @$wpNyarukoOption['wpNyarukoPageH7FontSize']; ?>pt;
     color: #<?php echo @$wpNyarukoOption['wpNyarukoPageH7FontColor']; ?>;
     line-height: <?php echo @$wpNyarukoOption['wpNyarukoPageH7FontLine']; ?>px;
@@ -49,8 +49,6 @@ for ($i=1; $i < 7; $i++) {
     padding-right: <?php echo $racingsingleimgpadd; ?>% !important;
     width: <?php echo $wpNyarukoPageImgWidth; ?>% !important;
     height: auto !important;
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
 }
 .racing_text table {
     <?php if ($wpNyarukoOption['wpNyarukoTableOverflowF']!='') { echo "width: 100% !important;"; } ?>
@@ -65,8 +63,6 @@ for ($i=1; $i < 7; $i++) {
         padding-right: <?php echo $racingsingleimgpadd; ?>% !important;
         width: <?php echo $wpNyarukoPageImgWidthM; ?>% !important;
         height: auto !important;
-        padding-top: 20px !important;
-        padding-bottom: 20px !important;
     }
     .racing_text table {
         <?php if ($wpNyarukoOption['wpNyarukoTableOverflowW']!='') { echo "width: 100% !important;"; } ?>
