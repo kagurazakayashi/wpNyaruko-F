@@ -43,8 +43,8 @@ if( function_exists('register_nav_menus') ) {
 // 获取预览
 function clearcontent($content) {
     $wpNyarukoOption = get_option('wpNyaruko_options');
-    $ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/'];
-    foreach ($ravideo as $replacen){ 
+    $ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/','/\[\/nyarukolive.*?\]/','/\[dplayer.*?\]/'];
+    foreach ($ravideo as $replacen){
         $content = preg_replace($replacen,'&emsp;',$content);
     }
     $content = strip_tags($content);
@@ -109,7 +109,7 @@ function typetitle($name) {
 }
 
 function isvideo($content) {//nyarukolive
-    $ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/','/\[\/nyarukolive.*?\]/'];
+    $ravideo = ['/\[video.*?\]/','/\[\/video.*?\]/','/\<\/video.*?\>/','/\<\/video.*?\>/','/\[\/nyarukolive.*?\]/','/\[dplayer.*?\]/'];
     $newcontent = $content;
     foreach ($ravideo as $replacen){
         $newcontent = preg_replace($replacen,'',$newcontent);
