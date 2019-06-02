@@ -107,18 +107,10 @@ function contentformat() {
             if (window.location.hash == "#formatlog") {
                 console.log(line,nowlinetype,nowline);
             }
-            if (nowlinetype == "<i" || nowlinetype == "<s" || nowlinetype == "<d" || nowlinetype == "<v" || nowlinetype == "") {
-                if (firstline && nowlinetype != "") {
-                    if (firstline) {
-                        if (nowlinetype == "<d" || nowlinetype == "<p") {
-                            $("#sortingtotext").css("height","20px");
-                        } else if (nowlinetype != "") {
-                            $("#sortingtotext").css("height","0px");
-                        }
-                        firstline = false;
-                    }
+            if (firstline && nowlinetype != "") {
+                if (nowlinetype == "<d") {
+                    $("#sortingtotext").css("display","inline-block");
                 }
-            } else  {
                 firstline = false;
             }
             if (nowlinetype == "<p") {
@@ -193,7 +185,6 @@ function openlink(url) {
         window.location.href = url;
     }
 }
-//[滚动图片
 var scrollpicturespid = [];
 var scrollpictureimgs = [];
 function scrollpicture(spid) {
@@ -202,4 +193,3 @@ function scrollpicture(spid) {
 function setscrollimgs(imgsarr){
     scrollpictureimgs.push(imgsarr);
 }
-//滚动图片]
