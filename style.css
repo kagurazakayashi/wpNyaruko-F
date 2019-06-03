@@ -837,6 +837,7 @@ select {
     float: left;
     text-align: left;
     color: gray;
+    width: 100%;
 }
 /* list] */
 #description {
@@ -1236,7 +1237,9 @@ a.carousel-control.right {
     display: inline-block;
 }
 #sortingtotext {
-    height: 40px;
+    height: 20px;
+    display: none;
+    width: 100%;
 }
 .scrolltable {
     overflow-x: auto;

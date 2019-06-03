@@ -49,6 +49,7 @@ for ($i=1; $i < 7; $i++) {
     padding-right: <?php echo $racingsingleimgpadd; ?>% !important;
     width: <?php echo $wpNyarukoPageImgWidth; ?>% !important;
     height: auto !important;
+    padding-top: <?php echo @$wpNyarukoOption['wpNyarukoPageParagraph'] - @$wpNyarukoOption['wpNyarukoPageH0FontLine'] * 0.5; ?>px;
 }
 .racing_text table {
     <?php if ($wpNyarukoOption['wpNyarukoTableOverflowF']!='') { echo "width: 100% !important;"; } ?>
